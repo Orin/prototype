@@ -1,16 +1,19 @@
 <?php 
+
 function autoFill($dataSet, $divName)
 {
 	echo '<div id="'.$divName.'"><input id="blargh" type=text autocomplete="off" onkeyup="autoFills(event.keyCode,this,1,\''.$divName.'\');"/></div>';
 }
 
 function dropdown($entries, $default = '') {
-	echo "<select>";
-	for ($i = 0; $i < count($entries); $i++) {
-		if ($entries[$i] == $default) { ?><option selected><?php } else { ?><option><?php }
-		echo $entries[$i]; ?></option>
-	<?php	}
-	echo '</select>';
+echo "<select>";
+
+for ($i = 0; $i < count($entries); $i++) {
+   if ($entries[$i] == $default) { ?><option selected><?php } else { ?><option><?php }
+   echo $entries[$i]; ?></option>
+ <?php  }	
+ 
+ echo '</select>';
 }
 
 function datePicker($defDay = FALSE, $defMonth = FALSE) {
