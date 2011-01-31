@@ -1,21 +1,21 @@
 <?php
-//Handle Session//
-//$sessname = $_SESSION['name'];
+//Include all functions
+include '../config/functions.inc.php';
+
+/* Handle Session */
 session_name("MyLogin");
 session_start();
-//$sessname2 = $_SESSION['name'];
-//echo 'sessname: '.$sessname.' / sessname2: '.$sessname2;
 
 //Determine page requested as parsed by .htaccess (if directory root, $page = 'index')	
 $page = (isset($_GET['page']))? $_GET['page'] : 'index'; 
+if ($page == 'logout') { kill_session(); }
+
 ?>
 <head>
     <?php 
 	include '../config/definitions.inc.php';
-	include '../config/functions.inc.php';
 	require 'config/log.php';
 	include 'config/admin-settings.inc.php'; 
-	
 	?>
 </head>
 

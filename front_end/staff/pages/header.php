@@ -255,7 +255,7 @@ function moveSelected(direction,dataSet,textBox)
 <div id="header">
 <h2> Thistle Airways Booking and Management System Portal</h2>
 		<form align=right> 
-			<input type="button" value="Logout" onClick="window.location = 'logout.php';"> 
+			<input type="button" value="Logout" onClick="window.location = 'logout.html';"> 
 		</form>
 </div>
 

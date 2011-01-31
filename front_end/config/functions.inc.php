@@ -78,5 +78,15 @@ function noPsngrPicker($psngrType, $defNo = 0) {
     <?php
 }
 
-
+function kill_session() {
+	$_SESSION = array();
+	$session_name = session_name();
+	session_destroy();
+	if ( isset( $_COOKIE[ $session_name ] ) ) {
+		if ( setcookie(session_name(), '', time()-3600, '/') ) {
+			header("Location: index.html");
+			exit();    
+		}
+	}
+}
 ?>
