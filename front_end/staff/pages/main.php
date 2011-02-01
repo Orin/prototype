@@ -43,7 +43,7 @@
         </div>
     </div>
     
-    <div id="cust-search">
+    <div id="cust-search" style="clear:both;">
         <div class="title-bar">Search for a Customer</div>
         <div class="search-left">
             <form name="customer_info" method="get" action="viewCustomer.php?action=Csearch" align=right>
