@@ -188,7 +188,7 @@ function autoFills(key,textBox, dataSet, divname)
     }
 	else if(key ==38 || key == 40)
 	{
-		moveSelected(key,values,textBox);
+		moveSelected(key,textBox);
 	}
 	else {
         instanceAF(textBox, values,divname);
@@ -236,28 +236,42 @@ function removeList(container, removie)
 			var removed = document.getElementById(removie);
 			cont.removeChild(removed);
 	}
-	/*
-	DOSENT WORK COZ OF THE SUGESTED THING MAYBE TAKE OUT OR MAKE A FIX
-function moveSelected(direction,dataSet,textBox)
+
+function moveSelected(direction,textBox)
 	{
-		var txt = textBox.value;
-		var sugested = getSugested(txt,dataSet);
 		
+		var txt = textBox.value;
+		var sugested = extractValues();
 		
 		if(direction ==40)
 		{
-			alert(sugested);
-			for(var i=0;i<dataSet.length; i++)
+			
+			for(var i=0;i<sugested.length; i++)
 			{
 				if(sugested[i]==txt)
 				{
-					textBox.value=sugested[i++];
+					textBox.value=sugested[++i];
 					break;
 				}
 			}
 		}
 	
-	}*/
+	}
+function extractValues()
+	{
+		
+		var sugest = document.getElementById("dropdown");
+		var sugested = [];
+		
+		for (var row = 0; row < sugest.rows.length; row++) 
+		{
+			//alert(sugest.rows[row].cells[0].firstChild.data);
+			sugested.push(sugest.rows[row].cells[0].firstChild.data);
+
+		}
+		return sugested;
+		
+	}
 
 
 </script>

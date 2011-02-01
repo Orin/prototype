@@ -8,7 +8,7 @@ if (!is_null($flightNo))
 {
 	$conn = mysql_pconnect ("anubis","cm226", "cm226") ;
 	$db = mysql_select_db("cm226");
-	$q_user = mysql_query("SELECT * FROM flight WHERE flightNo = $flightNo");
+	$q_user = mysql_query("SELECT * FROM flight WHERE flightNo = '$flightNo'");
 
 	if(mysql_num_rows($q_user) != 1)
 	{
