@@ -19,6 +19,7 @@
 	elseif ($page == 'editFlightSchedule') {?><div id="<?php echo $page; ?>"><?php include 'pages/editFlightSchedule.php'; ?></div><?php }
 	elseif ($page == 'AddCostingStruc') {?><div id="<?php echo $page; ?>"><?php include 'pages/AddCostingStruc.php'; ?></div><?php }
 	elseif ($page == 'processCosting') {?><div id="<?php echo $page; ?>"><?php include 'pages/processCosting.php'; ?></div><?php }
+	elseif ($page == 'EditCostingStruc') {?><div id="<?php echo $page; ?>"><?php include 'pages/EditCostingStruc.php'; ?></div><?php }
     
     //Else show page not found error
     else {?>
