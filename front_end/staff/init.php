@@ -1,0 +1,5 @@
+<?php
+
+dbConnect();
+dbSelect();
+?>
