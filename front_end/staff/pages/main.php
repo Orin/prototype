@@ -1,16 +1,16 @@
 <div id="nav">
 	<table id="navtable">
 		<tr><th>Available Actions</th></tr>
-		<tr><td><a href="report.php">Generate Report</a></td></tr>
-		<tr><td><a href="editFlightSchedule.php">Edit a Flight Schedule</a></td></tr>
-		<tr><td><a href="scheduleInfo.php">Add Flight Schedule</a></td></tr>
-		<tr><td><a href="FlightSelect.php">Edit A Flight</a></td></tr>
-		<tr><td><a href="flightinfo.php">Add Flight</a></td></tr>
-		<tr><td><a href="AddCostingStruc.php">Add Costing Structure</a></td></tr>
-		<tr><td><a href="EditCostingStruc.php">Edit Costing Structure</a></td></tr>
-		<tr><td><a href="expendatures.php">Company Expenditures</a></td></tr>
-		<tr><td><a href="airports.php">Maintain Airports</a></td></tr>
-		<tr><td><a href="travleAgents.php">Maintain Travel Agents</a></td></tr>
+		<tr><td><a href="report.html">Generate Report</a></td></tr>
+		<tr><td><a href="editFlightSchedule.html">Edit a Flight Schedule</a></td></tr>
+		<tr><td><a href="scheduleInfo.html">Add Flight Schedule</a></td></tr>
+		<tr><td><a href="FlightSelect.html">Edit A Flight</a></td></tr>
+		<tr><td><a href="flightinfo.html">Add Flight</a></td></tr>
+		<tr><td><a href="AddCostingStruc.html">Add Costing Structure</a></td></tr>
+		<tr><td><a href="EditCostingStruc.html">Edit Costing Structure</a></td></tr>
+		<tr><td><a href="expenditures.html">Company Expenditures</a></td></tr>
+		<tr><td><a href="airports.html">Maintain Airports</a></td></tr>
+		<tr><td><a href="travelAgents.html">Maintain Travel Agents</a></td></tr>
 	</table>
 </div>
 
