@@ -1,20 +1,8 @@
-
 <?php
-require("log.php");
-
-
-
-$conn = mysql_pconnect ("anubis","cm226", "cm226") ;
-$db = mysql_select_db("cm226");
 $flightNo = $_GET['FNo'];
-
-
-$query = "SELECT * FROM flight WHERE flightNo = $flightNo";
-
-
+$query = "SELECT * FROM flight WHERE flightNo = '".$flightNo."'";
 $result = mysql_query($query);
-
-  $data = mysql_fetch_array($result);
+$data = mysql_fetch_array($result);
 include("header.html");
 ?>
 <div id="flightContainer">
@@ -57,7 +45,7 @@ include("header.html");
 </tr>
 
 <?php 
-$schedules = "SELECT * FROM flightSchedule WHERE flightNo = $flightNo";
+$schedules = "SELECT * FROM flightSchedule WHERE flightNo = '$flightNo'";
 $schedules_result = mysql_query($schedules);
 
 for ($i =0;  $i<mysql_num_rows($schedules_result); $i++)
@@ -109,6 +97,3 @@ echo '</tr>';
 </table>
 </div>
 </div>
-<?php include("footer.html"); ?>
-
-

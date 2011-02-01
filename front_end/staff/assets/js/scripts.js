@@ -4,14 +4,16 @@ function select(key, type)
 	//type =1 is flight
 	//type =2 is schedule
 	// type=3 is costing
-	if(type == '1')
+	if(type=='1')
 	{
 		window.location = "flightinfoEdit.php?flightNo="+key;
+
 	}
 	else if(type =='2')
 	{
 		window.location = "scheduleInfoEdit.php?ScheduleID="+key;
 	}
+
 	else if(type =='3')
 	{
 		window.location = "EditCostingStrucInfo.php?priceID="+key;
@@ -28,13 +30,15 @@ function select(key, type)
 	{
 		window.location = "UserEdit.php";
 	}
+
+
 }
 function getSugested(txt, dataSet)
 	{
-	
+
 		var sugested =[];
-	
-	
+
+
 	// THIS CAN BE OPTIMISED IF NACASERRY, IM JUST LAZY
 	for(var i = 0; i < dataSet.length; ++i)
 	{
@@ -43,17 +47,17 @@ function getSugested(txt, dataSet)
 		{
 			if(txt.charAt(j)!=dataSet[i].charAt(j))
 			{
-				
+
 				break;
 			}
 			if(j == txt.length-1)
 			{
-			
+
 				sugested.push(dataSet[i]);
 			}
 		}
 	}
-	
+
 	//TO HERE
 	return sugested;
 	}
@@ -62,16 +66,16 @@ function instanceAF(textBox, dataSet,divname)
 {
 
 	var txt = textBox.value;
-	
+
 	var sugested = getSugested(txt,dataSet);
-	
-	
+
+
 	if (sugested.length >0)
 	{
 		var len = txt.length;
 		textBox.value=sugested[0];
 		selectRange(len,sugested[0].length,textBox);
-		
+
 		if(!document.getElementById("div1"))
 		{
 			CreateDropDown(divname, sugested);
@@ -84,10 +88,10 @@ function instanceAF(textBox, dataSet,divname)
 
 function appendSelection(newSelection, divId, divname)
 	{
-		
+
 		var html = generateSelectionTable(newSelection, divname);
 		document.getElementById("div1").innerHTML = html;
-	
+
 	}
 function generateSelectionTable(list, divname)
 	{
@@ -108,7 +112,7 @@ function handleClickDropDown(selected, divname)
         var elms = div.getElementsByTagName("input");
 		elms[0].value = selected;
 		removeList(divname, "div1")
-		
+
 
 	}
 function selectRange(iStart, iLength, txtBox) {
@@ -127,9 +131,9 @@ function selectRange(iStart, iLength, txtBox) {
 
 function autoFills(key,textBox, dataSet, divname)
 {
-	
+
 	var values= ["TA-EDI-LBA-101", "TA-EDI-LBA-102","TA-LGW-MAN-101","TA-EDI-BHX-102"];
-	
+
 	//textBox.value = "sddsa";
 	if (key < 32 || (key >= 112 && key <= 123)) 
 	{
@@ -137,13 +141,13 @@ function autoFills(key,textBox, dataSet, divname)
     }
 	else if(key ==38 || key == 40)
 	{
-		moveSelected(key,values,textBox);
+		moveSelected(key,textBox);
 	}
 	else {
         instanceAF(textBox, values,divname);
-		
+
     }
-	
+
 }
 
 function CreateDropDown(div, list)
@@ -160,13 +164,13 @@ function CreateDropDown(div, list)
         divTag.className ="dynamicDiv";
         
 		var divCont = generateSelectionTable(list, div);
-	
+
         divTag.innerHTML = divCont;
-		
-		
+
+
 		 var backColor = new String();
          backColor = divTag.style.backgroundColor;
-			
+
 		    if(backColor.toLowerCase()=='#eeeeee' || backColor.toLowerCase()=='rgb(238, 238, 238)')
             {
                 divTag.style.backgroundColor = '#c0c0c0';
@@ -180,31 +184,47 @@ function CreateDropDown(div, list)
     }
 function removeList(container, removie)
 	{
-		
+
 			var cont = document.getElementById(container);
 			var removed = document.getElementById(removie);
 			cont.removeChild(removed);
 	}
-	/*
-	DOSENT WORK COZ OF THE SUGESTED THING MAYBE TAKE OUT OR MAKE A FIX
-function moveSelected(direction,dataSet,textBox)
+
+function moveSelected(direction,textBox)
 	{
+
 		var txt = textBox.value;
-		var sugested = getSugested(txt,dataSet);
-		
-		
+		var sugested = extractValues();
+
 		if(direction ==40)
 		{
-			alert(sugested);
-			for(var i=0;i<dataSet.length; i++)
+
+			for(var i=0;i<sugested.length; i++)
 			{
 				if(sugested[i]==txt)
 				{
-					textBox.value=sugested[i++];
+					textBox.value=sugested[++i];
 					break;
 				}
 			}
 		}
-	
-	}*/
+
+	}
+function extractValues()
+	{
+
+		var sugest = document.getElementById("dropdown");
+		var sugested = [];
+
+		for (var row = 0; row < sugest.rows.length; row++) 
+		{
+			//alert(sugest.rows[row].cells[0].firstChild.data);
+			sugested.push(sugest.rows[row].cells[0].firstChild.data);
+
+		}
+		return sugested;
+
+	}
+
+
 </script>
