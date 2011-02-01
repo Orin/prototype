@@ -28,7 +28,7 @@ if ($page == 'logout') { kill_session(); }
 	if(session_is_registered("name") == false) {
 		include 'pages/login.php';
 	} else {
-	include 'config/adminlayout.inc.php';
+	include 'config/admin-layout.inc.php';
 	}
 ?>
 </html>
