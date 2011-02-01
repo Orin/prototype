@@ -1,4 +1,4 @@
-body, html , p{
+body, html , p, h2, form{
   padding: 0px;
   margin: 0px;
   border: 0px none;
@@ -26,6 +26,8 @@ h2{
 border-bottom: 1px solid #333;
 padding-bottom:5px;
 }
+
+
 #page {
 	background: #f0f0f0 url(http://www2.macs.hw.ac.uk/~ms373/prototype/front_end/assets/images/texture.gif) repeat -70% 0;
 }

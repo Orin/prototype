@@ -1,38 +1,69 @@
-<!--
-body {
-	margin: 20px;	
-	padding: 0px; 
-	height:100%; 
 
+body, html, p{
+  padding: 0px;
+  margin: 0px;
+  border: 0px none;
+  width: 100%;
 }
 
-a:link {color:#000000;text-decoration:none;}    /* unvisited link */
-a:visited {color:#000000;text-decoration:none;} /* visited link */
-a:hover {color:#FFFFFF;text-decoration:none;}   /* mouse over link */
-a:active {color:#000000;text-decoration:none;}  /* selected link */
+#page-wrapper {
+  width:940px;
+  margin-left:auto;
+  margin-right:auto;
+  position:relative;
+}
 
-th
-{
-background-color:#4a70aa;
-color:white;
+th {
+  background-color:#4a70aa;
+  color:white;
 }
 
 #header {
   background-color: #99CCFF;
-  width: 100%;
-  border-style: solid;
-  border-width: 3px;
-  border-color: #000000;
+  width: 940px;
+  border:3px solid #000000;
 }
 
-#topNavTable{
-width:100%;
-	border-collapse:collapse;
-	background-color:#000000;
-	border:1px solid black;
-	 font-size:large;
-	 font-weight:bolder;
-	 
+#main-title {
+	font-weight:bold;
+	font-size:36px;
+	margin-top:5px;
+	padding:10px;
+	text-align:center;
+}
+#topNav {
+	width:940px;
+ 	border:3px solid #000000;
+	background-color:#000;
+	height:25px;
+}
+
+#topNav-wrapper {
+	width:auto;
+
+}
+.menu-item {
+	float:left;
+	margin:0px 10px;
+	font-weight:bold;
+	font-size:16px;
+}
+span.item { color:#FFF;
+	padding: 4px;}
+span.item:hover {
+	color: #000000;
+	background-color: #FFFFFF;
+	text-decoration:none;
+}
+/*
+#topNav.menu-item:link {
+	color:#FFF
+	text-decoration:none;
+}
+
+#topNavTable td p:hover {
+  color: #000000;
+  background-color: #FFFFFF;
 }
 
 #topNavTable p{margin-left: 20px;}
@@ -42,28 +73,19 @@ width:100%;
   background-color: #000000;
 }
 
-#topNavTable td p:hover {
-  color: #000000;
-  background-color: #FFFFFF;
-}
 
-/*#topNavTable p:hover {color:#000000; text-decoration:none;}*/   /* mouse over link */
+/*#topNavTable p:hover {color:#000000; text-decoration:none;}*/
 /*#topNavTable td:hover{background-color: #ffffff; text-decoration:none;}*/
-#topNavTable a:link {color:#FFFFFF; text-decoration:none; }    /* unvisited link */
-#topNavTable a:visited {color:#FFFFFF; text-decoration:none;} /* visited link */
-#topNavTable a:active {color:#FFFFFF;text-decoration:none;}  /* selected link */
+/*
+#topNavTable a:link {color:#FFFFFF; text-decoration:none; }   
+#topNavTable a:visited {color:#FFFFFF; text-decoration:none;} 
+#topNavTable a:active {color:#FFFFFF;text-decoration:none;}  
 
-
-
-
-#content {
-  background: #fff;
-  width: 75%;
-  height: 100%;
-  margin-left: auto ;
-  margin-right: auto ;
-  position:relative
-}
+/* */
+a:link {color:#000000;text-decoration:none;}    /* unvisited link */
+a:visited {color:#000000;text-decoration:none;} /* visited link */
+a:hover {color:#FFFFFF;text-decoration:underline;}   /* mouse over link */
+a:active {color:#000000;text-decoration:none;}  /* selected link */
 
 #logindiv{
 
@@ -72,22 +94,51 @@ width:100%;
   margin-left: auto ;
   margin-right: auto ;
   text-align: center;
-
-
-
 }
 
 #nav{
- float:top;
+ float:left;
  height: 250px;
+ margin-right:30px;
+ width:150px;
 }
+
+
 #navtable{
 	border-collapse:collapse;
 	background-color:#B8B8B8;
-	border:1px solid black;
+	border:1px solid #000;
+	width:150px;
 }
 
+#navtable tr {
+	border:1px solid #000;
+}
 
+#flight-search, #cust-search {
+	width:738px;
+	background-color:#99CCFF;
+	border:1px solid black;
+	clear:both;
+}
+
+.title-bar {
+	background-color:#4a70aa;
+	color:white;
+	font-weight:bold;
+	padding:3px 0px;
+	text-align:center;
+}
+.search-left {
+	float:left;
+}
+.search-right {
+	float:right;
+}
+
+#searches {
+	float:right;
+}
 #searchtable{
 	width:100%;
 	float:left;
@@ -161,9 +212,10 @@ background-color: #FF9966;
 
 #footer {
   background: #000000;
-  width: 90%;
-  height: 20px;
-  bottom:20px;
+  width: 100%
+  height:20px;
+  
+  clear:both;
 }
 
 #disInfo{
@@ -179,6 +231,4 @@ background-color: #FF9966;
 }
 
 #dropdown tr:hover { background-color: #4a70aa; }
-
--->
 </style>
