@@ -1,6 +1,10 @@
 <?php
 //Include all functions
+include '../config/definitions.inc.php';
+include 'config/admin-definitions.inc.php';
 include '../config/functions.inc.php';
+include 'config/database.inc.php';
+include 'init.php';
 
 /* Handle Session */
 session_name("MyLogin");
@@ -13,7 +17,6 @@ if ($page == 'logout') { kill_session(); }
 ?>
 <head>
     <?php 
-	include '../config/definitions.inc.php';
 	require 'config/log.php';
 	include 'config/admin-settings.inc.php'; 
 	?>

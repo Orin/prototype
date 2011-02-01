@@ -5,4 +5,4 @@
 <?php /*<script type="text/javascript" src="../assets/js/interface.js"></script> */?>
 <script type="text/javascript" src="assets/js/scripts.js"></script>
 <link rel="stylesheet" type="text/css" href="assets/style/admin-style.css" />
-<title><?php echo SITE_NAME; ?></title>
+<title><?php echo ADMIN_SITE_NAME; ?></title>

@@ -89,4 +89,11 @@ function kill_session() {
 		}
 	}
 }
+
+function show_header($page, $admin_no_header) {
+	for ($i = 0; $i < count($admin_no_header); $i++) {
+		if ($admin_no_header[$i] == $page) { return false; }
+	}
+	return true;
+}
 ?>

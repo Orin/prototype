@@ -1,10 +1,10 @@
 <?php
-include ("connect.php");
 $action = (isset($_POST['action']))? $_POST['action'] : 'FALSE'; 
 if($action == "login") {
+	/*
 mysql_pconnect ("anubis","cm226", "cm226") ;
 $db = mysql_select_db("cm226");
-
+*/
 $name = $_POST['uname'];
 echo $name;
 $q_user = "SELECT * FROM users WHERE username='$name'";

@@ -1,7 +1,9 @@
 <body>
   <div id="page-wrapper">
-    <?php //Always include page title ?>
-    <?php include 'pages/header.php';?>
+    <?php //Always include page title
+    if (show_header($page, $admin_no_header)) {
+		include 'pages/header.php';
+	} ?>
   
     <?php 
     //Determine page being requested, and include file from /pages/
@@ -9,6 +11,8 @@
     if ($page == 'index') {?><div id="<?php echo $page; ?>"><?php include 'pages/main.php'; ?></div><?php }
     elseif ($page == 'login') {?><div id="<?php echo $page; ?>"><?php include 'pages/login.php'; ?></div><?php }
     elseif ($page == 'flightinfo') {?><div id="<?php echo $page; ?>"><?php include 'pages/flightinfo.php'; ?></div><?php }
+	elseif ($page == 'viewCostingStructures') {?><div id="<?php echo $page; ?>"><?php include 'pages/viewCostingStructures.php'; ?></div><?php }
+	elseif ($page == 'processFlight') {?><div id="<?php echo $page; ?>"><?php include 'pages/processFlight.php'; ?></div><?php }
     
     //Else show page not found error
     else {?>

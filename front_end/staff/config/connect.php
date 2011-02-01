@@ -1,30 +1,31 @@
 <?php
-//error_reporting(E_ALL); 
-//ini_set('display_errors', 1); 
+error_reporting(E_ALL); 
+ini_set('display_errors', 1); 
 
-function dbConnect($username, $password) {
+function dbConnect($username='cm226', $password='cm226') {
 	$dbConn = mysql_connect ("anubis", $username, $password) ;
-	if (!$dbConn )
-	{
-		print "<p>Cannot connect to database - check username and password<br/>";
-		print mysql_error()."</p>";
-		print "</body>";
-   	print "</html>";
-		exit();
+	if (!$dbConn)
+	{	?>
+		<p>Cannot connect to database - check username and password<br/>
+		<?php echo mysql_error().'</p>'; ?>
+		</body>
+   		</html>
+		<?php exit();
 	}
 }
 
 
 //select the database
-function dbSelect( $dbname) {
+function dbSelect($dbname="cm226") {
 	$db = mysql_select_db($dbname);
 	if (!$db)
 	{
-		print "<p>Cannot connect to database $dbname</br>";
-		print mysql_error()."</p>";
-		print "</body>";
-   	print "</html>";
-		exit("Bye");
+		?>
+		<p>Cannot connect to database <? echo $dbname; ?> - check username and password<br/>
+		<?php echo mysql_error().'</p>'; ?>
+		</body>
+   		</html>
+		<?php exit();
 	}
 }
 
