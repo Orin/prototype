@@ -20,12 +20,11 @@ if ($page == 'logout') { kill_session(); }
 </head>
 
 <?php 
+
 	//if the session is not registered
 	if(session_is_registered("name") == false) {
 		include 'pages/login.php';
-	}
-
-	if ($page != 'login') {
+	} else {
 	include 'config/adminlayout.inc.php';
 	}
 ?>
