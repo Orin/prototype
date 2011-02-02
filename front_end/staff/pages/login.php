@@ -3,10 +3,9 @@
   <?php
   session_destroy();
   
-  
-  $login = (isset($_GET['login']))? $_GET['login'] : 'NA'; 
-  if($login == "failed") {
-    print $_GET['cause'];
+  if($page == "loginfail-pw" || $page == "loginfail-nousr") {
+	if ($page == "loginfail-pw") { echo 'Error: Incorrect password'; }
+	if ($page == "loginfail-nousr") { echo 'Error: Invalid username'; }
   }
   ?>
   <div id="header">

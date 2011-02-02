@@ -23,13 +23,13 @@ if(mysql_num_rows($query) == 1)
 	} 
 	else 
 	{
-		header("Location: login.php?login=failed&cause=".urlencode('Wrong Password'));
+		header("Location: loginfail-pw.html");
 		exit;
 	}
 }
 else 
 {
-	header("Location: login.php?login=failed&cause=".urlencode('Invalid User'));
+	header("Location: loginfail-nousr.html");
 	exit;
 }
 }
