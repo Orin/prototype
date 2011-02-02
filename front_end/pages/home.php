@@ -14,6 +14,17 @@
 			<tr class="actions"><td><a href="reset">Reset Form</a></td><td><a href="flights.html">Search</a></td></tr>
 		</table>
 	</div>
+    
+  <div id="booking-search">
+    <h2>Manage Booking</h2>
+    
+    <table id="booking-table">
+    	<tr class="last-name"><td>Last Name</td><td><input type="text" name="lName" /></td></tr>
+        <tr class="booking-ref"><td>Booking Reference</td><td><input type="text" name="bookingRef" /></td></tr>
+        <tr class="spacer small"><td></td></tr>
+        <tr class="actions"><td><a href="booking.html">Search</a></td></tr>
+    </table>
+    </div>
 </div>
 <div class="content-body">
 Welcome to Thistle Airways. Please use our search on the left to look for flights, or lookup an existing booking.

@@ -107,15 +107,17 @@ a.menu:hover {color:#000; text-decoration:underline;}
 }
 
 .content-body {
+	
 	float:left; 
 	padding-top:20px;
 	word-wrap:normal;
 	width:660px;
 }
 
-#flight-search {
+#flight-search, #booking-search {
 	margin-left:10px;
 	margin-right:10px;
+	margin-bottom:10px;
 	border-bottom:1px solid #ccc;
 }
 
@@ -125,7 +127,7 @@ a.menu:hover {color:#000; text-decoration:underline;}
 	padding:5px 5px;
 }
 
-#search-table {
+#search-table, #booking-table {
 	padding:5px;
 }
 
