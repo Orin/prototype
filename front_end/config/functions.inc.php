@@ -1,7 +1,7 @@
 <?php 
 function autoFill($dataSet, $divName)
 {
-	echo '<div id="'.$divName.'"><input  id="blargh" type=text autocomplete="off" name="FNo" onkeyup="autoFills(event.keyCode,this,1,\''.$divName.'\');"/></div>';
+	echo '<div id="'.$divName.'"><input  id="blargh" type=text autocomplete="off" name="FNo" onkeyup="autoFills(event.keyCode,this,'.$dataSet.',\''.$divName.'\');"/></div>';
 }
 
 function dropdown($entries, $default = '') {

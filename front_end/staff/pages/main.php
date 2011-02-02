@@ -48,7 +48,7 @@
         <div class="search-left">
             <form name="customer_info" method="get" action="viewCustomer.php?action=Csearch" align=right>
             <table>
-            <tr><td>Booking Reference:</td><td><input type="text" name="booking_ref" ></input></td></tr>
+            <tr><td>Booking Reference:</td><td><?php autoFill(2,"BookingDiv");?></td></tr>
             <tr><td><input type="submit" value="Search" /></td></tr>
             </table>
             </form>
