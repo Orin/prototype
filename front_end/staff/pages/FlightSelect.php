@@ -41,7 +41,6 @@ for ($i =0;  $i<mysql_num_rows($q_user); $i++)
 {
 $data = mysql_fetch_array($q_user);
 $flightNo = $data['flightNo'];
-echo $flightNo;
 echo '<tr>';
 echo '<td onClick="select(\''.$flightNo.'\',1);">';
 echo "<a href=\"flightinfoEdit.php?flightNo=".$flightNo."\">$flightNo</a>";

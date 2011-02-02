@@ -1,4 +1,3 @@
-<script type="text/javascript"  language="javascript">
 function select(key, type)
 {
 	//type =1 is flight
@@ -131,7 +130,6 @@ function selectRange(iStart, iLength, txtBox) {
 
 function autoFills(key,textBox, dataSet, divname)
 {
-
 	var values= ["TA-EDI-LBA-101", "TA-EDI-LBA-102","TA-LGW-MAN-101","TA-EDI-BHX-102"];
 
 	//textBox.value = "sddsa";
@@ -218,13 +216,12 @@ function extractValues()
 
 		for (var row = 0; row < sugest.rows.length; row++) 
 		{
-			//alert(sugest.rows[row].cells[0].firstChild.data);
 			sugested.push(sugest.rows[row].cells[0].firstChild.data);
 
 		}
+		//sugest.rows[1].cells[0].firstChild.style.backgroundColor = 'Red';"
 		return sugested;
 
 	}
 
 
-</script>
