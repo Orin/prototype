@@ -22,7 +22,7 @@
     	<tr class="last-name"><td>Last Name</td><td><input type="text" name="lName" /></td></tr>
         <tr class="booking-ref"><td>Booking Reference</td><td><input type="text" name="bookingRef" /></td></tr>
         <tr class="spacer small"><td></td></tr>
-        <tr class="actions"><td><a href="booking.html">Search</a></td></tr>
+        <tr class="actions"><td><a href="manage-booking.html">Search</a></td></tr>
     </table>
     </div>
 </div>
