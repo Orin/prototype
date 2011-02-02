@@ -1,11 +1,18 @@
 <?php
-$schedule[0] = $_POST['schID'];
+/*$schedule[0] = $_POST['schID'];
 $schedule[1] = $_POST['FlightNo'];
 $schedule[2] = $_POST['depdate'];
 $schedule[3] = $_POST['depTime'];
-$schedule[4] = $_POST['arrivTime'];
+$schedule[4] = $_POST['arrivTime'];*/
 
-$insert = "INSERT INTO flightSchedule (ScheduleID, FlightNo, departuredate, departureTime, arrivalTime,availableEconomySeats, availableBusinessSeats, availableGroupSeats) VALUES($schedule[0],$schedule[1],'$schedule[2]','$schedule[3]','$schedule[4]',(SELECT econemyseats FROM flight WHERE flightNo = $schedule[1]),(SELECT businessseats FROM flight WHERE flightNo = $schedule[1]),(SELECT groupseats FROM flight WHERE flightNo = $schedule[1]))";
+$schedule[0] = "12345";
+$schedule[1] = "TA-EDI-LBA-101";
+$schedule[2] = "2011-09-16";
+$schedule[3] = "12:30:00";
+$schedule[4] = "13:00:00";
+
+
+$insert = "INSERT INTO flightSchedule (ScheduleID, FlightNo, departuredate, departureTime, arrivalTime,availableEconomySeats, availableBusinessSeats, availableGroupSeats) VALUES($schedule[0],'$schedule[1]','$schedule[2]','$schedule[3]','$schedule[4]',(SELECT econemyseats FROM flight WHERE flightNo = '$schedule[1]'),(SELECT businessseats FROM flight WHERE flightNo = '$schedule[1]'),(SELECT groupseats FROM flight WHERE flightNo = '$schedule[1]'))";
 
 $updateTotals = "UPDATE flightSchedule SET availableSeats= availableEconomySeats+availableBusinessSeats+availableGroupSeats WHERE ScheduleID = $schedule[0]";
 

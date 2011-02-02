@@ -6,7 +6,6 @@
 		<?php include 'pages/header.php'; ?>
         </div>
 	<?php }
-
     //Determine page being requested, and include file from /pages/
     //General Pages
     if ($page == 'index') {?><div id="<?php echo $page; ?>"><?php include 'pages/main.php'; ?></div><?php }
@@ -33,6 +32,11 @@
 	elseif ($page == 'viewFlight') {?><div id="<?php echo $page; ?>"><?php include 'pages/viewFlight.php'; ?></div><?php }
 	elseif ($page == 'viewCustomer') {?><div id="<?php echo $page; ?>"><?php include 'pages/viewCustomer.php'; ?></div><?php }
 	elseif ($page == 'customerSearch') {?><div id="<?php echo $page; ?>"><?php include 'pages/customerSearch.php'; ?></div><?php }
+	elseif ($page == 'flightinfoEdit') {?><div id="<?php echo $page; ?>"><?php include 'pages/flightinfoEdit.php'; ?></div><?php }
+	elseif ($page == 'scheduleInfoEdit') {?><div id="<?php echo $page; ?>"><?php include 'pages/scheduleInfoEdit.php'; ?></div><?php }
+	elseif ($page == 'processscheduleEdit') {?><div id="<?php echo $page; ?>"><?php include 'pages/processscheduleEdit.php'; ?></div><?php }
+	elseif ($page == 'EditCostingStrucInfo') {?><div id="<?php echo $page; ?>"><?php include 'pages/EditCostingStrucInfo.php'; ?></div><?php }
+	elseif ($page == 'discounts') {?><div id="<?php echo $page; ?>"><?php include 'pages/discounts.php'; ?></div><?php }
 
 
     //Else show page not found error

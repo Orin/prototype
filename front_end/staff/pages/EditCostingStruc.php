@@ -56,7 +56,7 @@ echo $data['groupclass'];
 echo '</td>';
 
 echo '<td >';
-echo '<img onClick="window.open(\'discounts.php\',\'costing structures\',\'width=600,height=450\')" src="icons/discount.gif" />';
+echo '<img onClick="window.open(\'discounts.html\',\'costing structures\',\'width=600,height=450\')" src="icons/discount.gif" />';
 echo '</td>';
 
 echo '<td>';

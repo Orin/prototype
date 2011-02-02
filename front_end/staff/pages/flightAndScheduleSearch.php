@@ -1,8 +1,8 @@
 <?php
-$criteria[0] = $_POST['Dest'];
-$criteria[1] = $_POST['Dep'];
-$criteria[2] = $_POST['DepDat'];
-$criteria[3] = $_POST['DepTim'];
+//$criteria[0] = $_POST['Dest'];
+//$criteria[1] = $_POST['Dep'];
+//$criteria[2] = $_POST['DepDat'];
+//$criteria[3] = $_POST['DepTim'];
 
 $query = "SELECT * FROM flight, flightSchedule WHERE flight.flightNo = flightSchedule.FlightNo";
 
@@ -23,7 +23,7 @@ if(!empty($criteria[3]))
 	$query = $query." AND departureTime ='$criteria[3]'";
 }
 
-//$query = "SELECT * FROM flight, flightSchedule WHERE flight.flightNo = flightSchedule.FlightNo AND destination =  '$criteria[0]' AND departure = '$criteria[1]' AND  departuredate = '$criteria[2]' AND departureTime = '$criteria[3]'";
+$query = "SELECT * FROM flight, flightSchedule WHERE flight.flightNo = 'TA-EDI-LBA-101' ";
 
 $result = mysql_query($query);
 

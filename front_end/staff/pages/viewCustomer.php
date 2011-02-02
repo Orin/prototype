@@ -1,6 +1,7 @@
 
 <?php
-$customerID = $_POST['custID'];
+//$customerID = $_POST['custID'];
+$customerID = "1";
 $query = "SELECT * FROM customer, flightSchedule, Bookings WHERE customer.customerID = $customerID AND Bookings.customerID = $customerID AND Bookings.FlightScheduleID = flightSchedule.ScheduleID" ;
 
 

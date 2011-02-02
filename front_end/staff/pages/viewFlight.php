@@ -1,6 +1,6 @@
 <?php
 //$flightNo = $_GET['FNo'];
-$query = "SELECT * FROM flight WHERE flightNo = '".$flightNo."'";
+$query = "SELECT * FROM flight WHERE flightNo = 'TA-LGW-MAN-101'";
 $result = mysql_query($query);
 $data = mysql_fetch_array($result);
 ?>
@@ -44,7 +44,7 @@ $data = mysql_fetch_array($result);
 </tr>
 
 <?php 
-$schedules = "SELECT * FROM flightSchedule WHERE flightNo = '$flightNo'";
+$schedules = "SELECT * FROM flightSchedule WHERE flightNo = 'TA-LGW-MAN-101'";
 $schedules_result = mysql_query($schedules);
 
 for ($i =0;  $i<mysql_num_rows($schedules_result); $i++)

@@ -1,21 +1,25 @@
 
 <?php
-require("log.php");
 
 
-if($_GET['action'] == "PSchedule") {
-$conn = mysql_pconnect ("anubis","cm226", "cm226") ;
-$db = mysql_select_db("cm226");
 
-$schedule[0] = $_POST['schID'];
+//if($_GET['action'] == "PSchedule") {
+
+
+/*$schedule[0] = $_POST['schID'];
 $schedule[1] = $_POST['FlightNo'];
 $schedule[2] = $_POST['depdate'];
 $schedule[3] = $_POST['depTime'];
-$schedule[4] = $_POST['arrivTime'];
+$schedule[4] = $_POST['arrivTime'];*/
 
-$insert = "UPDATE flightSchedule SET FlightNo=$schedule[1], departuredate='$schedule[2]', departureTime='$schedule[3]', arrivalTime='$schedule[4]' WHERE ScheduleID = $schedule[0]";
+$schedule[0] = "4";
+$schedule[1] = "TA-LGW-MAN-101";
+$schedule[2] = "2010-07-15";
+$schedule[3] = "08:00:00";
+$schedule[4] = "10:00:00";
 
-include("header.html");
+$insert = "UPDATE flightSchedule SET FlightNo='$schedule[1]', departuredate='$schedule[2]', departureTime='$schedule[3]', arrivalTime='$schedule[4]' WHERE ScheduleID = $schedule[0]";
+echo $insert;
 
 if (!mysql_query($insert))
 {
@@ -59,9 +63,7 @@ if (!mysql_query($insert))
 		echo '<input type="button" value="print"/> ';
 		echo '</form>';
 
-include("footer.html");
-
-}
+//}
 
 ?>
 

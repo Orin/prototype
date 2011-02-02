@@ -5,17 +5,20 @@ function select(key, type)
 	// type=3 is costing
 	if(type=='1')
 	{
-		window.location = "flightinfoEdit.php?flightNo="+key;
+		//window.location = "flightinfoEdit.php?flightNo="+key;
+		window.location = "flightinfoEdit.html";
 
 	}
 	else if(type =='2')
 	{
-		window.location = "scheduleInfoEdit.php?ScheduleID="+key;
+		//window.location = "scheduleInfoEdit.php?ScheduleID="+key;
+		window.location = "scheduleInfoEdit.html";
 	}
 
 	else if(type =='3')
 	{
-		window.location = "EditCostingStrucInfo.php?priceID="+key;
+		//window.location = "EditCostingStrucInfo.php?priceID="+key;
+		window.location = "EditCostingStrucInfo.html";
 	}
 	else if(type=='4')
 	{
