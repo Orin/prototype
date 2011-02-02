@@ -29,6 +29,11 @@
 	elseif ($page == 'expenditures') {?><div id="<?php echo $page; ?>"><?php include 'pages/expenditures.php'; ?></div><?php }
 	elseif ($page == 'airports') {?><div id="<?php echo $page; ?>"><?php include 'pages/airports.php'; ?></div><?php }
 	elseif ($page == 'travelAgents') {?><div id="<?php echo $page; ?>"><?php include 'pages/travelAgents.php'; ?></div><?php }
+	elseif ($page == 'flightAndScheduleSearch') {?><div id="<?php echo $page; ?>"><?php include 'pages/flightAndScheduleSearch.php'; ?></div><?php }
+	elseif ($page == 'viewFlight') {?><div id="<?php echo $page; ?>"><?php include 'pages/viewFlight.php'; ?></div><?php }
+	elseif ($page == 'viewCustomer') {?><div id="<?php echo $page; ?>"><?php include 'pages/viewCustomer.php'; ?></div><?php }
+	elseif ($page == 'customerSearch') {?><div id="<?php echo $page; ?>"><?php include 'pages/customerSearch.php'; ?></div><?php }
+
 
     //Else show page not found error
     else {?>

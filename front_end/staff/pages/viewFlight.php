@@ -1,9 +1,8 @@
 <?php
-$flightNo = $_GET['FNo'];
+//$flightNo = $_GET['FNo'];
 $query = "SELECT * FROM flight WHERE flightNo = '".$flightNo."'";
 $result = mysql_query($query);
 $data = mysql_fetch_array($result);
-include("header.html");
 ?>
 <div id="flightContainer">
 <table border="1" align=left id="displayInfo" width="50%">

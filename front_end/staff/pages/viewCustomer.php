@@ -1,40 +1,37 @@
+
 <?php
-$criteria[0] = $_POST['Dest'];
-$criteria[1] = $_POST['Dep'];
-$criteria[2] = $_POST['DepDat'];
-$criteria[3] = $_POST['DepTim'];
+$customerID = $_POST['custID'];
+$query = "SELECT * FROM customer, flightSchedule, Bookings WHERE customer.customerID = $customerID AND Bookings.customerID = $customerID AND Bookings.FlightScheduleID = flightSchedule.ScheduleID" ;
 
-$query = "SELECT * FROM flight, flightSchedule WHERE flight.flightNo = flightSchedule.FlightNo";
-
-if(!empty($criteria[0]))
-{
-	$query = $query." AND destination ='$criteria[0]'";
-}
-if(!empty($criteria[1]))
-{
-	$query = $query." AND departure ='$criteria[1]'";
-}
-if(!empty($criteria[2]))
-{
-	$query = $query." AND departuredate ='$criteria[2]'";
-}
-if(!empty($criteria[3]))
-{
-	$query = $query." AND departureTime ='$criteria[3]'";
-}
-
-//$query = "SELECT * FROM flight, flightSchedule WHERE flight.flightNo = flightSchedule.FlightNo AND destination =  '$criteria[0]' AND departure = '$criteria[1]' AND  departuredate = '$criteria[2]' AND departureTime = '$criteria[3]'";
 
 $result = mysql_query($query);
-?>
 
+  $data = mysql_fetch_array($result);
+?>
+<table id="displayInfo" border=1>
+<tr><th colspan=2>Customer Details</th></tr>
+<tr><td>CustomerID:</td> <td><?php echo $data['customerID'];?></td></tr>
+<tr><td>First Name: </td> <td><?php echo $data['Firstname'];?></td></tr>
+<tr><td>Last Name: </td> <td><?php echo $data['LastName'];?></td></tr>
+<tr><td>Date Of Birth: </td> <td><?php echo $data['DOB'];?></td></tr>
+<tr><td>Sex: </td> <td><?php echo $data['Sex'];?></td></tr>
+<tr><td>Email Address: </td> <td><?php echo $data['EmailAddress'];?></td></tr>
+<tr><th colspan=2>
+	<form>
+		<input type="button" value="Edit" name="Edit_customer" onClick="window.location='custInfoEdit.php?custID=<?php echo $customerID;?>'"> 
+	</form>
+</th></tr>
+
+</table>
+<br></br>
+
+
+<h3> Customer Bookings </h3>
 
 <table border="1" align=left id="displayInfo">
 <tr>
 <th><h4>ScheduleID</h4></th>
 <th><h4>FlightNo</h4></th>
-<th><h4>Departure</h4></th>
-<th><h4>Destination</h4></th>
 <th><h4>Departure Date</h4></th>
 <th><h4>Departure Time</h4></th>
 <th><h4>Arrival time</h4></th>
@@ -46,14 +43,11 @@ $result = mysql_query($query);
 
 <?php 
 
-
-
 for ($i =0;  $i<mysql_num_rows($result); $i++)
 {
-  $data = mysql_fetch_array($result);
- 
-  $ScheduleID = $data['ScheduleID'];
-  $FlightNo = $data['flightNo'];
+
+$ScheduleID = $data['ScheduleID'];
+$FlightNo = $data['FlightNo'];
 
 echo '<tr>';
 echo '<td>';
@@ -62,14 +56,6 @@ echo '</td>';
 
 echo '<td>';
 echo "<a href=\"ViewFlight.php?FNo=".$FlightNo."\">$FlightNo</a>";  
-echo '</td>';
-
-echo '<td>';
-echo $data['departure'];
-echo '</td>';
-
-echo '<td>';
-echo $data['destination'];
 echo '</td>';
 
 echo '<td>';
@@ -101,12 +87,11 @@ echo $data['availableSeats'];
 echo '</td>';
 
 echo '</tr>';
-
+$data = mysql_fetch_array($result);
 }?>
 </table>
 
 
 
 </div>
-
 

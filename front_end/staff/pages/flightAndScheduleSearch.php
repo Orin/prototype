@@ -26,6 +26,7 @@ if(!empty($criteria[3]))
 //$query = "SELECT * FROM flight, flightSchedule WHERE flight.flightNo = flightSchedule.FlightNo AND destination =  '$criteria[0]' AND departure = '$criteria[1]' AND  departuredate = '$criteria[2]' AND departureTime = '$criteria[3]'";
 
 $result = mysql_query($query);
+
 ?>
 
 
@@ -104,9 +105,7 @@ echo '</tr>';
 
 }?>
 </table>
-
-
-
 </div>
+
 
 
