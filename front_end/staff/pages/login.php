@@ -19,7 +19,7 @@
         <br>
         </br>
         Password:
-        <input type="text" name="pw" />
+        <input type="password" name="pw" />
         <br>
         </br>
         <input type="hidden" name="action" value="login" />
