@@ -37,6 +37,7 @@
 	elseif ($page == 'processscheduleEdit') {?><div id="<?php echo $page; ?>"><?php include 'pages/processscheduleEdit.php'; ?></div><?php }
 	elseif ($page == 'EditCostingStrucInfo') {?><div id="<?php echo $page; ?>"><?php include 'pages/EditCostingStrucInfo.php'; ?></div><?php }
 	elseif ($page == 'discounts') {?><div id="<?php echo $page; ?>"><?php include 'pages/discounts.php'; ?></div><?php }
+	elseif ($page == 'viewCostingStructures') {?><div id="<?php echo $page; ?>"><?php include 'pages/viewCostingStructures.php'; ?></div><?php }
 
 
     //Else show page not found error
