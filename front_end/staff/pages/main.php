@@ -6,8 +6,7 @@
 		<tr><td><a href="scheduleInfo.html">Add Flight Schedule</a></td></tr>
 		<tr><td><a href="FlightSelect.html">Edit A Flight</a></td></tr>
 		<tr><td><a href="flightinfo.html">Add Flight</a></td></tr>
-		<tr><td><a href="AddCostingStruc.html">Add Costing Structure</a></td></tr>
-		<tr><td><a href="EditCostingStruc.html">Edit Costing Structure</a></td></tr>
+		<tr><td><a href="discountsPricing.html">Discounts and Pricing</a></td></tr>
 		<tr><td><a href="airports.html">Maintain Airports</a></td></tr>
 		<tr><td><a href="travelAgents.html">Maintain Travel Agents</a></td></tr>
 	</table>

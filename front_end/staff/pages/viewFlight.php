@@ -15,7 +15,9 @@ $data = mysql_fetch_array($result);
 	<tr><td>Economy Seats:</td><td> <?php echo $data['econemyseats'];?></td></tr>
 	<tr><td>Business Seats: </td><td><?php echo $data['businessseats'];?></td></tr>
 	<tr><td>Group Seats: </td><td><?php echo $data['groupseats'];?></td></tr>
-	<tr><td>Costing Structure </td><td><?php echo $data['price'];?></td></tr>
+	<tr><td>Economy Price: </td><td>&pound100</td></tr>
+	<tr><td>Business Price: </td><td>&pound75</td></tr>
+	<tr><td>Group Price: </td><td>&pound50</td></tr>
 	<tr><th colspan="2">
 	<form>
 		<input type="button" value="Edit" name="Edit_flight" onClick="window.location='flightinfoEdit.php?flightNo=<?php echo $data['flightNo'];?>'"> 
@@ -28,7 +30,7 @@ $data = mysql_fetch_array($result);
 
 <div id="scheduleContainer">
 
-<h3> Flight Number: <?php echo $flightNo?> flight schedules </h3>
+<h3> Flight Number: TA-LGW-MAN-101 flight schedules </h3>
 
 <table border="1" align=left id="displayInfo">
 <tr>

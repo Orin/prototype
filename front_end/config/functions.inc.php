@@ -4,6 +4,80 @@ function autoFill($dataSet, $divName)
 	echo '<div id="'.$divName.'"><input  id="blargh" type=text autocomplete="off" name="FNo" onkeyup="autoFills(event.keyCode,this,'.$dataSet.',\''.$divName.'\');"/></div>';
 }
 
+function showFlightTable($q_user)
+{
+echo '<div id="disInfo">';
+echo '<table border="1" align=left id="displayInfo">';
+echo '<tr class="d0">';
+echo '<th><h4>FlightNo</h4></th>';
+echo '<th><h4>Destination</h4></th>';
+echo '<th><h4>Departure</h4></th>';
+echo '<th><h4>Capacity</h4></th>';
+echo '<th><h4>Economy Seats</h4></th>';
+echo '<th><h4>Business Seats</h4></th>';
+echo '<th><h4>Group Seats</h4></th>';
+echo '<th><h4>Business Cost</h4></th>';
+echo '<th><h4>Economy Cost</h4></th>';
+echo '<th><h4>Group Cost</h4></th>';
+echo '<th><h4>Delete</h4></th>';
+echo '</tr>';
+
+for ($i =0;  $i<mysql_num_rows($q_user); $i++)
+{
+$data = mysql_fetch_array($q_user);
+$flightNo = $data['flightNo'];
+echo '<tr>';
+echo '<td onClick="select(\''.$flightNo.'\',1);">';
+echo "<a href=\"flightinfoEdit.php?flightNo=".$flightNo."\">$flightNo</a>";
+echo '</td>';
+
+echo '<td onClick="select(\''.$flightNo.'\',1);">';
+echo $data['destination'];
+echo '</td>';
+
+echo '<td onClick="select(\''.$flightNo.'\',1);">';
+echo $data['departure'];
+echo '</td>';
+
+echo '<td onClick="select(\''.$flightNo.'\',1);">';
+echo $data['capacity'];
+echo '</td>';
+
+echo '<td onClick="select(\''.$flightNo.'\',1);">';
+echo $data['econemyseats'];
+echo '</td>';
+
+echo '<td onClick="select(\''.$flightNo.'\',1);">';
+echo $data['businessseats'];
+echo '</td>';
+
+echo '<td onClick="select(\''.$flightNo.'\',1);">';
+echo $data['groupseats'];
+echo '</td>';
+
+echo '<td onClick="select(\''.$flightNo.'\',1);">';
+echo '&pound100';
+echo '</td>';
+
+echo '<td onClick="select(\''.$flightNo.'\',1);">';
+echo '&pound75';
+echo '</td>';
+
+echo '<td onClick="select(\''.$flightNo.'\',1);">';
+echo '&pound50';
+echo '</td>';
+
+echo '<td>';
+echo '<a href="page.htm"><img src="icons/delete.gif" /></a>';
+echo '</td>';
+
+echo '</tr>';
+
+}
+echo '</table>';
+echo '</div>';
+}
+
 function dropdown($entries, $default = '') {
 	echo "<select>";
 	for ($i = 0; $i < count($entries); $i++) {

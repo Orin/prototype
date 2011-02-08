@@ -35,6 +35,7 @@ $q_user = mysql_query("SELECT * FROM flightSchedule");
 <th><h4>Departure Date</h4></th>
 <th><h4>Departure Time</h4></th>
 <th><h4>Arrival time</h4></th>
+<th><h4>Discount</h4></th>
 <th><h4>Delete</h4></th>
 </tr>
 
@@ -63,6 +64,10 @@ echo '</td>';
 
 echo '<td onClick="select('.$ScheduleID.',2);"">';
 echo $data['arrivalTime'];
+echo '</td>';
+
+echo '<td onClick="select('.$ScheduleID.',2);"">';
+echo '0';
 echo '</td>';
 
 echo '<td>';

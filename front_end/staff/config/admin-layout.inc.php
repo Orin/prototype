@@ -41,6 +41,7 @@
 	elseif ($page == 'discountsPricing') {?><div id="<?php echo $page; ?>"><?php include 'pages/discountsPricing.php'; ?></div><?php }
 	elseif ($page == 'ApplyDiscountFlight') {?><div id="<?php echo $page; ?>"><?php include 'pages/ApplyDiscountFlight.php'; ?></div><?php }
 	elseif ($page == 'ApplyDiscountSchedule') {?><div id="<?php echo $page; ?>"><?php include 'pages/ApplyDiscountSchedule.php'; ?></div><?php }
+	elseif ($page == 'modFlightPrice') {?><div id="<?php echo $page; ?>"><?php include 'pages/modFlightPrice.php'; ?></div><?php }
 
     //Else show page not found error
     else {?>
