@@ -22,9 +22,9 @@ if (!is_null($flightNo))
       <tr><td>No of Economy Seats:</td><td> <input type="text" name="econmySeats"value=<?php echo $data['econemyseats'];?> /></td></tr>
       <tr><td>No of Business Seats:</td><td> <input type="text" name="busSeats"value=<?php echo $data['businessseats'];?> /></td></tr>
       <tr><td>No of Group Seats: </td><td><input type="text" name="groupSeats" value=<?php echo $data['groupseats'];?> /></td></tr>
-      <tr><td>Costing Structure: </td><td><?php dropDown($costing, 'EDI-NCL');?><FORM> 
-      <INPUT type="button" value="View avalable structures" onClick="window.open('viewCostingStructures.html','costing structures','width=800,height=800')"> 
-  </FORM></td></tr>
+      <tr><td>Business Cost:</td><td> <input type="text" name="groupSeats" value=100 /></td></tr>
+	  <tr><td>Group Cost:</td><td> <input type="text" name="groupSeats" value=50 /></td></tr>
+	  <tr><td>Individual Cost:</td><td> <input type="text" name="groupSeats" value=75 /></td></tr>
       <tr><th colspan="2"><input type="submit" /></th></tr>
   </table>
 </form>

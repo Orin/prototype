@@ -1,8 +1,5 @@
 <?php
 $q_user = mysql_query("SELECT * FROM flight");
-
-
-
 ?>
 <div id="refine">
 

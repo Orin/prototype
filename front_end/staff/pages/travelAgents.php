@@ -1,5 +1,6 @@
 <table id="displayInfo" border=1>
-	<tr><th>Thompson Holidays</a></th></tr>
+	<tr><th>Travle Agents</a></th></tr>
+	<tr><td>Thompson Holidays</a></td></tr>
 	<tr><td>Thomas Cook</td></tr>
 	<tr><td>First Choice</td></tr>
 	<tr><td>Travel Supermarket</td></tr>

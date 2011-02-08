@@ -22,7 +22,6 @@
 	<tr><td>Total Income Period</td><td><input type="checkbox" name="costStruct" value="CS" /></td></tr>
 	<tr><td>Source of Business Per Flight</td><td><input type="checkbox" name="costStruct" value="CS" /></td></tr>
 	<tr><td>Flight Frequency</td><td><input type="checkbox" name="costStruct" value="CS" /></td></tr>
-	<tr><td>Quiet (loss) Periods</td><td><input type="checkbox" name="costStruct" value="CS" /></td></tr>
 	<tr><td>Current Promotions</td><td><input type="checkbox" name="costStruct" value="CS" /></td></tr>
 	<tr><td>Overbooking Per Flight Schedule</td><td><input type="checkbox" name="costStruct" value="CS" /></td></tr>
 	<tr><td>Total Overbooking Per Flight</td><td><input type="checkbox" name="costStruct" value="CS" /></td></tr>

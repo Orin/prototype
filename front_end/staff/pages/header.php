@@ -1,30 +1,18 @@
 <?php
 //get from a query later on 	
 $airports[0] = '';
-$airports[1] = 'MAN';
-$airports[2] = 'LBA';
-$airports[3] = 'LPL';
-$airports[4] = 'EMA';
-$airports[5] = 'BHX';
-$airports[6] = 'LTN';
-$airports[7] = 'STN';
-$airports[8] = 'LHR';
-$airports[9] = 'LGW';
-$airports[10] = 'LCY';
-$airports[11] = 'BRS';
-$airports[12] = 'CWL';
-$airports[13] = 'ABZ';
-$airports[14] = 'NCL';
-$airports[15] = 'EDI';
+$airports[1] = 'EDI';
+$airports[2] = 'GLA';
+$airports[3] = 'ABZ';
+
+$discountType[0] = 'percentage';
+$discountType[1] = 'value';
 
 
 $costing[0] = '';
-$costing[1] = 'LTN-BRS';
-$costing[2] = 'CWL-LPL';
-$costing[3] = 'LCY-ABZ';
-$costing[4] = 'EDI-NCL';
-$costing[5] = 'EDI-CWL';
-$costing[6] = 'BHX-LPL';
+$costing[1] = 'EDI-GLA';
+$costing[2] = 'EDI-ABZ';
+$costing[3] = 'GLA-ABZ';
 
 $accessLvl[0] = '';
 $accessLvl[1] = 'Manager';
@@ -44,8 +32,7 @@ $accessLvl[2] = 'Staff';
     <div class="menu-item"><a href="FlightSelect.html"><span class="item">Edit Flight</span></a></div>
     <div class="menu-item"><a href="scheduleInfo.html"><span class="item">Add Schedule</span></a></div>
     <div class="menu-item"><a href="editFlightSchedule.html"><span class="item">Edit Schedule</span></a></div>
-    <div class="menu-item"><a href="AddCostingStruc.html"><span class="item">Add Costing Structure</span></a></div>
-    <div class="menu-item"><a href="EditCostingStruc.html"><span class="item">Edit Costing Structure</span></a></div>
+	<div class="menu-item"><a href="discountsPricing.html"><span class="item">Discounts and pricing</span></a></div>
     <div class="menu-item"><a href="users.html"><span class="item">Users</span></a></div>
   </div>
 </div>

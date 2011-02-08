@@ -46,6 +46,7 @@ th {
 	width:auto;
 
 }
+
 .menu-item {
 	float:left;
 	margin:0px 10px;
@@ -181,8 +182,8 @@ color: #FFFFFF;
 
 
 #inputData{
-	  margin-left: auto ;
-     margin-right: auto ;
+	margin-left: auto ;
+    margin-right: auto ;
 	border-collapse:collapse;
 	background-color:#99CCFF;
 	border:2px solid black;
@@ -198,6 +199,20 @@ color: #FFFFFF;
 	float: right;
 	border:2px solid black;
 
+}
+
+#globalDiscount{
+	width:60%;
+	margin-left: auto ;
+    margin-right: auto ;
+}
+
+#GlobalDis{
+	border-collapse:collapse;
+	background-color:#99CCFF;
+	float: left;
+	border:2px solid black;
+	width:100%;
 }
 
 #error{
