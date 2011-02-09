@@ -28,12 +28,9 @@ $accessLvl[2] = 'Staff';
 <div id="topNav">
   <div id="topNav-wrapper">
     <div class="menu-item"><a href="index.html"><span class="item">Home</span></a></div>
-    <div class="menu-item"><a href="flightinfo.html"><span class="item">Add Flight</span></a></div>
-    <div class="menu-item"><a href="FlightSelect.html"><span class="item">Edit Flight</span></a></div>
     <div class="menu-item"><a href="scheduleInfo.html"><span class="item">Add Schedule</span></a></div>
     <div class="menu-item"><a href="editFlightSchedule.html"><span class="item">Edit Schedule</span></a></div>
 	<div class="menu-item"><a href="discountsPricing.html"><span class="item">Discounts and pricing</span></a></div>
-    <div class="menu-item"><a href="users.html"><span class="item">Users</span></a></div>
   </div>
 </div>
 

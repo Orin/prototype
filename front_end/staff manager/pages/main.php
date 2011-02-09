@@ -4,8 +4,11 @@
 		<tr><td><a href="report.html">Generate Report</a></td></tr>
 		<tr><td><a href="editFlightSchedule.html">Edit a Flight Schedule</a></td></tr>
 		<tr><td><a href="scheduleInfo.html">Add Flight Schedule</a></td></tr>
+		<tr><td><a href="FlightSelect.html">Edit A Flight</a></td></tr>
+		<tr><td><a href="flightinfo.html">Add Flight</a></td></tr>
 		<tr><td><a href="discountsPricing.html">Discounts and Pricing</a></td></tr>
-
+		<tr><td><a href="airports.html">Maintain Airports</a></td></tr>
+		<tr><td><a href="travelAgents.html">Maintain Travel Agents</a></td></tr>
 	</table>
 </div>
 

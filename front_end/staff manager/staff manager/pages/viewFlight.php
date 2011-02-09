@@ -18,7 +18,10 @@ $data = mysql_fetch_array($result);
 	<tr><td>Economy Price: </td><td>&pound100</td></tr>
 	<tr><td>Business Price: </td><td>&pound75</td></tr>
 	<tr><td>Group Price: </td><td>&pound50</td></tr>
-	<tr><th colspan="2"> Flight Details</th></tr>
+	<tr><th colspan="2">
+	<form>
+		<input type="button" value="Edit" name="Edit_flight" onClick="window.location='flightinfoEdit.php?flightNo=<?php echo $data['flightNo'];?>'"> 
+	</form></th></tr>
 </table>
 
 </div>
