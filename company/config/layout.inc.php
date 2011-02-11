@@ -20,13 +20,21 @@
                 //General Pages
                 if ($page == 'index') {?><div id="<?php echo $page; ?>"><?php include 'pages/home.php'; ?></div><?php }
                 
-				elseif ($page == 'alexandros-repana' || $page == 'craig-matear' || $page == 'hang-li' || $page == 'mathieu-saillet' || $page == 'michael-shannon' || $page == 'steven-preston' ) 
+				elseif ($page == 'alexandros-repana' || $page == 'craig-matear' || $page == 'hang-li' || $page == 'mathieu-saillet' || $page == 'michael-shannon' || $page == 'steven-preston') 
                     {?>
                       <div id="<?php echo $page; ?>">
                         <img src="assets/img/profile pic/<?php echo $page; ?>.gif" align="right" alt="SDA" />
                         <?php include 'pages/'.$page.'.php'; ?>
                       </div>
 					<?php }
+				elseif($page == 'contact')
+				{?>
+				<div id="<?php echo $page; ?>">
+                        <?php include 'pages/'.$page.'.php'; ?>
+                      </div>
+				
+				
+				<?php }
                 
                 
                 //Else show page not found error

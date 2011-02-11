@@ -10,4 +10,5 @@
 <a href="steven-preston.html">Steven Preston</a><br />
 <a href="mathieu-saillet.html">Mathieu Saillet</a><br />
 <a href="alexandros-repana.html">Alexandros Repana</a><br />
+<a href="contact.html">Get In Touch</a><br />
 </div>

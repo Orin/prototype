@@ -14,7 +14,7 @@
   <div id="about">
   <h4>About us</h4>
   
-  <p>SDA is a small software development company currently based in Edninburgh.
+  <p>SDA is a small software development company currently based in Edinburgh .
   We currently have 6 technical experts employed at SDA eatch with years of 
   Development experiance. We are currently employing an iterative development 
   process, this gives you the customer a high quality software solution as a result.
