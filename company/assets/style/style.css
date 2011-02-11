@@ -61,6 +61,20 @@ background: #000000;
 #sda{
 	float :top;
 }
+
+a.navEl:hover{
+	color: #0099ff;
+	font-size:150%;
+}
+a.navEl:visited{
+	color: #fff;
+}
+
+#navElem{
+	float:right;
+	width: 80%
+}
+
 #images{
 	float:top;
 }

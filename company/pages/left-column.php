@@ -3,12 +3,15 @@
 </div>
 
 <div id="navdiv">
-<a href="index.html">Home</a><br />
-<a href="craig-matear.html">Craig Matear</a><br />
-<a href="hang-li.html">Hang Li</a><br />
-<a href="michael-shannon.html">Michael Shannon</a><br />
-<a href="steven-preston.html">Steven Preston</a><br />
-<a href="mathieu-saillet.html">Mathieu Saillet</a><br />
-<a href="alexandros-repana.html">Alexandros Repana</a><br />
-<a href="contact.html">Get In Touch</a><br />
+<div ><a href="index.html" class = "navEl">Home</a></div>
+<div><a href="projects.html"class = "navEl">Our projects</a></div>
+<div><a href="contact.html"class = "navEl">Get In Touch</a></div>
+<div><h4>our staff</h4></div>
+<div id = "navElem"><a href="craig-matear.html"class = "navEl">Craig Matear</a></div>
+<div id = "navElem"><a href="hang-li.html"class = "navEl">Hang Li</a></div>
+<div id = "navElem"><a href="michael-shannon.html"class = "navEl">Michael Shannon</a></div>
+<div id = "navElem"><a href="steven-preston.html"class = "navEl">Steven Preston</a></div>
+<div id = "navElem"><a href="mathieu-saillet.html"class = "navEl">Mathieu Saillet</a></div>
+<div id = "navElem"><a href="alexandros-repana.html"class = "navEl">Alexandros Repana</a></div>
+
 </div>
