@@ -12,11 +12,11 @@ if (!is_null($flightNo))
 	$data = mysql_fetch_array($q_user);
 }
 ?>
-<form name="Flight_info" method="post" action="processFlightEdit.php?action=PFlight" >
+<form name="Flight_info" method="post" action="ApplyDiscountFlight.html" >
   <table border="1" id="inputData">
       <th colspan="2">Enter Flight Information</th>
       <tr><td>Flight Number: </td><td><?php echo $data['flightNo'];?></td></tr>
-      <tr><td>Flight Destination: </td><td><?php dropDown($airports, 'NCL');?> </td></tr>
+      <tr><td>Flight Destination: </td><td><?php dropDown($airports, 'GLA');?> </td></tr>
       <tr><td>Flight Departure: </td><td><?php dropDown($airports, 'EDI');?></td></tr>
       <tr><td>Flight Capacity: </td><td><input type="text" name="cap" value=<?php echo $data['capacity'];?> /></td></tr>
       <tr><td>No of Economy Seats:</td><td> <input type="text" name="econmySeats"value=<?php echo $data['econemyseats'];?> /></td></tr>

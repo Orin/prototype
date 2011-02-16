@@ -97,6 +97,7 @@ function datePicker($defDay = FALSE, $defMonth = FALSE) {
 		if ($i == $defDay) { ?><option selected><?php } else { ?><option><?php }
 		echo $i.'</option>';
 	}
+	echo '<option></option>';
 	echo '<select>';
 	
 	echo '<select class="month">';
@@ -104,12 +105,14 @@ function datePicker($defDay = FALSE, $defMonth = FALSE) {
 		if ($i == $defMonth) { ?><option selected><?php } else { ?><option><?php }
 		echo $i.'</option>';
 	}
+	echo '<option></option>';
 	echo '<select>';
 	
 	echo '<select class="year">';
 	for ($i = 2011; $i < 2012; $i++) {
 		echo '<option>'.$i.'</option>';
 	}
+	echo '<option></option>';
 	echo '<select>
 	</div>';
 }

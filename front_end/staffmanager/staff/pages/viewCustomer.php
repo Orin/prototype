@@ -19,7 +19,7 @@ $result = mysql_query($query);
 <tr><td>Email Address: </td> <td><?php echo $data['EmailAddress'];?></td></tr>
 <tr><th colspan=2>
 	<form>
-		<input type="button" value="Edit" name="Edit_customer" onClick="window.location='custInfoEdit.php?custID=<?php echo $customerID;?>'"> 
+		<input type="button" value="Edit" name="Edit_customer" onClick="window.location='custInfoEdit.html'"> 
 	</form>
 </th></tr>
 
@@ -52,11 +52,11 @@ $FlightNo = $data['FlightNo'];
 
 echo '<tr>';
 echo '<td>';
-echo "<a href=\"scheduleInfoEdit.php?ScheduleID=".$ScheduleID."\">$ScheduleID</a>";
+echo "<a href=\"scheduleInfoEdit.html\">$ScheduleID</a>";
 echo '</td>';
 
 echo '<td>';
-echo "<a href=\"ViewFlight.php?FNo=".$FlightNo."\">$FlightNo</a>";  
+echo "<a href=\"viewFlight.html\">$FlightNo</a>";  
 echo '</td>';
 
 echo '<td>';

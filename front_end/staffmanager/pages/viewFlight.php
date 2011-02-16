@@ -15,17 +15,14 @@ $data = mysql_fetch_array($result);
 	<tr><td>Economy Seats:</td><td> <?php echo $data['econemyseats'];?></td></tr>
 	<tr><td>Business Seats: </td><td><?php echo $data['businessseats'];?></td></tr>
 	<tr><td>Group Seats: </td><td><?php echo $data['groupseats'];?></td></tr>
-	<tr><td>Economy Price: </td><td>&pound100</td></tr>
-	<tr><td>Business Price: </td><td>&pound75</td></tr>
-	<tr><td>Group Price: </td><td>&pound50</td></tr>
-	<tr><th colspan="2">
-	<form>
-		<input type="button" value="Edit" name="Edit_flight" onClick="window.location='flightinfoEdit.php?flightNo=<?php echo $data['flightNo'];?>'"> 
-	</form></th></tr>
+	<tr><td>Economy Price: </td><td>&pound100 </td></tr>
+	<tr><td>Business Price: </td><td>&pound75 </td></tr>
+	<tr><td>Group Price: </td><td>&pound50 </td></tr>
 </table>
 
 </div>
-<?php $FNo = $data['flightNo'];?>
+
+<?php $FNo = 'TA-LGW-MAN-101';?>
 
 
 <div id="scheduleContainer">
@@ -45,7 +42,7 @@ $data = mysql_fetch_array($result);
 <th><h4>Available Seats</h4></th>
 </tr>
 
-<?php 
+<?php
 $schedules = "SELECT * FROM flightSchedule WHERE flightNo = 'TA-LGW-MAN-101'";
 $schedules_result = mysql_query($schedules);
 
@@ -57,11 +54,11 @@ $FlightNo = $schedule_data['FlightNo'];
 
 echo '<tr>';
 echo '<td>';
-echo "<a href=\"scheduleInfoEdit.php?ScheduleID=".$ScheduleID."\">$ScheduleID</a>";
+echo "<a href=\"scheduleInfoEdit.html\">$ScheduleID</a>";
 echo '</td>';
 
 echo '<td>';
-echo "<a href=\"ViewFlight.php?FNo=".$FlightNo."\">$FlightNo</a>";  
+echo "<a href=\"flightinfoEdit.html\">$FlightNo</a>";  
 echo '</td>';
 
 echo '<td>';

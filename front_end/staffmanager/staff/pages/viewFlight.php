@@ -54,14 +54,14 @@ $FlightNo = $schedule_data['FlightNo'];
 
 echo '<tr>';
 echo '<td>';
-echo "<a href=\"scheduleInfoEdit.php?ScheduleID=".$ScheduleID."\">$ScheduleID</a>";
+echo "<a href=\"scheduleInfoEdit.html\">$ScheduleID</a>";
 echo '</td>';
 
 echo '<td>';
-echo "<a href=\"ViewFlight.php?FNo=".$FlightNo."\">$FlightNo</a>";  
+echo "<a href=\"viewFlight.html\">$FlightNo</a>";  
 echo '</td>';
 
-echo '<td>';
+echo '<td onClick="window.location = \'scheduleInfoEdit.html\'">';
 echo $schedule_data['departuredate'];
 echo '</td>';
 
