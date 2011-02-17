@@ -21,6 +21,7 @@
             elseif ($page == 'flight-details') {?><div id="<?php echo $page; ?>"><?php include 'pages/selectedFlight.php'; ?></div><?php }
             elseif ($page == 'bookingInfo') {?><div id="<?php echo $page; ?>"><?php include 'pages/bookingInfo.php'; ?></div><?php }
 			elseif ($page == 'manage-booking') {?><div id="<?php echo $page; ?>"><?php include 'pages/manage-booking.php'; ?></div><?php }
+			elseif ($page == 'travel-agents') {?><div id="<?php echo $page; ?>"><?php include 'pages/travel-agents.php'; ?></div><?php }
             
             //Else show page not found error
             else {?>

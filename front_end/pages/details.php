@@ -21,6 +21,7 @@
 	<h2>Passenger Details</h2>
     	<form action="confirmation.html" method="post">
 		<table id="details">
+            <col style="width:200px" />
 			<tr><td>Passenger 1</td></tr>
             <tr class="firstN-1"><td>First Name</td><td><input type="text" name="firstN-1" /></td></tr>
 			<tr class="lastN-1"><td>Surname</td><td><input type="text" name="lastN-1" /></td></tr>
@@ -52,5 +53,16 @@
 			<tr><td><input type="submit" name="submit" value="Make Booking" /></td></tr>
             </table>
 		</form>
+        
+   <div id="travel-agent" style="margin-top:20px; margin-bottom:20px">
+   		<h2> Travel Agents</h2>
+        <form action="ta-login.html" method="post">
+        <table id="ta-login" >
+        <col style="width:200px" />
+        <tr><td>Account</td><td><input type="text" name="ta-account" /></td></tr>
+        <tr><td>Password</td><td><input type="password" name="ta-pwd" /></td></tr>
+        <tr><td><input type="submit" name="ta-submit" value="Login" /></td></tr>
+        </table>
+        </form>
 </div>
 
