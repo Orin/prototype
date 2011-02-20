@@ -2,69 +2,66 @@
 
 $flightNo = $_POST['FNo'];
 $destination = $_POST['dest'];
-$departure = $_POST['depart'];
+$departure = $_POST['dep'];
 $capacity = $_POST['cap'];
 $econS = $_POST['econmySeats'];
 $bussS = $_POST['busSeats'];
 $gropS = $_POST['groupSeats'];
-$price = $_POST['price'];
+$bCost = $_POST['busCost'];
+$eCost = $_POST['EconCost'];
+$gCost = $_POST['groupCost'];
+
+$insert = "INSERT INTO flight(flightNo, destination, departure, capacity, econemyseats, businessseats, groupseats, econPrice, busPrice, groupPrice) VALUES('$flightNo','$destination','$departure',$capacity,$econS,$bussS,$gropS,$bCost,$eCost,$gCost)";
 
 
-$insert = "INSERT INTO flight(flightNo, destination, departure, capacity, econemyseats, businessseats, groupseats, price) VALUES($flightNo,'$destination','$departure',$capacity,$econS,$bussS,$gropS,$price)";
-
-
-
-include("header.html");
-
-
-/*if (!mysql_query($insert)){
-	echo '<table border="1" id="error">';
-	echo'<th colspan="2">MySql database error</th>';
-	echo '<tr bgcolor="#FF6633" ><td>Database Element</td><td>Error reason</td></tr>';
-	echo'<tr><td>';
-	echo'cannot insert flight:';
-		echo '<table id="displayInfo" border="1">';
-		echo '<tr><td>flightNo:</td><td>'.$flightNo.'</td></tr>';
-		echo '<tr><td>destination:</td><td>'.$destination.'</td></tr>';
-		echo '<tr><td>departure:</td><td>'.$departure.'</td></tr>';
-		echo '<tr><td>capacity:</td><td>'.$capacity.'</td></tr>';
-		echo '<tr><td>ecconemy seats:</td><td>'.$econS.'</td></tr>';
-		echo '<tr><td>business seats:</td><td>'.$bussS.'</td></tr>';
-		echo '<tr><td>group seats:</td><td>'.$gropS.'</td></tr>';
-		echo '<tr><td>price:</td><td>'.$price.'</td></tr>';
-		echo '</table>'; 
-	echo '</td><td>';
-	die('Error: ' . mysql_error());
-	echo'</td></tr>';
-	echo '</table>';
-	}   
-  else{*/
-	  echo '<table border="1" id="sucessful">';
-	echo'<th>flight sucessfully entered</th>';
-	echo'<tr><td>';
-		echo '<table id="displayInfo" border="1" width=100%>';
-		echo '<tr><td>flightNo:</td><td>'.$flightNo.'</td></tr>';
-		echo '<tr><td>destination:</td><td>'.$destination.'</td></tr>';
-		echo '<tr><td>departure:</td><td>'.$departure.'</td></tr>';
-		echo '<tr><td>capacity:</td><td>'.$capacity.'</td></tr>';
-		echo '<tr><td>ecconemy seats:</td><td>'.$econS.'</td></tr>';
-		echo '<tr><td>business seats:</td><td>'.$bussS.'</td></tr>';
-		echo '<tr><td>group seats:</td><td>'.$gropS.'</td></tr>';
-		echo '<tr><td>price:</td><td>'.$price.'</td></tr>';
-		echo '</table>'; 
-	echo'</td></tr>';
-	echo '</table>';
+if (!mysql_query($insert)){
+	?><table border="1" id="error">
+	<th colspan="2">MySql database error</th>;
+	<tr bgcolor="#FF6633" ><td>Database Element</td><td>Error reason</td></tr>
+	<tr><td>
+	cannot insert flight:
+		<table id="displayInfo" border="1">
+		<tr><td>flightNo:</td><td><?php echo $flightNo;?></td></tr>
+		<tr><td>destination:</td><td><?php echo $destination;?></td></tr>
+		<tr><td>departure:</td><td><?php echo $departure;?></td></tr>
+		<tr><td>capacity:</td><td><?php echo $capacity;?></td></tr>
+		<tr><td>ecconemy seats:</td><td><?php echo $econS;?></td></tr>
+		<tr><td>business seats:</td><td><?php echo $bussS;?></td></tr>
+		<tr><td>group seats:</td><td><?php echo $gropS;?></td></tr>
+		<tr><td>Economy Price:</td><td><?php echo $eCost;?></td></tr>
+		<tr><td>Business Price:</td><td><?php echo $bCost;?></td></tr>
+		<tr><td>Group Price:</td><td><?php echo $gCost;?></td></tr>
+		</table>; 
+	</td><td>
+	<?php echo 'Error: '. mysql_error();?>
+	</td></tr>
+	</table>
+	<?php }
+	
+  else{ ?>
+	  <table border="1" id="sucessful">
+	<th>flight sucessfully entered</th>
+	<tr><td>
+		<table id="displayInfo" border="1" width=100%>
+		<tr><td>FlightNo:</td><td><?php echo $flightNo;?></td></tr>
+		<tr><td>Destination:</td><td><?php echo $destination;?></td></tr>
+		<tr><td>Departure:</td><td><?php echo $departure;?></td></tr>
+		<tr><td>Capacity:</td><td><?php echo $capacity;?></td></tr>
+		<tr><td>Ecconemy seats:</td><td><?php echo $econS;?></td></tr>
+		<tr><td>Business seats:</td><td><?php echo $bussS;?></td></tr>
+		<tr><td>Group seats:</td><td><?php echo $gropS;?></td></tr>
+		<tr><td>Economy Price:</td><td><?php echo $eCost;?></td></tr>
+		<tr><td>Business Price:</td><td><?php echo $bCost;?></td></tr>
+		<tr><td>Group Price:</td><td><?php echo $gCost;?></td></tr>
+		</table>
+	</td></tr>
+	</table>
 	  
-  //}
+  <?php } ?>
  
-		echo '<br/>';
-		echo date('l jS \of F Y h:i:s A');
-		echo '<br/>';
- 		echo '<form>'; 
-		echo '<input type="button" value="print"/> ';
-		echo '</form>';
-
-include("footer.html");
-?>
-
-
+		<br/>
+		<?php echo date('l jS \of F Y h:i:s A'); ?>
+		<br/>
+ 		<form>
+		<input type="button" value="print"/>
+		</form>

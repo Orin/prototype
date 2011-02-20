@@ -1,8 +1,16 @@
+<?php
+$q_user = mysql_query( "SELECT * FROM agents");
+?>
+
 <table id="displayInfo" border=1>
 	<tr><th>Travle Agents</a></th></tr>
-	<tr><td>Thompson Holidays</a></td></tr>
-	<tr><td>Thomas Cook</td></tr>
-	<tr><td>First Choice</td></tr>
-	<tr><td>Travel Supermarket</td></tr>
-	<tr><th><form><input type="text"><input type="submit" value="add"/></form></th></tr>
+	
+	<?php 
+	for ($i =0;  $i<mysql_num_rows($q_user); $i++)
+	{
+		$data = mysql_fetch_array($q_user);
+	?>
+	<tr><td><?php echo $data['name'];?></a></td></tr>
+	<?php } ?>
+	<tr><th><form name="add_TA" method="post" action="addTA.html" ><input type="text" name="new" /><input type="submit" value="add"/></form></th></tr>
 </table>

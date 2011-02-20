@@ -43,6 +43,8 @@
 	elseif ($page == 'ApplyDiscountSchedule') {?><div id="<?php echo $page; ?>"><?php include 'pages/ApplyDiscountSchedule.php'; ?></div><?php }
 	elseif ($page == 'modFlightPrice') {?><div id="<?php echo $page; ?>"><?php include 'pages/modFlightPrice.php'; ?></div><?php }
 	elseif ($page == 'custInfoEdit') {?><div id="<?php echo $page; ?>"><?php include 'pages/custInfoEdit.php'; ?></div><?php }
+	elseif ($page == 'addTA') {?><div id="<?php echo $page; ?>"><?php include 'pages/addTA.php'; ?></div><?php }
+	elseif ($page == 'addAP') {?><div id="<?php echo $page; ?>"><?php include 'pages/addAP.php'; ?></div><?php }
 
     //Else show page not found error
     else {?>

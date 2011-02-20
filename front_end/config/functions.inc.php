@@ -86,13 +86,26 @@ function dropdown($entries, $default = '') {
 	<?php	}
 	echo '</select>';
 }
+function namedDropdown($entries, $default = '', $name) {
+	if(is_null($name))
+	{
+		$name='selectData';
+	}
+	echo "<select name=".$name.">";
+	for ($i = 0; $i < count($entries); $i++) {
+		if ($entries[$i] == $default) { ?><option selected><?php } else { ?><option><?php }
+		echo $entries[$i]; ?></option>
+	<?php	}
+	echo '</select>';
+}
 
-function datePicker($defDay = FALSE, $defMonth = FALSE) {
+function datePicker($defDay = FALSE, $defMonth = FALSE, $name = '') {
 	if (!$defDay) { $defDay = date("d") + 1; }
 	if (!$defMonth) { $defMonth = date("m"); }
+	if (!$name) { $name = ''; }
 	echo '<div class="date-select">';
 	//Day
-	echo '<select class="day">';
+	echo '<select class="day" name='.$name.'Day'.'>';
 	for ($i = 1; $i < 31; $i++) {
 		if ($i == $defDay) { ?><option selected><?php } else { ?><option><?php }
 		echo $i.'</option>';
@@ -100,7 +113,7 @@ function datePicker($defDay = FALSE, $defMonth = FALSE) {
 	echo '<option></option>';
 	echo '<select>';
 	
-	echo '<select class="month">';
+	echo '<select class="month"  name='.$name.'Month'.'>';
 	for ($i = 1; $i < 12; $i++) {
 		if ($i == $defMonth) { ?><option selected><?php } else { ?><option><?php }
 		echo $i.'</option>';
@@ -108,7 +121,7 @@ function datePicker($defDay = FALSE, $defMonth = FALSE) {
 	echo '<option></option>';
 	echo '<select>';
 	
-	echo '<select class="year">';
+	echo '<select class="year"  name='.$name.'Year'.'>';
 	for ($i = 2011; $i < 2012; $i++) {
 		echo '<option>'.$i.'</option>';
 	}
@@ -117,11 +130,11 @@ function datePicker($defDay = FALSE, $defMonth = FALSE) {
 	</div>';
 }
 
-function timePicker ($defHour = -1, $defMin = -1)
+function timePicker ($defHour = -1, $defMin = -1, $name = '')
 {
 	echo '<div class="time-select">';
 	//hour
-	echo '<select class="hour">';
+	echo '<select class="hour" name='.$name.'hour'.'>';
 	echo '<option/>';
 	for ($i = 0; $i<24; $i++)
 	{
@@ -130,7 +143,7 @@ function timePicker ($defHour = -1, $defMin = -1)
 	}
 	echo '<select/>';
 	
-	echo '<select class="min">';
+	echo '<select class="min" name='.$name.'min'.'>';
 	echo '<option/>';
 	for ($i = 0; $i<60; $i++)
 	{
