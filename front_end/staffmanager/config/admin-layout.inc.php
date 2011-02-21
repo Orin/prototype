@@ -45,6 +45,9 @@
 	elseif ($page == 'custInfoEdit') {?><div id="<?php echo $page; ?>"><?php include 'pages/custInfoEdit.php'; ?></div><?php }
 	elseif ($page == 'addTA') {?><div id="<?php echo $page; ?>"><?php include 'pages/addTA.php'; ?></div><?php }
 	elseif ($page == 'addAP') {?><div id="<?php echo $page; ?>"><?php include 'pages/addAP.php'; ?></div><?php }
+	elseif ($page == 'processUser') {?><div id="<?php echo $page; ?>"><?php include 'pages/processUser.php'; ?></div><?php }
+	elseif ($page == 'refineFlights') {?><div id="<?php echo $page; ?>"><?php include 'pages/refineFlights.php'; ?></div><?php }
+	elseif ($page == 'refineSchedule') {?><div id="<?php echo $page; ?>"><?php include 'pages/refineSchedule.php'; ?></div><?php }
 
     //Else show page not found error
     else {?>

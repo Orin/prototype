@@ -78,20 +78,8 @@ echo '</table>';
 echo '</div>';
 }
 
-function dropdown($entries, $default = '') {
-	echo "<select>";
-	for ($i = 0; $i < count($entries); $i++) {
-		if ($entries[$i] == $default) { ?><option selected><?php } else { ?><option><?php }
-		echo $entries[$i]; ?></option>
-	<?php	}
-	echo '</select>';
-}
-function namedDropdown($entries, $default = '', $name) {
-	if(is_null($name))
-	{
-		$name='selectData';
-	}
-	echo "<select name=".$name.">";
+function dropdown($entries, $default = '', $name='') {
+	echo "<select name=\"$name\">";
 	for ($i = 0; $i < count($entries); $i++) {
 		if ($entries[$i] == $default) { ?><option selected><?php } else { ?><option><?php }
 		echo $entries[$i]; ?></option>
@@ -111,7 +99,7 @@ function datePicker($defDay = FALSE, $defMonth = FALSE, $name = '') {
 		echo $i.'</option>';
 	}
 	echo '<option></option>';
-	echo '<select>';
+	echo '</select>';
 	
 	echo '<select class="month"  name='.$name.'Month'.'>';
 	for ($i = 1; $i < 12; $i++) {
@@ -119,14 +107,37 @@ function datePicker($defDay = FALSE, $defMonth = FALSE, $name = '') {
 		echo $i.'</option>';
 	}
 	echo '<option></option>';
-	echo '<select>';
+	echo '</select>';
 	
 	echo '<select class="year"  name='.$name.'Year'.'>';
-	for ($i = 2011; $i < 2012; $i++) {
+	for ($i = 2010; $i < 2012; $i++) {
 		echo '<option>'.$i.'</option>';
 	}
 	echo '<option></option>';
-	echo '<select>
+	echo '</select>
+	</div>';
+}
+
+function datePickerBackEnd($name = '') {
+	if (!$name) { $name = ''; }
+	echo '<div class="date-select">';
+	//Day
+	echo '<select class="day" name='.$name.'Day'.'>';
+	for ($i = 1; $i < 31; $i++) {
+		?><option><?php
+		echo $i.'</option>';
+	}
+	echo '<option selected></option>';
+	echo '</select>';
+	
+	echo '<select class="month"  name='.$name.'Month'.'>';
+	for ($i = 1; $i < 12; $i++) {
+		?><option><?php
+		echo $i.'</option>';
+	}
+	echo '<option selected></option>';
+	echo '</select>';
+	echo '<input size="2" type="text" class="year"  name='.$name.'Year>
 	</div>';
 }
 
@@ -141,7 +152,7 @@ function timePicker ($defHour = -1, $defMin = -1, $name = '')
 		if($i == $defHour ){?> <option selected><?php } else { ?><option><?php }
 		echo $i.'</option>';
 	}
-	echo '<select/>';
+	echo '</select>';
 	
 	echo '<select class="min" name='.$name.'min'.'>';
 	echo '<option/>';
@@ -150,7 +161,7 @@ function timePicker ($defHour = -1, $defMin = -1, $name = '')
 		if($i == $defMin ){?> <option selected><?php } else { ?><option><?php }
 		echo $i.'</option>';
 	}
-	echo '<select/>';
+	echo '</select>';
 	echo '</div>';
 }
 

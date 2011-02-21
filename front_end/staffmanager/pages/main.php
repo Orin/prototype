@@ -28,13 +28,13 @@
         <div class="search-right">
         <form name="Flight_info" method="post" action="flightAndScheduleSearch.html" align=right>
         <table>
-        <tr><td>Depart:</td><td><?php dropdown($airports)?></td></tr>
-        <tr><td>Arrive:</td><td><?php dropdown($airports)?></td></tr>
-        <tr><td>Date:</td><td><?php datePicker(1,1); ?></td></tr>
-        <tr><td>Time:</td><td><?php timePicker();?></td></tr>
-        <tr><td>Available Economy: >=</td><td><input type="text" name="" ></input></td></tr>
-		<tr><td>Available Business: >=</td><td><input type="text" name="" ></input></td></tr>
-		<tr><td>Available Group: >=</td><td><input type="text" name="" ></input></td></tr>
+        <tr><td>Depart:</td><td><?php dropdown($airports,'','Dep')?></td></tr>
+        <tr><td>Arrive:</td><td><?php dropdown($airports,'','Dest')?></td></tr>
+        <tr><td>Departure Date:</td><td><?php datePickerBackEnd('depDate'); ?></td></tr>
+        <tr><td>Departure Time:</td><td><?php timePicker(-1,-1,'depTime');?></td></tr>
+        <tr><td>Available Economy: >=</td><td><input type="text" name="avalE" ></input></td></tr>
+		<tr><td>Available Business: >=</td><td><input type="text" name="avalB" ></input></td></tr>
+		<tr><td>Available Group: >=</td><td><input type="text" name="avalG" ></input></td></tr>
         <tr><td><input type="submit" value="Search" /></td></tr>
 		</table>
 		</form>

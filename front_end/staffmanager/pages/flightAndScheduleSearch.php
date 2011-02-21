@@ -1,10 +1,20 @@
 <?php
-//$criteria[0] = $_POST['Dest'];
-//$criteria[1] = $_POST['Dep'];
-//$criteria[2] = $_POST['DepDat'];
-//$criteria[3] = $_POST['DepTim'];
+$criteria[0] = $_POST['Dest'];
+$criteria[1] = $_POST['Dep'];
 
-$query = "SELECT * FROM flight, flightSchedule WHERE flight.flightNo = flightSchedule.FlightNo";
+$criteria[2] = $_POST['depDateyear'];
+$criteria[3] = $_POST['depDatemonth'];
+$criteria[4] = $_POST['depDateday'];
+
+$criteria[5] = $_POST['depTimehour'];
+$criteria[6] = $_POST['depTimemin'];
+
+$criteria[7] = $_POST['avalE'];
+$criteria[8] = $_POST['avalB'];
+$criteria[9] = $_POST['avalG'];
+
+
+$query = "SELECT DISTINCT * FROM flight, flightSchedule WHERE flight.flightNo = flightSchedule.FlightNo";
 
 if(!empty($criteria[0]))
 {
@@ -14,16 +24,27 @@ if(!empty($criteria[1]))
 {
 	$query = $query." AND departure ='$criteria[1]'";
 }
-if(!empty($criteria[2]))
+if(!empty($criteria[2]) && !empty($criteria[3]) && !empty($criteria[4]))
 {
-	$query = $query." AND departuredate ='$criteria[2]'";
+	$query = $query." AND departuredate ='".$criteria[2].'-'.$criteria[3].'-'.$criteria[4]."'";
 }
-if(!empty($criteria[3]))
+if(!empty($criteria[5]) && !empty($criteria[6]))
 {
-	$query = $query." AND departureTime ='$criteria[3]'";
+	$query = $query." AND departureTime ='".$criteria[5].':'.$criteria[6]."'";
+}
+if(!empty($criteria[7]))
+{
+	$query = $query." AND availableEconomySeats >='$criteria[7]'";
+}
+if(!empty($criteria[8]))
+{
+	$query = $query." AND availableBusinessSeats >='$criteria[8]'";
+}
+if(!empty($criteria[9]))
+{
+	$query = $query." AND availableGroupSeats >='$criteria[9]'";
 }
 
-$query = "SELECT * FROM flight, flightSchedule WHERE flight.flightNo = 'TA-EDI-LBA-101' ";
 
 $result = mysql_query($query);
 
