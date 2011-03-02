@@ -10,8 +10,8 @@ else 								{$q_user = mysql_query("SELECT * FROM flight");}
   <table border="0" id="ResultRefine">
           
           <tr><th colspan="2">Refine Flights</th></tr>
-          <tr><td>Destination:</td> <td><?php namedDropdown($airports,'','dest');?></td></tr>
-          <tr><td>Departure:</td> <td><?php namedDropdown($airports,'','dep');?></td></tr>
+          <tr><td>Destination:</td> <td><?php Dropdown($airports,'','dest');?></td></tr>
+          <tr><td>Departure:</td> <td><?php Dropdown($airports,'','dep');?></td></tr>
           <tr><td>Departure Date:</td> <td><?php datePickerBackEnd('depDate');?></input></td></tr>
           <tr><td>Departure Time:</td> <td><?php timePicker(-1,-1,'deptime');?></input></td></tr>
 

@@ -1,7 +1,31 @@
 <?php 
 function autoFill($dataSet, $divName)
 {
-	echo '<div id="'.$divName.'"><input  id="blargh" type=text autocomplete="off" name="FNo" onkeyup="autoFills(event.keyCode,this,'.$dataSet.',\''.$divName.'\');"/></div>';
+	echo '<SCRIPT language="JavaScript">
+	';
+	
+	echo 'function autoFillsPre(key,textBox, divname) 
+	{';
+	
+	echo '
+	var dataSet=[];
+	';
+	
+	for ($i =0;  $i<count($dataSet); $i++)
+	{
+		echo 'dataSet['.$i.'] = "'.$dataSet[$i].'";
+		';
+	}
+	
+	echo 'document.write(dataSet[1]);
+	';
+	echo 'autoFills(key,textBox,dataSet,divname);';
+	echo '
+	}';
+
+	echo '</SCRIPT>
+	';
+	echo '<div id="'.$divName.'"><input  id="blargh" type=text autocomplete="off" name="FNo" onkeyup="autoFillsPre(event.keyCode,this,\''.$divName.'\');"/></div>';
 }
 
 function showFlightTable($q_user)

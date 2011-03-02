@@ -1,22 +1,32 @@
 <?php
-$q_user = mysql_query("SELECT * FROM flightSchedule");
+
+$query = 'SELECT * FROM flightSchedule';
+
+
+$_SESSION['applyTo'] = $query;
+$_SESSION['type'] = 0;
+
+
+$q_user = mysql_query($query);
+
+
 ?>
 
 
 <div id="globalDiscount" >
 
-	<form name="setGlobalDiscount" method="post" action="">
+	<form name="setGlobalDiscount" method="post" action="processDiscount.html">
 						<table border="0" id="GlobalDis">
 								
 								<tr><th colspan="2">Set Schedule Discount</th></tr>
-								<tr><td>Discount Type:</td> <td><?php dropdown($discountType);?></td></tr>
+								<tr><td>Discount Type:</td> <td><?php dropdown($discountType, '', 'dType');?></td></tr>
 								<tr><td>All Class Discount:</td> <td><input type="text" name="AllclassD" ></input></td></tr>
 								<tr><td>Econemy Class Discount:</td> <td><input type="text" name="EconD" ></input></td></tr>
 								<tr><td>Business Class Discount:</td> <td><input type="text" name="BusinessD" ></input></td></tr>
 								<tr><td>Group Class Discount:</td> <td><input type="text" name="GroupD" ></input></td></tr>
-								<tr><td>discount Duration(between):</td> <td><?php datePicker();?></input></td></tr>
+								<tr><td>discount Duration(between):</td> <td><?php datePickerBackEnd('durStart');?></input></td></tr>
 								<tr><td></td><td> And </td><td></td></tr>
-								<tr><td></td> <td><?php datePicker();?></input></td></tr>
+								<tr><td></td> <td><?php datePickerBackEnd('durEnd');?></input></td></tr>
 								
 	
 							<tr>

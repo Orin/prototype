@@ -133,13 +133,16 @@ function selectRange(iStart, iLength, txtBox) {
 
 function autoFills(key,textBox, dataSet, divname)
 {
+//document.write(dataSet[0]);
 	var values;
-	if(dataSet == 1)
-	{values= ["TA-EDI-LBA-101", "TA-EDI-LBA-102","TA-LGW-MAN-101","TA-EDI-BHX-102"];}
-	else if(dataSet == 2)
-	{values= ["BN-00561", "BN-00563454","BN-00532","BN-007561"];}
-
+	//if(dataSet == 1)
+	//{values= ["TA-EDI-LBA-101", "TA-EDI-LBA-102","TA-LGW-MAN-101","TA-EDI-BHX-102"];}
+	//else if(dataSet == 2)
+	//{values= ["BN-00561", "BN-00563454","BN-00532","BN-007561"];}
+	values=dataSet;
 	//textBox.value = "sddsa";
+
+	
 	if (key < 32 || (key >= 112 && key <= 123)) 
 	{
         if(textBox.value == ""){removeList(divname,"div1");}

@@ -48,6 +48,7 @@
 	elseif ($page == 'processUser') {?><div id="<?php echo $page; ?>"><?php include 'pages/processUser.php'; ?></div><?php }
 	elseif ($page == 'refineFlights') {?><div id="<?php echo $page; ?>"><?php include 'pages/refineFlights.php'; ?></div><?php }
 	elseif ($page == 'refineSchedule') {?><div id="<?php echo $page; ?>"><?php include 'pages/refineSchedule.php'; ?></div><?php }
+	elseif ($page == 'processDiscount') {?><div id="<?php echo $page; ?>"><?php include 'pages/processDiscount.php'; ?></div><?php }
 
     //Else show page not found error
     else {?>
