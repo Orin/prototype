@@ -3,9 +3,25 @@
 $query = 'SELECT * FROM flightSchedule';
 
 
+if($_POST['depDateStartDay'] != '' || $_POST['depTimeStarthour'] != '' || $_POST['arriveTimeStarthour'] != '')
+{
+	$query = $query.' WHERE ';
+	if($_POST['depDateStartDay'] != '')
+	{
+		$query = $query.'departuredate >= \''.$_POST['depDateStartYear'].'-'.$_POST['depDateStartMonth'].'-'.$_POST['depDateStartDay'].'\' AND departuredate <= \''.$_POST['depDateEndYear'].'-'.$_POST['depDateEndMonth'].'-'.$_POST['depDateEndDay'].'\' AND ';
+	}
+	if($_POST['depTimeStarthour'] != '')
+	{
+		$query = $query.'departureTime >= \''.$_POST['depTimeStarthour'].':'.$_POST['depTimeStartmin'].'\' AND departureTime <= \''.$_POST['depTimeEndhour'].'-'.$_POST['depTimeEndmin'].'\' AND ';
+	}
+	if($_POST['arriveTimeStarthour'] != '') 
+	{
+		$query = $query.'arrivalTime >= \''.$_POST['arriveTimeStarthour'].':'.$_POST['arriveTimeStartmin'].'\' AND arrivalTime <= \''.$_POST['arriveTimeEndhour'].'-'.$_POST['arriveTimeEndmin'].'\' AND ';
+	}
+}
+$query = substr($query, 0,-4);
 $_SESSION['applyTo'] = $query;
-$_SESSION['type'] = 0;
-
+$_SESSION['type'] = 1;
 
 $q_user = mysql_query($query);
 
