@@ -15,8 +15,8 @@ $startEnd[5] = $_POST['durEndDay'];
 
 $dbcolumns[1] = 'Global';
 $dbcolumns[2] = 'Econ';
-$dbcolumns[3] = 'Econ';
-$dbcolumns[4] = 'Business';
+$dbcolumns[3] = 'Business';
+$dbcolumns[4] = 'Group';
 
 
 

@@ -3,6 +3,8 @@
 if (isset($_SESSION['refine'])) 	{$q_user = mysql_query($_SESSION['refine']); unset($_SESSION['refine']);}
 else 								{$q_user = mysql_query("SELECT * FROM flight");}
 
+
+
 ?>
 <div id="refine">
 

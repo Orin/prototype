@@ -72,9 +72,9 @@
 						<table border="0" id="GlobalDis">
           
           <tr><th colspan="3">Modify Prices Of All Flights Matching</th></tr>
-		  <tr><td>Flight number:</td><td><?php autoFill(1,"DestDiv1");?></td></tr>
-          <tr><td>Destination:</td> <td><?php dropdown($airports);?></td></tr>
-          <tr><td>Departure:</td> <td><?php dropdown($airports);?></td></tr>
+		   <tr><td>Flight number:</td><td> <input type="text" name="Fno"/><?php //autoFill(1,"DestDiv");?></td></tr>
+          <tr><td>Destination:</td> <td><?php dropdown($airports, '', 'Dest');?></td></tr>
+          <tr><td>Departure:</td> <td><?php dropdown($airports, '', 'Dep');?></td></tr>
 
       <tr>
           <td colspan="2"><input type="submit" value="Search" /></td>

@@ -13,31 +13,22 @@
     elseif ($page == 'loginfail-pw') {?><div id="<?php echo $page; ?>"><?php include 'pages/login.php'; ?></div><?php }
     elseif ($page == 'loginfail-nousr') {?><div id="<?php echo $page; ?>"><?php include 'pages/login.php'; ?></div><?php }
     elseif ($page == 'flightinfo') {?><div id="<?php echo $page; ?>"><?php include 'pages/flightinfo.php'; ?></div><?php }
-	elseif ($page == 'viewCostingStructures') {?><div id="<?php echo $page; ?>"><?php include 'pages/viewCostingStructures.php'; ?></div><?php }
 	elseif ($page == 'processFlight') {?><div id="<?php echo $page; ?>"><?php include 'pages/processFlight.php'; ?></div><?php }
 	elseif ($page == 'FlightSelect') {?><div id="<?php echo $page; ?>"><?php include 'pages/FlightSelect.php'; ?></div><?php }
 	elseif ($page == 'scheduleInfo') {?><div id="<?php echo $page; ?>"><?php include 'pages/scheduleInfo.php'; ?></div><?php }
 	elseif ($page == 'processSchedule') {?><div id="<?php echo $page; ?>"><?php include 'pages/processSchedule.php'; ?></div><?php }
 	elseif ($page == 'editFlightSchedule') {?><div id="<?php echo $page; ?>"><?php include 'pages/editFlightSchedule.php'; ?></div><?php }
-	elseif ($page == 'AddCostingStruc') {?><div id="<?php echo $page; ?>"><?php include 'pages/AddCostingStruc.php'; ?></div><?php }
-	elseif ($page == 'processCosting') {?><div id="<?php echo $page; ?>"><?php include 'pages/processCosting.php'; ?></div><?php }
-	elseif ($page == 'EditCostingStruc') {?><div id="<?php echo $page; ?>"><?php include 'pages/EditCostingStruc.php'; ?></div><?php }
 	elseif ($page == 'users') {?><div id="<?php echo $page; ?>"><?php include 'pages/users.php'; ?></div><?php }
 	elseif ($page == 'addUser') {?><div id="<?php echo $page; ?>"><?php include 'pages/addUser.php'; ?></div><?php }
 	elseif ($page == 'report') {?><div id="<?php echo $page; ?>"><?php include 'pages/report.php'; ?></div><?php }
-	elseif ($page == 'expenditures') {?><div id="<?php echo $page; ?>"><?php include 'pages/expenditures.php'; ?></div><?php }
 	elseif ($page == 'airports') {?><div id="<?php echo $page; ?>"><?php include 'pages/airports.php'; ?></div><?php }
 	elseif ($page == 'travelAgents') {?><div id="<?php echo $page; ?>"><?php include 'pages/travelAgents.php'; ?></div><?php }
 	elseif ($page == 'flightAndScheduleSearch') {?><div id="<?php echo $page; ?>"><?php include 'pages/flightAndScheduleSearch.php'; ?></div><?php }
 	elseif ($page == 'viewFlight') {?><div id="<?php echo $page; ?>"><?php include 'pages/viewFlight.php'; ?></div><?php }
 	elseif ($page == 'viewCustomer') {?><div id="<?php echo $page; ?>"><?php include 'pages/viewCustomer.php'; ?></div><?php }
 	elseif ($page == 'customerSearch') {?><div id="<?php echo $page; ?>"><?php include 'pages/customerSearch.php'; ?></div><?php }
-	elseif ($page == 'flightinfoEdit') {?><div id="<?php echo $page; ?>"><?php include 'pages/flightinfoEdit.php'; ?></div><?php }
-	elseif ($page == 'scheduleInfoEdit') {?><div id="<?php echo $page; ?>"><?php include 'pages/scheduleInfoEdit.php'; ?></div><?php }
 	elseif ($page == 'processscheduleEdit') {?><div id="<?php echo $page; ?>"><?php include 'pages/processscheduleEdit.php'; ?></div><?php }
-	elseif ($page == 'EditCostingStrucInfo') {?><div id="<?php echo $page; ?>"><?php include 'pages/EditCostingStrucInfo.php'; ?></div><?php }
 	elseif ($page == 'discounts') {?><div id="<?php echo $page; ?>"><?php include 'pages/discounts.php'; ?></div><?php }
-	elseif ($page == 'viewCostingStructures') {?><div id="<?php echo $page; ?>"><?php include 'pages/viewCostingStructures.php'; ?></div><?php }
 	elseif ($page == 'discountsPricing') {?><div id="<?php echo $page; ?>"><?php include 'pages/discountsPricing.php'; ?></div><?php }
 	elseif ($page == 'ApplyDiscountFlight') {?><div id="<?php echo $page; ?>"><?php include 'pages/ApplyDiscountFlight.php'; ?></div><?php }
 	elseif ($page == 'ApplyDiscountSchedule') {?><div id="<?php echo $page; ?>"><?php include 'pages/ApplyDiscountSchedule.php'; ?></div><?php }
@@ -49,7 +40,9 @@
 	elseif ($page == 'refineFlights') {?><div id="<?php echo $page; ?>"><?php include 'pages/refineFlights.php'; ?></div><?php }
 	elseif ($page == 'refineSchedule') {?><div id="<?php echo $page; ?>"><?php include 'pages/refineSchedule.php'; ?></div><?php }
 	elseif ($page == 'processDiscount') {?><div id="<?php echo $page; ?>"><?php include 'pages/processDiscount.php'; ?></div><?php }
-
+	elseif ($page == 'processPriceChange') {?><div id="<?php echo $page; ?>"><?php include 'pages/processPriceChange.php'; ?></div><?php }
+	elseif ($page == 'removeDBrow') {?><div id="<?php echo $page; ?>"><?php include 'pages/removeDBrow.php'; ?></div><?php }
+	elseif ($page == 'processFlightUpdate') {?><div id="<?php echo $page; ?>"><?php include 'pages/processFlightUpdate.php'; ?></div><?php }
     //Else show page not found error
     else {?>
       <div class="error">

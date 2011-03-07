@@ -1,31 +1,26 @@
 <?php 
 function autoFill($dataSet, $divName)
-{
-	echo '<SCRIPT language="JavaScript">
-	';
+{ ?>
+	<SCRIPT >
 	
-	echo 'function autoFillsPre(key,textBox, divname) 
-	{';
 	
-	echo '
-	var dataSet=[];
-	';
-	
-	for ($i =0;  $i<count($dataSet); $i++)
+	function autoFillsPre(key,textBox, divname) 
 	{
-		echo 'dataSet['.$i.'] = "'.$dataSet[$i].'";
-		';
-	}
 	
-	echo 'document.write(dataSet[1]);
-	';
-	echo 'autoFills(key,textBox,dataSet,divname);';
-	echo '
-	}';
+		var dataSet=[];
+		
+		dataSet[0] = 'hi';
+		dataSet[1] = 'hffffi';
+	<?php	for ($i =0;  $i<count($dataSet); $i++) { ?>
+		dataSet[<?php echo $i; ?>] = '<?php echo $dataSet[$i]; ?>';
+	<?php } ?>
+	autoFills(key,textBox,dataSet,divname);
+	
+	}
 
-	echo '</SCRIPT>
-	';
-	echo '<div id="'.$divName.'"><input  id="blargh" type=text autocomplete="off" name="FNo" onkeyup="autoFillsPre(event.keyCode,this,\''.$divName.'\');"/></div>';
+	</SCRIPT>
+	
+	<?php echo '<div id="'.$divName.'"><input  id="blargh" type=text autocomplete="off" name="FNo" onkeyup="autoFillsPre(event.keyCode,this,\''.$divName.'\');"/></div>';
 }
 
 function showFlightTable($q_user)
@@ -43,6 +38,7 @@ echo '<th><h4>Group Seats</h4></th>';
 echo '<th><h4>Business Cost</h4></th>';
 echo '<th><h4>Economy Cost</h4></th>';
 echo '<th><h4>Group Cost</h4></th>';
+echo '<th><h4>Discount All Classes</h4></th>';
 echo '<th><h4>Delete</h4></th>';
 echo '</tr>';
 
@@ -50,6 +46,7 @@ for ($i =0;  $i<mysql_num_rows($q_user); $i++)
 {
 $data = mysql_fetch_array($q_user);
 $flightNo = $data['flightNo'];
+$discounts = getDiscounts($flightNo, 1);
 echo '<tr>';
 echo '<td onClick="select(\''.$flightNo.'\',1);">';
 echo "<a href=\"flightinfoEdit.php?flightNo=".$flightNo."\">$flightNo</a>";
@@ -80,19 +77,24 @@ echo $data['groupseats'];
 echo '</td>';
 
 echo '<td onClick="select(\''.$flightNo.'\',1);">';
-echo '&pound100';
+echo ($data['busPrice']*(1-($discounts[4]/100)))-$discounts[5].'(&pound'.$data['busPrice'].')';
 echo '</td>';
 
 echo '<td onClick="select(\''.$flightNo.'\',1);">';
-echo '&pound75';
+echo ($data['econPrice']*(1-($discounts[2]/100)))-$discounts[3].'(&pound'.$data['econPrice'].')';
 echo '</td>';
 
 echo '<td onClick="select(\''.$flightNo.'\',1);">';
-echo '&pound50';
+echo ($data['groupPrice']*(1-($discounts[6]/100)))-$discounts[7].'(&pound'.$data['groupPrice'].')';
+echo '</td>';
+
+echo '<td onClick="select(\''.$flightNo.'\',1);">';
+echo 'percentage : %'.$discounts[0].'<BR/>';
+echo 'value :    &pound'.$discounts[1];
 echo '</td>';
 
 echo '<td>';
-echo '<a href="page.htm"><img src="icons/delete.gif" /></a>';
+echo '<a href="removeDBrow.html"><img src="icons/delete.gif" /></a>';
 echo '</td>';
 
 echo '</tr>';
@@ -102,6 +104,90 @@ echo '</table>';
 echo '</div>';
 }
 
+
+function showScheduleTable($q_user)
+{
+
+echo '<div id="disInfo">
+
+<table border="1" align=left id="displayInfo">
+<tr>
+<th><h4>FlightNo</h4></th>
+<th><h4>Departure Date</h4></th>
+<th><h4>Departure Time</h4></th>
+<th><h4>Arrival time</h4></th>
+<th><h4>Discount</h4></th>
+<th><h4>Delete</h4></th>
+</tr>';
+
+for ($i =0;  $i<mysql_num_rows($q_user); $i++)
+{
+$data = mysql_fetch_array($q_user);
+$ScheduleID = $data['ScheduleID'];
+$discounts = getDiscounts($ScheduleID, 0);
+$FlightNo = $data['FlightNo'];
+echo '<td>';
+echo '<a href="ViewFlight.php?FNo='.$FlightNo.'">'.$FlightNo.'</a>';  
+echo '</td>';
+
+echo '<td onClick="select('.$ScheduleID.',2);">';
+echo $data['departuredate'];
+echo '</td>';
+
+echo '<td onClick="select('.$ScheduleID.',2);">';
+echo $data['departureTime'];
+echo '</td>';
+
+echo '<td onClick="select('.$ScheduleID.',2);">';
+echo $data['arrivalTime'];
+echo '</td>';
+
+echo '<td onClick="select(\''.$flightNo.'\',2);">';
+echo 'percentage : %'.$discounts[0].'<BR/>';
+echo 'value :    &pound'.$discounts[1];
+echo '</td>';
+
+echo '<td>';
+echo '<a href="removeDBrow.html"><img src="icons/delete.gif" /></a>';
+echo '</td>';
+
+
+
+echo '</tr>';
+
+}
+echo '</table>';
+echo '</div>';
+}
+
+function getDiscounts ($primaryKey, $type)
+{
+	$discounts[0] = 0;
+	$discounts[1] = 0;
+	$discounts[2] = 0;
+	$discounts[3] = 0;
+	$discounts[4] = 0;
+	$discounts[5] = 0;
+	$discounts[6] = 0;
+	$discounts[7] = 0;
+	
+	if($type == 1) 	{$query = 'SELECT * FROM flight_discounts WHERE refID = \''.$primaryKey.'\'';}
+	else			{$query = 'SELECT * FROM schedule_discounts WHERE refID = \''.$primaryKey.'\'';}
+	$q_user = mysql_query($query);
+	for ($i =0;  $i<mysql_num_rows($q_user); $i++)
+	{
+		$data = mysql_fetch_array($q_user);
+		$discounts[0] += $data['percentageGlobal'];
+		$discounts[1] += $data['valueGlobal'];
+		$discounts[2] += $data['percentageEcon'];
+		$discounts[3] += $data['valueEcon'];
+		$discounts[4] += $data['percentageBusiness'];
+		$discounts[5] += $data['valueBusiness'];
+		$discounts[6] += $data['percentageGroup'];
+		$discounts[7] += $data['valueGroup'];
+	}
+	return $discounts;
+}
 function dropdown($entries, $default = '', $name='') {
 	echo "<select name=\"$name\">";
 	for ($i = 0; $i < count($entries); $i++) {
@@ -142,13 +228,13 @@ function datePicker($defDay = FALSE, $defMonth = FALSE, $name = '') {
 	</div>';
 }
 
-function datePickerBackEnd($name = '') {
+function datePickerBackEnd($name = '', $defDay = -1, $defMonth= -1, $defYear= '') {
 	if (!$name) { $name = ''; }
 	echo '<div class="date-select">';
 	//Day
 	echo '<select class="day" name='.$name.'Day'.'>';
 	for ($i = 1; $i < 31; $i++) {
-		?><option><?php
+		if ($i == $defDay) { ?><option selected><?php } else { ?><option><?php }
 		echo $i.'</option>';
 	}
 	echo '<option selected></option>';
@@ -156,12 +242,12 @@ function datePickerBackEnd($name = '') {
 	
 	echo '<select class="month"  name='.$name.'Month'.'>';
 	for ($i = 1; $i < 12; $i++) {
-		?><option><?php
+		if ($i == $defMonth) { ?><option selected><?php } else { ?><option><?php }
 		echo $i.'</option>';
 	}
 	echo '<option selected></option>';
 	echo '</select>';
-	echo '<input size="2" type="text" class="year"  name='.$name.'Year>
+	echo '<input size="2" type="text" class="year"  name='.$name.'Year value="'.$defYear.'">
 	</div>';
 }
 

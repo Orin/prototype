@@ -1,9 +1,21 @@
 <?php
-$q_user = mysql_query("SELECT * FROM flight");
+$query = 'SELECT * FROM flight';
+if($_POST['Fno'] != ''){$query =  $query.' WHERE flightNo= \''.$_POST['Fno'].'\'';}
+else
+{ 
+	if($_POST['Dest'] != '' && $_POST['Dep'] != '') {$query = $query.' WHERE destination = \''.$_POST['Dest'].'\' AND departure = \''.$_POST['Dep'].'\'';}
+	else if($_POST['Dep'] != '') {$query = $query.' WHERE departure = \''.$_POST['Dep'].'\'';}
+	else if($_POST['Dest'] != '') {$query = $query.' WHERE destination = \''.$_POST['Dest'].'\'';}
+}
+$_SESSION['applyTo'] = $query;
+$_SESSION['type'] = 1;
+
+
+$q_user = mysql_query($query);
 ?>
 <div id="globalDiscount" >
 
-	<form name="setGlobalDiscount" method="post" action="">
+	<form name="setGlobalDiscount" method="post" action="processPriceChange.html">
 						<table border="0" id="GlobalDis">
 								
 								<tr><th colspan="2">Set Flight Discount</th></tr>

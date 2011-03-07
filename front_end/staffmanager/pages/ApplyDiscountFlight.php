@@ -9,7 +9,6 @@ else
 	else if($_POST['Dest'] != '') {$query = $query.' WHERE destination = \''.$_POST['Dest'].'\'';}
 }
 $_SESSION['applyTo'] = $query;
-$_SESSION['type'] = 1;
 
 
 $q_user = mysql_query($query);

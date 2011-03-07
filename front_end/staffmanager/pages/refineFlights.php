@@ -9,7 +9,7 @@ $depDate[2] = $_POST['depDateYear'];
 $deptime[0] = $_POST['deptimehour'];
 $deptime[1] = $_POST['deptimemin'];
 
-$searchString = 'SELECT DISTINCT flight.flightNo, destination, departure, capacity, econemyseats, businessseats, groupseats, econPrice, busPrice, groupPrice FROM flight, flightSchedule WHERE flight.flightNo = flightSchedule.FlightNo AND';
+$searchString = 'SELECT DISTINCT flight.flightNo, destination, departure, capacity, econemyseats, businessseats, groupseats, econPrice, busPrice, groupPrice FROM flight, flightSchedule WHERE ';
 if($dest != ''){$searchString = $searchString.' destination=\''.$dest.'\' AND';}
 if($dep != ''){$searchString = $searchString.' departure=\''.$dep.'\' AND';}
 if($depDate[0] != '' && $depDate[1] != '' && $depDate[2] != ''){$searchString = $searchString.'  departuredate=\''.$depDate[2].'-'.$depDate[1].'-'.$depDate[0].'\' AND';}
