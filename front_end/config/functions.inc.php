@@ -118,7 +118,7 @@ function datePicker($defDay = FALSE, $defMonth = FALSE, $name = '') {
 	echo '<div class="date-select">';
 	//Day
 	echo '<select class="day" name='.$name.'Day'.'>';
-	for ($i = 1; $i < 31; $i++) {
+	for ($i = 1; $i < 32; $i++) {
 		if ($i == $defDay) { ?><option selected><?php } else { ?><option><?php }
 		echo $i.'</option>';
 	}
@@ -126,9 +126,9 @@ function datePicker($defDay = FALSE, $defMonth = FALSE, $name = '') {
 	echo '</select>';
 	
 	echo '<select class="month"  name='.$name.'Month'.'>';
-	for ($i = 1; $i < 12; $i++) {
+	for ($i = 1; $i < 13; $i++) {
 		if ($i == $defMonth) { ?><option selected><?php } else { ?><option><?php }
-		echo $i.'</option>';
+		echo date("F", mktime(0,0,0,$i)).'</option>';
 	}
 	echo '<option></option>';
 	echo '</select>';
