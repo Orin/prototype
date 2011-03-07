@@ -18,6 +18,7 @@ if(mysql_num_rows($query) == 1)
 	if($_POST['pw'] == $data['password']) 
 	{ 
 		$_SESSION['name']=$data['displayName'];
+		$_SESSION['level']=$data['accessLevel'];
 		header("Location: index.html");
 		exit;
 	} 

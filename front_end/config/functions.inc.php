@@ -23,6 +23,12 @@ function autoFill($dataSet, $divName)
 	<?php echo '<div id="'.$divName.'"><input  id="blargh" type=text autocomplete="off" name="FNo" onkeyup="autoFillsPre(event.keyCode,this,\''.$divName.'\');"/></div>';
 }
 
+function accessLevel ($page, $level)
+{
+	return true;
+
+}
+
 function showFlightTable($q_user)
 {
 echo '<div id="disInfo">';
