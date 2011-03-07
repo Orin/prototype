@@ -4,8 +4,8 @@
 		
 		<!--Search fields populated from available destinations in DB -->
 		<table id="search-table">
-			<tr class="from"><td>From</td><td><?php dropdown($destinations, ''); ?></td></tr>
-			<tr class="to"><td>To</td><td><?php dropdown($destinations, ''); ?></td></tr>
+			<tr class="from"><td>From</td><td><?php dropdown($destinations, '', 'from', '150px'); ?></td></tr>
+			<tr class="to"><td>To</td><td><?php dropdown($destinations,'', 'to', '150px'); ?></td></tr>
 			<tr class="depart"><td>Depart</td><td><?php datePicker(); ?></td></tr>
 			<tr class="return"><td>Return</td><td><?php datePicker(); ?></td></tr>
 			<tr class="spacer small"><td></td></tr>

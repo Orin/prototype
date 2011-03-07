@@ -102,8 +102,8 @@ echo '</table>';
 echo '</div>';
 }
 
-function dropdown($entries, $default = '', $name='') {
-	echo "<select name=\"$name\">";
+function dropdown($entries, $default = '', $name='', $width = 'auto') {
+	echo "<select name=\"$name\" style=\"width:$width\">";
 	for ($i = 0; $i < count($entries); $i++) {
 		if ($entries[$i] == $default) { ?><option selected><?php } else { ?><option><?php }
 		echo $entries[$i]; ?></option>
