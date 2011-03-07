@@ -99,7 +99,7 @@ a.menu:hover {color:#000; text-decoration:underline;}
 
 .left-column {
 	float: left;
-	width: 300px;
+	width: 350px;
 	border-right:1px solid #ccc;
 	padding-top:20px;
 	margin-right:10px;
@@ -111,7 +111,7 @@ a.menu:hover {color:#000; text-decoration:underline;}
 	float:left; 
 	padding-top:20px;
 	word-wrap:normal;
-	width:660px;
+	width:600px;
 }
 
 #flight-search, #booking-search {
