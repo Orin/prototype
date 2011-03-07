@@ -22,6 +22,7 @@
             elseif ($page == 'bookingInfo') {?><div id="<?php echo $page; ?>"><?php include 'pages/bookingInfo.php'; ?></div><?php }
 			elseif ($page == 'manage-booking') {?><div id="<?php echo $page; ?>"><?php include 'pages/manage-booking.php'; ?></div><?php }
 			elseif ($page == 'travel-agents') {?><div id="<?php echo $page; ?>"><?php include 'pages/travel-agents.php'; ?></div><?php }
+			elseif ($page == 'searchProcess') {?><div id="<?php echo $page; ?>"><?php include 'pages/searchProcess.php'; ?></div><?php }
             
             //Else show page not found error
             else {?>
