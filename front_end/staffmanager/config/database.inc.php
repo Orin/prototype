@@ -1,4 +1,10 @@
 <?php
+
+//Depreciated! Please use front_end/config/database.inc.php for all future relevant functions.
+//staffmanager will be updated to refer to front_end_config/database.inc.php
+
+
+
 //error_reporting(E_ALL); 
 //ini_set('display_errors', 1); 
 
