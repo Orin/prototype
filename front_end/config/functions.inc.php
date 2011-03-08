@@ -318,4 +318,28 @@ function show_header($page, $admin_no_header) {
 	}
 	return true;
 }
+
+
+function airCodeLookup($needle, $type) {
+	if ($needle == "BLANK") return $needle;
+	
+	if ($type == "CODE") {
+		$query = "SELECT name FROM airports WHERE fullName = '".$needle."'";
+		$result = mysql_query($query);
+	} elseif ($type == "FULL") {
+		$query = "SELECT fullName FROM airports WHERE name = '".$needle."'";
+		$result = mysql_query($query);
+	} else {
+		return "Function Error [airCodeLookup(".$needle.", ".$type.")]: Invalid type.";
+	}
+	
+	if (mysql_num_rows($result) == 0) {
+		return "Function Error [airCodeLookup(".$needle.", ".$type.")]: Needle not found.";
+	}
+	while ($row = mysql_fetch_array($result)) {
+		if ($type == "CODE") { return $row['name']; }
+		elseif ($type == "FULL") { return $row['fullName']; }
+		else return "Function Error [airCodeLookup(".$needle.", ".$type.")]: Invalid type.";
+	}
+}
 ?>
