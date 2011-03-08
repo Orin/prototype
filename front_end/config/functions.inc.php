@@ -1,5 +1,5 @@
 <?php 
-function autoFill($dataSet, $divName)
+function autoFill($dataSet, $divName, $elName = '')
 { ?>
 	<SCRIPT >
 	
@@ -20,7 +20,7 @@ function autoFill($dataSet, $divName)
 
 	</SCRIPT>
 	
-	<?php echo '<div id="'.$divName.'"><input  id="blargh" type=text autocomplete="off" name="FNo" onkeyup="autoFillsPre(event.keyCode,this,\''.$divName.'\');"/></div>';
+	<?php echo '<div id="'.$divName.'"><input  id="blargh" type=text autocomplete="off" name="'.$elName.'" onkeyup="autoFillsPre(event.keyCode,this,\''.$divName.'\');"/></div>';
 }
 
 function accessLevel ($page, $level)
@@ -29,7 +29,7 @@ function accessLevel ($page, $level)
 
 }
 
-function showFlightTable($q_user)
+function showFlightTable($q_user, $URL = 'main.html')
 {
 echo '<div id="disInfo">';
 echo '<table border="1" align=left id="displayInfo">';
@@ -53,54 +53,55 @@ for ($i =0;  $i<mysql_num_rows($q_user); $i++)
 $data = mysql_fetch_array($q_user);
 $flightNo = $data['flightNo'];
 $discounts = getDiscounts($flightNo, 1);
-echo '<tr>';
-echo '<td onClick="select(\''.$flightNo.'\',1);">';
-echo "<a href=\"flightinfoEdit.php?flightNo=".$flightNo."\">$flightNo</a>";
+echo '<tr onClick="javascript:postValue(\'flightinfo.html\', {flightNo:\''.$flightNo.'\'});">';
+echo '<td>';
+echo '<a href="javascript:postValue(\'viewFlight.html\', {flightNo:\''.$flightNo.'\'});">'.$flightNo.'</a>';
 echo '</td>';
 
-echo '<td onClick="select(\''.$flightNo.'\',1);">';
+
+echo '<td >';
 echo $data['destination'];
 echo '</td>';
 
-echo '<td onClick="select(\''.$flightNo.'\',1);">';
+echo '<td>';
 echo $data['departure'];
 echo '</td>';
 
-echo '<td onClick="select(\''.$flightNo.'\',1);">';
+echo '<td>';
 echo $data['capacity'];
 echo '</td>';
 
-echo '<td onClick="select(\''.$flightNo.'\',1);">';
+echo '<td>';
 echo $data['econemyseats'];
 echo '</td>';
 
-echo '<td onClick="select(\''.$flightNo.'\',1);">';
+echo '<td>';
 echo $data['businessseats'];
 echo '</td>';
 
-echo '<td onClick="select(\''.$flightNo.'\',1);">';
+echo '<td>';
 echo $data['groupseats'];
 echo '</td>';
 
-echo '<td onClick="select(\''.$flightNo.'\',1);">';
-echo ($data['busPrice']*(1-($discounts[4]/100)))-$discounts[5].'(&pound'.$data['busPrice'].')';
-echo '</td>';
-
-echo '<td onClick="select(\''.$flightNo.'\',1);">';
-echo ($data['econPrice']*(1-($discounts[2]/100)))-$discounts[3].'(&pound'.$data['econPrice'].')';
-echo '</td>';
-
-echo '<td onClick="select(\''.$flightNo.'\',1);">';
-echo ($data['groupPrice']*(1-($discounts[6]/100)))-$discounts[7].'(&pound'.$data['groupPrice'].')';
-echo '</td>';
-
-echo '<td onClick="select(\''.$flightNo.'\',1);">';
-echo 'percentage : %'.$discounts[0].'<BR/>';
-echo 'value :    &pound'.$discounts[1];
+echo '<td>';
+echo ($data['busPrice']*(1-($discounts[4]/100)))-$discounts[5].'(&pound;'.$data['busPrice'].')';
 echo '</td>';
 
 echo '<td>';
-echo '<a href="removeDBrow.html"><img src="icons/delete.gif" /></a>';
+echo ($data['econPrice']*(1-($discounts[2]/100)))-$discounts[3].'(&pound;'.$data['econPrice'].')';
+echo '</td>';
+
+echo '<td>';
+echo ($data['groupPrice']*(1-($discounts[6]/100)))-$discounts[7].'(&pound;'.$data['groupPrice'].')';
+echo '</td>';
+
+echo '<td>';
+echo 'percentage : %'.$discounts[0].'<BR/>';
+echo 'value :    &pound;'.$discounts[1];
+echo '</td>';
+
+echo '<td>';
+echo '<a href="javascript:postValue(\'removeDBrow.html\', {type:0 , primaryKey:\''.$flightNo.'\', URL:\''.$URL.'\'});"><img src="icons/delete.gif" /></a>';
 echo '</td>';
 
 echo '</tr>';
@@ -111,7 +112,7 @@ echo '</div>';
 }
 
 
-function showScheduleTable($q_user)
+function showScheduleTable($q_user, $URL = 'main.html')
 {
 
 echo '<div id="disInfo">
@@ -132,29 +133,30 @@ $data = mysql_fetch_array($q_user);
 $ScheduleID = $data['ScheduleID'];
 $discounts = getDiscounts($ScheduleID, 0);
 $FlightNo = $data['FlightNo'];
+echo '<tr onClick="javascript:postValue(\'scheduleInfo.html\', {scheduleID:\''.$ScheduleID.'\'});">';
 echo '<td>';
-echo '<a href="ViewFlight.php?FNo='.$FlightNo.'">'.$FlightNo.'</a>';  
+echo '<a href="javascript:postValue(\'viewFlight.html\', {flightNo:\''.$FlightNo.'\'});">'.$FlightNo.'</a>';  
 echo '</td>';
 
-echo '<td onClick="select('.$ScheduleID.',2);">';
+echo '<td>';
 echo $data['departuredate'];
 echo '</td>';
 
-echo '<td onClick="select('.$ScheduleID.',2);">';
+echo '<td>';
 echo $data['departureTime'];
 echo '</td>';
 
-echo '<td onClick="select('.$ScheduleID.',2);">';
+echo '<td>';
 echo $data['arrivalTime'];
 echo '</td>';
 
-echo '<td onClick="select(\''.$flightNo.'\',2);">';
+echo '<td>';
 echo 'percentage : %'.$discounts[0].'<BR/>';
-echo 'value :    &pound'.$discounts[1];
+echo 'value :    &pound;'.$discounts[1];
 echo '</td>';
 
 echo '<td>';
-echo '<a href="removeDBrow.html"><img src="icons/delete.gif" /></a>';
+echo '<a href="javascript:postValue(\'removeDBrow.html\', {type:1 , primaryKey:'.$ScheduleID.', URL:\''.$URL.'\'});"><img src="icons/delete.gif" /></a>';
 echo '</td>';
 
 

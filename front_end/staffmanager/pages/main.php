@@ -21,7 +21,7 @@
         <table> <?php $test[0]='sappeningsbitch';
 					  $test[1]='sappenings';
 					  echo $test[0]." - ".$test[1]; ?>
-        <tr><td>Flight No:</td><td><?php autoFill($test,"DestDiv");?></td></tr>
+        <tr><td>Flight No:</td><td><?php autoFill($test,"DestDiv","flightNo");?></td></tr>
         <tr><td><input type="submit" value="Search" /></td></tr>
         </table>
         </form>        

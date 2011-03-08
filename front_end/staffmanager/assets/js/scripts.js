@@ -3,21 +3,18 @@ function select(key, type)
 	//type =1 is flight
 	//type =2 is schedule
 	// type=3 is costing
-	if(type=='1')
+	/*if(type=='1')
 	{
-
-		window.location = "flightinfo.html";
+		postValue("flightinfo.html", key:'');
 
 	}
 	else if(type =='2')
 	{
-		//window.location = "scheduleInfoEdit.php?ScheduleID="+key;
 		window.location = "scheduleInfo.html";
 	}
 
 	else if(type =='3')
 	{
-		//window.location = "EditCostingStrucInfo.php?priceID="+key;
 		window.location = "EditCostingStrucInfo.html";
 	}
 	else if(type=='4')
@@ -31,10 +28,27 @@ function select(key, type)
 	else if(type=='6')
 	{
 		window.location = "UserEdit.php";
-	}
+	}*/
 
 
 }
+
+function postValue (to,p) {
+	
+  var myForm = document.createElement("form");
+  myForm.method="post" ;
+  myForm.action = to ;
+  for (var k in p) {
+    var myInput = document.createElement("input") ;
+    myInput.setAttribute("name", k) ;
+    myInput.setAttribute("value", p[k]);
+    myForm.appendChild(myInput) ;
+  }
+  document.body.appendChild(myForm) ;
+  myForm.submit() ;
+  document.body.removeChild(myForm) ;
+}
+
 function getSugested(txt, dataSet)
 	{
 

@@ -1,7 +1,6 @@
 <?php
-$FlightId = $page = (isset($_GET['FlightID']))? $_GET['FlightID'] : null; 
+$FlightId = $page = (isset($_POST['flightNo']))? $_POST['flightNo'] : null; 
 
-$FlightId = 'ABZ-EDI-101';
 
 $flightData[0] = '';
 $flightData[1] = '';

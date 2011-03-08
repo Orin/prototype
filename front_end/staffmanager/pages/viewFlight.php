@@ -1,6 +1,6 @@
 <?php
-//$flightNo = $_GET['FNo'];
-$query = "SELECT * FROM flight WHERE flightNo = 'TA-LGW-MAN-101'";
+$flightNo = $_POST['flightNo'];
+$query = "SELECT * FROM flight WHERE flightNo = '$flightNo'";
 $result = mysql_query($query);
 $data = mysql_fetch_array($result);
 ?>
@@ -15,19 +15,18 @@ $data = mysql_fetch_array($result);
 	<tr><td>Economy Seats:</td><td> <?php echo $data['econemyseats'];?></td></tr>
 	<tr><td>Business Seats: </td><td><?php echo $data['businessseats'];?></td></tr>
 	<tr><td>Group Seats: </td><td><?php echo $data['groupseats'];?></td></tr>
-	<tr><td>Economy Price: </td><td>&pound100 </td></tr>
-	<tr><td>Business Price: </td><td>&pound75 </td></tr>
-	<tr><td>Group Price: </td><td>&pound50 </td></tr>
+	<tr><td>Economy Price: </td><td>&pound;<?php echo $data['econPrice']; ?></td></tr>
+	<tr><td>Business Price: </td><td>&pound;<?php echo $data['busPrice']; ?></td></tr>
+	<tr><td>Group Price: </td><td>&pound;<?php echo $data['groupPrice']; ?></td></tr>
 </table>
 
 </div>
 
-<?php $FNo = 'TA-LGW-MAN-101';?>
 
 
 <div id="scheduleContainer">
 
-<h3> Flight Number: TA-LGW-MAN-101 flight schedules </h3>
+<h3> Flight Number: <?php echo $flightNo;?> flight schedules </h3>
 
 <table border="1" align=left id="displayInfo">
 <tr>
@@ -43,7 +42,7 @@ $data = mysql_fetch_array($result);
 </tr>
 
 <?php
-$schedules = "SELECT * FROM flightSchedule WHERE flightNo = 'TA-LGW-MAN-101'";
+$schedules = "SELECT * FROM flightSchedule WHERE flightNo = '$flightNo'";
 $schedules_result = mysql_query($schedules);
 
 for ($i =0;  $i<mysql_num_rows($schedules_result); $i++)

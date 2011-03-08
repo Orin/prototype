@@ -23,6 +23,6 @@ else 								{$q_user = mysql_query("SELECT * FROM flightSchedule");}
 </div>
 
 <?php 
-showScheduleTable($q_user);
+showScheduleTable($q_user, 'editFlightSchedule.html');
 ?>
 

@@ -23,4 +23,4 @@ else 								{$q_user = mysql_query("SELECT * FROM flight");}
   </table>
 </form>
 </div>
-<?php showFlightTable($q_user);?>
+<?php showFlightTable($q_user, 'FlightSelect.html');?>

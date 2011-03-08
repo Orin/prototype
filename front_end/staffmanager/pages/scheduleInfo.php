@@ -1,8 +1,7 @@
 <?php
 
-$ScheduleID = $page = (isset($_GET['ScheduleID']))? $_GET['ScheduleID'] : null; 
+$ScheduleID = $page = (isset($_POST['scheduleID']))? $_POST['scheduleID'] : null; 
 
-$ScheduleID = '1';
 $scheduleData[0] = '';
 $scheduleData[1] = '';
 $scheduleData[2] = -1;
@@ -40,9 +39,6 @@ else
 	$goto = 'processSchedule.html';
 }
 
-
-echo $scheduleData[3];
-echo $scheduleData[4];
 
 ?>
 

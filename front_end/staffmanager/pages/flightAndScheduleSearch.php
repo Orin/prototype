@@ -2,9 +2,9 @@
 $criteria[0] = $_POST['Dest'];
 $criteria[1] = $_POST['Dep'];
 
-$criteria[2] = $_POST['depDateyear'];
-$criteria[3] = $_POST['depDatemonth'];
-$criteria[4] = $_POST['depDateday'];
+$criteria[2] = $_POST['depDateYear'];
+$criteria[3] = $_POST['depDateMonth'];
+$criteria[4] = $_POST['depDateDay'];
 
 $criteria[5] = $_POST['depTimehour'];
 $criteria[6] = $_POST['depTimemin'];
@@ -50,7 +50,7 @@ $result = mysql_query($query);
 
 ?>
 
-
+<h3>Flights With Schedules</h3>
 <table border="1" align=left id="displayInfo">
 <tr>
 <th><h4>ScheduleID</h4></th>
@@ -79,11 +79,11 @@ for ($i =0;  $i<mysql_num_rows($result); $i++)
 
 echo '<tr>';
 echo '<td>';
-echo "<a href=\"scheduleInfoEdit.html\">$ScheduleID</a>";
+echo '<a href="javascript:postValue(\'scheduleInfo.html\', {scheduleID:\''.$ScheduleID.'\'});">'.$ScheduleID.'</a>';
 echo '</td>';
 
 echo '<td>';
-echo "<a href=\"viewFlight.html\">$FlightNo</a>";  
+echo '<a href="javascript:postValue(\'viewFlight.html\', {flightNo:\''.$FlightNo.'\'});">'.$FlightNo.'</a>';  
 echo '</td>';
 
 echo '<td>';
@@ -127,6 +127,27 @@ echo '</tr>';
 }?>
 </table>
 </div>
+
+<h3>All Flights</h3>
+<?php
+
+$query = "SELECT * FROM flight WHERE ";
+
+if(!empty($criteria[0]))
+{
+	$query = $query." destination ='$criteria[0]' AND";
+}
+if(!empty($criteria[1]))
+{
+	$query = $query." departure ='$criteria[1]' AND";
+}
+
+$query = substr($query, 0,-3);
+
+$result = mysql_query($query);
+
+showFlightTable($result, 'flightAndScheduleSearch.html');
+?>
 
 
 
