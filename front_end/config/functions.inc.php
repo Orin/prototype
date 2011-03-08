@@ -197,7 +197,7 @@ function getDiscounts ($primaryKey, $type)
 	return $discounts;
 }
 function dropdown($entries, $default = '', $name='', $width = 'auto') {
-	echo "<select name=\"$name\" style=\"width:$width\">";
+	echo "<select name=\"".$name."\" style=\"width:".$width."\">";
 	for ($i = 0; $i < count($entries); $i++) {
 		if ($entries[$i] == $default) { ?><option selected><?php } else { ?><option><?php }
 		echo $entries[$i]; ?></option>
@@ -210,8 +210,11 @@ function datePicker($defDay = FALSE, $defMonth = FALSE, $name = '') {
 	if (!$defMonth) { $defMonth = date("m"); }
 	if (!$name) { $name = ''; }
 	echo '<div class="date-select">';
-	//Day
-	echo '<select class="day" name='.$name.'Day'.'>';
+	//Day 
+	?>
+
+    <?php
+	echo '<select class="day" name="'.$name.'Day">';
 	for ($i = 1; $i < 32; $i++) {
 		if ($i == $defDay) { ?><option selected><?php } else { ?><option><?php }
 		echo $i.'</option>';
@@ -219,7 +222,7 @@ function datePicker($defDay = FALSE, $defMonth = FALSE, $name = '') {
 	echo '<option></option>';
 	echo '</select>';
 	
-	echo '<select class="month"  name='.$name.'Month'.'>';
+	echo '<select class="month"  name="'.$name.'Month">';
 	for ($i = 1; $i < 13; $i++) {
 		if ($i == $defMonth) { ?><option selected><?php } else { ?><option><?php }
 		echo date("F", mktime(0,0,0,$i)).'</option>';
@@ -227,7 +230,7 @@ function datePicker($defDay = FALSE, $defMonth = FALSE, $name = '') {
 	echo '<option></option>';
 	echo '</select>';
 	
-	echo '<select class="year"  name='.$name.'Year'.'>';
+	echo '<select class="year"  name="'.$name.'Year">';
 	for ($i = 2010; $i < 2012; $i++) {
 		echo '<option>'.$i.'</option>';
 	}
