@@ -422,12 +422,8 @@ Used to determine remaining seats on a specified flight in specified class
 function availableSeats($scheduleID, $class) {
 	$query = "
 	SELECT 
-		flights.flightNo,
-		flightSchedule.departuredate, flightSchedule.departureTime, 
-		flightSchedule.arrivalDate, flightSchedule.arrivalTime, 
-		classes.className,
 		COUNT(passengers.passengerID),
-		flights.econSeats, flights.econPrice, flights.busSeats, flights.busPrice
+		flights.econSeats, flights.busSeats
 	FROM 
 		flights, flightSchedule, bookings, passengers, classes, bookings_passengers 
 	WHERE 
