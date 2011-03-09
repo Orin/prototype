@@ -17,7 +17,7 @@ function resetForm()
 		<!--Search fields populated from available destinations in DB -->
 		<table id="search-table">
 			<tr class="from"><td>From</td><td><?php dropdown($destinations, '', 'fromDrop', '196px'); ?></td></tr>
-			<tr class="to"><td>To</td><td><?php dropdown($destinations,'', 'to', '196px'); ?></td></tr>
+			<tr class="to"><td>To</td><td><?php dropdown($destinations,'', 'toDrop', '196px'); ?></td></tr>
 			<tr class="depart"><td>Depart</td><td><?php datePicker(FALSE, FALSE, 'depart'); ?></td></tr>
 			<tr class="return"><td>Return</td><td><?php datePicker(FALSE, FALSE, 'return'); ?></td></tr>
 			<tr class="spacer small"><td></td></tr>

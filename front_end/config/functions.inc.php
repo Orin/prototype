@@ -28,7 +28,6 @@ function accessLevel ($page, $level)
 	return true;
 
 }
-
 function showFlightTable($q_user, $URL = 'main.html')
 {
 echo '<div id="disInfo">';
@@ -138,7 +137,6 @@ function displayDiscounts ($originalPrice, $valuedis, $percentDis, $globalValue,
 	else {return '<p class="normPrice"> &pound;'.$originalPrice.'</p> <p class="disPrice"> &pound;'.$discountTotal.'</p>';}
 }
 
-
 function showScheduleTable($q_user, $URL = 'main.html')
 {
 
@@ -224,7 +222,7 @@ function getDiscounts ($primaryKey, $type)
 	return $discounts;
 }
 function dropdown($entries, $default = '', $name='', $width = 'auto') {
-	echo "<select name=\"$name\" style=\"width:$width\">";
+	echo "<select name=\"".$name."\" style=\"width:".$width."\">";
 	for ($i = 0; $i < count($entries); $i++) {
 		if ($entries[$i] == $default) { ?><option selected><?php } else { ?><option><?php }
 		echo $entries[$i]; ?></option>
@@ -237,8 +235,11 @@ function datePicker($defDay = FALSE, $defMonth = FALSE, $name = '') {
 	if (!$defMonth) { $defMonth = date("m"); }
 	if (!$name) { $name = ''; }
 	echo '<div class="date-select">';
-	//Day
-	echo '<select class="day" name='.$name.'Day'.'>';
+	//Day 
+	?>
+
+    <?php
+	echo '<select class="day" name="'.$name.'Day">';
 	for ($i = 1; $i < 32; $i++) {
 		if ($i == $defDay) { ?><option selected><?php } else { ?><option><?php }
 		echo $i.'</option>';
@@ -246,7 +247,7 @@ function datePicker($defDay = FALSE, $defMonth = FALSE, $name = '') {
 	echo '<option></option>';
 	echo '</select>';
 	
-	echo '<select class="month"  name='.$name.'Month'.'>';
+	echo '<select class="month"  name="'.$name.'Month">';
 	for ($i = 1; $i < 13; $i++) {
 		if ($i == $defMonth) { ?><option selected><?php } else { ?><option><?php }
 		echo date("F", mktime(0,0,0,$i)).'</option>';
@@ -254,8 +255,8 @@ function datePicker($defDay = FALSE, $defMonth = FALSE, $name = '') {
 	echo '<option></option>';
 	echo '</select>';
 	
-	echo '<select class="year"  name='.$name.'Year'.'>';
-	for ($i = 2010; $i < 2012; $i++) {
+	echo '<select class="year"  name="'.$name.'Year">';
+	for ($i = date("Y"); $i < (date("Y") + 2); $i++) {
 		echo '<option>'.$i.'</option>';
 	}
 	echo '<option></option>';
@@ -341,5 +342,29 @@ function show_header($page, $admin_no_header) {
 		if ($admin_no_header[$i] == $page) { return false; }
 	}
 	return true;
+}
+
+
+function airCodeLookup($needle, $type) {
+	if ($needle == "BLANK") return $needle;
+	
+	if ($type == "CODE") {
+		$query = "SELECT name FROM airports WHERE fullName = '".$needle."'";
+		$result = mysql_query($query);
+	} elseif ($type == "FULL") {
+		$query = "SELECT fullName FROM airports WHERE name = '".$needle."'";
+		$result = mysql_query($query);
+	} else {
+		return "Function Error [airCodeLookup(".$needle.", ".$type.")]: Invalid type.";
+	}
+	
+	if (mysql_num_rows($result) == 0) {
+		return "Function Error [airCodeLookup(".$needle.", ".$type.")]: Needle not found.";
+	}
+	while ($row = mysql_fetch_array($result)) {
+		if ($type == "CODE") { return $row['name']; }
+		elseif ($type == "FULL") { return $row['fullName']; }
+		else return "Function Error [airCodeLookup(".$needle.", ".$type.")]: Invalid type.";
+	}
 }
 ?>

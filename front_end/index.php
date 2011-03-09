@@ -10,6 +10,8 @@ $page = (isset($_GET['page']))? $_GET['page'] : 'index';
 	include 'config/definitions.inc.php';
 	include 'config/settings.inc.php'; 
 	include 'config/functions.inc.php';
+	include 'config/database.inc.php';
+	include 'init.php';
 	?>
 </head>
 
