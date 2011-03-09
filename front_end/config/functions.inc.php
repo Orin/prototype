@@ -271,7 +271,7 @@ function datePickerBackEnd($name = '', $defDay = FALSE, $defMonth = FALSE, $defY
 		if ($defDay==$i) { ?><option selected><?php } else { ?><option><?php }
 		echo $i.'</option>';
 	}
-	echo '<option></option>';
+	
 	
 	if($defDay == -1) {echo '<option selected><option>';}
 	else {echo '<option></option>';}
@@ -287,7 +287,7 @@ function datePickerBackEnd($name = '', $defDay = FALSE, $defMonth = FALSE, $defY
 	
 	if($defMonth == -1) {echo '<option selected><option>';}
 	else {echo '<option></option>';}
-	echo '<option></option>';
+
 	echo '</select>';
 	echo '<input size="2" type="text" class="year"  name='.$name.'Year value="'.$defYear.'">
 	</div>';
@@ -452,12 +452,62 @@ function availableSeats($scheduleID, $class) {
 			$boughtSeats = $row['COUNT(passengers.passengerID)'];
 			if ($class == "Economy") $capacity = $row['econSeats'];
 			elseif ($class == "Business") $capacity = $row['busSeats'];
-			else return "Function Error [availableSeats(".$scheduleID.", ".$class.")]: Invalid class argument.";
+			else return "Function Error [availableSeats(".$scheduleID.", ".$class.")]: Invalid class type.";
 			
 			$availableSeats = $capacity - $boughtSeats;
 			return $availableSeats;
 		}
+	} elseif (validScheduleID($scheduleID)) {
+		return classCapacity($scheduleID, $class);
 	} else return "Function Error [availableSeats(".$scheduleID.", ".$class.")]: Invalid scheduleID.";
 	
 }
+
+/**
+Used for checking if a provided scheduleID exists in the flightSchedule table
+@param scheduleID the scheduleID you want to lookup
+@return boolean
+*/
+function validScheduleID($scheduleID) {
+	$query = "
+	SELECT
+		scheduleID
+	FROM
+		flightSchedule
+	WHERE
+		scheduleID = '".$scheduleID."'";
+	$result = mysql_query($query);
+	if (mysql_num_rows($result) == 1) return true;
+	else return false;
+}
+
+/**
+Returns the total capacity of a given class on a given flight
+@param scheduleID The scheduleID of the particular flight (note: Not flightNo)
+@param class The class of travel in question
+@return The total capacity of that class on that flight
+*/
+function classCapacity($scheduleID, $class) {
+	if ($class == "Economy") { $classID = "econSeats"; }
+	elseif ($class == "Business") { $classID = "busSeats"; }
+	else return "Function Error [classCapacity(".$scheduleID.", ".$class.")]: Invalid class type.";
+	
+	$query = "
+	SELECT
+		flights.".$classID."
+	FROM
+		flights, flightSchedule
+	WHERE
+		flightSchedule.scheduleID = '".$scheduleID."'
+		
+		AND flights.flightNo = flightSchedule.flightNo";
+	$result = mysql_query($query);
+	
+	while ($row = mysql_fetch_array($result)) {
+		if ($class == "Economy") return $row['econSeats'];
+		elseif ($class == "Business")return $row['busSeats'];
+		else return "Function Error [classCapacity(".$scheduleID.", ".$class.")]: Invalid class type.";
+	}
+}
+	
 ?>
