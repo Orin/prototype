@@ -29,21 +29,30 @@ $pk = $pk.'='.$primarys[$type];
 $query2 = 'DELETE FROM '.$discounts[$type].' WHERE refID='.$primarys[$type];
 $query = 'DELETE FROM '.$table.' WHERE '.$pk;
 
-echo $query2;
-echo $query;
+//echo $query2;
+//echo $query;
 
-mysql_query($query2);
-if(!mysql_query($query))
-{
-	echo 'couldent delete the schedule/flight with ID: '.$primaryKey.' as there are bookings/schedule for this schedule/flight';
-}
+$dependanceys = null;
+if($type) {$dependanceys = checkforBookings($primaryKey);}
+else {$dependanceys = checkforschedules($primaryKey);}
+
+if ($dependanceys[0] > 0)
+	{
+		
+		?><form name="Flight_info" method="post" action="editFlightSchedule.html">
+		<input type="hidden" name="refine" value="<?php echo $dependanceys[1]; ?>" />
+		The flight you are trying to delete has schedules assigned to it. 
+		<input type="submit" value="Click Here" /> to be taken to the schedule management page for this flight. <?php
+
+	}
 else
-{
-$go = 'Location: '.$goto;
-header($go);
-}
+	{
 
-
+		mysql_query($query2);
+		mysql_query($query);
+		$go = 'Location: '.$goto;
+		header($go);
+	}
 
 
 ?>

@@ -1,5 +1,6 @@
 <?php
 if (isset($_SESSION['refine'])) 	{$q_user = mysql_query($_SESSION['refine']); unset($_SESSION['refine']);}
+else if(isset($_POST['refine']))	{$q_user = mysql_query($_POST['refine']);}
 else 								{$q_user = mysql_query("SELECT * FROM flightSchedule");}
 ?>
 

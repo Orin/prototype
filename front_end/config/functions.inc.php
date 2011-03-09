@@ -378,6 +378,27 @@ function airCodeLookup($needle, $type) {
 		else return "Function Error [airCodeLookup(".$needle.", ".$type.")]: Invalid type.";
 	}
 }
+/*
+returns an array containing the number of results and the search query use to get them
+@param flightNo - the flight number of teh flight you want the schedules for
+*/
+function checkforschedules($flightNo)
+{
+	$query = "SELECT * FROM flightSchedule WHERE FlightNo='".$flightNo."'";
+	$result = mysql_query($query);
+	$res[0] = mysql_num_rows($result);
+	$res[1] = $query;
+	return $res;
+}
+
+function checkforBookings($scheduleID)
+{
+	$query = "SELECT * FROM bookings WHERE FlightScheduleID=".$scheduleID;
+	$result = mysql_query($query);
+	$res[0] = mysql_num_rows($result);
+	$res[1] = $query;
+	return $res;
+}
 
 /**
 Performs database search for all flights matching criteria, and returns as a mysql_query result
