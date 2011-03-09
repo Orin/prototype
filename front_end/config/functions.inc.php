@@ -455,6 +455,11 @@ function availableSeats($scheduleID, $class) {
 	
 }
 
+/**
+Used for checking if a provided scheduleID exists in the flightSchedule table
+@param scheduleID the scheduleID you want to lookup
+@return boolean
+*/
 function validScheduleID($scheduleID) {
 	$query = "
 	SELECT
@@ -468,6 +473,12 @@ function validScheduleID($scheduleID) {
 	else return false;
 }
 
+/**
+Returns the total capacity of a given class on a given flight
+@param scheduleID The scheduleID of the particular flight (note: Not flightNo)
+@param class The class of travel in question
+@return The total capacity of that class on that flight
+*/
 function classCapacity($scheduleID, $class) {
 	if ($class == "Economy") { $classID = "econSeats"; }
 	elseif ($class == "Business") { $classID = "busSeats"; }
