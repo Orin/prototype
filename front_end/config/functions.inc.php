@@ -263,6 +263,7 @@ function datePicker($defDay = FALSE, $defMonth = FALSE, $name = '') {
 function datePickerBackEnd($name = '', $defDay = FALSE, $defMonth = FALSE, $defYear = '') {
 	if (!$name) { $name = ''; }
 	if (!$defDay) {$defDay = -1;}
+	if (!$defMonth) {$defMonth = -1;}
 	echo '<div class="date-select">';
 	//Day
 	echo '<select class="day" name="'.$name.'Day'.'">';
@@ -271,6 +272,10 @@ function datePickerBackEnd($name = '', $defDay = FALSE, $defMonth = FALSE, $defY
 		echo $i.'</option>';
 	}
 	echo '<option></option>';
+	
+	if($defDay == -1) {echo '<option selected><option>';}
+	else {echo '<option></option>';}
+	
 	echo '</select>';
 	
 	//Month
@@ -279,6 +284,9 @@ function datePickerBackEnd($name = '', $defDay = FALSE, $defMonth = FALSE, $defY
 		if ($i == $defMonth) { ?><option selected><?php } else { ?><option><?php }
 		echo $i.'</option>';
 	}
+	
+	if($defMonth == -1) {echo '<option selected><option>';}
+	else {echo '<option></option>';}
 	echo '<option></option>';
 	echo '</select>';
 	echo '<input size="2" type="text" class="year"  name='.$name.'Year value="'.$defYear.'">
