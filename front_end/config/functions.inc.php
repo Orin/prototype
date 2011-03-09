@@ -231,7 +231,7 @@ function datePicker($defDay = FALSE, $defMonth = FALSE, $name = '') {
 	echo '</select>';
 	
 	echo '<select class="year"  name="'.$name.'Year">';
-	for ($i = 2010; $i < 2012; $i++) {
+	for ($i = date("Y"); $i < (date("Y") + 2); $i++) {
 		echo '<option>'.$i.'</option>';
 	}
 	echo '<option></option>';
