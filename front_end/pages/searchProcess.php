@@ -24,6 +24,18 @@
 		Class: '.$_POST['classDrop'].'<br />
 		';
 		
+		
+		
+		
+
+	
+$result = flightSearch("EDI", "GLA", "2011-03-11", "Economy");
+if (mysql_num_rows($result) > 0) {
+		while ($row = mysql_fetch_array($result)) {
+			echo $row['flightNo']." :-: Remaining Seats:".availableSeats($row['scheduleID'], "Economy")."<br />";
+		}
+}
+/*
 $outQuery = "SELECT flight.flightNo, flightSchedule.departuredate FROM flight, flightSchedule WHERE flight.departure = '".$from."' AND flight.destination = '".$to."' AND flight.flightNo = flightSchedule.flightNo AND flightSchedule.departuredate = '".$departDate."'";
 $outResult = mysql_query($outQuery);
 ?><br />Out Result<br /><?php
@@ -39,5 +51,5 @@ while ($row = mysql_fetch_array($returnResult)) {
 	echo $row['flightNo'].'<br />';
 	echo $row['departuredate'].'<br />';
 }
-
+*/
 ?> 

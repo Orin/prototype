@@ -344,7 +344,12 @@ function show_header($page, $admin_no_header) {
 	return true;
 }
 
-
+/**		
+Used for tranlating short-code to full name and back.
+@param needle Search string
+@param type Format of desired result
+@return converted name or error
+**/
 function airCodeLookup($needle, $type) {
 	if ($needle == "BLANK") return $needle;
 	
@@ -366,5 +371,91 @@ function airCodeLookup($needle, $type) {
 		elseif ($type == "FULL") { return $row['fullName']; }
 		else return "Function Error [airCodeLookup(".$needle.", ".$type.")]: Invalid type.";
 	}
+}
+
+/**
+Performs database search for all flights matching criteria, and returns as a mysql_query result
+@param from	From airport
+@param to To airport
+@param date Date of travel
+@param class Class of travel
+@return result Returns mysql_query result
+*/
+function flightSearch($from, $to, $date, $class) {
+	$query = "
+	SELECT 
+		flights.flightNo, flightSchedule.scheduleID,
+		flightSchedule.departuredate, flightSchedule.departureTime, 
+		flightSchedule.arrivalDate, flightSchedule.arrivalTime, 
+		classes.className,
+		COUNT(passengers.passengerID),
+		flights.econSeats, flights.econPrice, flights.busSeats, flights.busPrice
+	FROM 
+		flights, flightSchedule, bookings, passengers, classes, bookings_passengers 
+	WHERE 
+		flights.departure = '".$from."' 
+		AND flights.destination = '".$to."' 
+		AND flightSchedule.departuredate = '".$date."'
+		AND classes.className = '".$class."'
+		
+		AND flights.flightNo = flightSchedule.flightNo 
+		AND bookings.FlightScheduleID = flightSchedule.ScheduleID
+		AND bookings_passengers.bookingID = bookings.bookingID 
+		AND bookings_passengers.passengerID = passengers.passengerID 
+		AND bookings.classID = classes.classID 
+	GROUP BY 
+		flights.flightNo,
+		classes.className
+		";
+	$result = mysql_query($query);
+	if (mysql_num_rows($result) == 0) {
+		return "Function Error [flightSearch(".$from.", ".$to.", ".$date.", ".$class.")]: No flights found.";
+	} else return $result;
+}
+
+/**
+Used to determine remaining seats on a specified flight in specified class
+@param scheduleID The scheduleID of the particular flight (note: Not flightNo)
+@param class The class of travel in question
+@return availableSeats The number of unbooked seats
+*/
+function availableSeats($scheduleID, $class) {
+	$query = "
+	SELECT 
+		flights.flightNo,
+		flightSchedule.departuredate, flightSchedule.departureTime, 
+		flightSchedule.arrivalDate, flightSchedule.arrivalTime, 
+		classes.className,
+		COUNT(passengers.passengerID),
+		flights.econSeats, flights.econPrice, flights.busSeats, flights.busPrice
+	FROM 
+		flights, flightSchedule, bookings, passengers, classes, bookings_passengers 
+	WHERE 
+		flightSchedule.scheduleID = '".$scheduleID."'
+		AND classes.className = '".$class."'
+		
+		AND flights.flightNo = flightSchedule.flightNo 
+		AND bookings.FlightScheduleID = flightSchedule.ScheduleID
+		AND bookings_passengers.bookingID = bookings.bookingID 
+		AND bookings_passengers.passengerID = passengers.passengerID 
+		AND bookings.classID = classes.classID 
+	GROUP BY 
+		flights.flightNo,
+		classes.className
+		";
+	
+	$result = mysql_query($query);
+	if (mysql_num_rows($result) == 1) {
+		while ($row = mysql_fetch_array($result)) {
+			$boughtSeats = $row['COUNT(passengers.passengerID)'];
+			if ($class == "Economy") $capacity = $row['econSeats'];
+			elseif ($class == "Business") $capacity = $row['busSeats'];
+			else return "Function Error [availableSeats(".$scheduleID.", ".$class.")]: Invalid class argument.";
+			
+			$availableSeats = $capacity - $boughtSeats;
+			return $availableSeats;
+		}
+	} else return "Function Error [availableSeats(".$scheduleID.", ".$class.")]: Invalid scheduleID.";
+	
 }
 ?>
