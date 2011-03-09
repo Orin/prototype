@@ -2,21 +2,12 @@
 <?php
 
 
-
-//if($_GET['action'] == "PSchedule") {
-
-
-/*$schedule[0] = $_POST['schID'];
+$schedule[0] = $_POST['schID'];
 $schedule[1] = $_POST['FlightNo'];
-$schedule[2] = $_POST['depdate'];
-$schedule[3] = $_POST['depTime'];
-$schedule[4] = $_POST['arrivTime'];*/
+$schedule[2] = $_POST['depDateYear'].'-'.$_POST['depDateMonth'].'-'.$_POST['depDateDay'];
+$schedule[3] = $_POST['depTimehour'].':'.$_POST['depTimemin'];
+$schedule[4] = $_POST['ArrivTimehour'].':'.$_POST['ArrivTimemin'];
 
-$schedule[0] = "4";
-$schedule[1] = "TA-LGW-MAN-101";
-$schedule[2] = "2010-07-15";
-$schedule[3] = "08:00:00";
-$schedule[4] = "10:00:00";
 
 $insert = "UPDATE flightSchedule SET FlightNo='$schedule[1]', departuredate='$schedule[2]', departureTime='$schedule[3]', arrivalTime='$schedule[4]' WHERE ScheduleID = $schedule[0]";
 

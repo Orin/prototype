@@ -39,7 +39,6 @@ echo '<th><h4>Departure</h4></th>';
 echo '<th><h4>Capacity</h4></th>';
 echo '<th><h4>Economy Seats</h4></th>';
 echo '<th><h4>Business Seats</h4></th>';
-echo '<th><h4>Group Seats</h4></th>';
 echo '<th><h4>Business Cost</h4></th>';
 echo '<th><h4>Economy Cost</h4></th>';
 echo '<th><h4>Group Cost</h4></th>';
@@ -71,16 +70,13 @@ echo $data['capacity'];
 echo '</td>';
 
 echo '<td>';
-echo $data['econemyseats'];
+echo $data['econSeats'];
 echo '</td>';
 
 echo '<td>';
-echo $data['businessseats'];
+echo $data['busSeats'];
 echo '</td>';
 
-echo '<td>';
-echo $data['groupseats'];
-echo '</td>';
 
 echo '<td>';
 echo displayDiscounts($data['busPrice'],$discounts[5],$discounts[4],$discounts[1],$discounts[0]);
@@ -264,13 +260,17 @@ function datePicker($defDay = FALSE, $defMonth = FALSE, $name = '') {
 	</div>';
 }
 
-function datePickerBackEnd($name = '', $defDay = -1, $defMonth= -1, $defYear= '') {
+function datePickerBackEnd($name = '', $defDay = FALSE, $defMonth = FALSE, $defYear = '') {
 	if (!$name) { $name = ''; }
+	if (!$defDay) {$defDay = -1;}
 	echo '<div class="date-select">';
 	//Day
+	echo $defDay;
 	echo '<select class="day" name='.$name.'Day'.'>';
 	for ($i = 1; $i < 31; $i++) {
-		if ($i == $defDay) { ?><option selected><?php } else { ?><option><?php }
+		echo $i;
+		echo $defDay;
+		if ($defDay==$i) { ?><option selected><?php } else { ?><option><?php }
 		echo $i.'</option>';
 	}
 	echo '<option selected></option>';
@@ -440,7 +440,6 @@ function availableSeats($scheduleID, $class) {
 		flights.flightNo,
 		classes.className
 		";
-	
 	$result = mysql_query($query);
 	if (mysql_num_rows($result) == 1) {
 		while ($row = mysql_fetch_array($result)) {

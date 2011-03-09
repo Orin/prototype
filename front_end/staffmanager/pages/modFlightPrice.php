@@ -1,5 +1,5 @@
 <?php
-$query = 'SELECT * FROM flight';
+$query = 'SELECT * FROM flights';
 if($_POST['Fno'] != ''){$query =  $query.' WHERE flightNo= \''.$_POST['Fno'].'\'';}
 else
 { 

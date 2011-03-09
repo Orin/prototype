@@ -14,7 +14,7 @@ $criteria[8] = $_POST['avalB'];
 $criteria[9] = $_POST['avalG'];
 
 
-$query = "SELECT DISTINCT * FROM flight, flightSchedule WHERE flight.flightNo = flightSchedule.FlightNo";
+$query = "SELECT DISTINCT * FROM flights, flightSchedule WHERE flights.flightNo = flightSchedule.FlightNo";
 
 if(!empty($criteria[0]))
 {
@@ -62,7 +62,6 @@ $result = mysql_query($query);
 <th><h4>Arrival time</h4></th>
 <th><h4>Available Economy Seats</h4></th>
 <th><h4>Available Business Seats</h4></th>
-<th><h4>Available Group Seats</h4></th>
 <th><h4>Available Seats</h4></th>
 </tr>
 
@@ -107,19 +106,16 @@ echo $data['arrivalTime'];
 echo '</td>';
 
 echo '<td>';
-echo $data['availableEconomySeats'];
+echo availableSeats($ScheduleID, 'Economy');
 echo '</td>';
 
 echo '<td>';
-echo $data['availableBusinessSeats'];
+echo availableSeats($ScheduleID, 'Business');
 echo '</td>';
 
-echo '<td>';
-echo $data['availableGroupSeats'];
-echo '</td>';
 
 echo '<td>';
-echo $data['availableSeats'];
+echo availableSeats($ScheduleID, 'Business') + availableSeats($ScheduleID, 'Economy');
 echo '</td>';
 
 echo '</tr>';
@@ -131,7 +127,7 @@ echo '</tr>';
 <h3>All Flights</h3>
 <?php
 
-$query = "SELECT * FROM flight WHERE ";
+$query = "SELECT * FROM flights WHERE ";
 
 if(!empty($criteria[0]))
 {

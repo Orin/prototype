@@ -11,7 +11,7 @@ $bCost = $_POST['busCost'];
 $eCost = $_POST['EconCost'];
 $gCost = $_POST['groupCost'];
 
-$insert = "INSERT INTO flight(flightNo, destination, departure, capacity, econemyseats, businessseats, groupseats, econPrice, busPrice, groupPrice) VALUES('$flightNo','$destination','$departure',$capacity,$econS,$bussS,$gropS,$bCost,$eCost,$gCost)";
+$insert = "INSERT INTO flights(flightNo, destination, departure, capacity, econSeats, busSeats, groupseats, econPrice, busPrice, groupPrice) VALUES('$flightNo','$destination','$departure',$capacity,$econS,$bussS,$gropS,$bCost,$eCost,$gCost)";
 
 
 if (!mysql_query($insert)){

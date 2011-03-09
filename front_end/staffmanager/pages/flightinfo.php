@@ -16,7 +16,7 @@ $flightData[9] = '';
 if($FlightId != null)
 	{
 		$goto = 'processFlightUpdate.html';
-		$query = 'SELECT * FROM flight WHERE flightNo=\''.$FlightId.'\'';
+		$query = 'SELECT * FROM flights WHERE flightNo=\''.$FlightId.'\'';
 		$result = mysql_query($query);
 		$data = mysql_fetch_array($result);
 		
@@ -24,9 +24,9 @@ if($FlightId != null)
 		$flightData[1] = $data['destination'];
 		$flightData[2] = $data['departure'];
 		$flightData[3] = $data['capacity'];
-		$flightData[4] = $data['econemyseats'];
-		$flightData[5] = $data['businessseats'];
-		$flightData[6] = $data['groupseats'];
+		$flightData[4] = $data['econSeats'];
+		$flightData[5] = $data['busSeats'];
+		$flightData[6] = $data['groupSeats'];
 		$flightData[7] = $data['econPrice'];
 		$flightData[8] = $data['busPrice'];
 		$flightData[9] = $data['groupPrice'];

@@ -12,12 +12,16 @@ $schedule[6] = $_POST['depTimemin'];
 $schedule[7] = $_POST['ArrivTimehour'];
 $schedule[8] = $_POST['ArrivTimemin'];
 
+$schedule[9] = $_POST['ArrivDateDay'];
+$schedule[10] = $_POST['ArrivDateMonth'];
+$schedule[11] = $_POST['ArrivDateYear'];
 
-$insert = "INSERT INTO flightSchedule (ScheduleID, FlightNo, departuredate, departureTime, arrivalTime,availableEconomySeats, availableBusinessSeats, availableGroupSeats) VALUES($schedule[0],'$schedule[1]','".$schedule[4].'-'.$schedule[3].'-'.$schedule[2]."','".$schedule[5].':'.$schedule[6]."','".$schedule[7].':'.$schedule[8]."',(SELECT econemyseats FROM flight WHERE flightNo = '$schedule[1]'),(SELECT businessseats FROM flight WHERE flightNo = '$schedule[1]'),(SELECT groupseats FROM flight WHERE flightNo = '$schedule[1]'))";
 
-$updateTotals = "UPDATE flightSchedule SET availableSeats= availableEconomySeats+availableBusinessSeats+availableGroupSeats WHERE ScheduleID = $schedule[0]";
+$insert = "INSERT INTO flightSchedule (ScheduleID, FlightNo, departuredate, departureTime, arrivalDate, arrivalTime) VALUES($schedule[0],'$schedule[1]','".$schedule[4].'-'.$schedule[3].'-'.$schedule[2]."','".$schedule[5].':'.$schedule[6]."','".$schedule[11].'-'.$schedule[10].'-'.$schedule[9]."','".$schedule[7].':'.$schedule[8]."')";
 
-if (!mysql_query($insert) || !mysql_query($updateTotals))
+
+echo $insert;
+if (!mysql_query($insert))
 {
 	echo '<table border="1" id="error">';
 	echo'<th colspan="2">MySql database error</th>';

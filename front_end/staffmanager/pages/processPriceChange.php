@@ -42,7 +42,7 @@ for ($i =0;  $i<mysql_num_rows($applicants); $i++)
 {
 	$data = mysql_fetch_array($applicants);
 	$flighNo = $data['flightNo'];
-	$update = 'UPDATE flight SET '.$newVals.' WHERE flightNo = \''.$flighNo.'\'';
+	$update = 'UPDATE flights SET '.$newVals.' WHERE flightNo = \''.$flighNo.'\'';
 	//echo $update;
 	mysql_query($update);
 }

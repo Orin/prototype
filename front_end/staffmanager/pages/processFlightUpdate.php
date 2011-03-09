@@ -11,9 +11,8 @@ $bCost = $_POST['busCost'];
 $eCost = $_POST['EconCost'];
 $gCost = $_POST['groupCost'];
 
-$update = "UPDATE flight SET destination='$destination', departure='$departure', capacity=$capacity, econemyseats=$econS, businessseats=$bussS, groupseats=$gropS, econPrice=$eCost, busPrice=$bCost, groupPrice=$gCost WHERE flightNo='$flightNo' ";
+$update = "UPDATE flights SET destination='$destination', departure='$departure', capacity=$capacity, econSeats=$econS, busSeats=$bussS, groupseats=$gropS, econPrice=$eCost, busPrice=$bCost, groupPrice=$gCost WHERE flightNo='$flightNo' ";
 
-echo $update;
 if (!mysql_query($update)){
 	?><table border="1" id="error">
 	<th colspan="2">MySql database error</th>;

@@ -1,4 +1,4 @@
-<?php $_SESSION['applyTo'] = "Select * FROM flight";  $_SESSION['type'] = 1?>
+<?php $_SESSION['applyTo'] = "Select * FROM flights";  $_SESSION['type'] = 1?>
 <div id="globalDiscount" >
 
 	<form name="setGlobalDiscount" method="post" action="processDiscount.html">

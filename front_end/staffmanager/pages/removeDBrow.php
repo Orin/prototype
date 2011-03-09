@@ -4,7 +4,7 @@ $type = $_POST['type'];
 $primaryKey = $_POST['primaryKey'];
 $goto = $_POST['URL'];
 
-$types[0] = 'flight';
+$types[0] = 'flights';
 $types[1] = 'flightSchedule';
 
 $pks[0] = 'flightNo';
