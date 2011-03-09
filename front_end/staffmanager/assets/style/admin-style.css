@@ -4,6 +4,9 @@ body, html, p{
   border: 0px none;
   width: 100%;
 }
+p.disPrice {color:#FF0000;}
+p.normPrice{text-decoration:line-through;}
+
 
 #page-wrapper {
   width:940px;

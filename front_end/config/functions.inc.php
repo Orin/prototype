@@ -28,7 +28,6 @@ function accessLevel ($page, $level)
 	return true;
 
 }
-
 function showFlightTable($q_user, $URL = 'main.html')
 {
 echo '<div id="disInfo">';
@@ -44,7 +43,7 @@ echo '<th><h4>Group Seats</h4></th>';
 echo '<th><h4>Business Cost</h4></th>';
 echo '<th><h4>Economy Cost</h4></th>';
 echo '<th><h4>Group Cost</h4></th>';
-echo '<th><h4>Discount All Classes</h4></th>';
+echo '<th><h4>Applied Discounts</h4></th>';
 echo '<th><h4>Delete</h4></th>';
 echo '</tr>';
 
@@ -84,20 +83,23 @@ echo $data['groupseats'];
 echo '</td>';
 
 echo '<td>';
-echo ($data['busPrice']*(1-($discounts[4]/100)))-$discounts[5].'(&pound;'.$data['busPrice'].')';
+echo displayDiscounts($data['busPrice'],$discounts[5],$discounts[4],$discounts[1],$discounts[0]);
 echo '</td>';
 
 echo '<td>';
-echo ($data['econPrice']*(1-($discounts[2]/100)))-$discounts[3].'(&pound;'.$data['econPrice'].')';
+echo displayDiscounts($data['econPrice'],$discounts[3],$discounts[2],$discounts[1],$discounts[0]);
+//echo ($data['econPrice']*(1-($discounts[2]/100)))-$discounts[3].'(&pound;'.$data['econPrice'].')';
 echo '</td>';
 
 echo '<td>';
-echo ($data['groupPrice']*(1-($discounts[6]/100)))-$discounts[7].'(&pound;'.$data['groupPrice'].')';
+echo displayDiscounts($data['groupPrice'],$discounts[7],$discounts[6],$discounts[1],$discounts[0]);
+//echo ($data['groupPrice']*(1-($discounts[6]/100)))-$discounts[7].'(&pound;'.$data['groupPrice'].')';
 echo '</td>';
 
 echo '<td>';
-echo 'percentage : %'.$discounts[0].'<BR/>';
-echo 'value :    &pound;'.$discounts[1];
+//echo 'percentage : %'.$discounts[0].'<BR/>';
+//echo 'value :    &pound;'.$discounts[1];
+echo displayDisDetails($discounts);
 echo '</td>';
 
 echo '<td>';
@@ -111,6 +113,29 @@ echo '</table>';
 echo '</div>';
 }
 
+function displayDisDetails ($alldiscounts)
+{
+	$returnString = '';
+	if($alldiscounts[0] != 0){$returnString = $returnString.'GlobalPercentage: %'.$alldiscounts[0].'<br/>';}
+	if($alldiscounts[1] != 0){$returnString = $returnString.'GlobalValue: &pound;'.$alldiscounts[1].'<br/>';}
+	if($alldiscounts[2] != 0){$returnString = $returnString.'Percentage Economy: %'.$alldiscounts[2].'<br/>';}
+	if($alldiscounts[3] != 0){$returnString = $returnString.'Value Economy: &pound;'.$alldiscounts[3].'<br/>';}
+	if($alldiscounts[4] != 0){$returnString = $returnString.'Percentage Business: %'.$alldiscounts[4].'<br/>';}
+	if($alldiscounts[5] != 0){$returnString = $returnString.'Value Business: &pound;'.$alldiscounts[5].'<br/>';}
+	if($alldiscounts[6] != 0){$returnString = $returnString.'Percentage Group: %'.$alldiscounts[6].'<br/>';}
+	if($alldiscounts[7] != 0){$returnString = $returnString.'Value Group: &pound;'.$alldiscounts[7].'<br/>';}
+	
+	return $returnString;
+	
+}
+
+function displayDiscounts ($originalPrice, $valuedis, $percentDis, $globalValue, $globalpercent)
+{
+
+	$discountTotal = ((($originalPrice*(1-($percentDis/100)))-$valuedis)*(1-($globalpercent/100)))-$globalValue;
+	if($discountTotal == $originalPrice){return '&pound;'.$originalPrice;}
+	else {return '<p class="normPrice"> &pound;'.$originalPrice.'</p> <p class="disPrice"> &pound;'.$discountTotal.'</p>';}
+}
 
 function showScheduleTable($q_user, $URL = 'main.html')
 {
