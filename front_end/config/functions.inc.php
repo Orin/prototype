@@ -444,12 +444,51 @@ function availableSeats($scheduleID, $class) {
 			$boughtSeats = $row['COUNT(passengers.passengerID)'];
 			if ($class == "Economy") $capacity = $row['econSeats'];
 			elseif ($class == "Business") $capacity = $row['busSeats'];
-			else return "Function Error [availableSeats(".$scheduleID.", ".$class.")]: Invalid class argument.";
+			else return "Function Error [availableSeats(".$scheduleID.", ".$class.")]: Invalid class type.";
 			
 			$availableSeats = $capacity - $boughtSeats;
 			return $availableSeats;
 		}
+	} elseif (validScheduleID($scheduleID)) {
+		return classCapacity($scheduleID, $class);
 	} else return "Function Error [availableSeats(".$scheduleID.", ".$class.")]: Invalid scheduleID.";
 	
 }
+
+function validScheduleID($scheduleID) {
+	$query = "
+	SELECT
+		scheduleID
+	FROM
+		flightSchedule
+	WHERE
+		scheduleID = '".$scheduleID."'";
+	$result = mysql_query($query);
+	if (mysql_num_rows($result) == 1) return true;
+	else return false;
+}
+
+function classCapacity($scheduleID, $class) {
+	if ($class == "Economy") { $classID = "econSeats"; }
+	elseif ($class == "Business") { $classID = "busSeats"; }
+	else return "Function Error [classCapacity(".$scheduleID.", ".$class.")]: Invalid class type.";
+	
+	$query = "
+	SELECT
+		flights.".$classID."
+	FROM
+		flights, flightSchedule
+	WHERE
+		flightSchedule.scheduleID = '".$scheduleID."'
+		
+		AND flights.flightNo = flightSchedule.flightNo";
+	$result = mysql_query($query);
+	
+	while ($row = mysql_fetch_array($result)) {
+		if ($class == "Economy") return $row['econSeats'];
+		elseif ($class == "Business")return $row['busSeats'];
+		else return "Function Error [classCapacity(".$scheduleID.", ".$class.")]: Invalid class type.";
+	}
+}
+	
 ?>
