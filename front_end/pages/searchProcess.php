@@ -13,9 +13,15 @@
 	$returnMonth =  ($_POST['returnMonth'] != '')? str_replace("\\", "\\\\", rawurldecode($_POST['returnMonth'])) : 'BLANK';
 	$returnYear =  ($_POST['returnYear'] != '')? str_replace("\\", "\\\\", rawurldecode($_POST['returnYear'])) : 'BLANK';
 	$returnDate = date("Y-m-d", strtotime($returnDay." ".$returnMonth." ".$returnYear));
+	
+	$adults = $_POST['psngr-adult'];
+	$children = $_POST['psngr-children'];
 
 	  echo 'From: '.$from.'<br />
    		To: '.$to.'<br />
+		Adults: '.$adults.'<br />
+		Children: '.$children.'<br />
+		Class: '.$_POST['classDrop'].'<br />
 		';
 		
 $outQuery = "SELECT flight.flightNo, flightSchedule.departuredate FROM flight, flightSchedule WHERE flight.departure = '".$from."' AND flight.destination = '".$to."' AND flight.flightNo = flightSchedule.flightNo AND flightSchedule.departuredate = '".$departDate."'";
@@ -34,4 +40,4 @@ while ($row = mysql_fetch_array($returnResult)) {
 	echo $row['departuredate'].'<br />';
 }
 
-?>
+?> 

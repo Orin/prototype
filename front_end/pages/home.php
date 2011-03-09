@@ -21,6 +21,7 @@ function resetForm()
 			<tr class="depart"><td>Depart</td><td><?php datePicker(FALSE, FALSE, 'depart'); ?></td></tr>
 			<tr class="return"><td>Return</td><td><?php datePicker(FALSE, FALSE, 'return'); ?></td></tr>
 			<tr class="spacer small"><td></td></tr>
+            <tr class="class"><td>Class</td><td><?php dropdown($classes, 'Economy', 'classDrop', '196px'); ?></td></tr>
 			<tr class="people"><td>Adults<br /><?php noPsngrPicker("adult"); ?></td><td>Children<br /><?php noPsngrPicker("children"); ?></td></tr>
 			<tr class="spacer"><td></td></tr>
 			<tr class="actions"><td><a href="javascript:resetForm();">Reset Form</a></td><td><a href="javascript:sendData();">Search</a></td></tr>

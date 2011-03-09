@@ -313,9 +313,9 @@ function timePicker ($defHour = -1, $defMin = -1, $name = '')
 
 function noPsngrPicker($psngrType, $defNo = 0) {
 	?><div class="no-passengers">
-    <select class="psngr-select <?php echo $psngrType; ?>">
+    <select class="psngr-select <?php echo $psngrType; ?>" name="psngr-<?php echo $psngrType; ?>">
     <?php
-	for ($i = 0; $i < 10; $i++) {
+	for ($i = 0; $i < 11; $i++) {
 		if ($i == $defNo) { ?><option selected><?php } else { ?><option><?php }
 		echo $i; ?></option>
         <?php
