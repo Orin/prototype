@@ -409,8 +409,9 @@ function flightSearch($from, $to, $date, $class) {
 		";
 	$result = mysql_query($query);
 	if (mysql_num_rows($result) == 0) {
-		return "Function Error [flightSearch(".$from.", ".$to.", ".$date.", ".$class.")]: No flights found.";
-	} else return $result;
+		echo "Function Error [flightSearch(".$from.", ".$to.", ".$date.", ".$class.")]: No flights found.";
+	} 
+	return $result;
 }
 
 /**
