@@ -41,5 +41,5 @@ while ($row = mysql_fetch_array($returnResult)) {
 	echo $row['flightNo'].'<br />';
 	echo $row['departuredate'].'<br />';
 }
-*/
+
 ?> 

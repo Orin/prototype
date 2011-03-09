@@ -265,23 +265,21 @@ function datePickerBackEnd($name = '', $defDay = FALSE, $defMonth = FALSE, $defY
 	if (!$defDay) {$defDay = -1;}
 	echo '<div class="date-select">';
 	//Day
-	echo $defDay;
-	echo '<select class="day" name='.$name.'Day'.'>';
+	echo '<select class="day" name="'.$name.'Day'.'">';
 	for ($i = 1; $i < 31; $i++) {
-		echo $i;
-		echo $defDay;
 		if ($defDay==$i) { ?><option selected><?php } else { ?><option><?php }
 		echo $i.'</option>';
 	}
-	echo '<option selected></option>';
+	echo '<option></option>';
 	echo '</select>';
 	
+	//Month
 	echo '<select class="month"  name='.$name.'Month'.'>';
 	for ($i = 1; $i < 12; $i++) {
 		if ($i == $defMonth) { ?><option selected><?php } else { ?><option><?php }
 		echo $i.'</option>';
 	}
-	echo '<option selected></option>';
+	echo '<option></option>';
 	echo '</select>';
 	echo '<input size="2" type="text" class="year"  name='.$name.'Year value="'.$defYear.'">
 	</div>';
