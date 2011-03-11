@@ -16,6 +16,9 @@ $discounts[1] = 'schedule_discounts';
 $primarys[0] = '\''.$primaryKey.'\'';
 $primarys[1] = $primaryKey;
 
+$edits[0] = 'editFlightSchedule.html';
+$edits[1] = 'customerSearch.html';
+
 
 
 
@@ -39,7 +42,7 @@ else {$dependanceys = checkforschedules($primaryKey);}
 if ($dependanceys[0] > 0)
 	{
 		
-		?><form name="Flight_info" method="post" action="editFlightSchedule.html">
+		?><form name="Flight_info" method="post" action="<?php echo $edits[$type];?>">
 		<input type="hidden" name="refine" value="<?php echo $dependanceys[1]; ?>" />
 		The flight you are trying to delete has schedules assigned to it. 
 		<input type="submit" value="Click Here" /> to be taken to the schedule management page for this flight. <?php

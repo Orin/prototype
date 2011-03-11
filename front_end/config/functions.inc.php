@@ -396,7 +396,7 @@ function checkforBookings($scheduleID)
 	$query = "SELECT * FROM bookings WHERE FlightScheduleID=".$scheduleID;
 	$result = mysql_query($query);
 	$res[0] = mysql_num_rows($result);
-	$res[1] = $query;
+	$res[1] = "FlightScheduleID=".$scheduleID;
 	return $res;
 }
 
