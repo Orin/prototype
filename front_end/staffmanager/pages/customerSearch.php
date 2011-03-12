@@ -10,14 +10,13 @@ if (isset($_POST['refine'])) 	{$query = $query.' AND '.$_POST['refine'];}
 else{
 if(!empty($criteria[0]))
 {
-	$query = $query." AND customer.Firstname ='$criteria[0]'";
+	$query = $query." AND customers.Firstname ='$criteria[0]'";
 }
 if(!empty($criteria[1]))
 {
-	$query = $query." AND customer.LastName ='$criteria[1]'";
+	$query = $query." AND customers.LastName ='$criteria[1]'";
 }
 }
-
 
 $result = mysql_query($query);
 ?>
@@ -35,7 +34,7 @@ $result = mysql_query($query);
 <th><h4>Departure Date</h4></th>
 <th><h4>Daparture Time</h4></th>
 <th><h4>Arrival Time</h4></th>
-<th><h4>Delete booking</h4></th>
+<th><h4>Delete Customer</h4></th>
 </tr>
 
 <?php 
@@ -50,7 +49,7 @@ for ($i =0;  $i<mysql_num_rows($result); $i++)
   $FlightNo = $data['FlightNo'];
   $custID = $data['customerID'];
   $bookingID = $data['bookingID'];
-echo '<tr>';
+echo '<tr onClick="javascript:postValue(\'viewCustomer.html\', {custID:\''.$custID.'\'});">';
  echo '<td>';
 echo $custID;
 echo '</td>';

@@ -2,7 +2,8 @@
 
 
 $pks = $_POST['bookingID'];
-
+$backTo = $_POST['URL'];
+if(isset($_POST['custID'])) {$_SESSION['custID'] = $_POST['custID'];}
 
 
 $getPasengers = 'SELECT passengerID FROM bookings_passengers WHERE bookingID=\''.$pks.'\'';
@@ -21,5 +22,8 @@ mysql_query($removePassengerBookings);
 
 $deleteBooking = 'DELETE FROM bookings WHERE bookingID =\''.$pks.'\'';
 mysql_query($deleteBooking);
+
+header('Location: '.$backTo);
+
 
 ?>

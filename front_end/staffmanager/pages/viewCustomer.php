@@ -1,12 +1,11 @@
 
 <?php
-//$customerID = $_POST['custID'];
-$customerID = "1";
-$query = "SELECT * FROM customer, flightSchedule, Bookings WHERE customer.customerID = $customerID AND Bookings.customerID = $customerID AND Bookings.FlightScheduleID = flightSchedule.ScheduleID" ;
+if(isset($_SESSION['custID'])) {$customerID = $_SESSION['custID']; unset($_SESSION['custID']);}
+else {$customerID = $_POST['custID'];}
 
+$query = "SELECT * FROM customers WHERE customers.customerID = $customerID";
 
 $result = mysql_query($query);
-
   $data = mysql_fetch_array($result);
 ?>
 <table id="displayInfo" border=1>
@@ -14,8 +13,6 @@ $result = mysql_query($query);
 <tr><td>CustomerID:</td> <td><?php echo $data['customerID'];?></td></tr>
 <tr><td>First Name: </td> <td><?php echo $data['Firstname'];?></td></tr>
 <tr><td>Last Name: </td> <td><?php echo $data['LastName'];?></td></tr>
-<tr><td>Date Of Birth: </td> <td><?php echo $data['DOB'];?></td></tr>
-<tr><td>Sex: </td> <td><?php echo $data['Sex'];?></td></tr>
 <tr><td>Email Address: </td> <td><?php echo $data['EmailAddress'];?></td></tr>
 <tr><th colspan=2>
 	<form>
@@ -38,25 +35,26 @@ $result = mysql_query($query);
 <th><h4>Arrival time</h4></th>
 <th><h4>Available Economy Seats</h4></th>
 <th><h4>Available Business Seats</h4></th>
-<th><h4>Available Group Seats</h4></th>
 <th><h4>Available Seats</h4></th>
+<th><h4>Delete Booking</h4></th>
 </tr>
 
 <?php 
-
+$bookingsQuery = 'SELECT * FROM bookings, flightSchedule WHERE bookings.customerID = '.$customerID.' AND flightSchedule.ScheduleID = bookings.FlightScheduleID';
+$result = mysql_query($bookingsQuery);
 for ($i =0;  $i<mysql_num_rows($result); $i++)
 {
-
+ $data = mysql_fetch_array($result);
 $ScheduleID = $data['ScheduleID'];
 $FlightNo = $data['FlightNo'];
 
 echo '<tr>';
 echo '<td>';
-echo "<a href=\"scheduleInfoEdit.html\">$ScheduleID</a>";
+echo '<a href="javascript:postValue(\'scheduleInfo.html\', {scheduleID:\''.$ScheduleID.'\'});">'.$ScheduleID.'</a>'; 
 echo '</td>';
 
 echo '<td>';
-echo "<a href=\"viewFlight.html\">$FlightNo</a>";  
+echo '<a href="javascript:postValue(\'viewFlight.html\', {flightNo:\''.$FlightNo.'\'});">'.$FlightNo.'</a>'; 
 echo '</td>';
 
 echo '<td>';
@@ -72,19 +70,21 @@ echo $data['arrivalTime'];
 echo '</td>';
 
 echo '<td>';
-echo $data['availableEconomySeats'];
+$econSeats = availableSeats($ScheduleID, 'Economy');
+echo $econSeats;
 echo '</td>';
 
 echo '<td>';
-echo $data['availableBusinessSeats'];
+$busseats = availableSeats($ScheduleID, 'Business');
+echo $busseats;
 echo '</td>';
 
 echo '<td>';
-echo $data['availableGroupSeats'];
+echo $econSeats+ $busseats;
 echo '</td>';
 
 echo '<td>';
-echo $data['availableSeats'];
+echo '<a href="javascript:postValue(\'deleteBooking.html\', {bookingID:\''.$data['bookingID'].'\', URL:\'viewCustomer.html\', custID:'.$customerID.'});"><img src="icons/delete.gif" /></a>';
 echo '</td>';
 
 echo '</tr>';

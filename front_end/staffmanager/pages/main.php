@@ -44,11 +44,11 @@
     </div>
     
     <div id="cust-search" style="clear:both;">
-        <div class="title-bar">Search for a Customer</div>
+        <div class="title-bar">Search for a Booking</div>
         <div class="search-left">
-            <form name="customer_info" method="post" action="viewCustomer.html" align=right>
+            <form name="customer_info" method="post" action="viewBooking.html" align=right>
             <table>
-            <tr><td>Booking Reference:</td><td><?php autoFill(2,"BookingDiv");?></td></tr>
+            <tr><td>Booking Reference:</td><td><?php autoFill(2,"BookingDiv", "bookingref");?></td></tr>
             <tr><td><input type="submit" value="Search" /></td></tr>
             </table>
             </form>
