@@ -16,7 +16,7 @@ $result = mysql_query($query);
 <tr><td>Email Address: </td> <td><?php echo $data['EmailAddress'];?></td></tr>
 <tr><th colspan=2>
 	<form>
-		<input type="button" value="Edit" name="Edit_customer" onClick="window.location='custInfoEdit.html'"> 
+		<input type="button" value="Edit" name="Edit_customer" onClick="postValue('custInfoEdit.html', {FirstName:'<?php echo $data['Firstname'];?>', LastName:'<?php echo $data['LastName'];?>', email:'<?php echo $data['EmailAddress'];?>', ID:'<?php echo $data['customerID'];?>'});"> 
 	</form>
 </th></tr>
 

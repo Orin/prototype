@@ -37,7 +37,7 @@ $q_user = mysql_query($query);
 						<table border="0" id="GlobalDis">
 								
 								<tr><th colspan="2">Set Schedule Discount</th></tr>
-								<tr><td>Discount Type:</td> <td><?php dropdown($discountType, '', 'dType');?></td></tr>
+								<!--<tr><td>Discount Type:</td> <td><?php dropdown($discountType, '', 'dType');?></td></tr>-->
 								<tr><td>All Class Discount:</td> <td><input type="text" name="AllclassD" ></input></td></tr>
 								<tr><td>Econemy Class Discount:</td> <td><input type="text" name="EconD" ></input></td></tr>
 								<tr><td>Business Class Discount:</td> <td><input type="text" name="BusinessD" ></input></td></tr>

@@ -67,11 +67,11 @@ echo $data['EmailAddress'];
 echo '</td>';
 
 echo '<td>';
-echo "<a href=\"scheduleInfoEdit.html\">$ScheduleID</a>";
+echo '<a href="javascript:postValue(\'scheduleInfo.html\', {scheduleID:\''.$ScheduleID.'\'});">'.$ScheduleID.'</a>';
 echo '</td>';
 
 echo '<td>';
-echo "<a href=\"viewFlight.html\">$FlightNo</a>";  
+echo '<a href="javascript:postValue(\'viewFlight.html\', {flightNo:\''.$FlightNo.'\'});">'.$FlightNo.'</a>';  
 echo '</td>';
 
 echo '<td>';

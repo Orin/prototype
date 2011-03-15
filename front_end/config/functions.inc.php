@@ -350,6 +350,14 @@ function show_header($page, $admin_no_header) {
 	return true;
 }
 
+function incomeAllFlights ()
+{
+	$getFlights = 'SELECT sum(totalCost), flightSchedule.FlightNo FROM flightSchedule, bookings WHERE bookings.FlightScheduleID = flightSchedule.ScheduleID GROUP BY flightSchedule.FlightNo';
+	$result = mysql_query($getFlights);
+	return $result;
+}
+
+
 /**		
 *Used for tranlating short-code to full name and back.
 *@param needle Search string

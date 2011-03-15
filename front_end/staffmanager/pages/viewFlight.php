@@ -14,7 +14,6 @@ $data = mysql_fetch_array($result);
 	<tr><td>Capacity: </td><td><?php echo $data['capacity'];?></td></tr>
 	<tr><td>Economy Seats:</td><td> <?php echo $data['econSeats'];?></td></tr>
 	<tr><td>Business Seats: </td><td><?php echo $data['busSeats'];?></td></tr>
-	<tr><td>Group Seats: </td><td><?php echo $data['groupseats'];?></td></tr>
 	<tr><td>Economy Price: </td><td>&pound;<?php echo $data['econPrice']; ?></td></tr>
 	<tr><td>Business Price: </td><td>&pound;<?php echo $data['busPrice']; ?></td></tr>
 	<tr><td>Group Price: </td><td>&pound;<?php echo $data['groupPrice']; ?></td></tr>
