@@ -1,11 +1,11 @@
 <?php
-$allFlights = incomeAllFlights();
+$allFlights = flightFrequency(3);
 
 while ($row = mysql_fetch_array($allFlights))
 {
 	echo '<br/>';
-	echo $row['FlightNo'];
-	echo $row['sum(totalCost)'];
+	echo $row['flightNo'];
+	echo $row['count(flightSchedule.FlightNo)'];
 	
 }
 
