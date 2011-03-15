@@ -392,16 +392,21 @@ function incomeAllFlights ($month)
 
 function incomePerSchedule ($month)
 {
-	$getScheduleIncome = 'SELECT flightSchedule.ScheduleID , sum(totalCost) 
-						  FROM flightSchedule, bookings 
-						  WHERE
-								flightSchedule.ScheduleID = bookings.FlightScheduleID 
-								AND MONTH(departuredate) = '.$month.' 
+	$getScheduleIncome = 'SELECT flightSchedule.ScheduleID, flightSchedule.departuredate, flightSchedule.FlightNo, sum(totalCost)
+						  FROM flightSchedule, bookings
+						  WHERE 
+								flightSchedule.ScheduleID = bookings.FlightScheduleID AND
+								MONTH(departuredate) = '.$month.' 
 						  GROUP BY ScheduleID';
 						  
 	$result = mysql_query($getScheduleIncome);
 	return $result;
 }
+
+sales per scedule
+        add date time and flight number passenger count (total passengers)
+
+
 
 function incomeTotalPeriod ($month)
 {
@@ -431,6 +436,8 @@ function flightFrequency ($month)
 	return $result;
 	
 }
+ //SELECT flights.flightNo, COUNT(travelAgent) FROM flights, bookings, flightSchedule WHERE flights.flightNo = flightSchedule.FlightNo AND flightSchedule.ScheduleID = bookings.FlightScheduleID AND bookings.travelAgent != '' GROUP BY flights.flightNo ;
+function 
 
 
 /**		
