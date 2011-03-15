@@ -16,10 +16,10 @@ function resetForm()
 		<form name="searchData" method="POST" action="searchProcess.html">
 		<!--Search fields populated from available destinations in DB -->
 		<table id="search-table">
-			<tr class="from"><td>From</td><td><?php dropdown($destinations, '', 'fromDrop', '196px'); ?></td></tr>
-			<tr class="to"><td>To</td><td><?php dropdown($destinations,'', 'toDrop', '196px'); ?></td></tr>
-			<tr class="depart"><td>Depart</td><td><?php datePicker(FALSE, FALSE, 'depart'); ?></td></tr>
-			<tr class="return"><td>Return</td><td><?php datePicker(FALSE, FALSE, 'return'); ?></td></tr>
+			<tr class="from"><td>From</td><td><?php dropdown($destinations, 'Edinburgh', 'fromDrop', '196px'); ?></td></tr>
+			<tr class="to"><td>To</td><td><?php dropdown($destinations, 'Glasgow', 'toDrop', '196px'); ?></td></tr>
+			<tr class="depart"><td>Depart</td><td><?php datePicker(20, 3, 'depart'); ?></td></tr>
+			<tr class="return"><td>Return</td><td><?php datePicker(21, 3, 'return'); ?></td></tr>
 			<tr class="spacer small"><td></td></tr>
             <tr class="class"><td>Class</td><td><?php dropdown($classes, 'Economy', 'classDrop', '196px'); ?></td></tr>
 			<tr class="people"><td>Adults<br /><?php noPsngrPicker("adult"); ?></td><td>Children<br /><?php noPsngrPicker("children"); ?></td></tr>

@@ -28,18 +28,23 @@
 
 
 $outResult = flightSearch($from, $to, $departDate, $class);
-?><br />Out Result<br /><?php
-while ($row = mysql_fetch_array($outResult)) {
-	echo $row['flightNo'].'<br />';
-	echo $row['departuredate'].'<br />';
-}
+?><br />Out Result<br />
+<table>
+<tr><td>FlightNo</td><td>Date</td><td>Depart Time</td><td>Arrive Time</td></tr>
+
+<?php while ($row = mysql_fetch_array($outResult)) { ?>
+	<tr><td><?php echo $row['flightNo']; ?></td><td><?php echo $row['departuredate']; ?></td><td><?php echo $row['departureTime']; ?></td><td><?php echo $row['arrivalTime']; if ($row['arrivalDate'] != $row['departuredate']){ echo '(+1)'; } ?></td></tr>
+<?php } ?></table><?
 
 
 $returnResult = flightSearch($to, $from, $returnDate, $class);
-?><br />Return Result<br /><?php
-while ($row = mysql_fetch_array($returnResult)) {
-	echo $row['flightNo'].'<br />';
-	echo $row['departuredate'].'<br />';
-}
+
+?><br />Return Result<br />
+<table>
+<tr><td>FlightNo</td><td>Date</td><td>Depart Time</td><td>Arrive Time</td></tr>
+
+<?php while ($row = mysql_fetch_array($returnResult)) { ?>
+	<tr><td><?php echo $row['flightNo']; ?></td><td><?php echo $row['departuredate']; ?></td><td><?php echo $row['departureTime']; ?></td><td><?php echo $row['arrivalTime']; if ($row['arrivalDate'] != $row['departuredate']){ echo '(+1)'; } ?></td></tr>
+<?php } ?></table><?
 
 ?> 

@@ -351,10 +351,10 @@ function show_header($page, $admin_no_header) {
 }
 
 /**		
-Used for tranlating short-code to full name and back.
-@param needle Search string
-@param type Format of desired result
-@return converted name or error
+*Used for tranlating short-code to full name and back.
+*@param needle Search string
+*@param type Format of desired result
+*@return converted name or error
 **/
 function airCodeLookup($needle, $type) {
 	if ($needle == "BLANK") return $needle;
@@ -379,8 +379,8 @@ function airCodeLookup($needle, $type) {
 	}
 }
 /*
-returns an array containing the number of results and the search query use to get them
-@param flightNo - the flight number of teh flight you want the schedules for
+*returns an array containing the number of results and the search query use to get them
+*@param flightNo - the flight number of teh flight you want the schedules for
 */
 function checkforschedules($flightNo)
 {
@@ -401,14 +401,16 @@ function checkforBookings($scheduleID)
 }
 
 /**
-Performs database search for all flights matching criteria, and returns as a mysql_query result
-@param from	From airport
-@param to To airport
-@param date Date of travel
-@param class Class of travel
-@return result Returns mysql_query result
+*Performs database search for all flights matching criteria, and returns as a mysql_query result
+*@param - From airport
+*@param To airport
+*@param Date of travel
+*@param Class of travel
+*@return Returns mysql_query result
 */
 function flightSearch($from, $to, $date, $class) {
+	
+	
 	$query = "
 	SELECT 
 		flights.flightNo, flightSchedule.scheduleID,
@@ -438,14 +440,15 @@ function flightSearch($from, $to, $date, $class) {
 	if (mysql_num_rows($result) == 0) {
 		echo "Function Error [flightSearch(".$from.", ".$to.", ".$date.", ".$class.")]: No flights found.";
 	} 
+	
 	return $result;
 }
 
 /**
-Used to determine remaining seats on a specified flight in specified class
-@param scheduleID The scheduleID of the particular flight (note: Not flightNo)
-@param class The class of travel in question
-@return availableSeats The number of unbooked seats
+*Used to determine remaining seats on a specified flight in specified class
+*@param scheduleID The scheduleID of the particular flight (note: Not flightNo)
+*@param class The class of travel in question
+*@return availableSeats The number of unbooked seats
 */
 function availableSeats($scheduleID, $class) {
 	$query = "
@@ -485,9 +488,9 @@ function availableSeats($scheduleID, $class) {
 }
 
 /**
-Used for checking if a provided scheduleID exists in the flightSchedule table
-@param scheduleID the scheduleID you want to lookup
-@return boolean
+*Used for checking if a provided scheduleID exists in the flightSchedule table
+*@param scheduleID the scheduleID you want to lookup
+*@return boolean
 */
 function validScheduleID($scheduleID) {
 	$query = "
@@ -503,10 +506,10 @@ function validScheduleID($scheduleID) {
 }
 
 /**
-Returns the total capacity of a given class on a given flight
-@param scheduleID The scheduleID of the particular flight (note: Not flightNo)
-@param class The class of travel in question
-@return The total capacity of that class on that flight
+*Returns the total capacity of a given class on a given flight
+*@param scheduleID The scheduleID of the particular flight (note: Not flightNo)
+*@param class The class of travel in question
+*@return The total capacity of that class on that flight
 */
 function classCapacity($scheduleID, $class) {
 	if ($class == "Economy") { $classID = "econSeats"; }
@@ -530,5 +533,41 @@ function classCapacity($scheduleID, $class) {
 		else return "Function Error [classCapacity(".$scheduleID.", ".$class.")]: Invalid class type.";
 	}
 }
+
+
+function bookingRefGenerator() {
+	$chars = preg_split('//', 'ABCDEFGHJKLMNPQRSTUVWXYZ', -1, PREG_SPLIT_NO_EMPTY);
+	$nums = preg_split('//', '123456789', -1, PREG_SPLIT_NO_EMPTY);
+	$bookRef = '';
+	$new = false;
 	
+	while (!($new)) {
+		for ($i = 0; $i < 5; $i++) {
+			if ($i < 3 || $i == 4) {
+				$rand = mt_rand(0, 23);
+				$bookRef = $bookRef.$chars[$rand];
+			} else {
+				$rand = mt_rand(0, 8);
+				$bookRef = $bookRef.$nums[$rand];
+			}
+		}
+		if (!validBookRef($bookRef)) {
+			$new = true;
+		}
+	}
+	
+	return $bookRef;
+}
+
+function validBookRef($bookingRef) {
+	$query = "
+	SELECT
+		bookingID
+	FROM
+		bookings
+	WHERE
+		bookingID = '".$bookingRef."'";
+	if (mysql_num_rows(mysql_query($query)) > 0) return true;
+	else return false;
+}
 ?>
