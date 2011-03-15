@@ -1,4 +1,4 @@
-<form name="report" action="" method="POST">
+<form name="report" action="genReport.html" method="POST">
 <table id="inputData">
 	<tr><th colspan=2>Select Report Period</th></tr>
 	<tr><td>Period:</td><td>
@@ -16,8 +16,9 @@
 
 <table id="inputData">
 	<tr><th colspan=2>Select Report Content</th></tr>
-	<tr><td>Costing Structures</td><td><input type="checkbox" name="costStruct" value="CS" /></td></tr>
+	<tr><td>Class Report</td><td><input type="checkbox" name="costStruct" value="CS" /></td></tr>
 	<tr><td>Sales Per Flight</td><td><input type="checkbox" name="costStruct" value="CS" /></td></tr>
+	<tr><td>Group Bookings</td><td><input type="checkbox" name="costStruct" value="CS" /></td></tr>
 	<tr><td>Sales Per Schedule</td><td><input type="checkbox" name="costStruct" value="CS" /></td></tr>
 	<tr><td>Total Income Period</td><td><input type="checkbox" name="costStruct" value="CS" /></td></tr>
 	<tr><td>Source of Business Per Flight</td><td><input type="checkbox" name="costStruct" value="CS" /></td></tr>

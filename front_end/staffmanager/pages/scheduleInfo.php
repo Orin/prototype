@@ -59,7 +59,7 @@ else
 			<tr><td>Departure Date:  </td><td><?php datePickerBackEnd('depDate',$scheduleData[4],$scheduleData[3],$scheduleData[2]);?></td></tr>
 			<tr><td>Departure Time:  </td><td><?php timePicker($scheduleData[5],$scheduleData[6],'depTime');?></input></td></tr>
 			<tr><td>Arrival Time:  </td><td><?php timePicker($scheduleData[7],$scheduleData[8],'ArrivTime');?></input></td></tr>
-			<tr><td>Arrival Date:  </td><td><?php datePickerBackEnd('ArrivDate',14,$scheduleData[3],$scheduleData[2]);?></td></tr>
+			<tr><td>Arrival Date:  </td><td><?php datePickerBackEnd('ArrivDate',$scheduleData[4],$scheduleData[3],$scheduleData[2]);?></td></tr>
 			<tr><th colspan="2"><input type="submit" /></tr></tr>
 		</table>
 </form>

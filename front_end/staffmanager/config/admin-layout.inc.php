@@ -51,6 +51,8 @@
 	elseif ($page == 'processFlightUpdate'	&& ($level <=1)) 	{?><div id="<?php echo $page; ?>"><?php include 'pages/processFlightUpdate.php'; ?></div><?php }
 	elseif ($page == 'deleteBooking'	    && ($level <=1)) 	{?><div id="<?php echo $page; ?>"><?php include 'pages/deleteBooking.php'; ?></div><?php }
 	elseif ($page == 'viewBooking'	        && ($level <=1)) 	{?><div id="<?php echo $page; ?>"><?php include 'pages/viewBooking.php'; ?></div><?php }
+	elseif ($page == 'processCustomerUpdate'&& ($level <=1)) 	{?><div id="<?php echo $page; ?>"><?php include 'pages/processCustomerUpdate.php'; ?></div><?php }
+	elseif ($page == 'genReport'      		&& ($level <=1)) 	{?><div id="<?php echo $page; ?>"><?php include 'pages/genReport.php'; ?></div><?php }
     //Else show page not found error
     else {?>
       <div class="error">
