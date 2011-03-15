@@ -418,8 +418,7 @@ function incomeTotalPeriod ($month)
 							AND MONTH(flightSchedule.departuredate) ='.$month.' 
 					   GROUP BY className';
 					   
-	$result = mysql_query($getIncomeTotal);
-	return $result;
+
 	
 }
 
@@ -437,7 +436,6 @@ function flightFrequency ($month)
 	
 }
  //SELECT flights.flightNo, COUNT(travelAgent) FROM flights, bookings, flightSchedule WHERE flights.flightNo = flightSchedule.FlightNo AND flightSchedule.ScheduleID = bookings.FlightScheduleID AND bookings.travelAgent != '' GROUP BY flights.flightNo ;
-function 
 
 
 /**		
