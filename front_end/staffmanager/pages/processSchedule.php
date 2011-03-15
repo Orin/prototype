@@ -1,5 +1,5 @@
 <?php
-$schedule[0] = $_POST['schID'];
+
 $schedule[1] = $_POST['FlightNo'];
 
 $schedule[2] = $_POST['depDateDay'];
@@ -17,10 +17,9 @@ $schedule[10] = $_POST['ArrivDateMonth'];
 $schedule[11] = $_POST['ArrivDateYear'];
 
 
-$insert = "INSERT INTO flightSchedule (ScheduleID, FlightNo, departuredate, departureTime, arrivalDate, arrivalTime) VALUES($schedule[0],'$schedule[1]','".$schedule[4].'-'.$schedule[3].'-'.$schedule[2]."','".$schedule[5].':'.$schedule[6]."','".$schedule[11].'-'.$schedule[10].'-'.$schedule[9]."','".$schedule[7].':'.$schedule[8]."')";
+$insert = "INSERT INTO flightSchedule (FlightNo, departuredate, departureTime, arrivalDate, arrivalTime) VALUES('$schedule[1]','".$schedule[4].'-'.$schedule[3].'-'.$schedule[2]."','".$schedule[5].':'.$schedule[6]."','".$schedule[11].'-'.$schedule[10].'-'.$schedule[9]."','".$schedule[7].':'.$schedule[8]."')";
 
 
-echo $insert;
 if (!mysql_query($insert))
 {
 	echo '<table border="1" id="error">';
@@ -48,7 +47,6 @@ if (!mysql_query($insert))
 	echo'<th>flight sucessfully entered</th>';
 	echo'<tr><td>';
 		echo '<table id="displayInfo" border="1" width=100%>';
-		echo '<tr><td>schedule ID:</td><td>'.$schedule[0].'</td></tr>';
 		echo '<tr><td>flight number:</td><td>'.$schedule[1].'</td></tr>';
 		echo '<tr><td>departure date:</td><td>'.$schedule[4].'-'.$schedule[3].'-'.$schedule[2].'</td></tr>';
 		echo '<tr><td>departure time:</td><td>'.$schedule[5].':'.$schedule[6].'</td></tr>';

@@ -52,7 +52,9 @@ else
 	<form name="Flight_info" method="post" action="<?php echo $goto;?>" >
 		<table border="1" id="inputData">
 			<th colspan="2">Enter Schedule Information</th>
-			<tr><td>ScheduleID: </td><td> <input type="text" name="schID" value="<?php echo $scheduleData[0]; ?>"></input></td></tr>
+			<?php if($scheduleData[0] != '') { ?>
+			<tr><td>ScheduleID: </td><td> <input type="text" name="schID" value="<?php echo $scheduleData[0]; ?>" readonly></input></td></tr>
+			<?php } ?>
 			<tr><td>FlightNo:  </td><td><input type="text" name="FlightNo" value="<?php echo $scheduleData[1]; ?>" ></input></td></tr>
 			<tr><td>Departure Date:  </td><td><?php datePickerBackEnd('depDate',$scheduleData[4],$scheduleData[3],$scheduleData[2]);?></td></tr>
 			<tr><td>Departure Time:  </td><td><?php timePicker($scheduleData[5],$scheduleData[6],'depTime');?></input></td></tr>
