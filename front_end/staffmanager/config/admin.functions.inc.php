@@ -1,10 +1,10 @@
 <?php
 function RevByClass($month) {
 $query = "SELECT
-	flightSchedule.`departuredate`,
-	classes.className,
-    COUNT(passengers.passengerID),
-    sum(DISTINCT bookings.totalCost)
+	flightSchedule.`departuredate` AS Date,
+	classes.className AS 'Class',
+    COUNT(passengers.passengerID) AS 'Total Passengers',
+    sum(DISTINCT bookings.totalCost) AS 'Total Revenue'
 FROM
 	bookings,
     `flightSchedule`,
@@ -403,8 +403,8 @@ function incomePerSchedule ($month)
 	return $result;
 }
 
-sales per scedule
-        add date time and flight number passenger count (total passengers)
+//sales per scedule
+//        add date time and flight number passenger count (total passengers)
 
 
 
@@ -437,5 +437,28 @@ function flightFrequency ($month)
 }
  //SELECT flights.flightNo, COUNT(travelAgent) FROM flights, bookings, flightSchedule WHERE flights.flightNo = flightSchedule.FlightNo AND flightSchedule.ScheduleID = bookings.FlightScheduleID AND bookings.travelAgent != '' GROUP BY flights.flightNo ;
 
+ 
 
+function buildTable($result) {
+	$numFields = mysql_num_fields( $result );
+    for ( $i = 0; $i < $numFields; $i++ ) {
+        $fieldNames[] = mysql_field_name( $result, $i );
+    } ?>
+	<table>
+	<tr>
+	<?php for ($i = 0; $i < $numFields; $i++) { ?>
+	<td><?php echo $fieldNames[$i]; ?></td>
+	<?php } ?>
+	</tr>
+	<?php
+	while ($row = mysql_fetch_array($result)) { ?>
+		<tr>
+		<?php for ($i = 0; $i < $numFields; $i++) { ?>
+		<td><?php echo $row[$fieldNames[$i]]; ?></td>
+		<?php } ?>
+		</tr>
+	<?php }	?>
+	</table>
+	<?php
+}
 ?>

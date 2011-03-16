@@ -8,5 +8,5 @@ while ($row = mysql_fetch_array($allFlights))
 	echo $row['count(flightSchedule.FlightNo)'];
 	
 }
-
+buildTable(revByClass(3));
 ?>
