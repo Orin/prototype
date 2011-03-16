@@ -435,7 +435,7 @@ function flightFrequency ($month)
 	return $result;
 	
 }
- //SELECT flights.flightNo, COUNT(travelAgent) FROM flights, bookings, flightSchedule WHERE flights.flightNo = flightSchedule.FlightNo AND flightSchedule.ScheduleID = bookings.FlightScheduleID AND bookings.travelAgent != '' GROUP BY flights.flightNo ;
+ //SELECT flights.flightNo, IF (customerID='FALSE', COUNT(travelAgent), count(customerID)) AS bookeeCount FROM flights, bookings, flightSchedule WHERE flights.flightNo = flightSchedule.FlightNo AND flightSchedule.ScheduleID = bookings.FlightScheduleID AND bookings.travelAgent != '' GROUP BY flights.flightNo;
 
  
 
