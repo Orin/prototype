@@ -48,11 +48,6 @@ function autoFill($dataSet, $divName, $elName = '')
 	<?php echo '<div id="'.$divName.'"><input  id="blargh" type=text autocomplete="off" name="'.$elName.'" onkeyup="autoFillsPre(event.keyCode,this,\''.$divName.'\');"/></div>';
 }
 
-function accessLevel ($page, $level)
-{
-	return true;
-
-}
 function showFlightTable($q_user, $URL = 'main.html')
 {
 echo '<div id="disInfo">';
@@ -285,6 +280,21 @@ function datePicker($defDay = FALSE, $defMonth = FALSE, $name = '') {
 	</div>';
 }
 
+function monthPicker($def = FALSE, $name= '')
+{
+if (!$def) {$def = -1;}
+	echo '<select class="month"  name='.$name.'>';
+	for ($i = 1; $i < 12; $i++) {
+		if ($i == $def) { ?><option selected><?php } else { ?><option><?php }
+		echo $i.'</option>';
+	}
+	
+	if($defMonth == -1) {echo '<option selected><option>';}
+	else {echo '<option></option>';}
+
+	echo '</select>';
+}
+
 function datePickerBackEnd($name = '', $defDay = FALSE, $defMonth = FALSE, $defYear = '') {
 	if (!$name) { $name = ''; }
 	if (!$defDay) {$defDay = -1;}
@@ -377,7 +387,8 @@ function show_header($page, $admin_no_header) {
 
 function incomeAllFlights ($month)
 {
-	$getFlights = ' SELECT sum(totalCost), flightSchedule.FlightNo 
+	$getFlights = ' SELECT sum(totalCost) AS "Income"
+					,flightSchedule.FlightNo 
 					FROM flightSchedule, bookings 
 					WHERE 
 							bookings.FlightScheduleID = flightSchedule.ScheduleID 
@@ -392,7 +403,7 @@ function incomeAllFlights ($month)
 
 function incomePerSchedule ($month)
 {
-	$getScheduleIncome = 'SELECT flightSchedule.ScheduleID, flightSchedule.departuredate, flightSchedule.FlightNo, sum(totalCost)
+	$getScheduleIncome = 'SELECT flightSchedule.ScheduleID, flightSchedule.departuredate, flightSchedule.FlightNo, sum(totalCost) AS "Income"
 						  FROM flightSchedule, bookings
 						  WHERE 
 								flightSchedule.ScheduleID = bookings.FlightScheduleID AND
@@ -410,7 +421,7 @@ function incomePerSchedule ($month)
 
 function incomeTotalPeriod ($month)
 {
-	$getIncomeTotal = 'SELECT className, sum(totalCost) 
+	$getIncomeTotal = 'SELECT className AS "Class", sum(totalCost) AS "Income"
 					   FROM classes, flightSchedule, bookings 
 					   WHERE 
 							bookings.FlightScheduleID = flightSchedule.ScheduleID  
@@ -418,13 +429,14 @@ function incomeTotalPeriod ($month)
 							AND MONTH(flightSchedule.departuredate) ='.$month.' 
 					   GROUP BY className';
 					   
-
+	$result = mysql_query($getIncomeTotal);
+	return $result;
 	
 }
 
 function flightFrequency ($month)
 {
-	$frequencys = 'SELECT flights.flightNo, count(flightSchedule.FlightNo) 
+	$frequencys = 'SELECT flights.flightNo, count(flightSchedule.FlightNo) AS "Frequency"
 				   FROM flights, flightSchedule 
 				   WHERE 
 						flights.flightNo = flightSchedule.FlightNo AND
@@ -444,10 +456,10 @@ function buildTable($result) {
     for ( $i = 0; $i < $numFields; $i++ ) {
         $fieldNames[] = mysql_field_name( $result, $i );
     } ?>
-	<table>
+	<table id="displayInfo">
 	<tr>
 	<?php for ($i = 0; $i < $numFields; $i++) { ?>
-	<td><?php echo $fieldNames[$i]; ?></td>
+	<th><?php echo $fieldNames[$i]; ?></th>
 	<?php } ?>
 	</tr>
 	<?php

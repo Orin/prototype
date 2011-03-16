@@ -2,13 +2,7 @@
 <table id="inputData">
 	<tr><th colspan=2>Select Report Period</th></tr>
 	<tr><td>Period:</td><td>
-		
-		<select name="period">
-		<option value="Jan">Jan</option>
-		<option value="Feb">Feb</option>
-		<option value="Sep">Sep</option>
-		<option value="Sep">...</option>
-		</select>
+		<?php monthPicker(1,'month');?>
 	</td></tr>
 </table>
 <br/><br/>
@@ -16,15 +10,15 @@
 
 <table id="inputData">
 	<tr><th colspan=2>Select Report Content</th></tr>
-	<tr><td>Class Report</td><td><input type="checkbox" name="costStruct" value="CS" /></td></tr>
-	<tr><td>Sales Per Flight</td><td><input type="checkbox" name="costStruct" value="CS" /></td></tr>
-	<tr><td>Group Bookings</td><td><input type="checkbox" name="costStruct" value="CS" /></td></tr>
-	<tr><td>Sales Per Schedule</td><td><input type="checkbox" name="costStruct" value="CS" /></td></tr>
-	<tr><td>Total Income Period</td><td><input type="checkbox" name="costStruct" value="CS" /></td></tr>
-	<tr><td>Source of Business Per Flight</td><td><input type="checkbox" name="costStruct" value="CS" /></td></tr>
-	<tr><td>Flight Frequency</td><td><input type="checkbox" name="costStruct" value="CS" /></td></tr>
-	<tr><td>Overbooking Per Flight Schedule</td><td><input type="checkbox" name="costStruct" value="CS" /></td></tr>
-	<tr><td>Total Overbooking Per Flight</td><td><input type="checkbox" name="costStruct" value="CS" /></td></tr>
+	<tr><td>Revenue Per Class</td><td><input type="checkbox" name="Class"/></td></tr>
+	<tr><td>Sales Per Flight</td><td><input type="checkbox" name="SPF" /></td></tr>
+	<tr><td>Group Bookings</td><td><input type="checkbox" name="GB"/></td></tr>
+	<tr><td>Sales Per Schedule</td><td><input type="checkbox" name="SPS"/></td></tr>
+	<tr><td>Total Period Income</td><td><input type="checkbox" name="TIP" value="CS" /></td></tr>
+	<tr><td>Source of Business Per Flight</td><td><input type="checkbox" name="SBPF"/></td></tr>
+	<tr><td>Flight Frequency</td><td><input type="checkbox" name="FF"/></td></tr>
+	<tr><td>Overbooking Per Flight Schedule</td><td><input type="checkbox" name="OBPFC"/></td></tr>
+	<tr><td>Total Overbooking Per Flight</td><td><input type="checkbox" name="TOBPF" /></td></tr>
 	
 </table>
 
