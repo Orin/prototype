@@ -18,10 +18,8 @@
         
         <div class="search-left">
         <form name="Flight_info" method="post" action="viewFlight.html" align=right>
-        <table> <?php $test[0]='sappeningsbitch';
-					  $test[1]='sappenings';
-					  echo $test[0]." - ".$test[1]; ?>
-        <tr><td>Flight No:</td><td><?php autoFill($test,"DestDiv","flightNo");?></td></tr>
+        <table>
+        <tr><td>Flight No:</td><td><?php autoFill($airports,"DestDiv","flightNo");?></td></tr>
         <tr><td><input type="submit" value="Search" /></td></tr>
         </table>
         </form>        

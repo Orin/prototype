@@ -16,10 +16,8 @@
         
         <div class="search-left">
         <form name="Flight_info" method="post" action="viewFlight.html" align=right>
-        <table> <?php $test[0]='sappeningsbitch';
-					  $test[1]='sappenings';
-					  echo $test[0]." - ".$test[1]; ?>
-        <tr><td>Flight No:</td><td><?php autoFill($test,"DestDiv");?></td></tr>
+        <table>
+        <tr><td>Flight No:</td><td><?php autoFill($airports,"DestDiv","flightNo");?></td></tr>
         <tr><td><input type="submit" value="Search" /></td></tr>
         </table>
         </form>        
@@ -42,11 +40,11 @@
     </div>
     
     <div id="cust-search" style="clear:both;">
-        <div class="title-bar">Search for a Customer</div>
+        <div class="title-bar">Search for a Booking</div>
         <div class="search-left">
-            <form name="customer_info" method="post" action="viewCustomer.html" align=right>
+            <form name="customer_info" method="post" action="viewBooking.html" align=right>
             <table>
-            <tr><td>Booking Reference:</td><td><?php autoFill(2,"BookingDiv");?></td></tr>
+            <tr><td>Booking Reference:</td><td><?php autoFill(2,"BookingDiv", "bookingref");?></td></tr>
             <tr><td><input type="submit" value="Search" /></td></tr>
             </table>
             </form>

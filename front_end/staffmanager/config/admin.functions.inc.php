@@ -302,26 +302,23 @@ function datePickerBackEnd($name = '', $defDay = FALSE, $defMonth = FALSE, $defY
 	echo '<div class="date-select">';
 	//Day
 	echo '<select class="day" name="'.$name.'Day'.'">';
-	for ($i = 1; $i < 31; $i++) {
+	echo '<option></option>';
+	for ($i = 1; $i < 32; $i++) {
 		if ($defDay==$i) { ?><option selected><?php } else { ?><option><?php }
 		echo $i.'</option>';
 	}
 	
 	
-	if($defDay == -1) {echo '<option selected><option>';}
-	else {echo '<option></option>';}
-	
 	echo '</select>';
 	
 	//Month
 	echo '<select class="month"  name='.$name.'Month'.'>';
-	for ($i = 1; $i < 12; $i++) {
+	echo '<option></option>';
+	for ($i = 1; $i < 13; $i++) {
 		if ($i == $defMonth) { ?><option selected><?php } else { ?><option><?php }
 		echo $i.'</option>';
 	}
 	
-	if($defMonth == -1) {echo '<option selected><option>';}
-	else {echo '<option></option>';}
 
 	echo '</select>';
 	echo '<input size="2" type="text" class="year"  name='.$name.'Year value="'.$defYear.'">
@@ -472,5 +469,120 @@ function buildTable($result) {
 	<?php }	?>
 	</table>
 	<?php
+}
+
+
+/**
+*Used to determine remaining seats on a specified flight in specified class
+*@param scheduleID The scheduleID of the particular flight (note: Not flightNo)
+*@param class The class of travel in question
+*@return availableSeats The number of unbooked seats
+*/
+function availableSeats($scheduleID, $class) {
+	$query = "
+	SELECT 
+		COUNT(passengers.passengerID),
+		flights.econSeats, flights.busSeats
+	FROM 
+		flights, flightSchedule, bookings, passengers, classes, bookings_passengers 
+	WHERE 
+		flightSchedule.scheduleID = '".$scheduleID."'
+		AND classes.className = '".$class."'
+		
+		AND flights.flightNo = flightSchedule.flightNo 
+		AND bookings.FlightScheduleID = flightSchedule.ScheduleID
+		AND bookings_passengers.bookingID = bookings.bookingID 
+		AND bookings_passengers.passengerID = passengers.passengerID 
+		AND bookings.classID = classes.classID 
+	GROUP BY 
+		flights.flightNo,
+		classes.className
+		";
+	$result = mysql_query($query);
+	if (mysql_num_rows($result) == 1) {
+		while ($row = mysql_fetch_array($result)) {
+			$boughtSeats = $row['COUNT(passengers.passengerID)'];
+			if ($class == "Economy") $capacity = $row['econSeats'];
+			elseif ($class == "Business") $capacity = $row['busSeats'];
+			else return "Function Error [availableSeats(".$scheduleID.", ".$class.")]: Invalid class type.";
+			
+			$availableSeats = $capacity - $boughtSeats;
+			return $availableSeats;
+		}
+	} elseif (validScheduleID($scheduleID)) {
+		return classCapacity($scheduleID, $class);
+	} else return "Function Error [availableSeats(".$scheduleID.", ".$class.")]: Invalid scheduleID.";
+	
+}
+
+
+function checkforBookings($scheduleID)
+{
+	$query = "SELECT * FROM bookings WHERE FlightScheduleID=".$scheduleID;
+	$result = mysql_query($query);
+	$res[0] = mysql_num_rows($result);
+	$res[1] = "FlightScheduleID=".$scheduleID;
+	return $res;
+}
+
+
+/**
+*Used for checking if a provided scheduleID exists in the flightSchedule table
+*@param scheduleID the scheduleID you want to lookup
+*@return boolean
+*/
+function validScheduleID($scheduleID) {
+	$query = "
+	SELECT
+		scheduleID
+	FROM
+		flightSchedule
+	WHERE
+		scheduleID = '".$scheduleID."'";
+	$result = mysql_query($query);
+	if (mysql_num_rows($result) == 1) return true;
+	else return false;
+}
+
+
+/**
+*Returns the total capacity of a given class on a given flight
+*@param scheduleID The scheduleID of the particular flight (note: Not flightNo)
+*@param class The class of travel in question
+*@return The total capacity of that class on that flight
+*/
+function classCapacity($scheduleID, $class) {
+	if ($class == "Economy") { $classID = "econSeats"; }
+	elseif ($class == "Business") { $classID = "busSeats"; }
+	else return "Function Error [classCapacity(".$scheduleID.", ".$class.")]: Invalid class type.";
+	
+	$query = "
+	SELECT
+		flights.".$classID."
+	FROM
+		flights, flightSchedule
+	WHERE
+		flightSchedule.scheduleID = '".$scheduleID."'
+		
+		AND flights.flightNo = flightSchedule.flightNo";
+	$result = mysql_query($query);
+	
+	while ($row = mysql_fetch_array($result)) {
+		if ($class == "Economy") return $row['econSeats'];
+		elseif ($class == "Business")return $row['busSeats'];
+		else return "Function Error [classCapacity(".$scheduleID.", ".$class.")]: Invalid class type.";
+	}
+}
+/*
+*returns an array containing the number of results and the search query use to get them
+*@param flightNo - the flight number of teh flight you want the schedules for
+*/
+function checkforschedules($flightNo)
+{
+	$query = "SELECT * FROM flightSchedule WHERE FlightNo='".$flightNo."'";
+	$result = mysql_query($query);
+	$res[0] = mysql_num_rows($result);
+	$res[1] = $query;
+	return $res;
 }
 ?>

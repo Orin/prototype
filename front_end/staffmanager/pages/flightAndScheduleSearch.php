@@ -14,7 +14,7 @@ $criteria[8] = $_POST['avalB'];
 $criteria[9] = $_POST['avalG'];
 
 
-$query = "SELECT DISTINCT * FROM flights, flightSchedule WHERE flights.flightNo = flightSchedule.FlightNo";
+$query = "SELECT * FROM flights, flightSchedule WHERE flights.flightNo = flightSchedule.FlightNo";
 
 if(!empty($criteria[0]))
 {
@@ -44,7 +44,6 @@ if(!empty($criteria[9]))
 {
 	$query = $query." AND availableGroupSeats >='$criteria[9]'";
 }
-
 
 $result = mysql_query($query);
 

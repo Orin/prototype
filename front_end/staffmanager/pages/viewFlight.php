@@ -30,6 +30,6 @@ $data = mysql_fetch_array($result);
 <?php
 $schedules = "SELECT * FROM flightSchedule WHERE flightNo = '$flightNo'";
 $schedules_result = mysql_query($schedules);
-showScheduleTable($schedules_result, 'viewFlight.html');
+showScheduleTable($schedules_result, 'index.html');
 ?>
 </div>
