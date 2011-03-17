@@ -2,7 +2,7 @@
 <table id="inputData">
 	<tr><th colspan=2>Select Report Period</th></tr>
 	<tr><td>Period:</td><td>
-		<?php monthPicker(1,'month');?>
+		<?php monthPicker(calcPrevMonth(),'month');?>
 	</td></tr>
 </table>
 <br/><br/>

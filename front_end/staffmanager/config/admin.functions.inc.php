@@ -233,6 +233,13 @@ if (!$def) {$def = -1;}
 	echo '</select>';
 }
 
+function calcPrevMonth() {
+	$now = date("n");
+	if ($now == 1) { $now = 12; }
+	else $now = $now - 1;
+	return $now;
+}
+
 function datePickerBackEnd($name = '', $defDay = FALSE, $defMonth = FALSE, $defYear = '') {
 	if (!$name) { $name = ''; }
 	if (!$defDay) {$defDay = -1;}
