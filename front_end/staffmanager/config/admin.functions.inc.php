@@ -224,7 +224,7 @@ if (!$def) {$def = -1;}
 	echo '<select class="month"  name='.$name.'>';
 	for ($i = 1; $i < 12; $i++) {
 		if ($i == $def) { ?><option selected><?php } else { ?><option><?php }
-		echo $i.'</option>';
+		echo date("F", mktime(0,0,0,$i)).'</option>';
 	}
 	
 	if($defMonth == -1) {echo '<option selected><option>';}
