@@ -1,6 +1,7 @@
 <?php
 //Include all functions
 include '../config/definitions.inc.php';
+include '../config/functions.inc.php';
 include 'config/admin-definitions.inc.php';
 include 'config/admin.functions.inc.php';
 include 'config/database.inc.php';
