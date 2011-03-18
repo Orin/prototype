@@ -26,7 +26,6 @@
 		Class: '.$class.'<br />
 		';
 
-
 $outResult = flightSearch($from, $to, $departDate, $class);
 ?><br />Out Result<br />
 <table>
@@ -34,8 +33,7 @@ $outResult = flightSearch($from, $to, $departDate, $class);
 
 <?php while ($row = mysql_fetch_array($outResult)) { ?>
 	<tr><td><?php echo $row['flightNo']; ?></td><td><?php echo $row['departuredate']; ?></td><td><?php echo $row['departureTime']; ?></td><td><?php echo $row['arrivalTime']; if ($row['arrivalDate'] != $row['departuredate']){ echo '(+1)'; } ?></td></tr>
-<?php } ?></table><?
-
+<?php } ?></table><?php
 
 $returnResult = flightSearch($to, $from, $returnDate, $class);
 

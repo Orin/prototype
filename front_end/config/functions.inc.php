@@ -186,6 +186,7 @@ function flightSearch($from, $to, $date, $class) {
 		flights.flightNo,
 		classes.className
 		";
+
 	$result = mysql_query($query);
 	if (mysql_num_rows($result) == 0) {
 		echo "Function Error [flightSearch(".$from.", ".$to.", ".$date.", ".$class.")]: No flights found.";
