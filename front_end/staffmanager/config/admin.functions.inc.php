@@ -24,29 +24,6 @@ GROUP BY
     ";
 	return mysql_query($query);
 }
-function autoFill($dataSet, $divName, $elName = '')
-{ ?>
-	<SCRIPT >
-	
-	
-	function autoFillsPre(key,textBox, divname) 
-	{
-	
-		var dataSet=[];
-		
-		dataSet[0] = 'hi';
-		dataSet[1] = 'hffffi';
-	<?php	for ($i =0;  $i<count($dataSet); $i++) { ?>
-		dataSet[<?php echo $i; ?>] = '<?php echo $dataSet[$i]; ?>';
-	<?php } ?>
-	autoFills(key,textBox,dataSet,divname);
-	
-	}
-
-	</SCRIPT>
-	
-	<?php echo '<div id="'.$divName.'"><input  id="blargh" type=text autocomplete="off" name="'.$elName.'" onkeyup="autoFillsPre(event.keyCode,this,\''.$divName.'\');"/></div>';
-}
 
 function showFlightTable($q_user, $URL = 'main.html')
 {
@@ -153,7 +130,7 @@ function displayDiscounts ($originalPrice, $valuedis, $percentDis, $globalValue,
 	else {return '<p class="normPrice"> &pound;'.$originalPrice.'</p> <p class="disPrice"> &pound;'.$discountTotal.'</p>';}
 }
 
-function showScheduleTable($q_user, $URL = 'main.html', $refine = '')
+function showScheduleTable($q_user, $URL = 'main.html')
 {
 
 echo '<div id="disInfo">
@@ -197,7 +174,7 @@ echo 'value :    &pound;'.$discounts[1];
 echo '</td>';
 
 echo '<td>';
-echo '<a href="javascript:postValue(\'removeDBrow.html\', {type:1 , primaryKey:'.$ScheduleID.', URL:\''.$URL.'\', refine:\''.$refine.'\'});"><img src="icons/delete.gif" /></a>';
+echo '<a href="javascript:postValue(\'removeDBrow.html\', {type:1 , primaryKey:'.$ScheduleID.', URL:\''.$URL.'\'});"><img src="icons/delete.gif" /></a>';
 echo '</td>';
 
 
@@ -237,62 +214,29 @@ function getDiscounts ($primaryKey, $type)
 	}
 	return $discounts;
 }
-function dropdown($entries, $default = '', $name='', $width = 'auto') {
-	echo "<select name=\"".$name."\" style=\"width:".$width."\">";
-	for ($i = 0; $i < count($entries); $i++) {
-		if ($entries[$i] == $default) { ?><option selected><?php } else { ?><option><?php }
-		echo $entries[$i]; ?></option>
-	<?php	}
-	echo '</select>';
-}
 
-function datePicker($defDay = FALSE, $defMonth = FALSE, $name = '') {
-	if (!$defDay) { $defDay = date("d") + 1; }
-	if (!$defMonth) { $defMonth = date("m"); }
-	if (!$name) { $name = ''; }
-	echo '<div class="date-select">';
-	//Day 
-	?>
 
-    <?php
-	echo '<select class="day" name="'.$name.'Day">';
-	for ($i = 1; $i < 32; $i++) {
-		if ($i == $defDay) { ?><option selected><?php } else { ?><option><?php }
-		echo $i.'</option>';
-	}
-	echo '<option></option>';
-	echo '</select>';
-	
-	echo '<select class="month"  name="'.$name.'Month">';
-	for ($i = 1; $i < 13; $i++) {
-		if ($i == $defMonth) { ?><option selected><?php } else { ?><option><?php }
-		echo date("F", mktime(0,0,0,$i)).'</option>';
-	}
-	echo '<option></option>';
-	echo '</select>';
-	
-	echo '<select class="year"  name="'.$name.'Year">';
-	for ($i = date("Y"); $i < (date("Y") + 2); $i++) {
-		echo '<option>'.$i.'</option>';
-	}
-	echo '<option></option>';
-	echo '</select>
-	</div>';
-}
 
 function monthPicker($def = FALSE, $name= '')
 {
 if (!$def) {$def = -1;}
 	echo '<select class="month"  name='.$name.'>';
 	for ($i = 1; $i < 12; $i++) {
-		if ($i == $def) { ?><option selected><?php } else { ?><option><?php }
-		echo $i.'</option>';
+		if ($i == $def) { ?><option selected value="<?php echo $i; ?>"><?php } else { ?><option value="<?php echo $i; ?>"><?php }
+		echo date("F", mktime(0,0,0,$i)).'</option>';
 	}
 	
 	if($defMonth == -1) {echo '<option selected><option>';}
 	else {echo '<option></option>';}
 
 	echo '</select>';
+}
+
+function calcPrevMonth() {
+	$now = date("n");
+	if ($now == 1) { $now = 12; }
+	else $now = $now - 1;
+	return $now;
 }
 
 function datePickerBackEnd($name = '', $defDay = FALSE, $defMonth = FALSE, $defYear = '') {
@@ -347,32 +291,6 @@ function timePicker ($defHour = -1, $defMin = -1, $name = '')
 	}
 	echo '</select>';
 	echo '</div>';
-}
-
-function noPsngrPicker($psngrType, $defNo = 0) {
-	?><div class="no-passengers">
-    <select class="psngr-select <?php echo $psngrType; ?>" name="psngr-<?php echo $psngrType; ?>">
-    <?php
-	for ($i = 0; $i < 11; $i++) {
-		if ($i == $defNo) { ?><option selected><?php } else { ?><option><?php }
-		echo $i; ?></option>
-        <?php
-	} ?>
-    </select>
-    </div>
-    <?php
-}
-
-function kill_session() {
-	$_SESSION = array();
-	$session_name = session_name();
-	session_destroy();
-	if ( isset( $_COOKIE[ $session_name ] ) ) {
-		if ( setcookie(session_name(), '', time()-3600, '/') ) {
-			header("Location: index.html");
-			exit();    
-		}
-	}
 }
 
 function show_header($page, $admin_no_header) {
@@ -469,120 +387,5 @@ function buildTable($result) {
 	<?php }	?>
 	</table>
 	<?php
-}
-
-
-/**
-*Used to determine remaining seats on a specified flight in specified class
-*@param scheduleID The scheduleID of the particular flight (note: Not flightNo)
-*@param class The class of travel in question
-*@return availableSeats The number of unbooked seats
-*/
-function availableSeats($scheduleID, $class) {
-	$query = "
-	SELECT 
-		COUNT(passengers.passengerID),
-		flights.econSeats, flights.busSeats
-	FROM 
-		flights, flightSchedule, bookings, passengers, classes, bookings_passengers 
-	WHERE 
-		flightSchedule.scheduleID = '".$scheduleID."'
-		AND classes.className = '".$class."'
-		
-		AND flights.flightNo = flightSchedule.flightNo 
-		AND bookings.FlightScheduleID = flightSchedule.ScheduleID
-		AND bookings_passengers.bookingID = bookings.bookingID 
-		AND bookings_passengers.passengerID = passengers.passengerID 
-		AND bookings.classID = classes.classID 
-	GROUP BY 
-		flights.flightNo,
-		classes.className
-		";
-	$result = mysql_query($query);
-	if (mysql_num_rows($result) == 1) {
-		while ($row = mysql_fetch_array($result)) {
-			$boughtSeats = $row['COUNT(passengers.passengerID)'];
-			if ($class == "Economy") $capacity = $row['econSeats'];
-			elseif ($class == "Business") $capacity = $row['busSeats'];
-			else return "Function Error [availableSeats(".$scheduleID.", ".$class.")]: Invalid class type.";
-			
-			$availableSeats = $capacity - $boughtSeats;
-			return $availableSeats;
-		}
-	} elseif (validScheduleID($scheduleID)) {
-		return classCapacity($scheduleID, $class);
-	} else return "Function Error [availableSeats(".$scheduleID.", ".$class.")]: Invalid scheduleID.";
-	
-}
-
-
-function checkforBookings($scheduleID)
-{
-	$query = "SELECT * FROM bookings WHERE FlightScheduleID=".$scheduleID;
-	$result = mysql_query($query);
-	$res[0] = mysql_num_rows($result);
-	$res[1] = "FlightScheduleID=".$scheduleID;
-	return $res;
-}
-
-
-/**
-*Used for checking if a provided scheduleID exists in the flightSchedule table
-*@param scheduleID the scheduleID you want to lookup
-*@return boolean
-*/
-function validScheduleID($scheduleID) {
-	$query = "
-	SELECT
-		scheduleID
-	FROM
-		flightSchedule
-	WHERE
-		scheduleID = '".$scheduleID."'";
-	$result = mysql_query($query);
-	if (mysql_num_rows($result) == 1) return true;
-	else return false;
-}
-
-
-/**
-*Returns the total capacity of a given class on a given flight
-*@param scheduleID The scheduleID of the particular flight (note: Not flightNo)
-*@param class The class of travel in question
-*@return The total capacity of that class on that flight
-*/
-function classCapacity($scheduleID, $class) {
-	if ($class == "Economy") { $classID = "econSeats"; }
-	elseif ($class == "Business") { $classID = "busSeats"; }
-	else return "Function Error [classCapacity(".$scheduleID.", ".$class.")]: Invalid class type.";
-	
-	$query = "
-	SELECT
-		flights.".$classID."
-	FROM
-		flights, flightSchedule
-	WHERE
-		flightSchedule.scheduleID = '".$scheduleID."'
-		
-		AND flights.flightNo = flightSchedule.flightNo";
-	$result = mysql_query($query);
-	
-	while ($row = mysql_fetch_array($result)) {
-		if ($class == "Economy") return $row['econSeats'];
-		elseif ($class == "Business")return $row['busSeats'];
-		else return "Function Error [classCapacity(".$scheduleID.", ".$class.")]: Invalid class type.";
-	}
-}
-/*
-*returns an array containing the number of results and the search query use to get them
-*@param flightNo - the flight number of teh flight you want the schedules for
-*/
-function checkforschedules($flightNo)
-{
-	$query = "SELECT * FROM flightSchedule WHERE FlightNo='".$flightNo."'";
-	$result = mysql_query($query);
-	$res[0] = mysql_num_rows($result);
-	$res[1] = $query;
-	return $res;
 }
 ?>

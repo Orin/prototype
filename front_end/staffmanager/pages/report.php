@@ -1,8 +1,8 @@
 <form name="report" action="genReport.html" method="POST">
 <table id="inputData">
 	<tr><th colspan=2>Select Report Period</th></tr>
-	<tr><td>Period:</td><td>
-		<?php monthPicker(1,'month');?>
+	<tr><td>Period:</td><td align="right">
+		<?php monthPicker(calcPrevMonth(),'month');?>
 	</td></tr>
 </table>
 <br/><br/>
