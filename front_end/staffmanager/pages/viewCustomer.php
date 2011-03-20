@@ -36,7 +36,6 @@ $result = mysql_query($query);
 <th><h4>Available Economy Seats</h4></th>
 <th><h4>Available Business Seats</h4></th>
 <th><h4>Available Seats</h4></th>
-<th><h4>Delete Booking</h4></th>
 </tr>
 
 <?php 
@@ -83,9 +82,6 @@ echo '<td>';
 echo $econSeats+ $busseats;
 echo '</td>';
 
-echo '<td>';
-echo '<a href="javascript:postValue(\'deleteBooking.html\', {bookingID:\''.$data['bookingID'].'\', URL:\'viewCustomer.html\', custID:'.$customerID.'});"><img src="icons/delete.gif" /></a>';
-echo '</td>';
 
 echo '</tr>';
 $data = mysql_fetch_array($result);

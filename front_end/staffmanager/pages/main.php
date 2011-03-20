@@ -14,7 +14,7 @@
 
 <div id="searches">
 	<div id="flight-search">
-        <div class="title-bar">Search a Flight</div>
+        <div class="title-bar">Search For a Flight</div>
         
         <div class="search-left">
         <form name="Flight_info" method="post" action="viewFlight.html" align=right>

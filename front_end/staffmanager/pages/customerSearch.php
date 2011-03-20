@@ -1,6 +1,6 @@
 <?php
-$criteria[0] = $_POST['Fname'];
-$criteria[1] = $_POST['Lname'];
+if (isset($_POST['Fname'])) {$criteria[0] = $_POST['Fname'];}
+if (isset($_POST['Lname'])) {$criteria[1] = $_POST['Lname'];}
 
 
 
@@ -25,6 +25,7 @@ $result = mysql_query($query);
 
 <table border="1" align=left id="displayInfo">
 <tr>
+<th><h4>Booking Reference</h4></th>
 <th><h4>CustomerID</h4></th>
 <th><h4>First Name</h4></th>
 <th><h4>Last Name</h4></th>
@@ -50,6 +51,10 @@ for ($i =0;  $i<mysql_num_rows($result); $i++)
   $custID = $data['customerID'];
   $bookingID = $data['bookingID'];
 echo '<tr onClick="javascript:postValue(\'viewCustomer.html\', {custID:\''.$custID.'\'});">';
+  echo '<td>';
+echo $bookingID;
+echo '</td>';
+ 
  echo '<td>';
 echo $custID;
 echo '</td>';

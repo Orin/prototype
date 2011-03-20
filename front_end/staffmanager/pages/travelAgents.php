@@ -10,7 +10,7 @@ $q_user = mysql_query( "SELECT * FROM agents");
 	{
 		$data = mysql_fetch_array($q_user);
 	?>
-	<tr><td><?php echo $data['name'];?></a></td></tr>
+	<tr onclick="javascript:postValue('editTA.html', {TA:'<?php echo $data['name']; ?>'});"><td><?php echo $data['name'];?></a></td></tr>
 	<?php } ?>
 	<tr><th><form name="add_TA" method="post" action="addTA.html" ><input type="text" name="new" /><input type="submit" value="add"/></form></th></tr>
 </table>

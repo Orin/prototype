@@ -30,7 +30,7 @@ $accessLvl[2] = 'Staff';
     <div class="menu-item"><a href="index.html"><span class="item">Home</span></a></div>
     <div class="menu-item"><a href="scheduleInfo.html"><span class="item">Add Schedule</span></a></div>
     <div class="menu-item"><a href="editFlightSchedule.html"><span class="item">Edit Schedule</span></a></div>
-	<div class="menu-item"><a href="discountsPricing.html"><span class="item">Discounts and pricing</span></a></div>
+	<div class="menu-item"><a href="discountsPricing.html"><span class="item">Discounts and Pricing</span></a></div>
   </div>
 </div>
 

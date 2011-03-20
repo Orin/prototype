@@ -153,7 +153,7 @@ function displayDiscounts ($originalPrice, $valuedis, $percentDis, $globalValue,
 	else {return '<p class="normPrice"> &pound;'.$originalPrice.'</p> <p class="disPrice"> &pound;'.$discountTotal.'</p>';}
 }
 
-function showScheduleTable($q_user, $URL = 'main.html')
+function showScheduleTable($q_user, $URL = 'main.html', $refine = '')
 {
 
 echo '<div id="disInfo">
@@ -197,7 +197,7 @@ echo 'value :    &pound;'.$discounts[1];
 echo '</td>';
 
 echo '<td>';
-echo '<a href="javascript:postValue(\'removeDBrow.html\', {type:1 , primaryKey:'.$ScheduleID.', URL:\''.$URL.'\'});"><img src="icons/delete.gif" /></a>';
+echo '<a href="javascript:postValue(\'removeDBrow.html\', {type:1 , primaryKey:'.$ScheduleID.', URL:\''.$URL.'\', refine:\''.$refine.'\'});"><img src="icons/delete.gif" /></a>';
 echo '</td>';
 
 
