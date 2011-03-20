@@ -22,10 +22,28 @@ if(!empty($criteria[1]))
 {
 	$query = $query." AND departure ='$criteria[1]'";
 }
+/*
 if(!empty($criteria[2]) && !empty($criteria[3]) && !empty($criteria[4]))
 {
 	$query = $query." AND departuredate ='".$criteria[2].'-'.$criteria[3].'-'.$criteria[4]."'";
 }
+*/
+
+if(!empty($criteria[2]))
+{
+	$query = $query." AND YEAR(departuredate) = $criteria[2]";
+}
+
+if(!empty($criteria[3]))
+{
+	$query = $query." AND MONTH(departuredate) = $criteria[3]";
+}
+
+if(!empty($criteria[4]))
+{
+	$query = $query." AND DAY(departuredate) = $criteria[4]";
+}
+
 if(!empty($criteria[5]) && !empty($criteria[6]))
 {
 	$query = $query." AND departureTime ='".$criteria[5].':'.$criteria[6]."'";
