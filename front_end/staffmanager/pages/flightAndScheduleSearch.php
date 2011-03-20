@@ -1,17 +1,15 @@
 <?php
-$criteria[0] = $_POST['Dest'];
-$criteria[1] = $_POST['Dep'];
+if(isset($_POST['Dest'])) {$criteria[0] = $_POST['Dest'];} else {$criteria[0] = '';}
+if(isset($_POST['Dep'])) {$criteria[1] = $_POST['Dep'];} else {$criteria[1] = '';}
+if(isset($_POST['depDateYear'])) {$criteria[2] = $_POST['depDateYear'];} else {$criteria[2] = '';}
+if(isset($_POST['depDateMonth'])) {$criteria[3] = $_POST['depDateMonth'];} else {$criteria[3] = '';}
+if(isset($_POST['depDateDay'])) {$criteria[4] = $_POST['depDateDay'];} else {$criteria[4] = '';}
+if(isset($_POST['depTimehour'])) {$criteria[5] = $_POST['depTimehour'];} else {$criteria[5] = '';}
+if(isset($_POST['depTimemin'])) {$criteria[6] = $_POST['depTimemin'];} else {$criteria[6] = '';}
+if(isset($_POST['avalE'])) {$criteria[7] = $_POST['avalE'];} else {$criteria[7] = '';}
+if(isset($_POST['avalB'])) {$criteria[8] = $_POST['avalB'];} else {$criteria[8] = '';}
+if(isset($_POST['avalG'])) {$criteria[9] = $_POST['avalG'];} else {$criteria[9] = '';}
 
-$criteria[2] = $_POST['depDateYear'];
-$criteria[3] = $_POST['depDateMonth'];
-$criteria[4] = $_POST['depDateDay'];
-
-$criteria[5] = $_POST['depTimehour'];
-$criteria[6] = $_POST['depTimemin'];
-
-$criteria[7] = $_POST['avalE'];
-$criteria[8] = $_POST['avalB'];
-$criteria[9] = $_POST['avalG'];
 
 
 $query = "SELECT * FROM flights, flightSchedule WHERE flights.flightNo = flightSchedule.FlightNo";
@@ -141,7 +139,7 @@ $query = substr($query, 0,-3);
 
 $result = mysql_query($query);
 
-showFlightTable($result, 'flightAndScheduleSearch.html');
+showFlightTable($result, 'flightAndScheduleSearch.html',$criteria);
 ?>
 
 

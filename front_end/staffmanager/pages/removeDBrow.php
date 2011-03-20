@@ -32,8 +32,6 @@ $pk = $pk.'='.$primarys[$type];
 $query2 = 'DELETE FROM '.$discounts[$type].' WHERE refID='.$primarys[$type];
 $query = 'DELETE FROM '.$table.' WHERE '.$pk;
 
-//echo $query2;
-//echo $query;
 
 $dependanceys = null;
 if($type) {$dependanceys = checkforBookings($primaryKey);}
