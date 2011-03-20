@@ -33,21 +33,21 @@ $result = mysql_query($query);
 <th><h4>Departure Date</h4></th>
 <th><h4>Departure Time</h4></th>
 <th><h4>Arrival time</h4></th>
-<th><h4>Available Economy Seats</h4></th>
-<th><h4>Available Business Seats</h4></th>
-<th><h4>Available Seats</h4></th>
+<th><h4>Travle Agent</h4></th>
+<th><h4>No of passengers</h4></th>
+<th><h4>TotalCost</h4></th>
+
 </tr>
 
 <?php 
-$bookingsQuery = 'SELECT * FROM bookings, flightSchedule WHERE bookings.customerID = '.$customerID.' AND flightSchedule.ScheduleID = bookings.FlightScheduleID';
+$bookingsQuery = 'SELECT * FROM bookings, flightSchedule, bookings_passengers WHERE bookings.customerID = '.$customerID.' AND flightSchedule.ScheduleID = bookings.FlightScheduleID AND bookings.bookingID = bookings_passengers.bookingID';
 $result = mysql_query($bookingsQuery);
-for ($i =0;  $i<mysql_num_rows($result); $i++)
-{
+
  $data = mysql_fetch_array($result);
 $ScheduleID = $data['ScheduleID'];
 $FlightNo = $data['FlightNo'];
 
-echo '<tr>';
+echo '<tr onClick="javascript:postValue(\'editBooking.html\', {bookingID:\''.$data['bookingID'].'\'});">';
 echo '<td>';
 echo '<a href="javascript:postValue(\'scheduleInfo.html\', {scheduleID:\''.$ScheduleID.'\'});">'.$ScheduleID.'</a>'; 
 echo '</td>';
@@ -69,23 +69,21 @@ echo $data['arrivalTime'];
 echo '</td>';
 
 echo '<td>';
-$econSeats = availableSeats($ScheduleID, 'Economy');
-echo $econSeats;
+echo $data['travelAgent'];
 echo '</td>';
 
 echo '<td>';
-$busseats = availableSeats($ScheduleID, 'Business');
-echo $busseats;
+echo mysql_num_rows($result);
 echo '</td>';
+
 
 echo '<td>';
-echo $econSeats+ $busseats;
+echo $data['totalCost'];
 echo '</td>';
 
 
-echo '</tr>';
-$data = mysql_fetch_array($result);
-}?>
+
+echo '</tr>';?>
 </table>
 
 

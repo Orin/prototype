@@ -130,7 +130,7 @@ function displayDiscounts ($originalPrice, $valuedis, $percentDis, $globalValue,
 	else {return '<p class="normPrice"> &pound;'.$originalPrice.'</p> <p class="disPrice"> &pound;'.$discountTotal.'</p>';}
 }
 
-function showScheduleTable($q_user, $URL = 'main.html')
+function showScheduleTable($q_user, $URL = 'main.html', $goto = 'scheduleInfo.html')
 {
 
 echo '<div id="disInfo">
@@ -151,7 +151,7 @@ $data = mysql_fetch_array($q_user);
 $ScheduleID = $data['ScheduleID'];
 $discounts = getDiscounts($ScheduleID, 0);
 $FlightNo = $data['FlightNo'];
-echo '<tr onClick="javascript:postValue(\'scheduleInfo.html\', {scheduleID:\''.$ScheduleID.'\'});">';
+echo '<tr onClick="javascript:postValue(\''.$goto.'\', {scheduleID:\''.$ScheduleID.'\'});">';
 echo '<td>';
 echo '<a href="javascript:postValue(\'viewFlight.html\', {flightNo:\''.$FlightNo.'\'});">'.$FlightNo.'</a>';  
 echo '</td>';

@@ -2,6 +2,9 @@
 
 $FNumber = $_POST['FNo'];
 
+if(isset ($_POST['goto'])) {$goto = $_POST['goto'];}
+else {$goto = 'editFlightSchedule.html';}
+
 $depDate[0] = $_POST['depDateDay'];
 $depDate[1] = $_POST['depDateMonth'];
 $depDate[2] = $_POST['depDateYear'];
@@ -18,6 +21,6 @@ if($deptime[0] != '' && $deptime[1] != ''){$searchString = $searchString.' depar
 $searchString = substr($searchString,0,strlen($searchString)-3);
 $_SESSION['refine']=$searchString;
 
-header('Location: editFlightSchedule.html');
+header('Location: '.$goto.'');
 
 ?>

@@ -35,7 +35,7 @@ $result = mysql_query($query);
 <th><h4>Departure Date</h4></th>
 <th><h4>Daparture Time</h4></th>
 <th><h4>Arrival Time</h4></th>
-<th><h4>Delete Customer</h4></th>
+<th><h4>Delete Customer (cancel booking)</h4></th>
 </tr>
 
 <?php 
