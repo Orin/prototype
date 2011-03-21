@@ -3,6 +3,8 @@
 $query = 'SELECT * FROM flightSchedule';
 
 
+
+
 if($_POST['depDateStartDay'] != '' || $_POST['depTimeStarthour'] != '' || $_POST['arriveTimeStarthour'] != '')
 {
 	$query = $query.' WHERE ';
