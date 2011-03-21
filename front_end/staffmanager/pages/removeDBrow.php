@@ -51,10 +51,18 @@ if ($dependanceys[0] > 0)
 		}
 		else 
 		{
-		echo 'The schedule you are trying to delete has bookings assigned to it. ';
-		echo '<input type="submit" value="Click Here" /> to be taken to the booking management page for this flight. ';
+				echo 'The schedule you are trying to delete has bookings assigned to it. ';
+				echo '<input type="submit" value="Click Here" /> to be taken to the booking management page for this flight. ';
 		}
-		
+		?></form>
+		<form name="Flight_info" method="post" action="deleteDependanceys.html">
+		<p>or click here to delete all dependenceys</p>
+		<input type="hidden" name="primarykey" value="<?php echo $primaryKey; ?>" />
+		<input type="hidden" name="type" value="<?php echo $type; ?>" />
+		<input type="hidden" name="URL" value="<?php echo $goto; ?>" />
+		<input type="submit" value="Click Here" />
+		</form>
+		<?php 
 	}
 else
 	{

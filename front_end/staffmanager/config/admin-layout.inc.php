@@ -59,6 +59,7 @@
 	elseif ($page == 'processEditTA'      	&& ($level <=2)) 	{?><div id="<?php echo $page; ?>"><?php include 'pages/processEditTA.php'; ?></div><?php }
 	elseif ($page == 'editBooking'      	&& ($level <=2)) 	{?><div id="<?php echo $page; ?>"><?php include 'pages/editBooking.php'; ?></div><?php }
 	elseif ($page == 'processEditBooking'      	&& ($level <=2)) 	{?><div id="<?php echo $page; ?>"><?php include 'pages/processEditBooking.php'; ?></div><?php }
+	elseif ($page == 'deleteDependanceys'      	&& ($level <=2)) 	{?><div id="<?php echo $page; ?>"><?php include 'pages/deleteDependanceys.php'; ?></div><?php }
     //Else show page not found error
     else {?>
       <div class="error">
