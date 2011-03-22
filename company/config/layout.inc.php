@@ -35,6 +35,14 @@
 				
 				
 				<?php }
+				elseif($page == 'sendMail')
+				{?>
+				<div id="<?php echo $page; ?>">
+                        <?php include 'pages/'.$page.'.php'; ?>
+                      </div>
+				
+				
+				<?php }
                 
                 
                 //Else show page not found error
