@@ -31,8 +31,12 @@ $result = mysql_query($query);
 <tr><td>travleAgent: </td> <td><?php echo $data['travelAgent'];?></td></tr>
 
 <tr><th colspan=2>
-	<form>
-		<input type="button" value="Edit" name="Edit_customer" onClick="window.location='custInfoEdit.html'"> 
+	<form method="post" action="custInfoEdit.html">
+		<input type="hidden" value="<?php echo $data['customerID'];?>" name="ID"/>
+		<input type="hidden" value="<?php echo $data['Firstname'];?>" name="FirstName"/>
+		<input type="hidden" value="<?php echo $data['LastName'];?>" name="LastName"/>
+		<input type="hidden" value="<?php echo $data['EmailAddress'];?>" name="email"/>
+		<input type="submit" value="Edit"/> 
 	</form>
 </th></tr>
 

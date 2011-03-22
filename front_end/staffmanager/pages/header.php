@@ -1,9 +1,8 @@
 <?php
 //get from a query later on 	
-$airports[0] = '';
-$airports[1] = 'EDI';
-$airports[2] = 'GLA';
-$airports[3] = 'ABZ';
+
+
+$airports = getAirports();
 
 $discountType[0] = 'percentage';
 $discountType[1] = 'value';

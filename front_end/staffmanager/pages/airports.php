@@ -13,5 +13,10 @@ $q_user = mysql_query( "SELECT * FROM airports");
 	<td><?php echo $data['fullName']; ?></td></tr>
 	
 	<?php } 
-	if ($_SESSION['level'] <=1) {?><tr><th><form name="add_AP" method="post" action="addAP.html"><input type="text" name="new"><input type="submit" value="add"/></form></th></tr><?php } ?>
+	if ($_SESSION['level'] <=1) {?>
+	<tr><th colspan=2><form name="add_AP" method="post" action="addAP.html">
+		Airport Code:<input type="text" name="new">
+		Airport Name:<input type="text" name="fulName">
+		<input type="submit" value="add"/></form></th></tr><?php 
+	} ?>
 </table>

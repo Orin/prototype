@@ -50,7 +50,7 @@ for ($i =0;  $i<mysql_num_rows($result); $i++)
   $FlightNo = $data['FlightNo'];
   $custID = $data['customerID'];
   $bookingID = $data['bookingID'];
-echo '<tr onClick="javascript:postValue(\'viewCustomer.html\', {custID:\''.$custID.'\'});">';
+echo '<tr onClick="javascript:postValue(\'viewBooking.html\', {bookingref:\''.$bookingID.'\'});">';
   echo '<td>';
 echo $bookingID;
 echo '</td>';

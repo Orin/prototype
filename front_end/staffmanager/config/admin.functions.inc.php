@@ -243,6 +243,8 @@ function datePickerBackEnd($name = '', $defDay = FALSE, $defMonth = FALSE, $defY
 	if (!$name) { $name = ''; }
 	if (!$defDay) {$defDay = -1;}
 	if (!$defMonth) {$defMonth = -1;}
+	if (!$defYear) {$defYear = date("Y");}
+	
 	echo '<div class="date-select">';
 	//Day
 	echo '<select class="day" name="'.$name.'Day'.'">';
@@ -361,6 +363,19 @@ function flightFrequency ($month)
 	$result = mysql_query($frequencys);
 	return $result;
 	
+}
+
+function getAirports()
+{
+	$airports = 'SELECT name FROM airports';
+	$result = mysql_query($airports);
+	$list[0] = '';
+	for ($i = 1; $i < (mysql_num_rows($result)+1); $i++)
+	{
+		$data = mysql_fetch_array($result);
+		$list[$i] = $data['name'];
+	}
+	return $list;
 }
  //SELECT flights.flightNo, IF (customerID='FALSE', COUNT(travelAgent), count(customerID)) AS bookeeCount FROM flights, bookings, flightSchedule WHERE flights.flightNo = flightSchedule.FlightNo AND flightSchedule.ScheduleID = bookings.FlightScheduleID AND bookings.travelAgent != '' GROUP BY flights.flightNo;
 

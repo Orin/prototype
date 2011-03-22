@@ -50,8 +50,8 @@
 	elseif ($page == 'removeDBrow'			&& ($level <=2)) 	{?><div id="<?php echo $page; ?>"><?php include 'pages/removeDBrow.php'; ?></div><?php }
 	elseif ($page == 'processFlightUpdate'	&& ($level <=1)) 	{?><div id="<?php echo $page; ?>"><?php include 'pages/processFlightUpdate.php'; ?></div><?php }
 	elseif ($page == 'deleteBooking'	    && ($level <=2)) 	{?><div id="<?php echo $page; ?>"><?php include 'pages/deleteBooking.php'; ?></div><?php }
-	elseif ($page == 'viewBooking'	        && ($level <=1)) 	{?><div id="<?php echo $page; ?>"><?php include 'pages/viewBooking.php'; ?></div><?php }
-	elseif ($page == 'processCustomerUpdate'&& ($level <=1)) 	{?><div id="<?php echo $page; ?>"><?php include 'pages/processCustomerUpdate.php'; ?></div><?php }
+	elseif ($page == 'viewBooking'	        && ($level <=2)) 	{?><div id="<?php echo $page; ?>"><?php include 'pages/viewBooking.php'; ?></div><?php }
+	elseif ($page == 'processCustomerUpdate'&& ($level <=2)) 	{?><div id="<?php echo $page; ?>"><?php include 'pages/processCustomerUpdate.php'; ?></div><?php }
 	elseif ($page == 'genReport'      		&& ($level <=1)) 	{?><div id="<?php echo $page; ?>"><?php include 'pages/genReport.php'; ?></div><?php }
 	elseif ($page == 'editAirport'      	&& ($level <=2)) 	{?><div id="<?php echo $page; ?>"><?php include 'pages/editAirport.php'; ?></div><?php }
 	elseif ($page == 'processeditAirport'      	&& ($level <=2)) 	{?><div id="<?php echo $page; ?>"><?php include 'pages/processeditAirport.php'; ?></div><?php }
