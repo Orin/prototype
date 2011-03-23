@@ -1,7 +1,15 @@
 <?php
+/*
 //Force HTTPS
 if (!$_SERVER['HTTPS']) { 
-	header("Location: https://".$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"]);
+	$domain = explode(".", $_SERVER['HTTP_HOST'], 2);
+	header("Location: https://www.".$domain[1].$_SERVER["REQUEST_URI"]);
+}
+*/
+//Force use of www2 (NB: Only use if FORCE HTTPS is disabled, as www2 does not support https)
+$domain = explode(".", $_SERVER['HTTP_HOST'], 2);
+if ($domain[0] == 'www') { 
+	header("Location: http://www2.".$domain[1].$_SERVER["REQUEST_URI"]);
 }
 //Include all functions
 include '../config/definitions.inc.php';
