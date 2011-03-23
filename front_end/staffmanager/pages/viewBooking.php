@@ -28,7 +28,7 @@ $result = mysql_query($query);
 <tr><td>Arrival Date:</td> <td><?php echo $data['arrivalDate'];?></td></tr>
 <tr><td>Arrival Time:</td> <td><?php echo $data['arrivalTime'];?></td></tr>
 <tr><td>Class: </td> <td><?php echo $data['className'];?></td></tr>
-<tr><td>travleAgent: </td> <td><?php echo $data['travelAgent'];?></td></tr>
+<tr><td>Travel Agent: </td> <td><?php echo $data['travelAgent'];?></td></tr>
 
 <tr><th colspan=2>
 	<form method="post" action="custInfoEdit.html">
