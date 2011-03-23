@@ -18,8 +18,8 @@ function resetForm()
 		<table id="search-table">
 			<tr class="from"><td>From</td><td><?php dropdown($destinations, 'Edinburgh', 'fromDrop', '196px'); ?></td></tr>
 			<tr class="to"><td>To</td><td><?php dropdown($destinations, 'Glasgow', 'toDrop', '196px'); ?></td></tr>
-			<tr class="depart"><td>Depart</td><td><?php datePicker(20, 3, 'depart'); ?></td></tr>
-			<tr class="return"><td>Return</td><td><?php datePicker(21, 3, 'return'); ?></td></tr>
+			<tr class="depart"><td>Depart</td><td><?php datePicker(20, 4, 'depart'); ?></td></tr>
+			<tr class="return"><td>Return</td><td><?php datePicker(21, 4, 'return'); ?></td></tr>
 			<tr class="spacer small"><td></td></tr>
             <tr class="class"><td>Class</td><td><?php dropdown($classes, 'Economy', 'classDrop', '196px'); ?></td></tr>
 			<tr class="people"><td>Adults<br /><?php noPsngrPicker("adult"); ?></td><td>Children<br /><?php noPsngrPicker("children"); ?></td></tr>
