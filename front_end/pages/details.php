@@ -24,7 +24,7 @@
 
 <div class="content-body">
 	<h2>Passenger Details</h2>
-    	<form action="confirmation.html" method="post">
+    	<form action="confirmation.html" method="post" onSubmit="return(VerifForm(this))">
 		<table id="details">
             <col style="width:200px" />
 			<tr><td>Passenger 1</td></tr>
