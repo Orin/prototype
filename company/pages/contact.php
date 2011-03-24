@@ -2,12 +2,12 @@
 <p>If you'd like us to get in touch with you, please fill in the form below.</p>
 
 <div id="contactUs" style="width:50%; float: left" >
-<form name="Flight_info" method="post" action="sendMail.html">
+<form name="Flight_info" method="post" action="sendMail.html" onSubmit="return(VerifForm(this))">
 <table>
 <tr><td>Name*:</td></tr>
 <tr><td><input type="text" name="Name" style="width: 420px;" ></input></td></tr>
 <tr><td>Email*:</td></tr>
-<tr><td><input type="text" name="Contact" style="width: 420px;" ></input></td></tr>
+<tr><td><input type="text" name="email" style="width: 420px;" ></input></td></tr>
 <tr><td>Message:</td></tr>
 <tr><td><textarea rows="10" cols="50" name="msg"></textarea></td></tr>
 <tr><td>* Required fields</td></tr>
