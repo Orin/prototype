@@ -10,7 +10,7 @@ else 								{$q_user = mysql_query("SELECT * FROM flightSchedule");}
 						<table border="0" id="ResultRefine">
 								
 								<tr><th colspan="2">Refine Schedules</th></tr>
-								<tr><td>FlightNo:</td> <td><input type="text" name="FNo" ></input></td></tr>
+								<tr><td>FlightNo:<div id="invalF" style="visibility:hidden">Invalid FlightNo</div></td> <td><input type="text" name="FNo" onBlur="formVal('invalF', 'isFlightNo')" ></input></td></tr>
 								<tr><td>Departure Date:</td> <td><?php datePickerBackEnd('depDate');?></td></tr>
 								<tr><td>Departure Time:</td> <td><?php timePicker(-1,-1,'depTime');?></td></tr>
 	

@@ -267,7 +267,7 @@ function datePickerBackEnd($name = '', $defDay = FALSE, $defMonth = FALSE, $defY
 	
 
 	echo '</select>';
-	echo '<input size="2" type="text" class="year"  name='.$name.'Year value="'.$defYear.'">
+	echo '<input size="2" type="text" class="year"  name='.$name.'Year value="'.$defYear.'" onkeypress="return isNumberKey(event)" onBlur="formVal(\'invalYear\', \'isYear\')"><div id="invalYear" style="visibility:hidden">Invalid Year</div> 
 	</div>';
 }
 
