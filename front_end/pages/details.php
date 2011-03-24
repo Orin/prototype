@@ -6,7 +6,7 @@
         <div id="div-display-selected-out">
         <b>Outbound</b>
         <span id="display-selected-out">
-        <table class="table-selected"><tr class="out"><td>£<?php echo $_POST['outPrice']; ?></td><td><?php echo $_POST['outDate']; ?></td><td><?php echo $_POST['outDepart']; ?></td><td><?php echo $_POST['outArrive']; ?></td><td><?php echo $_POST['outFrom']; ?></td><td><?php echo $_POST['outTo']; ?></td><td><?php echo $_POST['outFlight']; ?></td></tr>
+        <table class="table-selected"><tr class="out"><td>£<?php echo $outPrice; ?></td><td><?php echo $_POST['outDate']; ?></td><td><?php echo $_POST['outDepart']; ?></td><td><?php echo $_POST['outArrive']; ?></td><td><?php echo $_POST['outFrom']; ?></td><td><?php echo $_POST['outTo']; ?></td><td><?php echo $_POST['outFlight']; ?></td></tr>
         </table>
         </span>
         </div>
@@ -14,11 +14,11 @@
         <div id="div-display-selected-in">
         <b>Inbound</b>
         <span id="display-selected-in">
-         <table class="table-selected"><tr class="in"><td>£<?php echo $_POST['returnPrice']; ?></td><td><?php echo $_POST['returnDate']; ?></td><td><?php echo $_POST['returnDepart']; ?></td><td><?php echo $_POST['returnArrive']; ?></td><td><?php echo $_POST['returnFrom']; ?></td><td><?php echo $_POST['returnTo']; ?></td><td><?php echo $_POST['returnFlight']; ?></td></tr>
+         <table class="table-selected"><tr class="in"><td>£<?php echo $returnPrice; ?></td><td><?php echo $_POST['returnDate']; ?></td><td><?php echo $_POST['returnDepart']; ?></td><td><?php echo $_POST['returnArrive']; ?></td><td><?php echo $_POST['returnFrom']; ?></td><td><?php echo $_POST['returnTo']; ?></td><td><?php echo $_POST['returnFlight']; ?></td></tr>
         </table>
         </div>
         &nbsp;<br />
-        <b>Total: £84</b>
+        <b>Total: £<?php echo $totalPrice; ?></b>
     </div>
 </div>
 
