@@ -7,7 +7,7 @@
 		   }
 	}</script>
 
- <form id="test" method="post" onSubmit="javascript:return validate('form_id','email');">
+ <form id="test" method="post" onSubmit="javascript:return validate('test','email');">
 		<table id="details">
           
    <tr class="email"><td>Email Address</td><td><input type="text" name="email" />
