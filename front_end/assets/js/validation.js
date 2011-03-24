@@ -1,6 +1,5 @@
 
-<<<<<<< HEAD
-=======
+
 function isNumberKey(evt)
       {
          var charCode = (evt.which) ? evt.which : event.keyCode
@@ -10,7 +9,7 @@ function isNumberKey(evt)
          return true;
       }
 
->>>>>>> 558ed7ac4ebd8ebe775cc50555c3478dff518a79
+
 //function which check the email is correct or not. If not it gives an alert.
 function verifMail(formulaire){
 	email=formulaire.email.value;
@@ -27,15 +26,4 @@ function verifMail(formulaire){
 		return(false);
 		}
 	}
-<<<<<<< HEAD
 
-function isNumberKey(evt)
-      {
-         var charCode = (evt.which) ? evt.which : event.keyCode
-         if (charCode > 31 && (charCode < 48 || charCode > 57))
-            return false;
-
-         return true;
-      }
-=======
->>>>>>> 558ed7ac4ebd8ebe775cc50555c3478dff518a79
