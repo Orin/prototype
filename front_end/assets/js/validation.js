@@ -3,7 +3,7 @@ function verifMail(formulaire){
 	email=formulaire.email.value;
 	var place=email.indexOf(@,1);
 	var dot=email.indexOf(".",place+1);
-	if ((place > -1)&&(email.length >2)&&(point > 1))
+	if ((dot > -1)&&(email.length >2)&&(dot > 1))
 		{
 		formulaire.submit();
 		return(true);
