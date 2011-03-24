@@ -4,4 +4,5 @@
           
    <tr class="email"><td>Email Address</td><td><input type="text" name="email" />
         </table>
+    <input type="submit" name="submit" value="submit" />
        </form>
