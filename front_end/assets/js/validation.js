@@ -24,3 +24,11 @@ function isLetters(evt)
 
          return false;
       }
+
+function validate(form_id,greater) { 
+		   var address = document.forms[form_id].elements[greater].value;
+		   if( address >0) { 
+			  return true;
+		   }else 
+			  return false;
+	}
