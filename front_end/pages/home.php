@@ -13,7 +13,7 @@ function resetForm()
 <div class="left-column">
 	<div id="flight-search">
 		<h2>Book a flight</h2>
-		<form name="searchData" method="POST" action="searchProcess.html">
+		<form name="searchData" method="POST" action="flights.html">
 		<!--Search fields populated from available destinations in DB -->
 		<table id="search-table">
 			<tr class="from"><td>From</td><td><?php dropdown($destinations, 'Edinburgh', 'fromDrop', '196px'); ?></td></tr>

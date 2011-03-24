@@ -135,7 +135,7 @@ a.menu:hover {color:#000; text-decoration:underline;}
 	border-spacing: 0px;
 	border-collapse: collapse;
 	background-color:#E0E0E0;
-	width:620px;
+	width:604px;
 }
 
 .displayFlights tr.out:hover{ background-color:#27ACD6; }
@@ -201,6 +201,13 @@ p.flights.subtitle {
 	margin-left:10px;
 	margin-right:10px;
 	border-bottom:1px solid #ccc;;
+}
+
+.table-selected {
+	border-spacing: 2px;
+	border-collapse: collapse;
+	background-color:#E0E0E0;
+	width:340px;
 }
 
 #passenger-details {

@@ -178,7 +178,7 @@ function flightSearch($from, $to, $date, $class, $passengers=1) {
 	$availableFlights = array();
 	//Exit if no flights listed
 	if (mysql_num_rows($initResult) == 0) {
-		echo "Function Error [flightSearch(".$from.", ".$to.", ".$date.", ".$class.")]: initResult - No flights found.";
+		//echo "Function Error [flightSearch(".$from.", ".$to.", ".$date.", ".$class.")]: initResult - No flights found.";
 		return $availableFlights;
 	} 
 	
@@ -317,5 +317,10 @@ function validBookRef($bookingRef) {
 		bookingID = '".$bookingRef."'";
 	if (mysql_num_rows(mysql_query($query)) > 0) return true;
 	else return false;
+}
+
+function formatTime($input) {
+	 $time = explode(":", $input); 
+	 return $time[0].':'.$time[1];
 }
 ?>

@@ -37,7 +37,24 @@ function updateLeft(thsFlight, innOut) {
 	document.getElementById("div-display-selected-" + innOut).style.visibility = "visible";
 	var thisdiv = document.getElementById("display-selected-" + innOut);
 	//thisdiv.style.visibility = "visible";
-	thisdiv.innerHTML = '<table>'+ thsFlight.innerHTML + '</table>';
+	/*var content = thsFlight.innerHTML;
+	var details = new Array();
+	details = content.split('</td>');
+	var price = details[0].substring(19);
+	var date = details[1].substring(4);
+	var dep = details[2].substring(4);
+	var arr = details[3].substring(4);
+	var from = details[4].substring(4);
+	var to = details[5].substring(4);
+	var fltNo = details[6].substring(18);
+	console.log(price);
+	console.log(date);
+	console.log(dep);
+	console.log(arr);
+	console.log(from);
+	console.log(to);
+	console.log(fltNo);*/
+	thisdiv.innerHTML = '<table class="table-selected">'+ thsFlight.innerHTML + '</table>';
 	showSubmit();
 }
 
