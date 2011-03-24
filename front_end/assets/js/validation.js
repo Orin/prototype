@@ -10,7 +10,7 @@ function verifMail(formulaire){
 		}
 	else
 		{
-		alert('Give a valid email');
+		alert('Give a valid email!');
 		return(false);
 		}
 	}
