@@ -8,22 +8,14 @@ function isNumberKey(evt)
       }
 
 //function which check the email is correct or not. If not it gives an alert.
-function verifMail(formulaire){
-	email=formulaire.email.value;
-	var place=email.indexOf(@,1);
-	var dot=email.indexOf(".",place+1);
-	if ((dot > -1)&&(email.length >2)&&(dot > 1))
-		{
-		formulaire.submit();
-		return(true);
-		}
-	else
-		{
-		alert('Give a valid email!');
-		return(false);
-		}
+function validate(form_id,email) {
+		   var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+		   var address = document.forms[form_id].elements[email].value;
+		   if(reg.test(address) == false) { 
+			  return false;
+		   }else 
+			  return true;
 	}
-
 function isLetters(evt)
       {
          var charCode = (evt.which) ? evt.which : event.keyCode
