@@ -34,13 +34,19 @@ function highlightSelect(inbOutb, id) {
 } 
 
 function updateLeft(thsFlight, innOut) {
-	document.getElementById("div-display-selected-" + innOut).style.visibility = "visible";
 	var thisdiv = document.getElementById("display-selected-" + innOut);
-	//thisdiv.style.visibility = "visible";
-	/*var content = thsFlight.innerHTML;
+	thisdiv.style.visibility = "visible";
+	var totaldiv = document.getElementById("div-selected-total");
+	totaldiv.style.visibility = "visible";
+	var totalVal = document.getElementById("display-selected-total");
+	
+	var content = thsFlight.innerHTML;
 	var details = new Array();
 	details = content.split('</td>');
 	var price = details[0].substring(19);
+	console.log(price);
+	totalVal.innerHTML = totalVal.innerHTML + price;
+	/*
 	var date = details[1].substring(4);
 	var dep = details[2].substring(4);
 	var arr = details[3].substring(4);

@@ -42,7 +42,10 @@ function resetForm()
         <b>Inbound</b>
         <span id="display-selected-in"></span>
         </div>
-        
+        <div id="div-selected-total" style="visibility:hidden">
+        <b>Total</b>
+        £<span id="display-selected-total"></span>
+        </div>
         &nbsp;<br />
         <div id="continue" style="visibility:hidden">
         <a href="javascript:sendData('fltDetails');">Continue</a>
