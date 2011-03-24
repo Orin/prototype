@@ -32,21 +32,26 @@ function highlightSelect(inbOutb, id) {
 		updateLeft(thisFlight, inOut);
 	} 
 } 
+function getPrice(content) {
+
+console.log(document.forms['fltDetails'].elements['outPrice'].value);
+	var details = new Array();
+	details = content.split('</td>');
+	var price = details[0].substring(48);
+	console.log(price);
+	return price;
+}
+
 
 function updateLeft(thsFlight, innOut) {
+	document.getElementById("div-display-selected-" + innOut).style.visibility = "visible";
 	var thisdiv = document.getElementById("display-selected-" + innOut);
-	thisdiv.style.visibility = "visible";
-	var totaldiv = document.getElementById("div-selected-total");
-	totaldiv.style.visibility = "visible";
-	var totalVal = document.getElementById("display-selected-total");
-	
-	var content = thsFlight.innerHTML;
+	document.getElementById("div-selected-total").style.visibility = "visible";
+	//thisdiv.style.visibility = "visible";
+	/*var content = thsFlight.innerHTML;
 	var details = new Array();
 	details = content.split('</td>');
 	var price = details[0].substring(19);
-	console.log(price);
-	totalVal.innerHTML = totalVal.innerHTML + price;
-	/*
 	var date = details[1].substring(4);
 	var dep = details[2].substring(4);
 	var arr = details[3].substring(4);
@@ -67,6 +72,13 @@ function updateLeft(thsFlight, innOut) {
 function showSubmit() {
 	var outb = document.getElementById("div-display-selected-out").style.visibility;
 	var inb = document.getElementById("div-display-selected-in").style.visibility;
+	var outPrice  = 0;
+	var inPrice = 0;
+	if (outb == "visible") { outPrice = document.forms['fltDetails'].elements['outPrice'].value; }
+	if (inb == "visible") { inPrice = document.forms['fltDetails'].elements['returnPrice'].value; }
+	var total = parseInt(outPrice) + parseInt(inPrice);
+	document.getElementById("display-selected-total").innerHTML = total;
+	
 	if (outb == "visible" && inb == "visible") {
 		document.getElementById("continue").style.visibility = "visible";
 	}
