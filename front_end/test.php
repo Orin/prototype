@@ -1,7 +1,7 @@
 <script type="text/javascript">	function validate(form_id,ref) {
-		   var reg = /^([I-IO-O0-01-1_\-\.])$/;
+		   
 		   var address = document.forms[form_id].elements[ref].value;
-		   if(reg.test(address) == false) {
+		   if(address == %O% || address == %I% || address == %1%|| address == %0%) {
 			  alert('Invalid Email Address');
 			  return false;
 		   }
