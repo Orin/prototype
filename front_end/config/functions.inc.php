@@ -1,4 +1,12 @@
 <?php 
+/**
+* Main functions file
+* Contains all PHP functions that are relevant to the whole site.
+* The contents of this file can be accessed by any php file that is built using
+* config/layout.php or staffmanager/config/admin-layout.php
+*
+* @author Michael Shannon and Craig Matear
+*/
 function autoFill($dataSet, $divName, $elName = '')
 { ?>
 	<SCRIPT >
@@ -101,10 +109,10 @@ function kill_session() {
 
 
 /**		
-*Used for tranlating short-code to full name and back.
-*@param needle Search string
-*@param type Format of desired result
-*@return converted name or error
+* Used for tranlating short-code to full name and back.
+* @param String needle Search string
+* @param String type Format of desired result
+* @return String
 **/
 function airCodeLookup($needle, $type) {
 	if ($needle == "BLANK") return $needle;
@@ -129,8 +137,9 @@ function airCodeLookup($needle, $type) {
 	}
 }
 /*
-*returns an array containing the number of results and the search query use to get them
-*@param flightNo - the flight number of teh flight you want the schedules for
+* Returns an array containing the number of results and the search query use to get them
+* @param String flightNo The flight number of the flight you want the schedules for
+* @return Array[integer][String]
 */
 function checkforschedules($flightNo)
 {
@@ -151,12 +160,13 @@ function checkforBookings($scheduleID)
 }
 
 /**
-*Performs database search for all flights matching criteria, and returns as a mysql_query result
-*@param - From airport
-*@param To airport
-*@param Date of travel
-*@param Class of travel
-*@return Returns arraylist of $row items containing all relevant flights with seats remaining
+* Performs database search for all flights matching criteria, and returns as a mysql_query result
+* @param String from Departure airport
+* @param String to Arrival airport
+* @param String date The date of travel
+* @param String class The class of travel
+* @param integer passengers Number of passengers to find available flights for
+* @return Array returns arraylist of $row items containing all relevant flights with seats remaining
 */
 function flightSearch($from, $to, $date, $class, $passengers=1) {
 	//Initial query to determine all flights for selected route/date
@@ -193,10 +203,10 @@ function flightSearch($from, $to, $date, $class, $passengers=1) {
 }
 
 /**
-*Used to determine remaining seats on a specified flight in specified class
-*@param scheduleID The scheduleID of the particular flight (note: Not flightNo)
-*@param class The class of travel in question
-*@return availableSeats The number of unbooked seats
+* Used to determine remaining seats on a specified flight in specified class
+* @param integer scheduleID The scheduleID of the particular flight (note: Not flightNo)
+* @param String class The class of travel in question
+* @return integer The number of unbooked seats
 */
 function availableSeats($scheduleID, $class) {
 	$query = "
@@ -236,9 +246,9 @@ function availableSeats($scheduleID, $class) {
 }
 
 /**
-*Used for checking if a provided scheduleID exists in the flightSchedule table
-*@param scheduleID the scheduleID you want to lookup
-*@return boolean
+* Used for checking if a provided scheduleID exists in the flightSchedule table
+* @param integer scheduleID the scheduleID you want to lookup
+* @return boolean
 */
 function validScheduleID($scheduleID) {
 	$query = "
@@ -254,10 +264,10 @@ function validScheduleID($scheduleID) {
 }
 
 /**
-*Returns the total capacity of a given class on a given flight
-*@param scheduleID The scheduleID of the particular flight (note: Not flightNo)
-*@param class The class of travel in question
-*@return The total capacity of that class on that flight
+* Returns the total capacity of a given class on a given flight
+* @param integer scheduleID The scheduleID of the particular flight (note: Not flightNo)
+* @param String class The class of travel in question
+* @return integer The total capacity of that class on that flight
 */
 function classCapacity($scheduleID, $class) {
 	if ($class == "Economy") { $classID = "econSeats"; }
@@ -282,10 +292,15 @@ function classCapacity($scheduleID, $class) {
 	}
 }
 
-
+/**
+* Generates a unique booking reference following the regex format
+* [ABCDEFGHJKLMNPQRSTUVWXYZ]{3}[23456789][ABCDEFGHJKLMNPQRSTUVWXYZ]
+* This will not contain ambiguous characters (such as O & 0)
+* return bookingRef
+*/
 function bookingRefGenerator() {
 	$chars = preg_split('//', 'ABCDEFGHJKLMNPQRSTUVWXYZ', -1, PREG_SPLIT_NO_EMPTY);
-	$nums = preg_split('//', '123456789', -1, PREG_SPLIT_NO_EMPTY);
+	$nums = preg_split('//', '23456789', -1, PREG_SPLIT_NO_EMPTY);
 	$bookRef = '';
 	$new = false;
 	
@@ -318,6 +333,7 @@ function validBookRef($bookingRef) {
 	if (mysql_num_rows(mysql_query($query)) > 0) return true;
 	else return false;
 }
+
 
 function formatTime($input) {
 	 $time = explode(":", $input); 
