@@ -1,4 +1,3 @@
-
 function isNumberKey(evt)
       {
          var charCode = (evt.which) ? evt.which : event.keyCode
@@ -24,3 +23,4 @@ function verifMail(formulaire){
 		return(false);
 		}
 	}
+
