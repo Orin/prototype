@@ -7,8 +7,8 @@ function isNumberKey(evt)
          return true;
       }
 
-//function which check the email is correct or not. If not it gives an alert.
-function validate(form_id,email) {
+//function which check the email is correct or not.
+function isEmail(form_id,email) {
 		   var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
 		   var address = document.forms[form_id].elements[email].value;
 		   if(reg.test(address) == false) { 
