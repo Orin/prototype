@@ -1,5 +1,9 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <script type="text/javascript" src="assets/js/interface.js"></script>
+<<<<<<< HEAD
+=======
+<script type="text/javascript" src="assets/js/validation.js"></script>
+>>>>>>> f0e175b584389571457bd4c745252ec518c920e7
 <link rel="stylesheet" type="text/css" href="assets/style/style.css" />
 <title><?php echo SITE_NAME; ?></title>
 <SCRIPT LANGUAGE = "JavaScript">
