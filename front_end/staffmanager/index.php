@@ -12,12 +12,13 @@ if ($domain[0] == 'www') {
 	header("Location: http://www2.".$domain[1].$_SERVER["REQUEST_URI"]);
 }
 //Include all functions
-include '../config/definitions.inc.php';
+
 include '../config/functions.inc.php';
 include 'config/admin-definitions.inc.php';
 include 'config/admin.functions.inc.php';
 include 'config/database.inc.php';
 include 'init.php';
+include '../config/definitions.inc.php';
 
 /* Handle Session */
 session_name("MyLogin");
