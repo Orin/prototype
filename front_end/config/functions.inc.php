@@ -156,43 +156,40 @@ function checkforBookings($scheduleID)
 *@param To airport
 *@param Date of travel
 *@param Class of travel
-*@return Returns mysql_query result
+*@return Returns arraylist of $row items containing all relevant flights with seats remaining
 */
-function flightSearch($from, $to, $date, $class) {
-	
-	
-	$query = "
+function flightSearch($from, $to, $date, $class, $passengers=1) {
+	//Initial query to determine all flights for selected route/date
+	$initQuery = "
 	SELECT 
-		flights.flightNo, flightSchedule.scheduleID,
+		flights.flightNo, flightSchedule.ScheduleID,
 		flightSchedule.departuredate, flightSchedule.departureTime, 
-		flightSchedule.arrivalDate, flightSchedule.arrivalTime, 
-		classes.className,
-		COUNT(passengers.passengerID),
+		flightSchedule.arrivalDate, flightSchedule.arrivalTime,
 		flights.econSeats, flights.econPrice, flights.busSeats, flights.busPrice
 	FROM 
-		flights, flightSchedule, bookings, passengers, classes, bookings_passengers 
+		flights, flightSchedule
 	WHERE 
 		flights.departure = '".$from."' 
 		AND flights.destination = '".$to."' 
 		AND flightSchedule.departuredate = '".$date."'
-		AND classes.className = '".$class."'
-		
-		AND flights.flightNo = flightSchedule.flightNo 
-		AND bookings.FlightScheduleID = flightSchedule.ScheduleID
-		AND bookings_passengers.bookingID = bookings.bookingID 
-		AND bookings_passengers.passengerID = passengers.passengerID 
-		AND bookings.classID = classes.classID 
-	GROUP BY 
-		flights.flightNo,
-		classes.className
-		";
-
-	$result = mysql_query($query);
-	if (mysql_num_rows($result) == 0) {
-		echo "Function Error [flightSearch(".$from.", ".$to.", ".$date.", ".$class.")]: No flights found.";
+		AND flights.flightNo = flightSchedule.flightNo";
+	$initResult = mysql_query($initQuery);
+	
+	$availableFlights = array();
+	//Exit if no flights listed
+	if (mysql_num_rows($initResult) == 0) {
+		echo "Function Error [flightSearch(".$from.", ".$to.", ".$date.", ".$class.")]: initResult - No flights found.";
+		return $availableFlights;
 	} 
 	
-	return $result;
+	$availableFlights = array();
+	while ($row = mysql_fetch_array($initResult)) {
+		$thisCapacity = classCapacity($row['ScheduleID'], $class);
+		if (availableSeats($row['ScheduleID'], $class) >= $passengers) {
+		array_push($availableFlights, $row);
+		}
+	}
+	return $availableFlights;
 }
 
 /**
@@ -229,11 +226,11 @@ function availableSeats($scheduleID, $class) {
 			elseif ($class == "Business") $capacity = $row['busSeats'];
 			else return "Function Error [availableSeats(".$scheduleID.", ".$class.")]: Invalid class type.";
 			
-			$availableSeats = $capacity - $boughtSeats;
-			return $availableSeats;
+			$availableSeats = ($capacity*OVERBOOK_MOD) - $boughtSeats;
+			return floor($availableSeats);
 		}
 	} elseif (validScheduleID($scheduleID)) {
-		return classCapacity($scheduleID, $class);
+		return floor(classCapacity($scheduleID, $class)*OVERBOOK_MOD);
 	} else return "Function Error [availableSeats(".$scheduleID.", ".$class.")]: Invalid scheduleID.";
 	
 }

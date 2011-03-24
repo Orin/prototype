@@ -26,23 +26,21 @@
 		Class: '.$class.'<br />
 		';
 
-$outResult = flightSearch($from, $to, $departDate, $class);
+$outResult = flightSearch($from, $to, $departDate, $class, $adults + $children);
 ?><br />Out Result<br />
 <table>
-<tr><td>FlightNo</td><td>Date</td><td>Depart Time</td><td>Arrive Time</td></tr>
+<tr><td>FlightNo</td><td>Date</td><td>Depart Time</td><td>Arrive Time</td><td>Available Seats</td></tr>
 
-<?php while ($row = mysql_fetch_array($outResult)) { ?>
-	<tr><td><?php echo $row['flightNo']; ?></td><td><?php echo $row['departuredate']; ?></td><td><?php echo $row['departureTime']; ?></td><td><?php echo $row['arrivalTime']; if ($row['arrivalDate'] != $row['departuredate']){ echo '(+1)'; } ?></td></tr>
-<?php } ?></table><?php
+<?php
+for ($i = 0; $i < count($outResult); $i++) { ?>
+	<tr><td><?php echo $outResult[$i]['flightNo']; ?></td><td><?php echo $outResult[$i]['departuredate']; ?></td><td><?php echo $outResult[$i]['departureTime']; ?></td><td><?php echo $outResult[$i]['arrivalTime']; if ($outResult[$i]['arrivalDate'] != $outResult[$i]['departuredate']){ echo '(+1)'; } ?></td><td><?php echo availableSeats($outResult[$i]['ScheduleID'], $class); ?></td></tr>
+<?php } ?></table><?php 
 
-$returnResult = flightSearch($to, $from, $returnDate, $class);
-
-?><br />Return Result<br />
+?><br />Return Result<br /><?php
+$returnResult = flightSearch($to, $from, $returnDate, $class, $adults + $children); ?>
 <table>
-<tr><td>FlightNo</td><td>Date</td><td>Depart Time</td><td>Arrive Time</td></tr>
-
-<?php while ($row = mysql_fetch_array($returnResult)) { ?>
-	<tr><td><?php echo $row['flightNo']; ?></td><td><?php echo $row['departuredate']; ?></td><td><?php echo $row['departureTime']; ?></td><td><?php echo $row['arrivalTime']; if ($row['arrivalDate'] != $row['departuredate']){ echo '(+1)'; } ?></td></tr>
-<?php } ?></table><?
-
-?> 
+<tr><td>FlightNo</td><td>Date</td><td>Depart Time</td><td>Arrive Time</td><td>Available Seats</td></tr>
+<?php
+for ($i = 0; $i < count($returnResult); $i++) { ?>
+	<tr><td><?php echo $returnResult[$i]['flightNo']; ?></td><td><?php echo $returnResult[$i]['departuredate']; ?></td><td><?php echo $returnResult[$i]['departureTime']; ?></td><td><?php echo $returnResult[$i]['arrivalTime']; if ($returnResult[$i]['arrivalDate'] != $returnResult[$i]['departuredate']){ echo '(+1)'; } ?></td><td><?php echo availableSeats($returnResult[$i]['ScheduleID'], $class); ?></td></tr>
+<?php } ?></table>
