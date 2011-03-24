@@ -7,6 +7,16 @@
 *
 * @author Michael Shannon and Craig Matear
 */
+
+/**
+* JS to redirect to alternate page. Can be used when header() is unavailable.
+* @param Object page The page to redirect to ("page.html"). Alternate use: -1 will issue browser back command.
+*/
+function redirect($page) {
+	if ($page == "-1") { ?><script type="text/javascript">history.go(-1);</script><?php }
+    else { ?><script type="text/javascript">window.location='<?php echo $page; ?>'</script><?php }
+}
+
 function autoFill($dataSet, $divName, $elName = '')
 { ?>
 	<SCRIPT >
@@ -338,5 +348,10 @@ function validBookRef($bookingRef) {
 function formatTime($input) {
 	 $time = explode(":", $input); 
 	 return $time[0].':'.$time[1];
+}
+
+function checkStillAvailable($schedID, $class, $psngrCount) {
+	if (availableSeats($schedID, $class) >= $psngrCount) return true;
+	else return false;
 }
 ?>

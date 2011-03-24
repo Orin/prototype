@@ -31,6 +31,8 @@ function resetForm()
     <div id="display-selected" style="height:290px;">
 		<h2>Flight Details</h2>
         <form id="fltDetails" method="POST" action="details.html">
+        <input type="hidden" name="class" value="<?php echo $class; ?>" />
+        <input type="hidden" name="passengers" value="<?php echo $totalPsngrs; ?>" />
         <div id="div-display-selected-out" style="visibility:hidden">
         <b>Outbound</b>
         <span id="display-selected-out"></span>
@@ -51,7 +53,6 @@ function resetForm()
 
 <div class="content-body">
 <h2>Select your flights</h2>
-<form id="fltDetails" method="POST" action="details.html">
 <div class="results-box outbound">
     <div class="heading">
         <p class = "flights title">Outbound</p>

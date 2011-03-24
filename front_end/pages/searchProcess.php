@@ -22,9 +22,9 @@
 	
 	$adults = $_POST['psngr-adult'];
 	$children = $_POST['psngr-children'];
-	
-	$outResult = flightSearch($from, $to, $departDate, $class, $adults + $children);
-	$returnResult = flightSearch($to, $from, $returnDate, $class, $adults + $children); 
+	$totalPsngrs = $adults + $children;
+	$outResult = flightSearch($from, $to, $departDate, $class, $totalPsngrs);
+	$returnResult = flightSearch($to, $from, $returnDate, $class, $totalPsngrs); 
 
 /*Debug output
 	  echo 'From: '.$from.'<br />
