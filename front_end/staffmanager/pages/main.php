@@ -7,8 +7,8 @@
 		<tr><td><a href="FlightSelect.html">Edit A Flight</a></td></tr>
 		<tr><td><a href="flightinfo.html">Add Flight</a></td></tr>
 		<tr><td><a href="discountsPricing.html">Discounts and Pricing</a></td></tr>
-		<tr><td><a href="airports.html">Maintain Airports</a></td></tr>
-		<tr><td><a href="travelAgents.html">Maintain Travel Agents</a></td></tr>
+		<tr><td><a href="airports.html">Airports</a></td></tr>
+		<tr><td><a href="travelAgents.html">Travel Agents</a></td></tr>
 	</table>
 </div>
 
@@ -17,13 +17,15 @@
         <div class="title-bar">Search For a Flight</div>
         
         <div class="search-left">
-			<div id="errFlightSearch">
-				<form name="Flight_info" method="post" action="viewFlight.html" align=right>
+			
+				<form name="Flight_searchID" method="post" action="viewFlight.html" align=right>
 				<table>
-				<tr><td>Flight No:</td><td><?php autoFill($airports,"DestDiv","errFlightSearch","isFlightNo","flightNo");?></td></tr>
+				<tr><td>Flight No:</td><td><?php autoFill($airports,"DestDiv","errFlightSearch","isFlightNo","flightNo","Flight_searchID");?></td></tr>
 				<tr><td><input type="submit" value="Search" /></td></tr>
 				</table>
 				</form> 
+			<div id="errFlightSearch" style="visibility:hidden">
+				Invalid FlightNumber
 			</div>       
         </div>
         
@@ -37,7 +39,6 @@
         <tr><td>Departure Time:</td><td><?php timePicker(-1,-1,'depTime');?></td></tr>
         <tr><td>Available Economy: >= </td><td><input type="text" name="avalE" onkeypress="return isNumberKey(event)"></input></td></tr>
 		<tr><td>Available Business: >=</td><td><input type="text" name="avalB" onkeypress="return isNumberKey(event)"></input></td></tr>
-		<tr><td>Available Group: >=</td><td><input type="text" name="avalG" onkeypress="return isNumberKey(event)"></input></td></tr>
         <tr><td><input type="submit" value="Search" /></td></tr>
 		</table>
 		</form>
@@ -47,14 +48,13 @@
     <div id="cust-search" style="clear:both;">
         <div class="title-bar">Search for a Booking</div>
         <div class="search-left">
-			<div id="errBookingRef">
-            <form name="customer_info" method="post" action="viewBooking.html" align=right>
+            <form name="customer_Search_ID" method="post" action="viewBooking.html" align=right>
             <table>
-            <tr><td>Booking Reference:</td><td><?php autoFill(2,"BookingDiv","errFlightSearch","isBookingRef", "bookingref");?></td></tr>
+            <tr><td>Booking Reference:</td><td><?php autoFill(2,"BookingDiv","errorBRef","isBookingRef", "bookingref","customer_Search_ID");?></td></tr>
             <tr><td><input type="submit" value="Search" /></td></tr>
             </table>
             </form>
-            </div>
+            <div id="errorBRef" style="visibility:hidden">Invalid Booking Ref</div>
         </div>
         <div class="search-right">
 			

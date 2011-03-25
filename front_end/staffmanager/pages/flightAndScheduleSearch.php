@@ -8,7 +8,6 @@ if(isset($_POST['depTimehour'])) {$criteria[5] = $_POST['depTimehour'];} else {$
 if(isset($_POST['depTimemin'])) {$criteria[6] = $_POST['depTimemin'];} else {$criteria[6] = '';}
 if(isset($_POST['avalE'])) {$criteria[7] = $_POST['avalE'];} else {$criteria[7] = '';}
 if(isset($_POST['avalB'])) {$criteria[8] = $_POST['avalB'];} else {$criteria[8] = '';}
-if(isset($_POST['avalG'])) {$criteria[9] = $_POST['avalG'];} else {$criteria[9] = '';}
 
 
 
@@ -22,12 +21,6 @@ if(!empty($criteria[1]))
 {
 	$query = $query." AND departure ='$criteria[1]'";
 }
-/*
-if(!empty($criteria[2]) && !empty($criteria[3]) && !empty($criteria[4]))
-{
-	$query = $query." AND departuredate ='".$criteria[2].'-'.$criteria[3].'-'.$criteria[4]."'";
-}
-*/
 
 if(!empty($criteria[2]))
 {
@@ -48,19 +41,6 @@ if(!empty($criteria[5]) && !empty($criteria[6]))
 {
 	$query = $query." AND departureTime ='".$criteria[5].':'.$criteria[6]."'";
 }
-if(!empty($criteria[7]))
-{
-	$query = $query." AND availableEconomySeats >='$criteria[7]'";
-}
-if(!empty($criteria[8]))
-{
-	$query = $query." AND availableBusinessSeats >='$criteria[8]'";
-}
-if(!empty($criteria[9]))
-{
-	$query = $query." AND availableGroupSeats >='$criteria[9]'";
-}
-
 $result = mysql_query($query);
 
 ?>
@@ -90,6 +70,8 @@ for ($i =0;  $i<mysql_num_rows($result); $i++)
  
   $ScheduleID = $data['ScheduleID'];
   $FlightNo = $data['flightNo'];
+  if(!empty($criteria[7])) {if (availableSeats($ScheduleID, 'Economy')<$criteria[7]){continue;}}
+  if(!empty($criteria[8])) {if (availableSeats($ScheduleID, 'Business')<$criteria[8]){continue;}}
 
 echo '<tr>';
 echo '<td>';

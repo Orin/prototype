@@ -46,16 +46,16 @@ else
 	$goto = 'processSchedule.html';
 }
 
+
+
 ?>
-
-
-	<form name="Flight_info" method="post" action="<?php echo $goto;?>" >
+	<form name="Schedule_info" method="post" action="<?php echo $goto;?>" >
 		<table border="1" id="inputData">
 			<th colspan="2">Enter Schedule Information</th>
 			<?php if($scheduleData[0] != '') { ?>
 			<tr><td>ScheduleID: </td><td> <input type="text" name="schID" value="<?php echo $scheduleData[0]; ?>" readonly></input></td></tr>
 			<?php } ?>
-			<tr><td>FlightNo:  <div id="invalF" style="visibility:hidden">Invalid FlightNo</div></td><td><input type="text" name="FlightNo" value="<?php echo $scheduleData[1]; ?>" onBlur="formVal('invalF', 'isFlightNo')" /></input></td></tr>
+			<tr><td>FlightNo:  <div id="invalF" style="visibility:hidden">Invalid FlightNo</div></td><td><input type="text" name="FlightNo" value="<?php echo $scheduleData[1]; ?>" onBlur="formVal('invalF','Schedule_info', 'FlightNo', 'isFlightNo');" /></input></td></tr>
 			<tr><td>Departure Date:  </td><td><?php datePickerBackEnd('depDate',$scheduleData[4],$scheduleData[3],$scheduleData[2]);?></td></tr>
 			<tr><td>Departure Time:  </td><td><?php timePicker($scheduleData[5],$scheduleData[6],'depTime');?></input></td></tr>
 			<tr><td>Arrival Time:  </td><td><?php timePicker($scheduleData[7],$scheduleData[8],'ArrivTime');?></input></td></tr>
