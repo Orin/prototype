@@ -1,38 +1,4 @@
-<script>
-function sendData(thisForm)
-{
- document.getElementById(thisForm).submit();
-}
-
-function resetForm()
-{
-	document.searchData.reset();
-}
-</script>
-<div class="left-column">
- <div id="display-selected">
-		<h2>Flight Details</h2>
-			
-        <div id="div-display-selected-out">
-        <b>Outbound</b>
-        <span id="display-selected-out">
-        <table class="table-selected"><tr class="out"><td>£<?php echo $outPrice; ?></td><td><?php echo $outDate; ?></td><td><?php echo $outDepart; ?></td><td><?php echo $outArrive; ?></td><td><?php echo $outFrom; ?></td><td><?php echo $outTo; ?></td><td><?php echo $outFlight; ?></td></tr>
-        </table>
-        </span>
-        </div>
-        &nbsp;<br />
-        <div id="div-display-selected-in">
-        <b>Inbound</b>
-        <span id="display-selected-in">
-         <table class="table-selected"><tr class="in"><td>£<?php echo $returnPrice; ?></td><td><?php echo $returnDate; ?></td><td><?php echo $returnDepart; ?></td><td><?php echo $returnArrive; ?></td><td><?php echo $returnFrom; ?></td><td><?php echo $returnTo; ?></td><td><?php echo $returnFlight; ?></td></tr>
-        </table>
-        </div>
-        &nbsp;<br />
-        <b>Total: £<?php echo $totalPrice; ?></b>
-    </div>
-</div>
-
-<div class="content-body">
+ <div class="content-body">
 	<h2>Passenger Details</h2>
     	<form id="bookDetails" action="confirmation.html" method="post">
         <input type="hidden" name="class" value="<?php echo $class; ?>" />
