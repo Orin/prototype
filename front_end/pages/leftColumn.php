@@ -107,20 +107,21 @@ if ($page == 'details' || $page == 'confirmation') { ?>
 if ($page == 'confirmation') { ?>
     <div id="passenger-details" style="padding-top:5px">
     <h2>Passenger Details</h2>
-    Passenger 1: Tim Jones<br />
-    Passenger 2: Ruth Smith<br />
+    <?php
+	for ($i = 0; $i < $psngrCount; $i++) { ?>
+		Passenger <?php echo $i + 1; ?>: <?php echo $firstN[$i].' '.$lastN[$i]; ?><br />
+    <?php } ?>
     &nbsp;<br />
     <h2>Billing Details</h2>
-    Tim Jones<br />
-    18 Meadow Ave<br />
-    Edinburgh<br />
-    EH4 8MX<br />
+    <?php echo $billFirstN.' '.$billLastN; ?><br />
+    <?php echo $billAddress1; ?><br />
+    <?php if ($billAddress2) echo $billAddress2.'<br />'; ?>
+    <?php echo $billCity; ?><br />
+    <?php echo $billPostcode; ?><br />
+    <?php //echo $billCountry; <br />?>
     &nbsp;<br />
-    <i>Email: tim.jones@gmail.com</i><br />
+    <i>Email: <?php echo $email; ?></i><br />
+    &nbsp;<br />
     </div>
 <?php } ?>
-
-
-
-
 </div>

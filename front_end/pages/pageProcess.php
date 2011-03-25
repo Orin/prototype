@@ -25,7 +25,7 @@ if ($page == 'details' || $page == 'confirmation') {
 	$returnTo = $_POST['returnTo'];
 	$returnFlight = $_POST['returnFlight'];
 }
-elseif ($page == 'flights') {
+if ($page == 'flights') {
 	$fromDrop = ($_POST['fromDrop'] != '')? str_replace("\\", "\\\\", rawurldecode($_POST['fromDrop'])) : 'BLANK';
 	$from = airCodeLookup($fromDrop, "CODE");
 	$toDrop =  ($_POST['toDrop'] != '')? str_replace("\\", "\\\\", rawurldecode($_POST['toDrop'])) : 'BLANK';
@@ -63,8 +63,27 @@ if ($page == 'details' ) {
 		exit;
 	}
 }
-elseif ($page == 'confirmation') {
+if ($page == 'confirmation') {
+	$firstN = array();
+	$lastN = array();
+	$pNo = array();
+	for ($i = 1; $i < $psngrCount + 1; $i++) {
+		array_push($firstN, $_POST['firstN-'.$i]);
+		array_push($lastN, $_POST['lastN-'.$i]);
+		array_push($pNo, $_POST['pNo-'.$i]);
+	}
+	$billFirstN = (isset($_POST['firstN-b']))? $_POST['firstN-b'] : ''; 
+	$billLastN = (isset($_POST['lastN-b']))? $_POST['lastN-b'] : ''; 
+	$email = (isset($_POST['email']))? $_POST['email'] : ''; 
+	$billAddress1 = (isset($_POST['address-1']))? $_POST['address-1'] : ''; 
+	$billAddress2 = (isset($_POST['address-2']))? $_POST['address-2'] : FALSE; 
+	$billCity = (isset($_POST['city']))? $_POST['city'] : ''; 
+	$billPostcode = (isset($_POST['pcode']))? $_POST['pcode'] : ''; 
+//	$billCountry = (isset($_POST['country']))? $_POST['country'] : ''; 
 	
-}
+	$cardType = (isset($_POST['cardType']))? $_POST['cardType'] : ''; 
+	$ccNo = (isset($_POST['cc-no']))? $_POST['cc-no'] : ''; 
+	$exp = (isset($_POST['exp']))? $_POST['exp'] : ''; 
+	$secCode = (isset($_POST['sec-code']))? $_POST['sec-code'] : ''; 
 
-
+} ?>

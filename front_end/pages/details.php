@@ -1,4 +1,4 @@
- <div class="content-body">
+<div class="content-body">
 	<h2>Passenger Details</h2>
     	<form id="bookDetails" action="confirmation.html" method="post">
         <input type="hidden" name="class" value="<?php echo $class; ?>" />
@@ -58,7 +58,7 @@
             <tr><td>&nbsp;</td></tr>
             
 			<tr><td>Card Details</td></tr>
-            <tr class="firstN-b"><td class="label">Type</td><td><?php dropdown(array('', 'Visa', 'Mastercard', 'AMEX', 'Switch/Solo'), '', 'cardType', '157px'); ?></td></tr>
+            <tr class="card-type"><td class="label">Type</td><td><?php dropdown(array('', 'Visa', 'Mastercard', 'AMEX', 'Switch/Solo'), '', 'cardType', '157px'); ?></td></tr>
 			<tr class="cc-no"><td class="label">Card Number</td><td><input type="text" name="cc-no" onkeypress="return isNumberKey(event);" /></td></tr>
         	<tr class="exp"><td class="label">Expiry Date</td><td><?php datePicker(FALSE, FALSE, 'exp', 'M-Y'); ?></td></tr>
         	<tr class="sec-code"><td class="label">Security Code</td><td><input type="text" name="sec-code" onkeypress="return isNumberKey(event);" /></td></tr>

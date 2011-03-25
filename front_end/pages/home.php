@@ -1,4 +1,3 @@
-
 <div class="content-body">
 <?php
 if ($page == 'index') { ?>Welcome to Thistle Airways. 
