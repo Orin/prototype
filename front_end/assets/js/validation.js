@@ -45,3 +45,13 @@ function formVal(errorID, form_ID,inputName, fName)
 
 	if(fName == "isEmail"){if (!isEmail(form_ID,inputName)) {showError(errorID)}}
 }
+
+//function which check if the flight number is correct.
+function isCorrect(form_id, flight_number) {
+		   var reg = /[A-HJ-NP-Z]{3}+[2-9]{3}$/;
+		   var number = document.forms[form_id].elements[flight_number].value;
+		   if(reg.test(number) == false) {
+			  return false;
+		   }else
+			  return true;
+	}
