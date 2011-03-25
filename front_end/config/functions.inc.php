@@ -56,38 +56,42 @@ function dropdown($entries, $default = '', $name='', $width = 'auto') {
 	echo '</select>';
 }
 
-function datePicker($defDay = FALSE, $defMonth = FALSE, $name = '') {
-	if (!$defDay) { $defDay = date("d") + 1; }
-	if (!$defMonth) { $defMonth = date("m"); }
+function datePicker($defDay = FALSE, $defMonth = FALSE, $name = '', $limitFields = FALSE) {
+		if (!$defDay) { $defDay = date("d") + 1; }
+	if (!$defMonth) { $defMonth = date("m"); } 
 	if (!$name) { $name = ''; }
 	echo '<div class="date-select">';
 	//Day 
-	?>
-
-    <?php
-	echo '<select class="day" name="'.$name.'Day">';
-	for ($i = 1; $i < 32; $i++) {
-		if ($i == $defDay) { ?><option selected><?php } else { ?><option><?php }
-		echo $i.'</option>';
+	if (!$limitFields || strpos($limitFields, 'D') !== FALSE) {
+		echo '<select class="day" name="'.$name.'Day">';
+		for ($i = 1; $i < 32; $i++) {
+			if ($i == $defDay) { ?><option selected><?php } else { ?><option><?php }
+			echo $i.'</option>';
+		}
+		echo '<option></option>';
+		echo '</select>';
 	}
-	echo '<option></option>';
-	echo '</select>';
+	//Month
+	if (!$limitFields || strpos($limitFields, 'M') !== FALSE) {
+		echo '<select class="month"  name="'.$name.'Month">';
+		for ($i = 1; $i < 13; $i++) {
+			if ($i == $defMonth) { ?><option selected><?php } else { ?><option><?php }
+			echo date("F", mktime(0,0,0,$i)).'</option>';
+		}
+		echo '<option></option>';
+		echo '</select>';
+	}
 	
-	echo '<select class="month"  name="'.$name.'Month">';
-	for ($i = 1; $i < 13; $i++) {
-		if ($i == $defMonth) { ?><option selected><?php } else { ?><option><?php }
-		echo date("F", mktime(0,0,0,$i)).'</option>';
+	//Year
+	if (!$limitFields || strpos($limitFields, 'Y') !== FALSE) {
+		echo '<select class="year"  name="'.$name.'Year">';
+		for ($i = date("Y"); $i < (date("Y") + 2); $i++) {
+			echo '<option>'.$i.'</option>';
+		}
+		echo '<option></option>';
+		echo '</select>
+		</div>';
 	}
-	echo '<option></option>';
-	echo '</select>';
-	
-	echo '<select class="year"  name="'.$name.'Year">';
-	for ($i = date("Y"); $i < (date("Y") + 2); $i++) {
-		echo '<option>'.$i.'</option>';
-	}
-	echo '<option></option>';
-	echo '</select>
-	</div>';
 }
 
 
