@@ -1,4 +1,31 @@
 <?php
+if ($page == 'details' || $page == 'confirmation') {
+	$outScheduleID = $_POST['outScheduleID'];
+	$returnScheduleID = $_POST['returnScheduleID'];
+	$class = $_POST['class'];
+	$adults = $_POST['adults'];
+	$children = $_POST['children'];
+	$psngrCount = $adults + $children;
+	
+	$outPrice = $_POST['outPrice'];
+	$returnPrice = $_POST['returnPrice'];
+	$totalPrice = $outPrice + $returnPrice;
+	
+	$outDate = $_POST['outDate'];
+	$outDepart = $_POST['outDepart'];
+	$outArrive = $_POST['outArrive'];
+	$outFrom = $_POST['outFrom'];
+	$outTo = $_POST['outTo'];
+	$outFlight = $_POST['outFlight'];
+	
+	$returnDate = $_POST['returnDate'];
+	$returnDepart = $_POST['returnDepart'];
+	$returnArrive = $_POST['returnArrive'];
+	$returnFrom = $_POST['returnFrom'];
+	$returnTo = $_POST['returnTo'];
+	$returnFlight = $_POST['returnFlight'];
+}
+elseif ($page == 'flights') {
 	$fromDrop = ($_POST['fromDrop'] != '')? str_replace("\\", "\\\\", rawurldecode($_POST['fromDrop'])) : 'BLANK';
 	$from = airCodeLookup($fromDrop, "CODE");
 	$toDrop =  ($_POST['toDrop'] != '')? str_replace("\\", "\\\\", rawurldecode($_POST['toDrop'])) : 'BLANK';
@@ -25,30 +52,18 @@
 	$totalPsngrs = $adults + $children;
 	$outResult = flightSearch($from, $to, $departDate, $class, $totalPsngrs);
 	$returnResult = flightSearch($to, $from, $returnDate, $class, $totalPsngrs); 
+}
 
-/*Debug output
-	  echo 'From: '.$from.'<br />
-   		To: '.$to.'<br />
-		Adults: '.$adults.'<br />
-		Children: '.$children.'<br />
-		Class: '.$class.'<br />
-		';
+if ($page == 'details' ) {
+	if (checkStillAvailable($outScheduleID, $class, $psngrCount) && checkStillAvailable($returnScheduleID, $class, $psngrCount)) {
+		//Handle session and temp hold on order
+	} else {
+		//Loop back to home page with error message
+		redirect("startOver.html");
+		exit;
+	}
+}
+elseif ($page == 'confirmation') {
+	
+}
 
-
-?><br />Out Result<br />
-<table>
-<tr><td>FlightNo</td><td>Date</td><td>Depart Time</td><td>Arrive Time</td><td>Available Seats</td></tr>
-
-<?php
-for ($i = 0; $i < count($outResult); $i++) { ?>
-	<tr><td><?php echo $outResult[$i]['flightNo']; ?></td><td><?php echo $outResult[$i]['departuredate']; ?></td><td><?php echo $outResult[$i]['departureTime']; ?></td><td><?php echo $outResult[$i]['arrivalTime']; if ($outResult[$i]['arrivalDate'] != $outResult[$i]['departuredate']){ echo '(+1)'; } ?></td><td><?php echo availableSeats($outResult[$i]['ScheduleID'], $class); ?></td></tr>
-<?php } ?></table>
-Return Result<br /><?php
-?>
-<table>
-<tr><td>FlightNo</td><td>Date</td><td>Depart Time</td><td>Arrive Time</td><td>Available Seats</td></tr>
-<?php
-for ($i = 0; $i < count($returnResult); $i++) { ?>
-	<tr><td><?php echo $returnResult[$i]['flightNo']; ?></td><td><?php echo $returnResult[$i]['departuredate']; ?></td><td><?php echo $returnResult[$i]['departureTime']; ?></td><td><?php echo $returnResult[$i]['arrivalTime']; if ($returnResult[$i]['arrivalDate'] != $returnResult[$i]['departuredate']){ echo '(+1)'; } ?></td><td><?php echo availableSeats($returnResult[$i]['ScheduleID'], $class); ?></td></tr>
-<?php } ?></table>
-*/ ?>
