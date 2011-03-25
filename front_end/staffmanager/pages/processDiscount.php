@@ -22,10 +22,10 @@ $dbcolumns[4] = 'Group';
 
 $apply = $_SESSION['applyTo'];
 $type = $_SESSION['type'];
-echo $type;
+
 if($type)	{$pk = 'flightNo'; $table = 'flight_discounts';}
 else		{$pk = 'ScheduleID'; $table = 'schedule_discounts';}
-
+echo $apply;
 $applicants = mysql_query($apply);
 
 $feilds = 'refID, ';
@@ -55,5 +55,5 @@ for ($i =0;  $i<mysql_num_rows($applicants); $i++)
 
 unset($_SESSION['applyTo']);
 unset($_SESSION['type']);
-//header('Location: discountsPricing.html');
+header('Location: discountsPricing.html');
 ?>

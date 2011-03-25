@@ -6,6 +6,7 @@
 								
 								<tr><th colspan="3">Set Global Discount</th></tr>
 								<!--<tr><td>Discount Type:</td> <td><?php dropdown($discountType, '', 'dType');?></td></tr>-->
+								<input type="hidden" name="dType" value="value"></input>
 								<tr><td>All Class Discount:</td> <td><input type="text" name="AllclassD" ></input></td></tr>
 								<tr><td>Economy Class Discount:</td> <td><input type="text" name="EconD" onBlur="formVal('invalECD', 'GreaterThan0')"></input></td></tr>
 								<tr><td>Business Class Discount:</td> <td><input type="text" name="BusinessD" onBlur="formVal('invalBCD', 'GreaterThan0')"></input></td></tr>
