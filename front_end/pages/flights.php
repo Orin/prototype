@@ -33,6 +33,8 @@ function resetForm()
         <form id="fltDetails" method="POST" action="details.html">
         <input type="hidden" name="class" value="<?php echo $class; ?>" />
         <input type="hidden" name="passengers" value="<?php echo $totalPsngrs; ?>" />
+        <input type="hidden" name="adults" value="<?php echo $adults; ?>" />
+        <input type="hidden" name="children" value="<?php echo $children; ?>" />
         <div id="div-display-selected-out" style="visibility:hidden">
         <b>Outbound</b>
         <span id="display-selected-out"></span>

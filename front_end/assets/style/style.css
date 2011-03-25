@@ -218,5 +218,6 @@ p.flights.subtitle {
 
 #continue { float:right; }
 
-#ta-login {
-	}
+.booking-form td {
+	width:200px;
+}

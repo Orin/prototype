@@ -1,3 +1,14 @@
+<script>
+function sendData(thisForm)
+{
+ document.getElementById(thisForm).submit();
+}
+
+function resetForm()
+{
+	document.searchData.reset();
+}
+</script>
 <div class="left-column">
  <div id="display-selected">
 		<h2>Flight Details</h2>
@@ -24,38 +35,45 @@
 
 <div class="content-body">
 	<h2>Passenger Details</h2>
-    	<form action="confirmation.html" method="post" onSubmit="return(VerifForm(this))">
-		<table id="details">
-            <col style="width:200px" />
-			<tr><td>Passenger 1</td></tr>
-            <tr class="firstN-1"><td>First Name</td><td><input type="text" name="firstN-1" /></td></tr>
-			<tr class="lastN-1"><td>Surname</td><td><input type="text" name="lastN-1" /></td></tr>
-			<tr class="pNo-1"><td>Passport number</td><td><input type="text" name="pNo-1" /></td></tr>
-            <tr><td>Passenger 2</td></tr>
-            <tr class="firstN-2"><td>First Name</td><td><input type="text" name="firstN-2" /></td></tr>
-			<tr class="lastN-2"><td>Surname</td><td><input type="text" name="lastN-2" /></td></tr>
-			<tr class="pNo-2"><td>Passport number</td><td><input type="text" name="pNo-2" /></td></tr>
-		
-        	<tr><td>&nbsp;</td></tr>
-        
-			<tr><td>Billing Details</td></tr>
-            <tr class="firstN-b"><td>First Name</td><td><input type="text" name="firstN-b" /></td></tr>
-			<tr class="lastN-b"><td>Surname</td><td><input type="text" name="lastN-b" /></td></tr>
-            <tr class="email"><td>Email Address</td><td><input type="text" name="email" /></td></tr>
-        	<tr class="address-1"><td>1st Line Address</td><td><input type="text" name="address-1" /></td></tr>
-        	<tr class="address-2"><td>2nd Line Address</td><td><input type="text" name="address-2" /></td></tr>
-            <tr class="city"><td>City</td><td><input type="text" name="city" /></td></tr>
-            <tr class="pcode"><td>Postcode</td><td><input type="text" name="pcode" /></td></tr>
+    	<form id="bookDetails" action="confirmation.html" method="post">
+		<table class="booking-form">
+            <?php
+			for ($i = 0; $i < $adults; $i++) { 
+			$j = $i + 1; ?>
+			<tr><td>Passenger <?php echo $j; ?></td></tr>
+            <tr class="firstN-<?php echo $j; ?>"><td>First Name</td><td><input type="text" name="firstN-<?php echo $j; ?>" onkeypress="return isLetters(event);"/></td></tr>
+			<tr class="lastN-<?php echo $j; ?>"><td>Surname</td><td><input type="text" name="lastN-<?php echo $j; ?>" onkeypress="return isLetters(event);" /></td></tr>
+			<tr class="pNo-<?php echo $j; ?>"><td>Passport number</td><td><input type="text" name="pNo-<?php echo $j; ?>" onkeypress="return isNumberKey(event);" /></td></tr>
+			<?php }
+			for ($i; $i < $adults + $children; $i++) { 
+			$j = $i + 1; ?>
+			<tr><td>Passenger <?php echo $j; ?> (child)</td></tr>
+            <tr class="firstN-<?php echo $j; ?>"><td>First Name</td><td><input type="text" name="firstN-<?php echo $j; ?>" onkeypress="return isLetters(event);"/></td></tr>
+			<tr class="lastN-<?php echo $j; ?>"><td>Surname</td><td><input type="text" name="lastN-<?php echo $j; ?>" onkeypress="return isLetters(event);" /></td></tr>
+			<tr class="pNo-<?php echo $j; ?>"><td>Passport number</td><td><input type="text" name="pNo-<?php echo $j; ?>" onkeypress="return isNumberKey(event);" /></td></tr>
+			<?php } ?>
+			
+       </table>
+       &nbsp; <br />&nbsp; <br />
+       <h2>Billing Details</h2>
+       <table class="booking-form">
+            <tr class="firstN-b"><td class="label">First Name</td><td><input type="text" name="firstN-b" onkeypress="return isLetters(event);" /></td></tr>
+			<tr class="lastN-b"><td class="label">Surname</td><td><input type="text" name="lastN-b" onkeypress="return isLetters(event);" /></td></tr>
+            <tr class="email"><td class="label">Email Address</td><td><input type="text" name="email" /></td></tr>
+        	<tr class="address-1"><td class="label">1st Line Address</td><td><input type="text" name="address-1" /></td></tr>
+        	<tr class="address-2"><td class="label">2nd Line Address</td><td><input type="text" name="address-2" /></td></tr>
+            <tr class="city"><td class="label">City</td><td><input type="text" name="city" onkeypress="return isLetters(event);" /></td></tr>
+            <tr class="pcode"><td class="label">Postcode</td><td><input type="text" name="pcode" /></td></tr>
             
             <tr><td>&nbsp;</td></tr>
             
 			<tr><td>Card Details</td></tr>
-            <tr class="firstN-b"><td>Type</td><td><?php dropdown(array('', 'Visa', 'Mastercard', 'AMEX', 'Switch/Solo')); ?></td></tr>
-			<tr class="cc-no"><td>Card Number</td><td><input type="text" name="cc-no" /></td></tr>
-        	<tr class="exp"><td>Expiry Date</td><td><input type="text" name="exp" /></td></tr>
-        	<tr class="sec-code"><td>Security Code</td><td><input type="text" name="sec-code" /></td></tr>
+            <tr class="firstN-b"><td class="label">Type</td><td><?php dropdown(array('', 'Visa', 'Mastercard', 'AMEX', 'Switch/Solo'), '', 'cardType', '157px'); ?></td></tr>
+			<tr class="cc-no"><td class="label">Card Number</td><td><input type="text" name="cc-no" onkeypress="return isNumberKey(event);" /></td></tr>
+        	<tr class="exp"><td class="label">Expiry Date</td><td><?php datePicker(FALSE, FALSE, 'exp', 'M-Y'); ?></td></tr>
+        	<tr class="sec-code"><td class="label">Security Code</td><td><input type="text" name="sec-code" onkeypress="return isNumberKey(event);" /></td></tr>
 			<tr><td>&nbsp;</td></tr>
-			<tr><td><input type="submit" name="submit" value="Make Booking" /></td></tr>
+			<tr><td><a href="javascript:sendData('bookDetails');">Continue</a></td></tr>
             </table>
 		</form>
         

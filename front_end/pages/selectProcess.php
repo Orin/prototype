@@ -2,7 +2,9 @@
 $outScheduleID = $_POST['outScheduleID'];
 $returnScheduleID = $_POST['returnScheduleID'];
 $class = $_POST['class'];
-$psngrCount = $_POST['passengers'];
+$adults = $_POST['adults'];
+$children = $_POST['children'];
+$psngrCount = $adults + $children;
 if (checkStillAvailable($outScheduleID, $class, $psngrCount) && checkStillAvailable($returnScheduleID, $class, $psngrCount)) {
 	//Handle session and temp hold on order
 } else {
