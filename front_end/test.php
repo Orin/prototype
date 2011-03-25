@@ -1,4 +1,4 @@
-<script type="text/javascript">	function validate(form_id,ref){q
+<script type="text/javascript">	function validate(form_id,ref){
 		   var reg = /^[A-HJ-NP-Z]{3}+[2-9]{3}$/;
 		   var address = document.forms[form_id].elements[ref].value;
 		   if(reg.test(address)==false) {
