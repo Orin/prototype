@@ -1,19 +1,24 @@
+
 <div class="left-column">
  <div id="display-selected">
 		<h2>Flight Details</h2>
+			
         <div id="div-display-selected-out">
         <b>Outbound</b>
         <span id="display-selected-out">
-        <table><tr class="out"><td>£55<br /><!--<input type="radio" name="select" value="203@100211" />--><td>1710 &nbsp; &nbsp; Thu 10 Feb</td><td>1820 &nbsp; &nbsp; Thu 10 Feb</td><td>Edinburgh</td><td>Inverness</td><td class="fltNo">207</td></tr></table></span>
+        <table class="table-selected"><tr class="out"><td>£<?php echo $outPrice; ?></td><td><?php echo $outDate; ?></td><td><?php echo $outDepart; ?></td><td><?php echo $outArrive; ?></td><td><?php echo $outFrom; ?></td><td><?php echo $outTo; ?></td><td><?php echo $outFlight; ?></td></tr>
+        </table>
+        </span>
         </div>
         &nbsp;<br />
         <div id="div-display-selected-in">
         <b>Inbound</b>
         <span id="display-selected-in">
-        <table><tr class="in"><td>£29<br /><!--<input type="radio" name="select" value="203@100211" />--><td>0930 &nbsp; &nbsp; Tue 15 Feb</td><td>1040 &nbsp; &nbsp; Tue 15 Feb</td><td>Inverness</td><td>Edinburgh</td><td class="fltNo">202</td></tr></table>
+         <table class="table-selected"><tr class="in"><td>£<?php echo $returnPrice; ?></td><td><?php echo $returnDate; ?></td><td><?php echo $returnDepart; ?></td><td><?php echo $returnArrive; ?></td><td><?php echo $returnFrom; ?></td><td><?php echo $returnTo; ?></td><td><?php echo $returnFlight; ?></td></tr>
+        </table>
         </div>
         &nbsp;<br />
-        <b>Total: £84</b>
+        <b>Total: £<?php echo $totalPrice; ?></b>
     </div>
     <div id="passenger-details" style="padding-top:5px">
     <h2>Passenger Details</h2>

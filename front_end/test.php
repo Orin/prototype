@@ -1,7 +1,7 @@
-<script type="text/javascript">	function validate(form_id,ref) {
-		   var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+<script type="text/javascript">	function validate(form_id,ref){
+		   var reg = /[A-HJ-NP-Z]{3}+[2-9]{3}$/;
 		   var address = document.forms[form_id].elements[ref].value;
-		   if((address == %O%) || (address == %I%) || (address == %1%)|| (address == %0%)) {
+		   if(reg.test(address)==false) {
 			  alert('Invalid Email Address');
 			  return false;
 		   }

@@ -13,11 +13,10 @@ function resetForm()
  <div id="display-selected">
 		<h2>Flight Details</h2>
 			
-				
         <div id="div-display-selected-out">
         <b>Outbound</b>
         <span id="display-selected-out">
-        <table class="table-selected"><tr class="out"><td>£<?php echo $outPrice; ?></td><td><?php echo $_POST['outDate']; ?></td><td><?php echo $_POST['outDepart']; ?></td><td><?php echo $_POST['outArrive']; ?></td><td><?php echo $_POST['outFrom']; ?></td><td><?php echo $_POST['outTo']; ?></td><td><?php echo $_POST['outFlight']; ?></td></tr>
+        <table class="table-selected"><tr class="out"><td>£<?php echo $outPrice; ?></td><td><?php echo $outDate; ?></td><td><?php echo $outDepart; ?></td><td><?php echo $outArrive; ?></td><td><?php echo $outFrom; ?></td><td><?php echo $outTo; ?></td><td><?php echo $outFlight; ?></td></tr>
         </table>
         </span>
         </div>
@@ -25,7 +24,7 @@ function resetForm()
         <div id="div-display-selected-in">
         <b>Inbound</b>
         <span id="display-selected-in">
-         <table class="table-selected"><tr class="in"><td>£<?php echo $returnPrice; ?></td><td><?php echo $_POST['returnDate']; ?></td><td><?php echo $_POST['returnDepart']; ?></td><td><?php echo $_POST['returnArrive']; ?></td><td><?php echo $_POST['returnFrom']; ?></td><td><?php echo $_POST['returnTo']; ?></td><td><?php echo $_POST['returnFlight']; ?></td></tr>
+         <table class="table-selected"><tr class="in"><td>£<?php echo $returnPrice; ?></td><td><?php echo $returnDate; ?></td><td><?php echo $returnDepart; ?></td><td><?php echo $returnArrive; ?></td><td><?php echo $returnFrom; ?></td><td><?php echo $returnTo; ?></td><td><?php echo $returnFlight; ?></td></tr>
         </table>
         </div>
         &nbsp;<br />
@@ -36,6 +35,31 @@ function resetForm()
 <div class="content-body">
 	<h2>Passenger Details</h2>
     	<form id="bookDetails" action="confirmation.html" method="post">
+        <input type="hidden" name="class" value="<?php echo $class; ?>" />
+        <input type="hidden" name="passengers" value="<?php echo $totalPsngrs; ?>" />
+        <input type="hidden" name="adults" value="<?php echo $adults; ?>" />
+        <input type="hidden" name="children" value="<?php echo $children; ?>" />
+        
+        <input type="hidden" name="outScheduleID" value="<?php echo $outScheduleID; ?>" />
+        <input type="hidden" name="returnScheduleID" value="<?php echo $returnScheduleID; ?>" />
+        <input type="hidden" name="outPrice" value="<?php echo $outPrice; ?>" />
+        <input type="hidden" name="returnPrice" value="<?php echo $returnPrice; ?>" />
+        
+        <input type='hidden' name='outDate' value='<?php echo $outDate; ?>' />
+		<input type='hidden' name='outDepart' value='<?php echo $outDepart; ?>' />
+        <input type='hidden' name='outArrive' value='<?php echo $outArrive; ?>' />
+        <input type='hidden' name='outFrom' value='<?php echo $outFrom; ?>' />
+        <input type='hidden' name='outTo' value='<?php echo $outTo; ?>' />
+        <input type='hidden' name='outFlight' value='<?php echo $outFlight; ?>' />
+        
+        <input type='hidden' name='returnDate' value='<?php echo $returnDate; ?>' />
+        <input type='hidden' name='returnDepart' value='<?php echo $returnDepart; ?>' />
+        <input type='hidden' name='returnArrive' value='<?php echo $returnArrive; ?>' />
+        <input type='hidden' name='returnFrom' value='<?php echo $returnFrom; ?>' />
+        <input type='hidden' name='returnTo' value='<?php echo $returnTo; ?>' />
+        <input type='hidden' name='returnFlight' value='<?php echo $returnFlight; ?>' />
+
+        
 		<table class="booking-form">
             <?php
 			for ($i = 0; $i < $adults; $i++) { 
