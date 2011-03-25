@@ -17,24 +17,27 @@
         <div class="title-bar">Search For a Flight</div>
         
         <div class="search-left">
-        <form name="Flight_info" method="post" action="viewFlight.html" align=right>
-        <table>
-        <tr><td>Flight No:</td><td><?php autoFill($airports,"DestDiv","flightNo");?></td></tr>
-        <tr><td><input type="submit" value="Search" /></td></tr>
-        </table>
-        </form>        
+			<div id="errFlightSearch">
+				<form name="Flight_info" method="post" action="viewFlight.html" align=right>
+				<table>
+				<tr><td>Flight No:</td><td><?php autoFill($airports,"DestDiv","errFlightSearch","isFlightNo","flightNo");?></td></tr>
+				<tr><td><input type="submit" value="Search" /></td></tr>
+				</table>
+				</form> 
+			</div>       
         </div>
         
         <div class="search-right">
+			
         <form name="Flight_info" method="post" action="flightAndScheduleSearch.html" align=right>
         <table>
         <tr><td>Depart:</td><td><?php dropdown($airports,'','Dep')?></td></tr>
         <tr><td>Arrive:</td><td><?php dropdown($airports,'','Dest')?></td></tr>
         <tr><td>Departure Date:</td><td><?php datePickerBackEnd('depDate'); ?></td></tr>
         <tr><td>Departure Time:</td><td><?php timePicker(-1,-1,'depTime');?></td></tr>
-        <tr><td>Available Economy: >=</td><td><input type="text" name="avalE" ></input></td></tr>
-		<tr><td>Available Business: >=</td><td><input type="text" name="avalB" ></input></td></tr>
-		<tr><td>Available Group: >=</td><td><input type="text" name="avalG" ></input></td></tr>
+        <tr><td>Available Economy: >= </td><td><input type="text" name="avalE" onkeypress="return isNumberKey(event)"></input></td></tr>
+		<tr><td>Available Business: >=</td><td><input type="text" name="avalB" onkeypress="return isNumberKey(event)"></input></td></tr>
+		<tr><td>Available Group: >=</td><td><input type="text" name="avalG" onkeypress="return isNumberKey(event)"></input></td></tr>
         <tr><td><input type="submit" value="Search" /></td></tr>
 		</table>
 		</form>
@@ -44,22 +47,25 @@
     <div id="cust-search" style="clear:both;">
         <div class="title-bar">Search for a Booking</div>
         <div class="search-left">
+			<div id="errBookingRef">
             <form name="customer_info" method="post" action="viewBooking.html" align=right>
             <table>
-            <tr><td>Booking Reference:</td><td><?php autoFill(2,"BookingDiv", "bookingref");?></td></tr>
+            <tr><td>Booking Reference:</td><td><?php autoFill(2,"BookingDiv","errFlightSearch","isBookingRef", "bookingref");?></td></tr>
             <tr><td><input type="submit" value="Search" /></td></tr>
             </table>
             </form>
+            </div>
         </div>
         <div class="search-right">
+			
             <form name="customer_info" method="post" action="customerSearch.html" align=right>
             <table>
-            <tr><td>First Name:</td><td> <input type="text" name="Fname" ></input></td></tr>
-            <tr><td>Last Name: </td><td><input type="text" name="Lname" ></input></td></tr>
+            <tr><td>First Name:</td><td> <input type="text" name="Fname" onkeypress="return isLetters(event)"></input></td></tr>
+            <tr><td>Last Name: </td><td><input type="text" name="Lname" onkeypress="return isLetters(event)"></input></td></tr>
             <tr><td><input type="submit" value="Search" /></td><td>
             </table>
             </form>
+
         </div>
     </div>
 </div>
-		

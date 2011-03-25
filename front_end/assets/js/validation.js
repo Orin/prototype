@@ -25,10 +25,23 @@ function isLetters(evt)
          return false;
       }
 
-function validate(form_id,greater) { 
+function greaterZero(form_id,greater) { 
+
+		console.log(form_id + " "+greater);
 		   var address = document.forms[form_id].elements[greater].value;
 		   if( address >0) { 
 			  return true;
 		   }else 
 			  return false;
 	}
+	
+function showError (errorID)
+{
+	document.getElementById(errorID).style.visibility = 'visible'; 
+}
+	
+function formVal(errorID, form_ID,inputName, fName)
+{
+
+	if(fName == "isEmail"){if (!isEmail(form_ID,inputName)) {showError(errorID)}}
+}

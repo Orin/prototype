@@ -17,7 +17,7 @@ function redirect($page) {
     else { ?><script type="text/javascript">window.location='<?php echo $page; ?>'</script><?php }
 }
 
-function autoFill($dataSet, $divName, $elName = '')
+function autoFill($dataSet, $divName,$errDiv,$type ,$elName = '')
 { ?>
 	<SCRIPT >
 	
@@ -38,7 +38,7 @@ function autoFill($dataSet, $divName, $elName = '')
 
 	</SCRIPT>
 	
-	<?php echo '<div id="'.$divName.'"><input  id="blargh" type=text autocomplete="off" name="'.$elName.'" onkeyup="autoFillsPre(event.keyCode,this,\''.$divName.'\');"/></div>';
+	<?php echo '<div id="'.$divName.'"><input  id="blargh" type=text autocomplete="off" name="'.$elName.'" onkeyup="autoFillsPre(event.keyCode,this,\''.$divName.'\');" onBlur="formVal("'.$errDiv.'", "'.$type.'")"/></div>';
 }
 
 function accessLevel ($page, $level)
