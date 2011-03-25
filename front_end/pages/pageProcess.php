@@ -64,6 +64,7 @@ if ($page == 'details' ) {
 	}
 }
 if ($page == 'confirmation') {
+	$bookingRef = bookingRefGenerator();
 	$firstN = array();
 	$lastN = array();
 	$pNo = array();
