@@ -57,7 +57,8 @@ function ajaxSelected(outVis, inVis)
 		var outFrom = document.forms['fltDetails'].elements['outFrom'].value;
 		var outTo = document.forms['fltDetails'].elements['outTo'].value;
 		var outFlight = document.forms['fltDetails'].elements['outFlight'].value;
-		ajax_url = ajax_url+'&outPrice='+outPrice+'&outDate='+outDate+'&outDepart='+outDepart+'&outArrive='+outArrive+'&outFrom='+outFrom+'&outTo='+outTo+'&outFlight='+outFlight;
+		var outScheduleID = document.forms['fltDetails'].elements['outScheduleID'].value;
+		ajax_url = ajax_url+'&outPrice='+outPrice+'&outDate='+outDate+'&outDepart='+outDepart+'&outArrive='+outArrive+'&outFrom='+outFrom+'&outTo='+outTo+'&outFlight='+outFlight+'&outScheduleID='+outScheduleID;
 	}
 	if (inVis == "visible") {
 		var returnPrice = document.forms['fltDetails'].elements['returnPrice'].value;
@@ -67,7 +68,8 @@ function ajaxSelected(outVis, inVis)
 		var returnFrom = document.forms['fltDetails'].elements['returnFrom'].value;
 		var returnTo = document.forms['fltDetails'].elements['returnTo'].value;
 		var returnFlight = document.forms['fltDetails'].elements['returnFlight'].value;
-		ajax_url = ajax_url+'&returnPrice='+returnPrice+'&returnDate='+returnDate+'&returnDepart='+returnDepart+'&returnArrive='+returnArrive+'&returnFrom='+returnFrom+'&returnTo='+returnTo+'&returnFlight='+returnFlight;
+		var returnScheduleID = document.forms['fltDetails'].elements['returnScheduleID'].value;
+		ajax_url = ajax_url+'&returnPrice='+returnPrice+'&returnDate='+returnDate+'&returnDepart='+returnDepart+'&returnArrive='+returnArrive+'&returnFrom='+returnFrom+'&returnTo='+returnTo+'&returnFlight='+returnFlight+'&returnScheduleID='+returnScheduleID;;
 	}
 	console.log(ajax_url);
 	var ajax = new XMLHttpRequest();

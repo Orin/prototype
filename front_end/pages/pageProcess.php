@@ -1,7 +1,7 @@
 <?php
 if ($page == 'details' || $page == 'confirmation') {
-	$outScheduleID = $_POST['outScheduleID'];
-	$returnScheduleID = $_POST['returnScheduleID'];
+	$outScheduleID = $_SESSION['flights']['outScheduleID'];
+	$returnScheduleID = $_SESSION['flights']['returnScheduleID'];
 	/*$class = $_POST['class'];
 	$adults = $_POST['adults'];
 	$children = $_POST['children'];

@@ -78,7 +78,7 @@ if ($page == 'flights') { ?>
         </div>
         &nbsp;<br />
         <div id="continue" style="visibility:hidden">
-        <a href="javascript:sendData('fltDetails');">Continue</a>
+        <a href="details.html">Continue</a>
         </div>
         </form>
     </div>
