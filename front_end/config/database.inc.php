@@ -29,4 +29,13 @@ function dbSelect($dbname="cm226") {
 	}
 }
 
+function dbStart() {
+	mysql_query("START TRANSACTION");
+}
+function dbCommit() {
+	mysql_query("COMMIT");
+}
+function dbRoll() {
+	mysql_query("ROLLBACK");
+} 
 ?>

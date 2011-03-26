@@ -21,7 +21,6 @@ $page = (isset($_GET['page']))? $_GET['page'] : 'index';
 ?>
 <head>
     <?php 
-	include 'config/database.inc.php';
 	include 'init.php';
 	include 'config/definitions.inc.php';
 	include 'config/settings.inc.php'; 

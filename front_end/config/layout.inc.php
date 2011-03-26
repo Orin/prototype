@@ -13,7 +13,8 @@
             <?php //Determine page being requested, and include file from /pages/
             //
 			//Left Column
-			?><div id="<?php echo $page; ?>"><?php 
+			?><div id="<?php echo $page; ?>"><?php
+			include 'config/session.php'; 
 			include 'pages/pageProcess.php';
 			include 'pages/leftColumn.php'; 
             //General Pages
