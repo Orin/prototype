@@ -26,7 +26,7 @@ $q_user = mysql_query($query);
 								<tr><td>Economy Class Discount:</td> <td><input type="text" name="EconD" onkeypress="return isNumberKey(event)"></input></td></tr>
 								<tr><td>Business Class Discount:</td> <td><input type="text" name="BusinessD" onkeypress="return isNumberKey(event)"></input></td></tr>
 								<tr><td>Group Class Discount:</td> <td><input type="text" name="GroupD" onkeypress="return isNumberKey(event)"></input></td></tr>
-								<tr><td>discount Duration(between):</td> <td><?php datePickerBackEnd('durStart');?></input></td></tr>
+								<tr><td>discount Duration(between):</td> <td><?php datePickerBackEnd('durStart',date("d"),date("m"),date("Y"));?></input></td></tr>
 								<tr><td></td><td> And </td><td></td></tr>
 								<tr><td></td> <td><?php datePickerBackEnd('durEnd');?></input></td></tr>
 	
