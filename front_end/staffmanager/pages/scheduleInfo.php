@@ -49,7 +49,7 @@ else
 
 
 ?>
-	<form name="Schedule_info" method="post" action="<?php echo $goto;?>" >
+	<form name="Schedule_info" method="post" onsubmit="return validate('Schedule_info',['FlightNo','depDateDay','depDateMonth','depDateYear','depTimehour','depTimemin','ArrivTimehour','ArrivTimemin','ArrivDateDay','ArrivDateMonth','ArrivDateYear'],['Flight Number','Departure Date','Departure Date','Departure Date','Departure Time','Departure Time','Arrival Time','Arrival Time','Arrival Date','Arrival Date'])" action="<?php echo $goto;?>" >
 		<table border="1" id="inputData">
 			<th colspan="2">Enter Schedule Information</th>
 			<?php if($scheduleData[0] != '') { ?>

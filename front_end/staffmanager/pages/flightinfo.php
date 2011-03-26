@@ -37,7 +37,7 @@ else
 
 ?>
 
-<form name="Flight_info" method="post" action="<?php echo $goto;?>">
+<form name="Flight_info" method="post"  onsubmit="return validate('Flight_info',['FNo','econmySeats','busSeats','EconCost','busCost','dest','dep'],['Flight Number','Economy Seats','Business Seats','Economy Price','Business Price','Destination','Departure'])" action="<?php echo $goto;?>">
 	<table border="1" id="inputData">
 		<tr ><th colspan="2"><h4>Enter Flight Information</h4></th></tr>
 		<?php if($FlightId != null){ ?>
@@ -52,7 +52,7 @@ else
 		<tr><td>No of Economy Seats:</td><td><input type="text" name="econmySeats"value="<?php echo $flightData[4]; ?>" onkeypress="return isNumberKey(event)"/></td></tr>
 		<tr><td>No of Business Seats: </td><td><input type="text" name="busSeats" value="<?php echo $flightData[5]; ?>"onkeypress="return isNumberKey(event)"/></td></tr>
 		<tr><td>Business Cost:</td><td> <input type="text" name="busCost" value="<?php echo $flightData[8]; ?>" onkeypress="return isNumberKey(event)"/></td></tr>
-		<tr><td>Econemy Cost:</td><td> <input type="text" name="EconCost" value="<?php echo $flightData[7]; ?>"onkeypress="return isNumberKey(event)"/></td></tr>
+		<tr><td>Economy Cost:</td><td> <input type="text" name="EconCost" value="<?php echo $flightData[7]; ?>"onkeypress="return isNumberKey(event)"/></td></tr>
 		
 		<br/>
 		<tr><th colspan="2"><input type="submit" /></th></tr>

@@ -32,6 +32,10 @@ function select(key, type)
 
 
 }
+/*
+returns true if all the elements of a form passed in are not empty
+*/
+
 
 function postValue (to,p) {
 	
@@ -152,7 +156,7 @@ function autoFills(key,textBox, dataSet, divname)
 	//if(dataSet == 1)
 	//values= ["TA-EDI-LBA-101", "TA-EDI-LBA-102","TA-LGW-MAN-101","TA-EDI-BHX-102"];
 	values=dataSet;
-	//document.write(values[0]);
+	document.write(values);
 	//else if(dataSet == 2)
 	//{values= ["BN-00561", "BN-00563454","BN-00532","BN-007561"];}
 	

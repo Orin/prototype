@@ -30,11 +30,11 @@ if (!mysql_query($insert))
 	echo'<tr><td>';
 	echo'cannot insert schedule:';
 		echo '<table id="displayInfo" border="1">';
-		echo '<tr><td>schedule ID:</td><td>'.$schedule[0].'</td></tr>';
+		echo '<tr><td>Schedule ID:</td><td>'.$schedule[0].'</td></tr>';
 		echo '<tr><td>Flight Number:</td><td>'.$schedule[1].'</td></tr>';
-		echo '<tr><td>departure date:</td><td>'.$schedule[4].'-'.$schedule[3].'-'.$schedule[2].'</td></tr>';
-		echo '<tr><td>departure time:</td><td>'.$schedule[5].':'.$schedule[6].'</td></tr>';
-		echo '<tr><td>arriavl time:</td><td>'.$schedule[7].':'.$schedule[8].'</td></tr>';
+		echo '<tr><td>Departure Date:</td><td>'.$schedule[4].'-'.$schedule[3].'-'.$schedule[2].'</td></tr>';
+		echo '<tr><td>Departure Time:</td><td>'.$schedule[5].':'.$schedule[6].'</td></tr>';
+		echo '<tr><td>Arriavl Time:</td><td>'.$schedule[7].':'.$schedule[8].'</td></tr>';
 		echo '</table>'; 
 		echo '
 		';
@@ -49,14 +49,14 @@ if (!mysql_query($insert))
 	
 	} else {
 	  echo '<table border="1" id="sucessful">';
-	echo'<th>flight schedule sucessfully entered</th>';
+	echo'<th>Flight Schedule Successfully Entered</th>';
 	echo'<tr><td>';
 		echo '<table id="displayInfo" border="1" width=100%>';
-		echo '<tr><td>flight number:</td><td>'.$schedule[1].'</td></tr>';
-		echo '<tr><td>departure date:</td><td>'.$schedule[4].'-'.$schedule[3].'-'.$schedule[2].'</td></tr>';
-		echo '<tr><td>departure time:</td><td>'.$schedule[5].':'.$schedule[6].'</td></tr>';
-		echo '<tr><td>arrival date:</td><td>'.$schedule[11].'-'.$schedule[10].'-'.$schedule[9].'</td></tr>';
-		echo '<tr><td>arrival time:</td><td>'.$schedule[7].':'.$schedule[8].'</td></tr>';
+		echo '<tr><td>Flight Number:</td><td>'.$schedule[1].'</td></tr>';
+		echo '<tr><td>Departure Date:</td><td>'.$schedule[4].'-'.$schedule[3].'-'.$schedule[2].'</td></tr>';
+		echo '<tr><td>Departure Time:</td><td>'.$schedule[5].':'.$schedule[6].'</td></tr>';
+		echo '<tr><td>Arrival Date:</td><td>'.$schedule[11].'-'.$schedule[10].'-'.$schedule[9].'</td></tr>';
+		echo '<tr><td>Arrival Time:</td><td>'.$schedule[7].':'.$schedule[8].'</td></tr>';
 		echo '</table>'; 
 	echo'</td></tr>';
 	echo '</table>';
