@@ -17,6 +17,10 @@ function redirect($page) {
     else { ?><script type="text/javascript">window.location='<?php echo $page; ?>'</script><?php }
 }
 
+/**
+* PHP Debugging tool. Outputs $message to the javascript console.
+* @param String message The String to be output to the JS console.
+*/
 function console($message) { ?>
 	<script>
 	console.log('<?php echo $message; ?>');
