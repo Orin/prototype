@@ -55,7 +55,7 @@ if (!mysql_query($insert))
 		echo '<tr><td>flight number:</td><td>'.$schedule[1].'</td></tr>';
 		echo '<tr><td>departure date:</td><td>'.$schedule[4].'-'.$schedule[3].'-'.$schedule[2].'</td></tr>';
 		echo '<tr><td>departure time:</td><td>'.$schedule[5].':'.$schedule[6].'</td></tr>';
-		echo '<tr><td>arrival date:</td><td>'.$schedule[11].'-'.$schedule[10].'-'.$schedule[11].'</td></tr>';
+		echo '<tr><td>arrival date:</td><td>'.$schedule[11].'-'.$schedule[10].'-'.$schedule[9].'</td></tr>';
 		echo '<tr><td>arrival time:</td><td>'.$schedule[7].':'.$schedule[8].'</td></tr>';
 		echo '</table>'; 
 	echo'</td></tr>';

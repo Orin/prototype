@@ -26,10 +26,8 @@ if($FlightId != null)
 		$flightData[3] = $data['capacity'];
 		$flightData[4] = $data['econSeats'];
 		$flightData[5] = $data['busSeats'];
-		$flightData[6] = $data['groupSeats'];
 		$flightData[7] = $data['econPrice'];
 		$flightData[8] = $data['busPrice'];
-		$flightData[9] = $data['groupPrice'];
 	}
 else
 	{
@@ -53,9 +51,7 @@ else
 		<tr><td>Flight Capacity: </td><td><input type="text" name="cap" value="<?php echo $flightData[3]; ?>" onkeypress="return isNumberKey(event)"/></td></tr>
 		<tr><td>No of Economy Seats:</td><td><input type="text" name="econmySeats"value="<?php echo $flightData[4]; ?>" onkeypress="return isNumberKey(event)"/></td></tr>
 		<tr><td>No of Business Seats: </td><td><input type="text" name="busSeats" value="<?php echo $flightData[5]; ?>"onkeypress="return isNumberKey(event)"/></td></tr>
-		<tr><td>No of Group Seats:</td><td> <input type="text" name="groupSeats" value="<?php echo $flightData[6]; ?>"onkeypress="return isNumberKey(event)"/></td></tr>
 		<tr><td>Business Cost:</td><td> <input type="text" name="busCost" value="<?php echo $flightData[8]; ?>" onkeypress="return isNumberKey(event)"/></td></tr>
-		<tr><td>Group Cost:</td><td> <input type="text" name="groupCost" value="<?php echo $flightData[9]; ?>" onkeypress="return isNumberKey(event)"/></td></tr>
 		<tr><td>Econemy Cost:</td><td> <input type="text" name="EconCost" value="<?php echo $flightData[7]; ?>"onkeypress="return isNumberKey(event)"/></td></tr>
 		
 		<br/>
