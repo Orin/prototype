@@ -2,9 +2,10 @@
 if ($page == 'details' || $page == 'confirmation') {
 	$outScheduleID = $_POST['outScheduleID'];
 	$returnScheduleID = $_POST['returnScheduleID'];
-	$class = $_POST['class'];
+	/*$class = $_POST['class'];
 	$adults = $_POST['adults'];
 	$children = $_POST['children'];
+	
 	$psngrCount = $adults + $children;
 	
 	$outPrice = $_POST['outPrice'];
@@ -24,6 +25,30 @@ if ($page == 'details' || $page == 'confirmation') {
 	$returnFrom = $_POST['returnFrom'];
 	$returnTo = $_POST['returnTo'];
 	$returnFlight = $_POST['returnFlight'];
+	*/
+	$class = $_SESSION['flights']['class'];
+	$adults = $_SESSION['flights']['adults'];
+	$children = $_SESSION['flights']['children'];
+	
+	$psngrCount = $adults + $children;
+	
+	$outPrice = $_SESSION['flights']['outPrice'];
+	$returnPrice = $_SESSION['flights']['returnPrice'];
+	$totalPrice = $_SESSION['flights']['totalPrice'];
+	
+	$outDate = $_SESSION['flights']['outDate'];
+	$outDepart = $_SESSION['flights']['outDepart'];
+	$outArrive = $_SESSION['flights']['outArrive'];
+	$outFrom = $_SESSION['flights']['outFrom'];
+	$outTo = $_SESSION['flights']['outTo'];
+	$outFlight = $_SESSION['flights']['outFlight'];
+	
+	$returnDate = $_SESSION['flights']['returnDate'];
+	$returnDepart = $_SESSION['flights']['returnDepart'];
+	$returnArrive = $_SESSION['flights']['returnArrive'];
+	$returnFrom = $_SESSION['flights']['returnFrom'];
+	$returnTo = $_SESSION['flights']['returnTo'];
+	$returnFlight = $_SESSION['flights']['returnFlight'];
 }
 if ($page == 'flights') {
 	$fromDrop = ($_POST['fromDrop'] != '')? str_replace("\\", "\\\\", rawurldecode($_POST['fromDrop'])) : 'BLANK';
@@ -101,14 +126,16 @@ if ($page == 'confirmation') {
 		$id = mysql_insert_id() + $i;
 		array_push($psngrIDs, $id);
 	}
-		
+	
+	//Start DB transaction
+	dbStart();
 	$customerQuery = "INSERT into customers VALUES ('', '".$email."', '".$billFirstN."','".$billLastN."','".$billAddress1."','".$billAddress2."','".$billCity."','".$billPostcode."', '".$billCountry."')";
 	$custResult = mysql_query($customerQuery);
-	if (!$custResult) die('Invalid custResult query: ' . mysql_error());
+	if (!$custResult) { dbRoll(); die('Invalid custResult query: ' . mysql_error()); }
 	
 	$bookingQuery = "INSERT into bookings VALUES ('".$bookingRef."', '".$outScheduleID."', '".$returnScheduleID."', '".mysql_insert_id()."', '', '".classLookup($class)."', '".$totalPrice."', CURRENT_TIMESTAMP)";
 	$bookResult = mysql_query($bookingQuery);
-	if (!$bookResult) die('Invalid bookResult query: ' . mysql_error());
+	if (!$bookResult) { dbRoll(); die('Invalid bookResult query: ' . mysql_error()); }
 	
 	$bookPsngrsQuery = "INSERT into bookings_passengers VALUES ";
 	for ($i = 0; $i < $psngrCount; $i++) {
@@ -118,8 +145,10 @@ if ($page == 'confirmation') {
 	$bookPsngrsResult = mysql_query($bookPsngrsQuery);
 	if (!$bookPsngrsResult) {
 		echo $bookPsngrsQuery;
+		dbRoll();
 		die('Invalid bookPsngrsResult query: ' . mysql_error());
 	}
+	dbCommit();
 } 
 
 if ($page == 'manage-booking') {

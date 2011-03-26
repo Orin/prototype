@@ -4,6 +4,7 @@ function sendData(thisForm)
  document.getElementById(thisForm).submit();
 }
 
+
 function resetForm()
 {
 	document.searchData.reset();
