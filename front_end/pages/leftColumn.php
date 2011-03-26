@@ -44,10 +44,12 @@ if ($page == 'index' || $page == 'startOver') { ?>
   <div id="booking-search">
     <h2>Manage Booking</h2>
     <table id="booking-table">
-    	<tr class="last-name"><td>Last Name</td><td><input type="text" name="lName"/></td></tr>
+    	<form id="manageBooking" method="POST" action="manage-booking.html">
+    	<tr class="last-name"><td>Last Name</td><td><input type="text" name="lName" onkeypress="return isLetters(event);" /></td></tr>
         <tr class="booking-ref"><td>Booking Reference</td><td><input type="text" name="bookingRef" /></td></tr>
         <tr class="spacer small"><td></td></tr>
-        <tr class="actions"><td><a href="manage-booking.html">Search</a></td></tr>
+        <tr class="actions"><td><a href="javascript:sendData('manageBooking');">Search</a></td></tr>
+        </form>
     </table>
    </div>
 <?php }
@@ -81,14 +83,14 @@ if ($page == 'flights') { ?>
     </div>
 <?php }
 
-if ($page == 'details' || $page == 'confirmation') { ?>
+if ($page == 'details' || $page == 'confirmation' || $page == 'manage-booking') { ?>
  <div id="display-selected">
 		<h2>Flight Details</h2>
 			
         <div id="div-display-selected-out">
         <b>Outbound</b>
         <span id="display-selected-out">
-        <table class="table-selected"><tr class="out"><td>£<?php echo $outPrice; ?></td><td><?php echo $outDate; ?></td><td><?php echo $outDepart; ?></td><td><?php echo $outArrive; ?></td><td><?php echo $outFrom; ?></td><td><?php echo $outTo; ?></td><td><?php echo $outFlight; ?></td></tr>
+        <table class="table-selected"><tr class="out"><?php if ($page != 'manage-booking') { ?><td>£<?php echo $outPrice; ?></td><?php } ?><td><?php echo $outDate; ?></td><td><?php echo $outDepart; ?></td><td><?php echo $outArrive; ?></td><td><?php echo $outFrom; ?></td><td><?php echo $outTo; ?></td><td><?php echo $outFlight; ?></td></tr>
         </table>
         </span>
         </div>
@@ -96,7 +98,7 @@ if ($page == 'details' || $page == 'confirmation') { ?>
         <div id="div-display-selected-in">
         <b>Inbound</b>
         <span id="display-selected-in">
-         <table class="table-selected"><tr class="in"><td>£<?php echo $returnPrice; ?></td><td><?php echo $returnDate; ?></td><td><?php echo $returnDepart; ?></td><td><?php echo $returnArrive; ?></td><td><?php echo $returnFrom; ?></td><td><?php echo $returnTo; ?></td><td><?php echo $returnFlight; ?></td></tr>
+         <table class="table-selected"><tr class="in"><?php if ($page != 'manage-booking') { ?><td>£<?php echo $returnPrice; ?></td><?php } ?><td><td><?php echo $returnDate; ?></td><td><?php echo $returnDepart; ?></td><td><?php echo $returnArrive; ?></td><td><?php echo $returnFrom; ?></td><td><?php echo $returnTo; ?></td><td><?php echo $returnFlight; ?></td></tr>
         </table>
         </div>
         &nbsp;<br />
@@ -104,12 +106,12 @@ if ($page == 'details' || $page == 'confirmation') { ?>
     </div>
 <?php }
 
-if ($page == 'confirmation') { ?>
+if ($page == 'confirmation' || $page == 'manage-booking') { ?>
     <div id="passenger-details" style="padding-top:5px">
     <h2>Passenger Details</h2>
     <?php
 	for ($i = 0; $i < $psngrCount; $i++) { ?>
-		Passenger <?php echo $i + 1; ?>: <?php echo $firstN[$i].' '.$lastN[$i]; ?><br />
+		<?php if ($psngrCount > 1) { ?>Passenger <?php echo $i + 1; ?>: <?php } echo $firstN[$i].' '.$lastN[$i]; ?><br />
     <?php } ?>
     &nbsp;<br />
     <h2>Billing Details</h2>

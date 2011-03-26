@@ -9,7 +9,7 @@ if ($page == 'details' || $page == 'confirmation') {
 	
 	$outPrice = $_POST['outPrice'];
 	$returnPrice = $_POST['returnPrice'];
-	$totalPrice = $outPrice + $returnPrice;
+	$totalPrice = ($outPrice + $returnPrice)*$psngrCount;
 	
 	$outDate = $_POST['outDate'];
 	$outDepart = $_POST['outDepart'];
@@ -94,21 +94,21 @@ if ($page == 'confirmation') {
 		if ($i != $psngrCount - 1) { $psngrQuery = $psngrQuery.', '; }
 	}
 	$psngrResult = mysql_query($psngrQuery);
-	if (!$psngrResult) die('Invalid query: ' . mysql_error());
+	if (!$psngrResult) die('Invalid psngrResult query: ' . mysql_error());
 	
 	$psngrIDs = array();
 	for ($i = 0; $i < mysql_affected_rows(); $i++) {
-		$id = mysql_insert_id() - $i;
+		$id = mysql_insert_id() + $i;
 		array_push($psngrIDs, $id);
 	}
 		
 	$customerQuery = "INSERT into customers VALUES ('', '".$email."', '".$billFirstN."','".$billLastN."','".$billAddress1."','".$billAddress2."','".$billCity."','".$billPostcode."', '".$billCountry."')";
 	$custResult = mysql_query($customerQuery);
-	if (!$custResult) die('Invalid query: ' . mysql_error());
+	if (!$custResult) die('Invalid custResult query: ' . mysql_error());
 	
 	$bookingQuery = "INSERT into bookings VALUES ('".$bookingRef."', '".$outScheduleID."', '".$returnScheduleID."', '".mysql_insert_id()."', '', '".classLookup($class)."', '".$totalPrice."', CURRENT_TIMESTAMP)";
 	$bookResult = mysql_query($bookingQuery);
-	if (!$bookResult) die('Invalid query: ' . mysql_error());
+	if (!$bookResult) die('Invalid bookResult query: ' . mysql_error());
 	
 	$bookPsngrsQuery = "INSERT into bookings_passengers VALUES ";
 	for ($i = 0; $i < $psngrCount; $i++) {
@@ -116,5 +116,99 @@ if ($page == 'confirmation') {
 		if ($i != $psngrCount - 1) { $bookPsngrsQuery = $bookPsngrsQuery.', '; }
 	}
 	$bookPsngrsResult = mysql_query($bookPsngrsQuery);
-	if (!$bookPsngrsResult) die('Invalid query: ' . mysql_error());
-} ?>
+	if (!$bookPsngrsResult) {
+		echo $bookPsngrsQuery;
+		die('Invalid bookPsngrsResult query: ' . mysql_error());
+	}
+} 
+
+if ($page == 'manage-booking') {
+	$lName = $_POST['lName'];
+	$bookingRef = $_POST['bookingRef'];
+	$query = "
+	SELECT
+		flights.flightNo, flights.`departure`, flights.`destination`,
+		flightSchedule.ScheduleID, flightSchedule.departuredate, flightSchedule.departureTime, 
+		flightSchedule.arrivalDate, flightSchedule.arrivalTime,
+		bookings.`totalCost`, classes.`className` AS class,
+		`customers`.`bill_fName`, customers.`bill_lName`, customers.`bill_line1`, customers.`bill_line2`, customers.`bill_city`, customers.`bill_pCode`, customers.bill_country, customers.`email`
+	
+	FROM
+		flights, flightSchedule, bookings, bookings_passengers, customers, classes
+	
+	WHERE
+		bookings.`bookingID` = '".$bookingRef."'
+		AND customers.bill_lName = '".$lName."'
+		AND bookings.`classID` = classes.`classID`
+		AND (flightSchedule.`ScheduleID` = bookings.`FlightScheduleID`
+		OR flightSchedule.`ScheduleID` = bookings.`returnFlightScheduleID`)
+		AND flights.flightNo = flightSchedule.`FlightNo`
+		AND bookings.`customerID` = customers.`customerID`
+	
+	GROUP BY
+		flights.flightNo";
+	$result = mysql_query($query);
+	if (!$result) { die('Invalid result query: ' . mysql_error()); }
+	
+	if (mysql_num_rows($result) == 0) {
+		redirect('index.html');
+	}
+	
+	$fltCount = 1;
+	while ($row = mysql_fetch_array($result)) {
+		
+		$class = $row['class'];
+		$totalPrice = $row['totalCost'];
+		
+		if ($fltCount == 1) {
+			$outDate = $row['departuredate'];
+			$outDepart = $row['departureTime'];
+			$outArrive = $row['arrivalTime'];
+			$outFrom = $row['departure'];
+			$outTo = $row['destination'];
+			$outFlight = $row['flightNo'];
+		}
+		if ($fltCount == 2) {
+			$returnDate = $row['departuredate'];
+			$returnDepart = $row['departureTime'];
+			$returnArrive = $row['arrivalTime'];
+			$returnFrom = $row['departure'];
+			$returnTo = $row['destination'];
+			$returnFlight = $row['flightNo'];
+		}
+			
+		$billFirstN = $row['bill_fName'];
+		$billLastN = $row['bill_lName'];
+		$email = $row['email'];
+		$billAddress1 = $row['bill_line1'];
+		$billAddress2 = $row['bill_line2'];
+		$billCity = $row['bill_city'];
+		$billPostcode = $row['bill_pCode'];
+		$billCountry = $row['bill_country'];
+			
+		$fltCount++;
+	}
+	
+	$psngrQuery = "
+		SELECT
+			passengers.`fName`, passengers.`lName`
+		
+		FROM
+			bookings, bookings_passengers, `passengers`, customers
+		
+		WHERE
+			bookings.`bookingID` = '".$bookingRef."'
+			AND customers.bill_lName = '".$lName."'
+			AND bookings.`bookingID` = `bookings_passengers`.`bookingID`
+			AND passengers.`passengerID` = `bookings_passengers`.`passengerID`";
+	$psngrResult = mysql_query($psngrQuery);
+	if (!$psngrResult) { die('Invalid psngrResult query: ' . mysql_error()); }
+	$psngrCount = mysql_num_rows($psngrResult);
+	$firstN = array();
+	$lastN = array();
+	while ($row = mysql_fetch_array($psngrResult)) {
+		array_push($firstN, $row['fName']);
+		array_push($lastN, $row['lName']);
+	}
+}
+?>
