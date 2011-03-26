@@ -25,7 +25,6 @@ $type = $_SESSION['type'];
 
 if($type)	{$pk = 'flightNo'; $table = 'flight_discounts';}
 else		{$pk = 'ScheduleID'; $table = 'schedule_discounts';}
-echo $apply;
 $applicants = mysql_query($apply);
 
 $feilds = 'refID, ';
@@ -43,17 +42,29 @@ for ($feildCounter =1;  $feildCounter<count($discount); $feildCounter++)
 
 $feilds = $feilds.'startDate, endDate';
 $values = $values.'\''.$startEnd[0].'-'.$startEnd[1].'-'.$startEnd[2].'\', \''.$startEnd[3].'-'.$startEnd[4].'-'.$startEnd[5].'\'';
-
+$success = true;
 for ($i =0;  $i<mysql_num_rows($applicants); $i++)
 {
 	$data = mysql_fetch_array($applicants);
 	$flighNo = $data[$pk];
 	$insert = 'INSERT INTO '.$table.'('.$feilds.') VALUES (\''.$flighNo.'\', '.$values.')';
-	echo $insert;
-	mysql_query($insert);
+	$res = mysql_query($insert);
+	if(!$res || $startEnd[3]==''||$startEnd[4]==''||$startEnd[5]=='')
+	{
+		$success = false;
+	}
+	
 }
+
+if($success){echo "all discounts successfully entered";}
+else {echo "there was a problem applying discounts please try again later";}
+?>
+<form action="discountsPricing.html">
+<input type="submit" value="Bookings" />
+</form>
+<?php
 
 unset($_SESSION['applyTo']);
 unset($_SESSION['type']);
-header('Location: discountsPricing.html');
+//header('Location: discountsPricing.html');
 ?>

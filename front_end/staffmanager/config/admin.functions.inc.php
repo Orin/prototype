@@ -169,8 +169,7 @@ echo $data['arrivalTime'];
 echo '</td>';
 
 echo '<td>';
-echo 'percentage : %'.$discounts[0].'<BR/>';
-echo 'value :    &pound;'.$discounts[1];
+echo displayDisDetails($discounts);
 echo '</td>';
 
 echo '<td>';
