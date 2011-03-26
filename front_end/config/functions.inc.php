@@ -150,6 +150,25 @@ function airCodeLookup($needle, $type) {
 		else return "Function Error [airCodeLookup(".$needle.", ".$type.")]: Invalid type.";
 	}
 }
+
+/**		
+* Used for retriveing classID for class.
+* @param String $className Full name of travel class
+* @return integer
+**/
+function classLookup($className) {
+	$query = "SELECT classID FROM classes WHERE className = '".$className."'";
+	$result = mysql_query($query);
+	
+	if (mysql_num_rows($result) == 0) {
+		return "Function Error [classLookup(".$className.")]: Class not found.";
+	}
+	
+	while ($row = mysql_fetch_array($result)) {
+		return $row['classID'];
+	}
+}
+
 /*
 * Returns an array containing the number of results and the search query use to get them
 * @param String flightNo The flight number of the flight you want the schedules for
@@ -324,7 +343,7 @@ function bookingRefGenerator() {
 				$rand = mt_rand(0, 23);
 				$bookRef = $bookRef.$chars[$rand];
 			} else {
-				$rand = mt_rand(0, 8);
+				$rand = mt_rand(0, 7);
 				$bookRef = $bookRef.$nums[$rand];
 			}
 		}

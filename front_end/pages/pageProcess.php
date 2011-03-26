@@ -80,11 +80,41 @@ if ($page == 'confirmation') {
 	$billAddress2 = (isset($_POST['address-2']))? $_POST['address-2'] : FALSE; 
 	$billCity = (isset($_POST['city']))? $_POST['city'] : ''; 
 	$billPostcode = (isset($_POST['pcode']))? $_POST['pcode'] : ''; 
-//	$billCountry = (isset($_POST['country']))? $_POST['country'] : ''; 
+	$billCountry = (isset($_POST['country']))? $_POST['country'] : ''; 
 	
 	$cardType = (isset($_POST['cardType']))? $_POST['cardType'] : ''; 
 	$ccNo = (isset($_POST['cc-no']))? $_POST['cc-no'] : ''; 
 	$exp = (isset($_POST['exp']))? $_POST['exp'] : ''; 
 	$secCode = (isset($_POST['sec-code']))? $_POST['sec-code'] : ''; 
-
+	
+	$psngrQuery = "INSERT into passengers VALUES ";
+	for ($i = 0; $i < $psngrCount; $i++) {
+		$psngrQuery = $psngrQuery."('', '".$firstN[$i]."', '".$lastN[$i]."', '".$pNo[$i]."', ";
+		if ($i > $adults) { $psngrQuery = $psngrQuery."'1')";} else { $psngrQuery = $psngrQuery."'0')"; }
+		if ($i != $psngrCount - 1) { $psngrQuery = $psngrQuery.', '; }
+	}
+	$psngrResult = mysql_query($psngrQuery);
+	if (!$psngrResult) die('Invalid query: ' . mysql_error());
+	
+	$psngrIDs = array();
+	for ($i = 0; $i < mysql_affected_rows(); $i++) {
+		$id = mysql_insert_id() - $i;
+		array_push($psngrIDs, $id);
+	}
+		
+	$customerQuery = "INSERT into customers VALUES ('', '".$email."', '".$billFirstN."','".$billLastN."','".$billAddress1."','".$billAddress2."','".$billCity."','".$billPostcode."', '".$billCountry."')";
+	$custResult = mysql_query($customerQuery);
+	if (!$custResult) die('Invalid query: ' . mysql_error());
+	
+	$bookingQuery = "INSERT into bookings VALUES ('".$bookingRef."', '".$outScheduleID."', '".$returnScheduleID."', '".mysql_insert_id()."', '', '".classLookup($class)."', '".$totalPrice."', CURRENT_TIMESTAMP)";
+	$bookResult = mysql_query($bookingQuery);
+	if (!$bookResult) die('Invalid query: ' . mysql_error());
+	
+	$bookPsngrsQuery = "INSERT into bookings_passengers VALUES ";
+	for ($i = 0; $i < $psngrCount; $i++) {
+		$bookPsngrsQuery = $bookPsngrsQuery."('".$bookingRef."', '".$psngrIDs[$i]."')";
+		if ($i != $psngrCount - 1) { $bookPsngrsQuery = $bookPsngrsQuery.', '; }
+	}
+	$bookPsngrsResult = mysql_query($bookPsngrsQuery);
+	if (!$bookPsngrsResult) die('Invalid query: ' . mysql_error());
 } ?>
