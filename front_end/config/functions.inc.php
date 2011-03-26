@@ -17,6 +17,12 @@ function redirect($page) {
     else { ?><script type="text/javascript">window.location='<?php echo $page; ?>'</script><?php }
 }
 
+function console($message) { ?>
+	<script>
+	console.log('<?php echo $message; ?>');
+	</script><?php
+}
+
 function autoFill($dataSet, $divName,$errDiv,$type ,$elName = '', $formID)
 { ?>
 	<SCRIPT >
