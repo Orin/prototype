@@ -37,9 +37,14 @@ if(!empty($criteria[4]))
 	$query = $query." AND DAY(departuredate) = $criteria[4]";
 }
 
-if(!empty($criteria[5]) && !empty($criteria[6]))
+if(!empty($criteria[5]))
 {
-	$query = $query." AND departureTime ='".$criteria[5].':'.$criteria[6]."'";
+	$query = $query." AND HOUR(departureTime) = $criteria[5]";
+}
+
+if(!empty($criteria[6]))
+{
+	$query = $query." AND MINUTE(departureTime) = $criteria[6]";
 }
 $result = mysql_query($query);
 

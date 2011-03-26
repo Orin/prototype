@@ -7,7 +7,7 @@ $schedule[1] = $_POST['FlightNo'];
 $schedule[2] = $_POST['depDateYear'].'-'.$_POST['depDateMonth'].'-'.$_POST['depDateDay'];
 $schedule[3] = $_POST['depTimehour'].':'.$_POST['depTimemin'];
 $schedule[4] = $_POST['ArrivTimehour'].':'.$_POST['ArrivTimemin'];
-
+if(!flightNoExsists($schedule[1])) {$reason = 'Flight Number '.$schedule[1].' dosent exsist, the flight numbers below are valid flight numbers';}
 
 $insert = "UPDATE flightSchedule SET FlightNo='$schedule[1]', departuredate='$schedule[2]', departureTime='$schedule[3]', arrivalTime='$schedule[4]' WHERE ScheduleID = $schedule[0]";
 
@@ -27,9 +27,13 @@ if (!mysql_query($insert))
 		echo '<tr><td>arriavl time:</td><td>'.$schedule[4].'</td></tr>';
 		echo '</table>'; 
 	echo '</td><td>';
-	echo('Error: ' . mysql_error());
+	if(!empty($reason)) {echo $reason;}
+	else{echo 'There was a problem with trying to insert your data into the database, please try again later';}
 	echo'</td></tr>';
 	echo '</table>';
+	echo '<br/>';
+	if (!empty($reason)) {echo 'valid FLight Numbers:';}
+	buildTable(mysql_query("SELECT flightNo FROM flights"));
 	}   
   else{
 	  echo '<table border="1" id="sucessful">';

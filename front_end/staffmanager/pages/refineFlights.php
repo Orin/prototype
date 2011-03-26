@@ -21,7 +21,7 @@ if($depDate[0] != '') {$searchString = $searchString." DAY(departuredate)=$depDa
 if($depDate[1] != '') {$searchString = $searchString." MONTH(departuredate)=$depDate[1] AND";}
 if($depDate[2] != '') {$searchString = $searchString." YEAR(departuredate)=$depDate[2] AND";}
 if($deptime[0] != '') {$searchString = $searchString." HOUR(departureTime)=$deptime[0] AND";}
-if($deptime[1] != '') {$searchString = $searchString." MINUET(departureTime)=$deptime[1] AND";}
+if($deptime[1] != '') {$searchString = $searchString." MINUTE(departureTime)=$deptime[1] AND";}
 
 $searchString = substr($searchString,0,strlen($searchString)-3);
 

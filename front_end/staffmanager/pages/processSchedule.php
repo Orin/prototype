@@ -16,6 +16,8 @@ $schedule[9] = $_POST['ArrivDateDay'];
 $schedule[10] = $_POST['ArrivDateMonth'];
 $schedule[11] = $_POST['ArrivDateYear'];
 
+if(!flightNoExsists($schedule[1])) {$reason = 'Flight Number '.$schedule[1].' dosent exsist, the flight numbers below are valid flight numbers';}
+
 
 $insert = "INSERT INTO flightSchedule (FlightNo, departuredate, departureTime, arrivalDate, arrivalTime) VALUES('$schedule[1]','".$schedule[4].'-'.$schedule[3].'-'.$schedule[2]."','".$schedule[5].':'.$schedule[6]."','".$schedule[11].'-'.$schedule[10].'-'.$schedule[9]."','".$schedule[7].':'.$schedule[8]."')";
 
@@ -37,19 +39,23 @@ if (!mysql_query($insert))
 		echo '
 		';
 	echo '</td><td>';
-	echo('Error: ' . mysql_error());
+	if(!empty($reason)) {echo $reason;}
+	else{echo 'There was a problem with trying to insert your data into the database, please try again later';}
 	echo'</td></tr>';
 	echo '</table>';
 	echo '<br/>';
+	if (!empty($reason)) {echo 'valid FLight Numbers:';}
+	buildTable(mysql_query("SELECT flightNo FROM flights"));
 	
 	} else {
 	  echo '<table border="1" id="sucessful">';
-	echo'<th>flight sucessfully entered</th>';
+	echo'<th>flight schedule sucessfully entered</th>';
 	echo'<tr><td>';
 		echo '<table id="displayInfo" border="1" width=100%>';
 		echo '<tr><td>flight number:</td><td>'.$schedule[1].'</td></tr>';
 		echo '<tr><td>departure date:</td><td>'.$schedule[4].'-'.$schedule[3].'-'.$schedule[2].'</td></tr>';
 		echo '<tr><td>departure time:</td><td>'.$schedule[5].':'.$schedule[6].'</td></tr>';
+		echo '<tr><td>arrival date:</td><td>'.$schedule[11].'-'.$schedule[10].'-'.$schedule[11].'</td></tr>';
 		echo '<tr><td>arrival time:</td><td>'.$schedule[7].':'.$schedule[8].'</td></tr>';
 		echo '</table>'; 
 	echo'</td></tr>';
@@ -61,7 +67,8 @@ if (!mysql_query($insert))
 		echo date('l jS \of F Y h:i:s A');
 		echo '<br/>';
  		echo '<form>'; 
-		echo '<input type="button" value="print"/> ';
+		echo '<input type="button" value="print" onClick="window.print()"/> ';
 		echo '</form>';
 ?>
+
 

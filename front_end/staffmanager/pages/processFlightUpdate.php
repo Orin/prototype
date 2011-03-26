@@ -10,7 +10,7 @@ $gropS = $_POST['groupSeats'];
 $bCost = $_POST['busCost'];
 $eCost = $_POST['EconCost'];
 $gCost = $_POST['groupCost'];
-
+$flightNo = makeCaps($flightNo);
 $update = "UPDATE flights SET destination='$destination', departure='$departure', capacity=$capacity, econSeats=$econS, busSeats=$bussS, groupseats=$gropS, econPrice=$eCost, busPrice=$bCost, groupPrice=$gCost WHERE flightNo='$flightNo' ";
 
 if (!mysql_query($update)){

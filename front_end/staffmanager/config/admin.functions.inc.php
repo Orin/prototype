@@ -403,4 +403,24 @@ function buildTable($result) {
 	</table>
 	<?php
 }
+/*
+returns true or false depending on if the flight number is a flight number in the database or not
+*/
+function flightNoExsists($flightNumber)
+{
+	$query = "SELECT * FROM flights WHERE flightNo = '".$flightNumber."'";
+	$res = mysql_query($query);
+	if(mysql_num_rows($res) ==0) {return false;}
+	return true;
+}
+/*
+returns true if the first data is before the second date
+returns false otehrwise
+*/
+function dateCheck()
+{
+
+}
+//takes a string of letters and turns them all into there capital versions
+function makeCaps($str) {return strtoupper($str);}
 ?>

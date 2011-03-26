@@ -11,6 +11,8 @@ $bCost = $_POST['busCost'];
 $eCost = $_POST['EconCost'];
 $gCost = $_POST['groupCost'];
 
+
+$flightNo = makeCaps($flightNo);
 $insert = "INSERT INTO flights(flightNo, destination, departure, capacity, econSeats, busSeats, groupseats, econPrice, busPrice, groupPrice) VALUES('$flightNo','$destination','$departure',$capacity,$econS,$bussS,$gropS,$bCost,$eCost,$gCost)";
 
 
