@@ -252,12 +252,28 @@ function flightSearch($from, $to, $date, $class, $passengers=1) {
 * @return integer The number of unbooked seats
 */
 function availableSeats($scheduleID, $class) {
-	$query = "
+	$tempQuery = "
+	SELECT
+		sum(orders_temp.passengers) AS tempPsngrs
+	FROM
+		orders_temp
+	WHERE
+		scheduleID = '".$scheduleID."'
+	GROUP BY
+		scheduleID";
+	$tempResult = mysql_query($tempQuery);
+	echo mysql_error();
+	$tempSeats = 0;
+	if (mysql_num_rows($tempResult) == 1) {
+		while ($row = mysql_fetch_array($tempResult)) $tempSeats = $row['tempPsngrs'];
+	}
+	
+	$bookingsQuery = "
 	SELECT 
 		COUNT(passengers.passengerID),
 		flights.econSeats, flights.busSeats
 	FROM 
-		flights, flightSchedule, bookings, passengers, classes, bookings_passengers 
+		flights, flightSchedule, bookings, passengers, classes, bookings_passengers
 	WHERE 
 		flightSchedule.scheduleID = '".$scheduleID."'
 		AND classes.className = '".$class."'
@@ -269,17 +285,19 @@ function availableSeats($scheduleID, $class) {
 		AND bookings.classID = classes.classID 
 	GROUP BY 
 		flights.flightNo,
-		classes.className
-		";
-	$result = mysql_query($query);
-	if (mysql_num_rows($result) == 1) {
-		while ($row = mysql_fetch_array($result)) {
+		classes.className";
+	$bookingsResult = mysql_query($bookingsQuery);
+	
+	
+	
+	if (mysql_num_rows($bookingsResult) == 1) {
+		while ($row = mysql_fetch_array($bookingsResult)) {
 			$boughtSeats = $row['COUNT(passengers.passengerID)'];
 			if ($class == "Economy") $capacity = $row['econSeats'];
 			elseif ($class == "Business") $capacity = $row['busSeats'];
 			else return "Function Error [availableSeats(".$scheduleID.", ".$class.")]: Invalid class type.";
 			
-			$availableSeats = ($capacity*OVERBOOK_MOD) - $boughtSeats;
+			$availableSeats = ($capacity*OVERBOOK_MOD) - $boughtSeats - $tempSeats;
 			return floor($availableSeats);
 		}
 	} elseif (validScheduleID($scheduleID)) {
