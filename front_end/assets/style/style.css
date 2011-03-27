@@ -221,3 +221,5 @@ p.flights.subtitle {
 .booking-form td {
 	width:200px;
 }
+
+#processing {color:#444;display:inline;text-decoration:none; border:1px solid #333; padding:3px;}

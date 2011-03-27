@@ -14,7 +14,7 @@
 */
 function redirect($page) {
 	if ($page == "-1") { ?><script type="text/javascript">history.go(-1);</script><?php }
-    else { ?><script type="text/javascript">window.location='<?php echo $page; ?>'</script><?php }
+    else { ?><script type="text/javascript">window.location='<?php echo $page; ?>'; </script><?php }
 }
 
 /**

@@ -71,7 +71,6 @@ function ajaxSelected(outVis, inVis)
 		var returnScheduleID = document.forms['fltDetails'].elements['returnScheduleID'].value;
 		ajax_url = ajax_url+'&returnPrice='+returnPrice+'&returnDate='+returnDate+'&returnDepart='+returnDepart+'&returnArrive='+returnArrive+'&returnFrom='+returnFrom+'&returnTo='+returnTo+'&returnFlight='+returnFlight+'&returnScheduleID='+returnScheduleID;;
 	}
-	console.log(ajax_url);
 	var ajax = new XMLHttpRequest();
 	
 	
@@ -80,11 +79,27 @@ function ajaxSelected(outVis, inVis)
 		if (ajax.readyState==4 && ajax.status==200)
 		{
 			var success = ajax.responseText;
-			console.log(success);
 		}
 	}
 	ajax.open("GET", ajax_url, true);
 	ajax.send();
-	
-	//window.location = "flights.html";
 }
+
+function cartAdd() {
+	var ajax = new XMLHttpRequest();
+	ajax.onreadystatechange=function()
+	{
+		if (ajax.readyState==4 && ajax.status==200)
+		{
+			if (ajax.responseText == 'success') {
+				//window.location = ("details.html");
+			} else { console.log(ajax.responseText); 
+			document.getElementById('continue').innerHTML = '<a id="continueButton" href="javascript:cartAdd();">Continue</a>';
+			}
+		}
+	}
+	ajax.open("GET", 'ajax.php?action=cartAdd', true);
+	ajax.send();
+	document.getElementById('continue').innerHTML = "<span id='processing'>Processing...</span>";
+}
+

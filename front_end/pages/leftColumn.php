@@ -78,7 +78,7 @@ if ($page == 'flights') { ?>
         </div>
         &nbsp;<br />
         <div id="continue" style="visibility:hidden">
-        <a href="details.html">Continue</a>
+        <a id="continueButton" href="javascript:cartAdd();">Continue</a>
         </div>
         </form>
     </div>
