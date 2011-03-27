@@ -215,13 +215,13 @@ function monthPicker($def = FALSE, $name= '')
 {
 if (!$def) {$def = -1;}
 	echo '<select class="month"  name='.$name.'>';
-	for ($i = 1; $i < 12; $i++) {
+	for ($i = 1; $i <= 12; $i++) {
 		if ($i == $def) { ?><option selected value="<?php echo $i; ?>"><?php } else { ?><option value="<?php echo $i; ?>"><?php }
 		echo date("F", mktime(0,0,0,$i)).'</option>';
 	}
 	
 	if($defMonth == -1) {echo '<option selected><option>';}
-	else {echo '<option></option>';}
+	//else {echo '<option></option>';}
 
 	echo '</select>';
 }

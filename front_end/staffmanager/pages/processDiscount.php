@@ -4,7 +4,6 @@ $discount[0] = $_POST['dType'];
 $discount[1] = $_POST['AllclassD'];
 $discount[2] = $_POST['EconD'];
 $discount[3] = $_POST['BusinessD'];
-$discount[4] = $_POST['GroupD'];
 
 $startEnd[0] = $_POST['durStartYear'];
 $startEnd[1] = $_POST['durStartMonth'];

@@ -37,7 +37,7 @@ else
 
 ?>
 
-<form name="Flight_info" method="post"  onsubmit="return validate('Flight_info',['FNo','econmySeats','busSeats','EconCost','busCost','dest','dep'],['Flight Number','Economy Seats','Business Seats','Economy Price','Business Price','Destination','Departure'])" action="<?php echo $goto;?>">
+<form name="Flight_info" method="post"  onsubmit="return validate('Flight_info',['FNo','econmySeats','busSeats','EconCost','busCost','dest','dep','cap'],['Flight Number','Economy Seats','Business Seats','Economy Price','Business Price','Destination','Departure','Capacity'])" action="<?php echo $goto;?>">
 	<table border="1" id="inputData">
 		<tr ><th colspan="2"><h4>Enter Flight Information</h4></th></tr>
 		<?php if($FlightId != null){ ?>
