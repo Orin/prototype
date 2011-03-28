@@ -10,17 +10,16 @@
 					{
 					if(reg2.test(address)==false)
 						{
-						alert('pas bon ');
 						return false;
 						}
 					else 
-						{alert('bonne lettre');}
+						return true;
 					}
 				else
-					{alert('pas chiffre');}
+					return false;
 				}
 			else
-				{alert('pas 6');}
+				return false;
 }
 </script>
 
