@@ -12,6 +12,6 @@
           
    <tr class="email"><td>Email Address</td><td><input type="text" name="ref" />
         </table>
-    <input type="submit" name="submit" value="submit" onBlur="javascript:return validate('test','ref');"/>
+    <input type="submit" name="submit" value="submit"/>
        </form>
 
