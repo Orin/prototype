@@ -40,6 +40,23 @@ function showError (errorID,show)
 	else{document.getElementById(errorID).style.visibility = 'hidden';}
 }
 
+function validate (form_id, requiredFeilds,names)
+
+{
+	for(var c = 0; c<=requiredFeilds.length; c++)
+	{
+		var el = document.forms[form_id].elements[requiredFeilds[c]].value;
+		if(el == "")
+			{
+				alert(names[c]+" is a required field");
+				return false;
+			}
+	}
+	console.log("false");
+	return true;
+
+}
+
 function isNumber (val)
 {
 	return /^\d+$/.test(val);
@@ -93,7 +110,7 @@ function formVal(errorID, form_ID,inputName, fName)
 
 //function which check if the flight number is correct.
 function isCorrect(form_id, flight_number) {
-		   var reg = /[A-HJ-NP-Z]{3}+[2-9]{3}$/;
+		   var reg = new RegExp(".[A-HJ-NP-Z]{3}+[2-9]{3}$");
 		   var number = document.forms[form_id].elements[flight_number].value;
 		   if(reg.test(number) == false) {
 			  return false;

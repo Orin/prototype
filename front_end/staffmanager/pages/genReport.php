@@ -1,7 +1,8 @@
 <?php
 
 $month = $_POST['month'];
-echo $month;
+echo 'Report for :'.date( 'F', mktime(0, 0, 0, $month) ).'<br/>';
+echo 'Created on : '.strftime('%c');
 if(isset($_POST['Class'])){?><div class="title-bar"> Sales Per Class</div><?php buildTable (revByClass($month));}
 
 if(isset($_POST['SPF'])){?><div class="title-bar"> Income Per Flight</div><?php buildTable (incomeAllFlights($month));}

@@ -60,15 +60,15 @@ echo $custID;
 echo '</td>';
 
 echo '<td onClick="window.location=\'custInfoEdit.html\';">';
-echo $data['Firstname'];
+echo $data['bill_fName'];
 echo '</td>';
 
 echo '<td  onClick="window.location=\'custInfoEdit.html\';">';
-echo $data['LastName'];
+echo $data['bill_lName'];
 echo '</td>';
 
 echo '<td>';
-echo $data['EmailAddress'];
+echo $data['email'];
 echo '</td>';
 
 echo '<td>';

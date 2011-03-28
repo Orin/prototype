@@ -24,7 +24,7 @@ if($alteration[0] == '')
 		$alteration[0] = 0;
 	}
 
-for ($feildCounter =1;  $feildCounter<count($alteration); $feildCounter++)
+for ($feildCounter =1;  $feildCounter<=count($alteration); $feildCounter++)
 {
 	
 	if($alteration[$feildCounter] != '')
@@ -33,7 +33,7 @@ for ($feildCounter =1;  $feildCounter<count($alteration); $feildCounter++)
 		$newVals = $newVals.$dbcolumns[$feildCounter].'='.$sum.', ';
 	}
 }
-
+echo $newVals;
 $newVals = substr($newVals, 0, -2);
 
 

@@ -38,7 +38,6 @@ echo '<th><h4>Economy Seats</h4></th>';
 echo '<th><h4>Business Seats</h4></th>';
 echo '<th><h4>Business Cost</h4></th>';
 echo '<th><h4>Economy Cost</h4></th>';
-echo '<th><h4>Group Cost</h4></th>';
 echo '<th><h4>Applied Discounts</h4></th>';
 echo '<th><h4>Delete</h4></th>';
 echo '</tr>';
@@ -84,10 +83,6 @@ echo displayDiscounts($data['econPrice'],$discounts[3],$discounts[2],$discounts[
 //echo ($data['econPrice']*(1-($discounts[2]/100)))-$discounts[3].'(&pound;'.$data['econPrice'].')';
 echo '</td>';
 
-echo '<td>';
-echo displayDiscounts($data['groupPrice'],$discounts[7],$discounts[6],$discounts[1],$discounts[0]);
-//echo ($data['groupPrice']*(1-($discounts[6]/100)))-$discounts[7].'(&pound;'.$data['groupPrice'].')';
-echo '</td>';
 
 echo '<td>';
 //echo 'percentage : %'.$discounts[0].'<BR/>';
@@ -169,8 +164,7 @@ echo $data['arrivalTime'];
 echo '</td>';
 
 echo '<td>';
-echo 'percentage : %'.$discounts[0].'<BR/>';
-echo 'value :    &pound;'.$discounts[1];
+echo displayDisDetails($discounts);
 echo '</td>';
 
 echo '<td>';
@@ -221,13 +215,13 @@ function monthPicker($def = FALSE, $name= '')
 {
 if (!$def) {$def = -1;}
 	echo '<select class="month"  name='.$name.'>';
-	for ($i = 1; $i < 12; $i++) {
+	for ($i = 1; $i <= 12; $i++) {
 		if ($i == $def) { ?><option selected value="<?php echo $i; ?>"><?php } else { ?><option value="<?php echo $i; ?>"><?php }
 		echo date("F", mktime(0,0,0,$i)).'</option>';
 	}
 	
 	if($defMonth == -1) {echo '<option selected><option>';}
-	else {echo '<option></option>';}
+	//else {echo '<option></option>';}
 
 	echo '</select>';
 }
@@ -251,7 +245,7 @@ function datePickerBackEnd($name = '', $defDay = FALSE, $defMonth = FALSE, $defY
 	echo '<option></option>';
 	for ($i = 1; $i < 32; $i++) {
 		if ($defDay==$i) { ?><option selected><?php } else { ?><option><?php }
-		echo $i.'</option>';
+		echo makeDouble($i).'</option>';
 	}
 	
 	
@@ -270,6 +264,15 @@ function datePickerBackEnd($name = '', $defDay = FALSE, $defMonth = FALSE, $defY
 	echo '<input size="2" type="text" class="year"  name='.$name.'Year value="'.$defYear.'" onkeypress="return isNumberKey(event)" onBlur="formVal(\'invalYear\', \'isYear\')"><div id="invalYear" style="visibility:hidden">Invalid Year</div> 
 	</div>';
 }
+/*
+takes an integer and if that number is only a single diget turns it in to 2
+e.g 1 return 01
+*/
+function makeDouble($number)
+{
+	if($number <= 9) {return "0".$number;}
+	else {return $number;}
+}
 
 function timePicker ($defHour = -1, $defMin = -1, $name = '')
 {
@@ -280,7 +283,7 @@ function timePicker ($defHour = -1, $defMin = -1, $name = '')
 	for ($i = 0; $i<24; $i++)
 	{
 		if($i == $defHour ){?> <option selected><?php } else { ?><option><?php }
-		echo $i.'</option>';
+		echo makeDouble($i).'</option>';
 	}
 	echo '</select>';
 	
@@ -289,7 +292,7 @@ function timePicker ($defHour = -1, $defMin = -1, $name = '')
 	for ($i = 0; $i<60; $i++)
 	{
 		if($i == $defMin ){?> <option selected><?php } else { ?><option><?php }
-		echo $i.'</option>';
+		echo makeDouble($i).'</option>';
 	}
 	echo '</select>';
 	echo '</div>';
@@ -403,4 +406,24 @@ function buildTable($result) {
 	</table>
 	<?php
 }
+/*
+returns true or false depending on if the flight number is a flight number in the database or not
+*/
+function flightNoExsists($flightNumber)
+{
+	$query = "SELECT * FROM flights WHERE flightNo = '".$flightNumber."'";
+	$res = mysql_query($query);
+	if(mysql_num_rows($res) ==0) {return false;}
+	return true;
+}
+/*
+returns true if the first data is before the second date
+returns false otehrwise
+*/
+function dateCheck()
+{
+
+}
+//takes a string of letters and turns them all into there capital versions
+function makeCaps($str) {return strtoupper($str);}
 ?>

@@ -45,7 +45,7 @@ if ($dependanceys[0] > 0)
 		<?php 
 		if(!$type) 
 		{
-				echo 'The flight you are trying to delete has schedules assigned to it. ';
+				echo 'The flight you are trying to delete has these schedules assigned to it. ';
 				echo '<input type="submit" value="Click Here" /> to be taken to the schedule management page for this flight. ';
 				
 		}
@@ -63,6 +63,13 @@ if ($dependanceys[0] > 0)
 		<input type="submit" value="Click Here" />
 		</form>
 		<?php 
+		if(!$type){
+			echo '<h3> Dependant Schedules </h3>';
+			showScheduleTable(mysql_query($dependanceys[1]), 'removeDBrow.html');
+			}
+		else {
+		echo '<h3> Dependant flights </h3>';
+		showFlightTable(mysql_query($dependanceys[1]), 'removeDBrow.html');}
 	}
 else
 	{

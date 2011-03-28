@@ -5,8 +5,8 @@
 		<tr><td><a href="editFlightSchedule.html">Edit a Flight Schedule</a></td></tr>
 		<tr><td><a href="scheduleInfo.html">Add Flight Schedule</a></td></tr>
 		<tr><td><a href="discountsPricing.html">Discounts and Pricing</a></td></tr>
-		<tr><td><a href="airports.html">Maintain Airports</a></td></tr>
-		<tr><td><a href="travelAgents.html">Maintain Travel Agents</a></td></tr>
+		<tr><td><a href="airports.html">Airports</a></td></tr>
+		<tr><td><a href="travelAgents.html">Travel Agents</a></td></tr>
 	</table>
 </div>
 
@@ -17,7 +17,7 @@
         <div class="search-left">
         <form name="Flight_info" method="post" action="viewFlight.html" align=right>
         <table>
-        <tr><td>Flight No:</td><td><?php autoFill($airports,"DestDiv","flightNo");?></td></tr>
+        <tr><td>Flight No:</td><td><?php autoFill($airports,"DestDiv","errFlightSearch","isFlightNo","flightNo","Flight_searchID");?></td></tr>
         <tr><td><input type="submit" value="Search" /></td></tr>
         </table>
         </form>        
@@ -44,7 +44,7 @@
         <div class="search-left">
             <form name="customer_info" method="post" action="viewBooking.html" align=right>
             <table>
-            <tr><td>Booking Reference:</td><td><?php autoFill(2,"BookingDiv", "bookingref");?></td></tr>
+            <tr><td>Booking Reference:</td><td><?php  autoFill(2,"BookingDiv","errorBRef","isBookingRef", "bookingref","customer_Search_ID");?></td></tr>
             <tr><td><input type="submit" value="Search" /></td></tr>
             </table>
             </form>

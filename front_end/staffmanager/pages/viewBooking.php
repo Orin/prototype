@@ -11,9 +11,9 @@ $result = mysql_query($query);
 <tr><th colspan=2>Booking Details</th></tr>
 <tr><th colspan=2>Customer Details: </td></tr>
 <tr><td>customerID: </td> <td><?php echo $data['customerID'];?></td></tr>
-<tr><td>First Name: </td> <td><?php echo $data['Firstname'];?></td></tr>
-<tr><td>Last Name: </td> <td><?php echo $data['LastName'];?></td></tr>
-<tr><td>Email: </td> <td><?php echo $data['EmailAddress'];?></td></tr>
+<tr><td>First Name: </td> <td><?php echo $data['bill_fName'];?></td></tr>
+<tr><td>Last Name: </td> <td><?php echo $data['bill_lName'];?></td></tr>
+<tr><td>Email: </td> <td><?php echo $data['email'];?></td></tr>
 <tr><th colspan=2>Billing Information: </td></tr>
 <tr><td>Billing First Name: </td> <td><?php echo $data['bill_fName'];?></td></tr>
 <tr><td>Billing Last Name: </td> <td><?php echo $data['bill_lName'];?></td></tr>
