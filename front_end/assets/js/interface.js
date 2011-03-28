@@ -72,9 +72,8 @@ function ajaxSelected(outVis, inVis)
 		var returnScheduleID = document.forms['fltDetails'].elements['returnScheduleID'].value;
 		ajax_url = ajax_url+'&returnPrice='+returnPrice+'&returnDate='+returnDate+'&returnDepart='+returnDepart+'&returnArrive='+returnArrive+'&returnFrom='+returnFrom+'&returnTo='+returnTo+'&returnFlight='+returnFlight+'&returnScheduleID='+returnScheduleID;;
 	}
+	
 	var ajax = new XMLHttpRequest();
-	
-	
 	ajax.onreadystatechange=function()
 	{
 		if (ajax.readyState==4 && ajax.status==200)

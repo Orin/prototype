@@ -36,6 +36,7 @@ if ($action == 'select') {
 }
 
 if ($action == 'cartAdd') {
+	keep_session_alive();
 	if (isset($_SESSION['flights']['outScheduleID'])) {
 		$outQuery = "UPDATE orders_temp SET date_updated=NOW(), scheduleID = '".$_SESSION['flights']['outScheduleID']."', passengers=".$_SESSION['flights']['passengers']." WHERE outReturn='out' AND session_id='".session_id()."'";
 		$outResult = mysql_query($outQuery);
@@ -65,18 +66,23 @@ if ($action == 'cartAdd') {
 					$status = 'success';
 				}
 	}
-	/*
-				$query = "UPDATE orders_temp SET date_updated=NOW(), passengers=".$_SESSION['flights']['passengers']." WHERE scheduleID='".$_SESSION['flights']['outScheduleID']."' and session_id='".session_id()."'";
-			} else {
-				$_SESSION['ecfs_cart'][$product_id] = $quantity;
-				
-			}
-			*/
 }
 
 if ($action == 'unset') {
 	unset($_SESSION[$_GET['session']]);
+	$status = 'success';
 }
+
+if ($action == 'refresh_session') {
+	keep_session_alive();
+	$status = 'success - refreshed';
+}
+
+if ($action == 'kill') {
+	cart_destroy();
+	$status = 'success';
+}
+
 if ($action == 'debug') {
 	echo $_SESSION['flights']['class'].'<br />';
 	echo $_SESSION['flights']['passengers'].'<br />';
@@ -104,9 +110,9 @@ if ($action == 'debug') {
 	echo $_SESSION['flights']['totalPrice'].'<br />';
 	
 	echo '<h2>flights_cart_t</h2>';
-	echo $_SESSION['flights_cart_t']['timestamp'].'<br />';
-	echo $time = date("Y-m-d H:i:s", mktime(date('H'),date('i')+20,date('s'),date('m'),date('d'),date('Y'))).'<br />';
-	if ($_SESSION['flights_cart_t']['timestamp'] < $time) { } else {
+	echo $_SESSION['flights_t']['timestamp'].'<br />';
+	echo $time = date("Y-m-d H:i:s", mktime(date('H'),date('i')-2,date('s'),date('m'),date('d'),date('Y'))).'<br />';
+	if ($_SESSION['flights_t']['timestamp'] < $time) {
 		echo 'destroy session<br />';
 	}
 }

@@ -144,6 +144,10 @@ if ($page == 'flights' || $page == 'details' || $page == 'confirmation') {
 
 if ($page == 'flights') {
 	if (!isset($_SESSION['search'])) {
+		$confirmSubmit = (isset($_POST['confirmSubmit']))? $_POST['confirmSubmit'] : '';
+		if ($confirmSubmit != 'confirmed') {
+			redirect('startOver.html');
+		}
 		$fromDrop = $_SESSION['search']['fromDrop'] = ($_POST['fromDrop'] != '')? str_replace("\\", "\\\\", rawurldecode($_POST['fromDrop'])) : 'BLANK';
 		$from = $_SESSION['search']['from'] = airCodeLookup($fromDrop, "CODE");
 		$toDrop = $_SESSION['search']['toDrop'] = ($_POST['toDrop'] != '')? str_replace("\\", "\\\\", rawurldecode($_POST['toDrop'])) : 'BLANK';
@@ -168,6 +172,7 @@ if ($page == 'flights') {
 		$adults = $_SESSION['search']['adults'] = $_POST['psngr-adult'];
 		$children = $_SESSION['search']['children'] = $_POST['psngr-children'];
 		$totalPsngrs = $_SESSION['search']['totalPsngrs'] = $adults + $children;
+		
 		redirect('flights.html');
 	} else {
 		$fromDrop = $_SESSION['search']['fromDrop'];

@@ -39,7 +39,7 @@ function autoFill($dataSet, $divName,$errDiv,$type ,$elName = '', $formID)
 		
 		dataSet[0] = 'hi';
 		dataSet[1] = 'hffffi';
-	<?php	for ($i =2;  $i<count($dataSet); $i++) { ?>
+	<?php	for ($i =0;  $i<count($dataSet); $i++) { ?>
 		dataSet[<?php echo $i; ?>] = '<?php echo $dataSet[$i]; ?>';
 	<?php } ?>
 	autoFills(key,textBox,dataSet,divname);
@@ -416,5 +416,9 @@ function inOrdersTemp() {
 function cart_destroy() {
 	$_SESSION = array();
 	session_destroy();
+}
+
+function keep_session_alive() {
+	$_SESSION['flights_t']['timestamp'] = date("Y-m-d H:i:s");
 }
 ?>

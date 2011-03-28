@@ -1,14 +1,38 @@
 <script type="text/javascript">
 function sendData(thisForm)
 {
- document.getElementById(thisForm).submit();
+	var ajax = new XMLHttpRequest();
+	ajax.onreadystatechange=function()
+	{
+		if (ajax.readyState==4 && ajax.status==200)
+		{
+			var success = ajax.responseText;
+			if (success == 'success - refreshed') {
+				document.getElementById(thisForm).submit();
+			}
+		}
+	}
+	ajax.open("GET", "ajax.php?action=refresh_session", false);
+	ajax.send();
 }
 function newSearch()
 {
-	var remote = new Image();
-	remote.src = "ajax.php?action=unset&session=search"; 
-	document.getElementById('searchData').submit();
- 
+	var ajax = new XMLHttpRequest();
+	ajax.onreadystatechange=function()
+	{
+		if (ajax.readyState==4 && ajax.status==200)
+		{
+			var success = ajax.responseText;
+			if (success == 'success - refreshed') {
+				document.getElementById('searchData').submit();
+			}
+		}
+	}
+	
+	ajax.open("GET", "ajax.php?action=unset&session=search", true);
+	ajax.send();
+ 	ajax.open("GET", "ajax.php?action=refresh_session", false);
+	ajax.send();
 }
 
 function resetForm()
@@ -44,6 +68,7 @@ if ($page == 'index' || $page == 'flights' || $page  == 'startOver') {
 	<div id="flight-search">
 		<h2>Book a flight</h2>
 		<form id="searchData" method="post" action="flights.html">
+        <input type="hidden" name="confirmSubmit" value="confirmed" />
 		<table id="search-table">
 			<tr class="from"><td>From</td><td><?php dropdown($destinations, $fromDrop, 'fromDrop', '196px'); ?></td></tr>
 			<tr class="to"><td>To</td><td><?php dropdown($destinations, $toDrop, 'toDrop', '196px'); ?></td></tr>
@@ -87,7 +112,7 @@ if ($page == 'index' || $page == 'flights' || $page  == 'startOver') {
 	
 	if ($page == 'flights') { ?>    
 		<div id="display-selected" style="height:290px;">
-			<h2>Flight Details</h2>
+			<h2>Your Selected Flights</h2>
 			<form id="fltDetails" method="post" action="details.html">
 			<input type="hidden" name="class" value="<?php echo $class; ?>" />
 			<input type="hidden" name="passengers" value="<?php echo $totalPsngrs; ?>" />
