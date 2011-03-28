@@ -111,7 +111,7 @@ if ($page == 'flights' || $page == 'details' || $page == 'confirmation') {
 		}
 		
 		//Start DB transaction
-		dbStart();
+		dbStart();	
 		$customerQuery = "INSERT into customers VALUES ('', '".$email."', '".$billFirstN."','".$billLastN."','".$billAddress1."','".$billAddress2."','".$billCity."','".$billPostcode."', '".$billCountry."')";
 		$custResult = mysql_query($customerQuery);
 		if (!$custResult) { dbRoll(); die('Invalid custResult query: ' . mysql_error()); }
@@ -131,6 +131,11 @@ if ($page == 'flights' || $page == 'details' || $page == 'confirmation') {
 			dbRoll();
 			die('Invalid bookPsngrsResult query: ' . mysql_error());
 		}
+		
+		$tempQuery = "DELETE FROM orders_temp WHERE session_id='".session_id()."'";
+		$tempResult = mysql_query($tempQuery);
+		if (!$tempResult) { dbRoll(); die('Invalid tempResult query: ' . mysql_error()); }
+		
 		dbCommit();
 	}
 }
