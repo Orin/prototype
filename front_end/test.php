@@ -1,5 +1,5 @@
 <script type="text/javascript">	function validate(form_id,ref){
-		   var reg = /^(ABCDEFGHJKLMNPQRSTUVWXYZ){3} (23456789){3}$/;
+		   var reg = /^[A-HJ-NP-Z]{3} [2-9]{3}$/;
 		   var address = document.forms[form_id].elements[ref].value;
 		   if(reg.test(address)==false) {
 			  alert('Invalid Email Address');
