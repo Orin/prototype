@@ -14,12 +14,12 @@
 						return false;
 						}
 					else 
-						alert('bonne lettre');
+						{alert('bonne lettre');}
 				else
-					alert('pas chiffre');
+					{alert('pas chiffre');}
 				}
 			else
-				alert('pas 6');
+				{alert('pas 6');}
 }
 </script>
 
