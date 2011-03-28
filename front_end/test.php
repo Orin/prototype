@@ -10,16 +10,23 @@
 					{
 					if(reg2.test(address)==false)
 						{
+						alert('You have used I or O.');
 						return false;
 						}
 					else 
-						return true;
-					}
+						{
+							return true;
+							}
+						
 				else
-					return false;
+					{alert('You have used 0 or 1.');
+						return false;
+					}
 				}
 			else
-				return false;
+				{alert('Too much/less letters or numbers.');
+					return false;
+				}
 }
 </script>
 
