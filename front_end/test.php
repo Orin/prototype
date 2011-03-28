@@ -1,12 +1,15 @@
 <script type="text/javascript">	function validate(form_id,ref){
 		   var reg1 = /^.{6}$/;
 		   var reg = /[2-9]{3,3}$/;
+		   var reg2=/^[A-HJ-NP-Z]{3,3}/;
 		   var address = document.forms[form_id].elements[ref].value;
 		   if(reg1.test(address)==true){
-			   if(reg.test(address)==false) {
-				  alert('Invalid Email Address');
-				  return false;
-				}
+			   if(reg.test(address)==true) {
+				 if(reg2.test(address)==false){
+					 alert('pas bon ');
+					 return false;
+				}else 
+					alert('jojufwi');
 				else
 				alert('ok');
 		   }else
