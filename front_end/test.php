@@ -17,7 +17,7 @@
 						{
 							return true;
 							}
-						
+					}	
 				else
 					{alert('You have used 0 or 1.');
 						return false;
