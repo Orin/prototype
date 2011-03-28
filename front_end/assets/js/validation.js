@@ -82,6 +82,37 @@ function isFlightNumber (form_id, fNo)
 	return true;
 	
 }
+//second way for flight number
+function secondWayFlightNumber(form_id,ref)
+{
+		   var reg1 = /^.{6}$/;
+		   var reg = /[2-9]{3,3}$/;
+		   var reg2=/^[A-HJ-NP-Z]{3,3}/;
+		   var address = document.forms[form_id].elements[ref].value;
+		   if(reg1.test(address)==true)
+				{
+				if(reg.test(address)==true) 
+					{
+					if(reg2.test(address)==false)
+						{
+						alert('You have used I or O.');
+						return false;
+						}
+					else 
+						{
+							return true;
+							}
+					}	
+				else
+					{alert('You have used 0 or 1.');
+						return false;
+					}
+				}
+			else
+				{alert('Too much/less letters or numbers.');
+					return false;
+				}
+}
 
 function isBookingRef (form_id, ref)
 {
@@ -99,6 +130,7 @@ function isBookingRef (form_id, ref)
 	
 	
 }
+
 	
 function formVal(errorID, form_ID,inputName, fName)
 {
