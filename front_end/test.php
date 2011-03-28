@@ -15,6 +15,7 @@
 						}
 					else 
 						{alert('bonne lettre');}
+					}
 				else
 					{alert('pas chiffre');}
 				}
