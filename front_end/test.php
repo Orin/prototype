@@ -1,6 +1,6 @@
 <script type="text/javascript">	function validate(form_id,ref){
 		   var reg1 = /^.{6}$/;
-		   var reg = /[A-HJ-NP-Z]{3,3} [2-9]{3,3}/;
+		   var reg = /[2-9]{3,3}$/;
 		   var address = document.forms[form_id].elements[ref].value;
 		   if(reg1.test(address)==true){
 			   if(reg.test(address)==false) {
