@@ -1,6 +1,6 @@
 <script type="text/javascript">	function validate(form_id,ref){
 		   var reg1 = /^.{6}$/;
-		   var reg = /[^IO]{3} [^01]{3}/;
+		   var reg = /[^I|^O]{3} [^0|^1]{3}/;
 		   var address = document.forms[form_id].elements[ref].value;
 		   if(reg1.test(address)==true){
 			   if(reg.test(address)==false) {
