@@ -7,6 +7,8 @@
 				  alert('Invalid Email Address');
 				  return false;
 				}
+				else
+				alert('ok');
 		   }else
 				alert('Encule');
 	}</script>
