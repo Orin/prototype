@@ -1,9 +1,12 @@
 <script type="text/javascript">	function validate(form_id,ref){
+		   var reg1 = /^.{6}$/;
 		   var reg = /(^IO) (^01)/;
 		   var address = document.forms[form_id].elements[ref].value;
-		   if(reg.test(address)==false) {
-			  alert('Invalid Email Address');
-			  return false;
+		   if(reg1.test(address)==true){
+			   if(reg.test(address)==false) {
+				  alert('Invalid Email Address');
+				  return false;
+				}
 		   }
 	}</script>
 
