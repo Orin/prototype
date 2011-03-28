@@ -74,6 +74,9 @@ if ($action == 'cartAdd') {
 			*/
 }
 
+if ($action == 'unset') {
+	unset($_SESSION[$_GET['session']]);
+}
 if ($action == 'debug') {
 	echo $_SESSION['flights']['class'].'<br />';
 	echo $_SESSION['flights']['passengers'].'<br />';
@@ -108,4 +111,31 @@ if ($action == 'debug') {
 	}
 }
 
+if ($action == 'searchdebug') {
+		echo "SESSION[search]: ".isset($_SESSION['search'])."<br />";
+		echo $fromDrop = $_SESSION['search']['fromDrop'].'<br />';
+		echo $from = $_SESSION['search']['from'].'<br />';
+		echo $toDrop = $_SESSION['search']['toDrop'].'<br />';
+		echo $to = $_SESSION['search']['to'].'<br />';
+		
+		echo $departDayDrop = $_SESSION['search']['departDayDrop'].'<br />';
+		echo $departDay = $_SESSION['search']['departDay'].'<br />';
+		echo $departMonth = $_SESSION['search']['departMonth'].'<br />';
+		echo $departMonthDrop = $_SESSION['search']['departMonthDrop'].'<br />';
+		echo $departYear = $_SESSION['search']['departYear'].'<br />';
+		echo $departDate = $_SESSION['search']['departDate'].'<br />';
+		
+		echo $returnDayDrop = $_SESSION['search']['returnDayDrop'].'<br />';
+		echo $returnDay = $_SESSION['search']['returnDay'].'<br />';
+		echo $returnMonth = $_SESSION['search']['returnMonth'].'<br />';
+		echo $returnMonthDrop = $_SESSION['search']['returnMonthDrop'].'<br />';
+		echo $returnYear = $_SESSION['search']['returnYear'].'<br />';
+		echo $returnDate = $_SESSION['search']['returnDate'].'<br />';
+		
+		echo $class = $_SESSION['search']['class'].'<br />';
+		
+		echo $adults = $_SESSION['search']['adults'].'<br />';
+		echo $children = $_SESSION['search']['children'].'<br />';
+		echo $totalPsngrs = $_SESSION['search']['totalPsngrs'].'<br />';
+}
 echo $status;

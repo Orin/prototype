@@ -1,31 +1,7 @@
 <div class="content-body">
 	<h2>Passenger Details</h2>
     	<form id="bookDetails" action="confirmation.html" method="post">
-        <input type="hidden" name="class" value="<?php echo $class; ?>" />
-        <input type="hidden" name="passengers" value="<?php echo $totalPsngrs; ?>" />
-        <input type="hidden" name="adults" value="<?php echo $adults; ?>" />
-        <input type="hidden" name="children" value="<?php echo $children; ?>" />
-        
-        <input type="hidden" name="outScheduleID" value="<?php echo $outScheduleID; ?>" />
-        <input type="hidden" name="returnScheduleID" value="<?php echo $returnScheduleID; ?>" />
-        <input type="hidden" name="outPrice" value="<?php echo $outPrice; ?>" />
-        <input type="hidden" name="returnPrice" value="<?php echo $returnPrice; ?>" />
-        
-        <input type='hidden' name='outDate' value='<?php echo $outDate; ?>' />
-		<input type='hidden' name='outDepart' value='<?php echo $outDepart; ?>' />
-        <input type='hidden' name='outArrive' value='<?php echo $outArrive; ?>' />
-        <input type='hidden' name='outFrom' value='<?php echo $outFrom; ?>' />
-        <input type='hidden' name='outTo' value='<?php echo $outTo; ?>' />
-        <input type='hidden' name='outFlight' value='<?php echo $outFlight; ?>' />
-        
-        <input type='hidden' name='returnDate' value='<?php echo $returnDate; ?>' />
-        <input type='hidden' name='returnDepart' value='<?php echo $returnDepart; ?>' />
-        <input type='hidden' name='returnArrive' value='<?php echo $returnArrive; ?>' />
-        <input type='hidden' name='returnFrom' value='<?php echo $returnFrom; ?>' />
-        <input type='hidden' name='returnTo' value='<?php echo $returnTo; ?>' />
-        <input type='hidden' name='returnFlight' value='<?php echo $returnFlight; ?>' />
-
-        
+       
 		<table class="booking-form">
             <?php
 			for ($i = 0; $i < $adults; $i++) { 

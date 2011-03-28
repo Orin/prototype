@@ -60,7 +60,7 @@ function accessLevel ($page, $level)
 function dropdown($entries, $default = '', $name='', $width = 'auto') {
 	echo "<select name=\"".$name."\" style=\"width:".$width."\">";
 	for ($i = 0; $i < count($entries); $i++) {
-		if ($entries[$i] == $default) { ?><option selected><?php } else { ?><option><?php }
+		if ($entries[$i] == $default) { ?><option selected = "selected"><?php } else { ?><option><?php }
 		echo $entries[$i]; ?></option>
 	<?php	}
 	echo '</select>';
@@ -75,7 +75,7 @@ function datePicker($defDay = FALSE, $defMonth = FALSE, $name = '', $limitFields
 	if (!$limitFields || strpos($limitFields, 'D') !== FALSE) {
 		echo '<select class="day" name="'.$name.'Day">';
 		for ($i = 1; $i < 32; $i++) {
-			if ($i == $defDay) { ?><option selected><?php } else { ?><option><?php }
+			if ($i == $defDay) { ?><option selected = "selected"><?php } else { ?><option><?php }
 			echo $i.'</option>';
 		}
 		echo '<option></option>';
@@ -85,7 +85,7 @@ function datePicker($defDay = FALSE, $defMonth = FALSE, $name = '', $limitFields
 	if (!$limitFields || strpos($limitFields, 'M') !== FALSE) {
 		echo '<select class="month"  name="'.$name.'Month">';
 		for ($i = 1; $i < 13; $i++) {
-			if ($i == $defMonth) { ?><option selected><?php } else { ?><option><?php }
+			if ($i == $defMonth) { ?><option selected = "selected"><?php } else { ?><option><?php }
 			echo date("F", mktime(0,0,0,$i)).'</option>';
 		}
 		echo '<option></option>';
@@ -110,7 +110,7 @@ function noPsngrPicker($psngrType, $defNo = 0) {
     <select class="psngr-select <?php echo $psngrType; ?>" name="psngr-<?php echo $psngrType; ?>">
     <?php
 	for ($i = 0; $i < 11; $i++) {
-		if ($i == $defNo) { ?><option selected><?php } else { ?><option><?php }
+		if ($i == $defNo) { ?><option selected = "selected"><?php } else { ?><option><?php }
 		echo $i; ?></option>
         <?php
 	} ?>
@@ -404,5 +404,17 @@ function formatTime($input) {
 function checkStillAvailable($schedID, $class, $psngrCount) {
 	if (availableSeats($schedID, $class) >= $psngrCount) return true;
 	else return false;
+}
+
+function inOrdersTemp() {
+	$query = "SELECT * FROM orders_temp WHERE session_id = '".session_id()."'";
+	$result = mysql_query($query);
+	if (mysql_num_rows($result) > 0) return true;
+	else return false;
+}
+
+function cart_destroy() {
+	$_SESSION = array();
+	session_destroy();
 }
 ?>

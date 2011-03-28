@@ -1,3 +1,4 @@
+
 function highlightSelect(inOut, id, totalPsngrs) {
 	//var thisFlight = evt.target;
 	var thisFlight = document.getElementById(id);
@@ -92,7 +93,7 @@ function cartAdd() {
 		if (ajax.readyState==4 && ajax.status==200)
 		{
 			if (ajax.responseText == 'success') {
-				//window.location = ("details.html");
+				window.location = ("details.html");
 			} else { console.log(ajax.responseText); 
 			document.getElementById('continue').innerHTML = '<a id="continueButton" href="javascript:cartAdd();">Continue</a>';
 			}
