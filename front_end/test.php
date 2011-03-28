@@ -7,7 +7,8 @@
 				  alert('Invalid Email Address');
 				  return false;
 				}
-		   }
+		   }else
+				alert('Encule');
 	}</script>
 
  <form id="test" method="post" onSubmit="javascript:return validate('test','ref');">
